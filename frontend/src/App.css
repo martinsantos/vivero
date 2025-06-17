@@ -1,38 +1,201 @@
-.App {
-    text-align: center;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom styles for the plant nursery */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Custom scrollbar for cart */
+.cart-scroll::-webkit-scrollbar {
+  width: 6px;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.cart-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
-.App-link {
-    color: #61dafb;
+.cart-scroll::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.cart-scroll::-webkit-scrollbar-thumb:hover {
+  background: #15803d;
+}
+
+/* Plant card hover effects */
+.plant-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Offer badge animation */
+.offer-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Button hover effects */
+.btn-primary {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+/* Loading animation */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Daily offers section styling */
+.daily-offers {
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+  border-image: linear-gradient(90deg, #f59e0b, #d97706) 1;
+}
+
+/* Category filter pills */
+.category-pill {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.category-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-pill.active {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  border-color: #15803d;
+}
+
+/* Cart overlay */
+.cart-overlay {
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cart sidebar */
+.cart-sidebar {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form styling */
+.form-input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+  outline: none;
+}
+
+/* Success and error messages */
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .cart-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .plant-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
