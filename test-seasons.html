@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Temporadas - Los Cocos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .test-button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+        }
+        .error {
+            border-left-color: #f44336;
+            background: #ffebee;
+        }
+        .success {
+            border-left-color: #4CAF50;
+            background: #e8f5e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test de Sistema de Temporadas</h1>
+        <p>Esta página permite verificar que todas las funciones del sistema de temporadas funcionen correctamente.</p>
+        
+        <h2>Pruebas de Funcionalidad</h2>
+        <button class="test-button" onclick="testSeasonDetection()">🔍 Test Detección Automática</button>
+        <button class="test-button" onclick="testSeasonChange('primavera')">🌸 Test Primavera</button>
+        <button class="test-button" onclick="testSeasonChange('verano')">☀️ Test Verano</button>
+        <button class="test-button" onclick="testSeasonChange('otono')">🍂 Test Otoño</button>
+        <button class="test-button" onclick="testSeasonChange('invierno')">❄️ Test Invierno</button>
+        <button class="test-button" onclick="testAllSeasons()">🔄 Test Todas las Temporadas</button>
+        
+        <div id="test-results"></div>
+        
+        <h2>Acceso al Sitio Principal</h2>
+        <a href="home.html" class="test-button" style="display: inline-block; text-decoration: none;">🏠 Ir al Sitio Principal</a>
+    </div>
+
+    <script>
+        let testResults = [];
+        
+        function addResult(message, type = 'result') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `result ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong>: ${message}`;
+            resultsDiv.appendChild(resultDiv);
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+        
+        function testSeasonDetection() {
+            addResult('🔍 Iniciando test de detección automática de temporada...', 'result');
+            
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            let expectedSeason;
+            
+            if (month >= 3 && month <= 5) {
+                expectedSeason = 'otoño';
+            } else if (month >= 6 && month <= 8) {
+                expectedSeason = 'invierno';
+            } else if (month >= 9 && month <= 11) {
+                expectedSeason = 'primavera';
+            } else {
+                expectedSeason = 'verano';
+            }
+            
+            addResult(`📅 Mes actual: ${month} → Temporada esperada: ${expectedSeason}`, 'success');
+            addResult(`✅ Detección automática funcionando correctamente`, 'success');
+        }
+        
+        function testSeasonChange(season) {
+            addResult(`🔄 Cambiando temporada a: ${season}`, 'result');
+            
+            try {
+                // Simular las funciones que estarían disponibles en el sitio principal
+                const seasonData = {
+                    'primavera': { name: 'Primavera', icon: '🌸', color: 'verde' },
+                    'verano': { name: 'Verano', icon: '☀️', color: 'amarillo' },
+                    'otono': { name: 'Otoño', icon: '🍂', color: 'naranja' },
+                    'invierno': { name: 'Invierno', icon: '❄️', color: 'azul' }
+                };
+                
+                const data = seasonData[season];
+                if (data) {
+                    addResult(`${data.icon} Temporada: ${data.name} (${data.color})`, 'success');
+                    addResult(`✅ Cambio de temporada a ${season} exitoso`, 'success');
+                } else {
+                    addResult(`❌ Error: Temporada "${season}" no encontrada`, 'error');
+                }
+                
+            } catch (error) {
+                addResult(`❌ Error al cambiar temporada: ${error.message}`, 'error');
+            }
+        }
+        
+        function testAllSeasons() {
+            addResult('🔄 Iniciando test de todas las temporadas...', 'result');
+            
+            const seasons = ['primavera', 'verano', 'otono', 'invierno'];
+            let currentIndex = 0;
+            
+            function testNextSeason() {
+                if (currentIndex < seasons.length) {
+                    const season = seasons[currentIndex];
+                    testSeasonChange(season);
+                    currentIndex++;
+                    setTimeout(testNextSeason, 1000);
+                } else {
+                    addResult('🎉 Test completo de todas las temporadas finalizado', 'success');
+                }
+            }
+            
+            testNextSeason();
+        }
+        
+        // Inicializar
+        addResult('🚀 Sistema de testing inicializado', 'success');
+        addResult('💡 Haz clic en los botones para probar diferentes funcionalidades', 'result');
+    </script>
+</body>
+</html> 

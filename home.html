@@ -7,10 +7,20 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
           :root {
-            --primary-color: #4CAF50;--secondary-color: #F5F5F5;--text-primary: #1F2937;--text-secondary: #4B5563;--accent-color: #388E3C;}
+            --primary-color: #4CAF50;
+            --secondary-color: #F5F5F5;
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --accent-color: #388E3C;
+            --autumn-primary: #D97706;
+            --autumn-secondary: #FED7AA;
+            --autumn-accent: #EA580C;
+          }
+          
           body {
             font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
           }
+          
           .hover-primary:hover {
             color: var(--primary-color);
           }
@@ -23,8 +33,17 @@
           .border-primary {
             border-color: var(--primary-color) !important;
           }
-          
-          /* Animaciones para el modal */
+
+          /* Estilos de otoño */
+          .autumn-gradient {
+            background: linear-gradient(135deg, #D97706 0%, #EA580C 50%, #DC2626 100%);
+          }
+          .autumn-card {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
+            border: 1px solid rgba(217, 119, 6, 0.2);
+          }
+
+          /* Animaciones mejoradas */
           @keyframes modalSlideIn {
             from {
               opacity: 0;
@@ -39,22 +58,21 @@
             animation: modalSlideIn 0.3s ease-out;
           }
 
-          /* Animaciones para el Hero mejorado */
           @keyframes slowZoom {
-            0% { transform: scale(1.1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1.1); }
+            0% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1.05); }
           }
           .animate-slow-zoom {
-            animation: slowZoom 20s ease-in-out infinite;
+            animation: slowZoom 25s ease-in-out infinite;
           }
 
           @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(74, 222, 128, 0.5); }
-            50% { text-shadow: 0 0 40px rgba(74, 222, 128, 0.8), 0 0 60px rgba(34, 197, 94, 0.6); }
+            0%, 100% { text-shadow: 0 0 20px rgba(217, 119, 6, 0.6); }
+            50% { text-shadow: 0 0 40px rgba(234, 88, 12, 0.8), 0 0 60px rgba(220, 38, 38, 0.6); }
           }
           .animate-title-glow {
-            animation: titleGlow 3s ease-in-out infinite;
+            animation: titleGlow 4s ease-in-out infinite;
           }
 
           @keyframes floatLeaf {
@@ -66,52 +84,167 @@
 
           .particle {
             position: absolute;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             pointer-events: none;
             animation: floatLeaf linear infinite;
           }
 
-          .leaf-1 {
-            left: 10%;
-            animation-duration: 15s;
-            animation-delay: 0s;
+          .leaf-1 { left: 8%; animation-duration: 18s; animation-delay: 0s; }
+          .leaf-2 { left: 23%; animation-duration: 22s; animation-delay: 4s; }
+          .leaf-3 { left: 45%; animation-duration: 16s; animation-delay: 8s; }
+          .leaf-4 { left: 67%; animation-duration: 24s; animation-delay: 2s; }
+          .leaf-5 { left: 85%; animation-duration: 20s; animation-delay: 6s; }
+
+          @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(234, 88, 12, 0.8), 0 0 60px rgba(217, 119, 6, 0.6); }
+          }
+          .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
           }
 
-          .leaf-2 {
-            left: 25%;
-            animation-duration: 18s;
-            animation-delay: 3s;
+          @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+          }
+          .animate-bounce-gentle {
+            animation: bounce-gentle 2s ease-in-out infinite;
           }
 
-          .leaf-3 {
-            left: 50%;
-            animation-duration: 12s;
-            animation-delay: 6s;
+          /* Efectos hover mejorados */
+          .hover-lift {
+            transition: all 0.3s ease;
+          }
+          .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
           }
 
-          .leaf-4 {
-            left: 75%;
-            animation-duration: 20s;
-            animation-delay: 2s;
+          /* Gradientes estacionales */
+          .season-spring { background: linear-gradient(135deg, #10B981 0%, #34D399 100%); }
+          .season-summer { background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); }
+          .season-autumn { background: linear-gradient(135deg, #D97706 0%, #EA580C 100%); }
+          .season-winter { background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); }
+
+          /* Clases dinámicas para características */
+          .features-spring .feature-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(52, 211, 153, 0.1) 100%); border: 1px solid rgba(16, 185, 129, 0.2); }
+          .features-summer .feature-card { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%); border: 1px solid rgba(245, 158, 11, 0.2); }
+          .features-autumn .feature-card { background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%); border: 1px solid rgba(217, 119, 6, 0.2); }
+          .features-winter .feature-card { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%); border: 1px solid rgba(59, 130, 246, 0.2); }
+
+          /* Animaciones para partículas por temporada */
+          .particles-spring .particle { animation: floatSpring linear infinite; }
+          .particles-summer .particle { animation: floatSummer linear infinite; }
+          .particles-autumn .particle { animation: floatLeaf linear infinite; }
+          .particles-winter .particle { animation: floatWinter linear infinite; }
+
+          @keyframes floatSpring {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
           }
 
-          .leaf-5 {
-            left: 90%;
-            animation-duration: 16s;
-            animation-delay: 8s;
+          @keyframes floatSummer {
+            0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg) scale(0.9); opacity: 0; }
           }
 
-          /* Efecto parallax sutil */
-          .parallax-bg {
-            transform: translateZ(0);
-            will-change: transform;
+          @keyframes floatWinter {
+            0% { transform: translateY(-100px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1); }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg) scale(1.2); opacity: 0; }
+          }
+
+          /* Colores de texto dinámicos */
+          .text-spring { color: #10B981; }
+          .text-summer { color: #F59E0B; }
+          .text-autumn { color: #EA580C; }
+          .text-winter { color: #3B82F6; }
+
+          /* Fondos de overlay dinámicos */
+          .overlay-spring { background: linear-gradient(to right, rgba(16, 185, 129, 0.85), rgba(52, 211, 153, 0.75), rgba(6, 182, 212, 0.85)); }
+          .overlay-summer { background: linear-gradient(to right, rgba(245, 158, 11, 0.85), rgba(251, 191, 36, 0.75), rgba(249, 115, 22, 0.85)); }
+          .overlay-autumn { background: linear-gradient(to right, rgba(217, 119, 6, 0.85), rgba(220, 38, 38, 0.75), rgba(180, 83, 9, 0.85)); }
+          .overlay-winter { background: linear-gradient(to right, rgba(59, 130, 246, 0.85), rgba(96, 165, 250, 0.75), rgba(67, 56, 202, 0.85)); }
+
+          /* Estilos para la línea de tiempo estacional */
+          .season-marker {
+            position: relative;
+            z-index: 10;
+          }
+          
+          .season-marker:hover .w-16 {
+            transform: scale(1.15) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+          }
+          
+          @keyframes seasonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+          }
+          
+          .season-marker[data-season] .w-16 {
+            transition: all 0.3s ease;
+          }
+          
+          .season-marker.active .w-16 {
+            animation: seasonPulse 2s ease-in-out infinite;
+          }
+          
+          /* Animación del indicador de temporada actual */
+          @keyframes indicatorGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); }
+          }
+          
+          #current-season-indicator .w-6 {
+            animation: indicatorGlow 2s ease-in-out infinite;
+          }
+          
+          /* Efectos de progreso en la línea de tiempo */
+          .timeline-segment {
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+          }
+          
+          .timeline-segment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+          }
+          
+          .timeline-segment.active::before {
+            left: 100%;
           }
         </style>
     </head>
     <body class="bg-[var(--secondary-color)]">
     <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden text-[var(--text-primary)]">
     <div class="layout-container flex h-full grow flex-col overflow-y-auto">
-    <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white px-6 sm:px-10 py-4 shadow-sm">
+    <!-- Banner de Envío Gratuito -->
+    <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-center py-3 px-4 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-green-600/90 to-emerald-600/90"></div>
+      <div class="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
+        <span class="animate-bounce">🚚</span>
+        <span>ENVÍO GRATIS EL MISMO DÍA EN MENDOZA</span>
+        <span class="hidden sm:inline">• Pedidos antes de las 14hs</span>
+        <span class="animate-bounce">⚡</span>
+      </div>
+    </div>
+    
+    <header class="sticky top-0 z-40 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white px-6 sm:px-10 py-4 shadow-sm">
     <div class="flex items-center gap-8">
     <a class="flex items-center gap-3 text-[var(--text-primary)]" href="#">
     <div class="size-8 text-[var(--primary-color)]">
@@ -133,6 +266,7 @@
     <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#productos">Productos</a>
     <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#servicios">Servicios</a>
     <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#consejos">Consejos</a>
+    <a class="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-bold px-4 py-2 rounded-full hover:from-green-600 hover:to-emerald-700 transition-all transform hover:scale-105 shadow-lg" href="#club-premium">⭐ Club Premium</a>
     <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#contacto">Contacto</a>
     </nav>
     </div>
@@ -164,146 +298,390 @@
     </div>
     </header>
     <main class="flex-1 bg-white">
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- Video de Fondo -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-24">
+      <!-- Fondo Dinámico según Temporada -->
       <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-             alt="Plantas tropicales" 
-             class="w-full h-full object-cover scale-110 animate-slow-zoom">
-        <div class="absolute inset-0 bg-gradient-to-r from-green-900/80 via-green-800/70 to-emerald-900/80"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        <img id="hero-background" 
+             src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Vivero Los Cocos" 
+             class="w-full h-full object-cover animate-slow-zoom transition-opacity duration-1000">
+        <div id="hero-overlay" class="absolute inset-0 bg-gradient-to-r from-orange-900/85 via-red-800/75 to-amber-900/85 transition-all duration-1000"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
       </div>
 
-      <!-- Partículas flotantes -->
+      <!-- Partículas de otoño -->
       <div class="absolute inset-0 z-10">
-        <div class="particle leaf-1">🌿</div>
-        <div class="particle leaf-2">🍃</div>
-        <div class="particle leaf-3">🌱</div>
-        <div class="particle leaf-4">🌿</div>
-        <div class="particle leaf-5">🍃</div>
+        <div class="particle leaf-1">🍂</div>
+        <div class="particle leaf-2">🍁</div>
+        <div class="particle leaf-3">🍃</div>
+        <div class="particle leaf-4">🍂</div>
+        <div class="particle leaf-5">🍁</div>
       </div>
 
       <!-- Contenido Principal -->
-      <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Badge de Oferta Superior -->
-        <div class="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-full text-sm font-bold mb-8 animate-bounce shadow-2xl">
-          <span class="animate-pulse">🔥</span>
-          <span>GRAN OFERTA DEL DÍA - 40% OFF</span>
-          <span class="animate-pulse">🔥</span>
+        <!-- Indicador de Temporada Actual con Selector -->
+        <div class="text-center mb-8">
+          <div id="season-indicator" class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500/90 to-red-500/90 backdrop-blur-md text-white px-8 py-4 rounded-2xl shadow-2xl animate-pulse-glow transition-all duration-500">
+            <span class="text-2xl animate-bounce-gentle" id="season-icon-left">🍂</span>
+            <div class="text-left">
+              <div class="text-sm font-medium opacity-90">Temporada Actual</div>
+              <div class="text-xl font-bold" id="current-season">Otoño 2024</div>
+            </div>
+            <span class="text-2xl animate-bounce-gentle" id="season-icon-right">🍁</span>
+          </div>
+          
+          <!-- Selector de Temporadas para Testing -->
+          <div class="mt-4">
+            <p class="text-white/80 text-sm mb-3">🧪 Modo Testing - Cambiar Temporada:</p>
+            <div class="flex justify-center gap-3 flex-wrap">
+              <button onclick="changeSeason('primavera')" 
+                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
+                🌸 Primavera
+              </button>
+              <button onclick="changeSeason('verano')" 
+                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
+                ☀️ Verano
+              </button>
+              <button onclick="changeSeason('otono')" 
+                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 ring-2 ring-white/50">
+                🍂 Otoño
+              </button>
+              <button onclick="changeSeason('invierno')" 
+                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
+                ❄️ Invierno
+              </button>
+            </div>
+          </div>
+          
+          <!-- Línea de Tiempo Estacional -->
+          <div class="mt-8 max-w-4xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20">
+              <h3 class="text-white text-lg font-bold text-center mb-6">📅 Calendario Estacional 2024</h3>
+              
+              <!-- Línea de Tiempo -->
+              <div class="relative">
+                <!-- Línea base del camino -->
+                <div class="absolute top-1/2 left-0 right-0 h-2 bg-white/20 rounded-full transform -translate-y-1/2"></div>
+                
+                <!-- Segmentos de colores estacionales -->
+                <div class="absolute top-1/2 left-0 w-1/4 h-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-l-full transform -translate-y-1/2 shadow-lg"></div>
+                <div class="absolute top-1/2 left-1/4 w-1/4 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 transform -translate-y-1/2 shadow-lg"></div>
+                <div class="absolute top-1/2 left-1/2 w-1/4 h-2 bg-gradient-to-r from-orange-500 to-red-600 transform -translate-y-1/2 shadow-lg"></div>
+                <div class="absolute top-1/2 left-3/4 w-1/4 h-2 bg-gradient-to-r from-blue-400 to-slate-500 rounded-r-full transform -translate-y-1/2 shadow-lg"></div>
+                
+                <!-- Marcadores estacionales -->
+                <div class="relative flex justify-between items-center py-8">
+                  <!-- Primavera -->
+                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('primavera')" 
+                       data-season="primavera">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
+                      🌸
+                    </div>
+                    <div class="mt-3 text-white">
+                      <div class="font-bold text-sm">Primavera</div>
+                      <div class="text-xs opacity-80">Sep - Nov</div>
+                      <div class="text-xs opacity-60">Floración</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Verano -->
+                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('verano')" 
+                       data-season="verano">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
+                      ☀️
+                    </div>
+                    <div class="mt-3 text-white">
+                      <div class="font-bold text-sm">Verano</div>
+                      <div class="text-xs opacity-80">Dic - Feb</div>
+                      <div class="text-xs opacity-60">Cosecha</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Otoño -->
+                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('otono')" 
+                       data-season="otono">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
+                      🍂
+                    </div>
+                    <div class="mt-3 text-white">
+                      <div class="font-bold text-sm">Otoño</div>
+                      <div class="text-xs opacity-80">Mar - May</div>
+                      <div class="text-xs opacity-60">Preparación</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Invierno -->
+                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('invierno')" 
+                       data-season="invierno">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-slate-500 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
+                      ❄️
+                    </div>
+                    <div class="mt-3 text-white">
+                      <div class="font-bold text-sm">Invierno</div>
+                      <div class="text-xs opacity-80">Jun - Ago</div>
+                      <div class="text-xs opacity-60">Descanso</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Indicador de temporada actual -->
+                <div id="current-season-indicator" class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-500" 
+                     style="left: 62.5%;">
+                  <div class="w-6 h-6 bg-white rounded-full shadow-2xl border-2 border-orange-400 animate-pulse"></div>
+                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
+                    Estamos aquí
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Información adicional -->
+              <div class="mt-6 text-center">
+                <p class="text-white/80 text-sm">
+                  <span class="inline-block w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
+                  Cada temporada trae sus propias plantas y cuidados especiales
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Título Principal con Efectos -->
-        <div class="mb-8">
-          <h1 class="text-6xl sm:text-7xl md:text-8xl font-black text-white mb-4 tracking-tight">
-            <span class="bg-gradient-to-r from-green-400 via-emerald-300 to-teal-300 bg-clip-text text-transparent drop-shadow-2xl animate-title-glow">
+        <!-- Título Principal Dinámico -->
+        <div class="text-center mb-12">
+          <h1 class="text-6xl sm:text-7xl md:text-8xl font-black text-white mb-6 tracking-tight">
+            <span id="hero-title" class="bg-gradient-to-r from-orange-300 via-amber-200 to-red-300 bg-clip-text text-transparent drop-shadow-2xl animate-title-glow">
               Los Cocos
             </span>
           </h1>
-          <div class="w-32 h-2 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto rounded-full animate-pulse"></div>
+          <div id="hero-divider" class="w-40 h-3 autumn-gradient mx-auto rounded-full animate-pulse shadow-lg"></div>
+          <p class="text-2xl sm:text-3xl md:text-4xl text-orange-100 font-light mt-8 max-w-5xl mx-auto leading-relaxed drop-shadow-lg">
+            Tu <span id="hero-subtitle" class="font-bold text-white">refugio otoñal</span> en el corazón de Mendoza
+            <br class="hidden sm:block">
+            <span id="hero-description" class="text-amber-200 text-xl">Prepara tu jardín para el otoño • Plantas de temporada • Asesoramiento especializado</span>
+          </p>
         </div>
 
-        <!-- Subtítulo Mejorado -->
-        <p class="text-xl sm:text-2xl md:text-3xl text-green-100 font-light mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
-          Tu <span class="font-bold text-white">oasis verde</span> en el corazón de Mendoza
-          <br class="hidden sm:block">
-          <span class="text-emerald-200">Plantas exclusivas • Diseño profesional • Asesoramiento experto</span>
-        </p>
+        <!-- Oferta del Día Destacada -->
+        <div class="text-center mb-12">
+          <button id="offer-button" onclick="openDailyOfferPopup()" 
+                  class="group relative overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-red-600 hover:from-red-700 hover:via-orange-600 hover:to-red-700 text-white px-12 py-6 rounded-3xl shadow-2xl transition-all duration-300 transform hover:scale-110 animate-pulse-glow">
+            <div class="relative z-10 flex items-center gap-4">
+              <span id="offer-icon-left" class="text-3xl animate-bounce">🔥</span>
+              <div class="text-left">
+                <div id="offer-title" class="text-sm font-medium opacity-90">OFERTA ESPECIAL DE OTOÑO</div>
+                <div id="offer-text" class="text-2xl font-black">¡Pack Otoñal 50% OFF!</div>
+                <div class="text-sm opacity-90">Solo por hoy - Clic para ver</div>
+              </div>
+              <span id="offer-icon-right" class="text-3xl animate-bounce">🍂</span>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+          </button>
+        </div>
 
-        <!-- Grid de Destacados -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <div class="text-4xl mb-3">🌿</div>
-            <h3 class="text-white font-bold mb-2">+500 Especies</h3>
-            <p class="text-green-100 text-sm">Desde suculentas hasta árboles frutales</p>
+        <!-- Grid de Características Dinámicas -->
+        <div id="features-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
+          <div class="autumn-card backdrop-blur-md rounded-3xl p-8 hover:bg-orange-500/20 transition-all duration-300 hover-lift">
+            <div id="feature-1-icon" class="text-5xl mb-4 text-center">🍂</div>
+            <h3 id="feature-1-title" class="text-white font-bold text-xl mb-3 text-center">Plantas de Otoño</h3>
+            <p id="feature-1-description" class="text-orange-100 text-center leading-relaxed">Crisantemos, asters y plantas que brillan en esta temporada dorada</p>
           </div>
           
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <div class="text-4xl mb-3">🚚</div>
-            <h3 class="text-white font-bold mb-2">Entrega 24hs</h3>
-            <p class="text-green-100 text-sm">Rápido y seguro a toda Mendoza</p>
+          <div class="autumn-card backdrop-blur-md rounded-3xl p-8 hover:bg-orange-500/20 transition-all duration-300 hover-lift">
+            <div id="feature-2-icon" class="text-5xl mb-4 text-center">🌰</div>
+            <h3 id="feature-2-title" class="text-white font-bold text-xl mb-3 text-center">Preparación Invernal</h3>
+            <p id="feature-2-description" class="text-orange-100 text-center leading-relaxed">Abonos, mulch y todo lo necesario para proteger tu jardín</p>
           </div>
           
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <div class="text-4xl mb-3">🏆</div>
-            <h3 class="text-white font-bold mb-2">15 Años</h3>
-            <p class="text-green-100 text-sm">Experiencia cultivando sueños verdes</p>
+          <div class="autumn-card backdrop-blur-md rounded-3xl p-8 hover:bg-orange-500/20 transition-all duration-300 hover-lift">
+            <div id="feature-3-icon" class="text-5xl mb-4 text-center">🍁</div>
+            <h3 id="feature-3-title" class="text-white font-bold text-xl mb-3 text-center">Consejos Expertos</h3>
+            <p id="feature-3-description" class="text-orange-100 text-center leading-relaxed">Guías personalizadas para cada etapa del otoño mendocino</p>
           </div>
         </div>
 
-                 <!-- Selector de Temporadas -->
-         <div class="mb-12">
-           <h3 class="text-white text-xl font-semibold mb-6">🌸 Elige tu temporada favorita</h3>
-           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-             <button onclick="selectSeason('primavera')" id="season-primavera" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
-               <div class="text-2xl mb-2 group-hover:animate-bounce">🌸</div>
-               <div class="font-semibold text-sm">Primavera</div>
-               <div class="text-xs text-green-200">Floración</div>
-             </button>
-             
-             <button onclick="selectSeason('verano')" id="season-verano" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
-               <div class="text-2xl mb-2 group-hover:animate-bounce">☀️</div>
-               <div class="font-semibold text-sm">Verano</div>
-               <div class="text-xs text-green-200">Crecimiento</div>
-             </button>
-             
-             <button onclick="selectSeason('otono')" id="season-otono" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
-               <div class="text-2xl mb-2 group-hover:animate-bounce">🍂</div>
-               <div class="font-semibold text-sm">Otoño</div>
-               <div class="text-xs text-green-200">Preparación</div>
-             </button>
-             
-             <button onclick="selectSeason('invierno')" id="season-invierno" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
-               <div class="text-2xl mb-2 group-hover:animate-bounce">❄️</div>
-               <div class="font-semibold text-sm">Invierno</div>
-               <div class="text-xs text-green-200">Descanso</div>
-             </button>
-           </div>
-           
-           <!-- Consejos por Temporada -->
-           <div id="season-tips" class="mt-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 max-w-2xl mx-auto">
-             <h4 class="text-white font-semibold mb-3 flex items-center gap-2">
-               <span id="season-icon">🌸</span>
-               <span id="season-title">Consejos de Primavera</span>
-             </h4>
-             <p id="season-advice" class="text-green-100 text-sm leading-relaxed">
-               La primavera es perfecta para plantar nuevas especies. Aumenta el riego gradualmente y prepara el sustrato con compost fresco.
-             </p>
-           </div>
-         </div>
+        <!-- Consejos de Temporada Inteligentes -->
+        <div class="text-center mb-12">
+          <button onclick="openSeasonTipsPopup()" 
+                  class="group bg-white/15 backdrop-blur-md border border-white/30 rounded-2xl p-6 hover:bg-white/25 transition-all duration-300 hover-lift max-w-2xl mx-auto block">
+            <div class="flex items-center justify-center gap-4 mb-4">
+              <span class="text-3xl" id="season-tip-icon">🍂</span>
+              <h3 id="season-tip-title" class="text-white font-bold text-xl">Consejos para Otoño</h3>
+              <span class="text-3xl" id="season-tip-icon-2">🍁</span>
+            </div>
+            <p class="text-orange-100 leading-relaxed mb-4" id="season-tip-preview">
+              Es momento de preparar tu jardín para el invierno. Abona la tierra, protege las plantas sensibles y planifica las podas.
+            </p>
+            <div class="text-orange-200 text-sm font-medium group-hover:text-white transition-colors">
+              ✨ Clic para ver consejos detallados ✨
+            </div>
+          </button>
+        </div>
 
-         <!-- Botones de Acción Mejorados -->
-         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-           <a href="#productos" 
-              class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110 hover:shadow-green-500/25">
-             <span class="relative z-10 flex items-center gap-2">
-               <span>Explorar Catálogo</span>
-               <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-               </svg>
-             </span>
-             <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
-           </a>
-           
-           <button onclick="openProductModal()" 
-                   class="group relative overflow-hidden bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110 hover:shadow-red-500/25 animate-pulse">
-             <span class="relative z-10 flex items-center gap-2">
-               <span class="animate-pulse">🔥</span>
-               <span>Ver Oferta del Día</span>
-               <span class="animate-pulse">🔥</span>
-             </span>
-             <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
-           </button>
-         </div>
+        <!-- Botones de Acción Dinámicos -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a id="action-button-1" href="#especies-otono" 
+             class="group relative overflow-hidden bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110">
+            <span class="relative z-10 flex items-center gap-2">
+              <span>🍂</span>
+              <span>Ver Plantas de Otoño</span>
+              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+          </a>
+          
+          <a id="action-button-2" href="#preparacion-otono" 
+             class="group relative overflow-hidden bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110">
+            <span class="relative z-10 flex items-center gap-2">
+              <span>🌰</span>
+              <span>Guía de Preparación</span>
+              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+          </a>
+        </div>
 
-        <!-- Indicador de Scroll -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 animate-bounce">
+        <!-- Indicador de Scroll Otoñal -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-orange-200/70 animate-bounce">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </div>
       </div>
     </section>
+
+    <!-- Sección Especies de Otoño -->
+    <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50" id="especies-otono">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
+            <span>🍂</span>
+            <span>ESPECIAL OTOÑO 2024</span>
+            <span>🍁</span>
+          </div>
+          <h2 class="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
+            <span class="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+              Especies de Temporada
+            </span>
+          </h2>
+          <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Descubre las plantas que más brillan durante el otoño mendocino. Colores vibrantes y resistencia natural para esta época del año.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <!-- Crisantemos -->
+          <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
+            <div class="relative h-64 bg-gradient-to-br from-yellow-400 to-orange-500 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                   alt="Crisantemos en vivero" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-orange-600">
+                🏆 ESTRELLA
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Crisantemos Premium</h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Los reyes del otoño. Flores abundantes en tonos dorados, rojos y amarillos que iluminan cualquier espacio.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-orange-600">$8.500 ARS</span>
+                <div class="flex items-center gap-1 text-yellow-500">
+                  <span>⭐⭐⭐⭐⭐</span>
+                  <span class="text-sm text-gray-500">(127)</span>
+                </div>
+              </div>
+              <button class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                      data-add-cart data-product-id="crisantemos" data-product-name="Crisantemos Premium" data-product-price="8500">
+                🛒 Añadir al Carrito
+              </button>
+            </div>
+          </div>
+
+          <!-- Asters -->
+          <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
+            <div class="relative h-64 bg-gradient-to-br from-purple-400 to-pink-500 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1592150621744-aca64f48394a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                   alt="Asters en macetas de vivero" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-purple-600">
+                💜 POPULAR
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Asters Multicolor</h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Pequeñas estrellas de colores que florecen hasta las primeras heladas. Perfectos para borduras y macetas.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-purple-600">$6.200 ARS</span>
+                <div class="flex items-center gap-1 text-yellow-500">
+                  <span>⭐⭐⭐⭐⭐</span>
+                  <span class="text-sm text-gray-500">(89)</span>
+                </div>
+              </div>
+              <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                      data-add-cart data-product-id="asters" data-product-name="Asters Multicolor" data-product-price="6200">
+                🛒 Añadir al Carrito
+              </button>
+            </div>
+          </div>
+
+          <!-- Cyclamen -->
+          <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
+            <div class="relative h-64 bg-gradient-to-br from-pink-400 to-rose-500 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                   alt="Cyclamen en vivero" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-pink-600">
+                🌸 ELEGANTE
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Cyclamen Persicum</h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Flores delicadas en forma de mariposa. Ideales para interiores y exteriores protegidos durante el otoño.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-pink-600">$7.800 ARS</span>
+                <div class="flex items-center gap-1 text-yellow-500">
+                  <span>⭐⭐⭐⭐⭐</span>
+                  <span class="text-sm text-gray-500">(156)</span>
+                </div>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                      data-add-cart data-product-id="cyclamen" data-product-name="Cyclamen Persicum" data-product-price="7800">
+                🛒 Añadir al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner de Oferta Especial -->
+        <div id="season-offer-banner" class="bg-gradient-to-r from-orange-600 via-red-500 to-orange-600 rounded-3xl p-8 text-white text-center shadow-2xl">
+          <h3 id="banner-title" class="text-3xl font-bold mb-4">🎯 Oferta Especial de Otoño</h3>
+          <p id="banner-description" class="text-xl mb-6">Lleva 3 plantas de temporada y paga solo 2. Válido hasta fin de mes.</p>
+          <button onclick="openDailyOfferPopup()" 
+                  class="bg-white text-orange-600 font-bold py-4 px-8 rounded-2xl hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            🔥 Ver Oferta Completa
+          </button>
+        </div>
+        
+        <!-- Productos Adicionales de Temporada -->
+        <div class="mt-16">
+          <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">🛠️ Productos Complementarios</h3>
+          <div id="additional-products-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Los productos se cargarán dinámicamente -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[var(--secondary-color)]" id="productos">
     <div class="max-w-7xl mx-auto">
     <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Ofertas Exclusivas</h2>
@@ -347,6 +725,172 @@
     </div>
     </div>
     </section>
+
+    <!-- Sección Preparación de Jardín para Otoño -->
+    <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-amber-900 via-orange-800 to-red-900 text-white" id="preparacion-otono">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
+            <span>🌰</span>
+            <span>GUÍA PROFESIONAL</span>
+            <span>🍂</span>
+          </div>
+          <h2 class="text-4xl sm:text-5xl font-black text-white mb-6">
+            Prepara tu Jardín para el Otoño
+          </h2>
+          <p class="text-xl text-orange-100 max-w-4xl mx-auto leading-relaxed">
+            Sigue nuestra guía paso a paso para que tu jardín luzca espectacular durante el otoño y esté preparado para el invierno mendocino.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <!-- Guía de Pasos -->
+          <div class="space-y-8">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                  1
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-white mb-2">🌱 Abona la Tierra</h3>
+                  <p class="text-orange-100 leading-relaxed mb-3">
+                    Aplica compost orgánico y abono de liberación lenta para nutrir el suelo antes del invierno. 
+                    Es el momento perfecto para preparar la tierra para la próxima temporada.
+                  </p>
+                  <div class="text-sm text-yellow-200 font-medium">
+                    ✓ Compost orgánico • ✓ Abono NPK • ✓ Humus de lombriz
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-orange-400 to-red-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                  2
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-white mb-2">🍂 Rota las Forrajeras</h3>
+                  <p class="text-orange-100 leading-relaxed mb-3">
+                    Cambia la ubicación de tus cultivos forrajeros para evitar el agotamiento del suelo. 
+                    Planta leguminosas que fijen nitrógeno naturalmente.
+                  </p>
+                  <div class="text-sm text-yellow-200 font-medium">
+                    ✓ Rotación de cultivos • ✓ Leguminosas • ✓ Descanso del suelo
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-red-400 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                  3
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-white mb-2">💧 Rocía las Plantas</h3>
+                  <p class="text-orange-100 leading-relaxed mb-3">
+                    Aplica tratamientos preventivos contra plagas y hongos. El otoño es ideal para 
+                    fortalecer las defensas naturales de tus plantas.
+                  </p>
+                  <div class="text-sm text-yellow-200 font-medium">
+                    ✓ Fungicidas naturales • ✓ Aceite de neem • ✓ Extractos vegetales
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-purple-400 to-blue-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                  4
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-white mb-2">❄️ Protege del Frío</h3>
+                  <p class="text-orange-100 leading-relaxed mb-3">
+                    Cubre las plantas sensibles con mantas térmicas o mulch. Prepara estructuras de 
+                    protección para las especies más delicadas.
+                  </p>
+                  <div class="text-sm text-yellow-200 font-medium">
+                    ✓ Mantas térmicas • ✓ Mulch orgánico • ✓ Invernaderos mini
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Productos Recomendados -->
+          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-300">
+            <h3 class="text-2xl font-bold text-white mb-6 text-center">🛒 Kit Preparación Otoño</h3>
+            <div class="space-y-4 mb-6">
+              <div class="flex items-center justify-between py-3 border-b border-white/20">
+                <span class="text-orange-100">Compost Orgánico Premium (20kg)</span>
+                <span class="text-white font-bold">$4.500</span>
+              </div>
+              <div class="flex items-center justify-between py-3 border-b border-white/20">
+                <span class="text-orange-100">Abono NPK Liberación Lenta</span>
+                <span class="text-white font-bold">$3.200</span>
+              </div>
+              <div class="flex items-center justify-between py-3 border-b border-white/20">
+                <span class="text-orange-100">Aceite de Neem Concentrado</span>
+                <span class="text-white font-bold">$2.800</span>
+              </div>
+              <div class="flex items-center justify-between py-3 border-b border-white/20">
+                <span class="text-orange-100">Manta Térmica Jardín (5m²)</span>
+                <span class="text-white font-bold">$5.100</span>
+              </div>
+              <div class="flex items-center justify-between py-3 border-b border-white/20">
+                <span class="text-orange-100">Mulch Corteza Pino (50L)</span>
+                <span class="text-white font-bold">$2.900</span>
+              </div>
+            </div>
+            
+            <div class="text-center mb-6">
+              <div class="text-sm text-orange-200 mb-2">Precio individual: $18.500</div>
+              <div class="text-3xl font-black text-white">Kit Completo: $14.500</div>
+              <div class="text-sm text-yellow-200 font-bold">¡Ahorrás $4.000!</div>
+            </div>
+
+            <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl"
+                    data-add-cart data-product-id="kit-otono" data-product-name="Kit Preparación Otoño" data-product-price="14500">
+              🛒 Comprar Kit Completo
+            </button>
+          </div>
+        </div>
+
+        <!-- Calendario de Actividades -->
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 text-center">
+          <h3 class="text-3xl font-bold text-white mb-6">📅 Calendario de Actividades Otoñales</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white/10 rounded-2xl p-6">
+              <h4 class="text-xl font-bold text-yellow-300 mb-3">Marzo</h4>
+              <ul class="text-orange-100 text-sm space-y-2">
+                <li>🌱 Siembra de otoño</li>
+                <li>🍂 Primera aplicación de abono</li>
+                <li>💧 Ajuste de riego</li>
+              </ul>
+            </div>
+            <div class="bg-white/10 rounded-2xl p-6">
+              <h4 class="text-xl font-bold text-yellow-300 mb-3">Abril</h4>
+              <ul class="text-orange-100 text-sm space-y-2">
+                <li>✂️ Podas de formación</li>
+                <li>🍂 Recolección de hojas</li>
+                <li>🌿 Plantación de bulbos</li>
+              </ul>
+            </div>
+            <div class="bg-white/10 rounded-2xl p-6">
+              <h4 class="text-xl font-bold text-yellow-300 mb-3">Mayo</h4>
+              <ul class="text-orange-100 text-sm space-y-2">
+                <li>❄️ Protección contra heladas</li>
+                <li>🌰 Última fertilización</li>
+                <li>🏠 Preparación de invernaderos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white" id="servicios">
     <div class="max-w-7xl mx-auto">
     <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Servicios de Diseño de Paisajes</h2>
@@ -430,6 +974,182 @@
     </div>
     </div>
     </section>
+    <!-- Sección de Suscripción Premium -->
+    <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900 text-white relative overflow-hidden" id="club-premium">
+      <div class="absolute inset-0 bg-gradient-to-r from-green-900/90 to-emerald-900/90"></div>
+      <div class="absolute inset-0">
+        <div class="absolute top-10 left-10 text-6xl opacity-10 animate-bounce">🌿</div>
+        <div class="absolute top-20 right-20 text-4xl opacity-10 animate-pulse">🌱</div>
+        <div class="absolute bottom-20 left-20 text-5xl opacity-10 animate-bounce" style="animation-delay: 1s;">🍃</div>
+        <div class="absolute bottom-10 right-10 text-6xl opacity-10 animate-pulse" style="animation-delay: 2s;">🌸</div>
+      </div>
+      
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
+            <span>⭐</span>
+            <span>MEMBRESÍA PREMIUM</span>
+            <span>⭐</span>
+          </div>
+          <h2 class="text-4xl sm:text-5xl font-black text-white mb-6">
+            Únete al Club Los Cocos
+          </h2>
+          <p class="text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+            Accede a beneficios exclusivos, descuentos especiales y envío gratuito el mismo día en Mendoza
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Beneficios de la Suscripción -->
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-white mb-8">🎁 Beneficios Exclusivos</h3>
+            
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl shadow-lg">
+                  🚚
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-bold text-white mb-2">Envío Gratis Mismo Día</h4>
+                  <p class="text-green-100 leading-relaxed">
+                    Recibe tus plantas el mismo día en toda Mendoza. Pedidos antes de las 14hs se entregan en el día.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-red-400 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl shadow-lg">
+                  💰
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-bold text-white mb-2">15% Descuento Permanente</h4>
+                  <p class="text-green-100 leading-relaxed">
+                    Descuento automático en todas tus compras + ofertas exclusivas solo para miembros.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-blue-400 to-purple-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl shadow-lg">
+                  🌱
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-bold text-white mb-2">Asesoramiento Premium</h4>
+                  <p class="text-green-100 leading-relaxed">
+                    Consultas ilimitadas con nuestros expertos + guías personalizadas para tu jardín.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="flex items-start gap-4">
+                <div class="bg-gradient-to-r from-green-400 to-emerald-500 rounded-full w-12 h-12 flex items-center justify-center text-2xl shadow-lg">
+                  🎁
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-bold text-white mb-2">Regalos Mensuales</h4>
+                  <p class="text-green-100 leading-relaxed">
+                    Cada mes recibes una planta sorpresa + productos de cuidado completamente gratis.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario de Suscripción -->
+          <div class="bg-white/15 backdrop-blur-md rounded-3xl p-8 hover:bg-white/20 transition-all duration-300">
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-white mb-4">💎 Suscripción Premium</h3>
+              <div class="text-center mb-4">
+                <span class="text-sm text-green-200 line-through">$2.500/mes</span>
+                <div class="text-4xl font-black text-white">$1.500<span class="text-lg">/mes</span></div>
+                <div class="text-sm text-yellow-200 font-bold">¡40% OFF por tiempo limitado!</div>
+              </div>
+            </div>
+
+            <form id="subscription-form" class="space-y-4">
+              <div>
+                <label class="block text-white text-sm font-medium mb-2">Nombre Completo</label>
+                <input type="text" id="sub-name" required
+                       class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                       placeholder="Tu nombre completo">
+              </div>
+              
+              <div>
+                <label class="block text-white text-sm font-medium mb-2">Email</label>
+                <input type="email" id="sub-email" required
+                       class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                       placeholder="tu@email.com">
+              </div>
+              
+              <div>
+                <label class="block text-white text-sm font-medium mb-2">Teléfono (WhatsApp)</label>
+                <input type="tel" id="sub-phone" required
+                       class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                       placeholder="+54 261 123-4567">
+              </div>
+              
+              <div>
+                <label class="block text-white text-sm font-medium mb-2">Dirección en Mendoza</label>
+                <input type="text" id="sub-address" required
+                       class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                       placeholder="Dirección para entregas">
+              </div>
+
+              <div class="flex items-start gap-3 mt-6">
+                <input type="checkbox" id="sub-terms" required
+                       class="mt-1 w-4 h-4 text-green-600 bg-white/20 border-white/30 rounded focus:ring-green-500">
+                <label for="sub-terms" class="text-sm text-green-100">
+                  Acepto los <a href="#" class="text-yellow-300 hover:underline">términos y condiciones</a> y la suscripción mensual de $1.500
+                </label>
+              </div>
+
+              <button type="submit" onclick="submitSubscription(event)"
+                      class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl">
+                🌟 Suscribirme Ahora
+              </button>
+              
+              <p class="text-xs text-green-200 text-center mt-4">
+                🔒 Pago seguro • Cancela cuando quieras • Sin permanencia
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Testimonios de Miembros -->
+        <div class="mt-16 text-center">
+          <h3 class="text-2xl font-bold text-white mb-8">💬 Lo que dicen nuestros miembros</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+              <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+              <p class="text-green-100 text-sm mb-4">"El envío el mismo día es increíble. Mis plantas llegan perfectas y el descuento me ahorra mucho dinero."</p>
+              <div class="text-white font-semibold">María González</div>
+              <div class="text-green-200 text-xs">Miembro desde hace 8 meses</div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+              <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+              <p class="text-green-100 text-sm mb-4">"Los consejos personalizados me ayudaron a crear el jardín de mis sueños. ¡100% recomendado!"</p>
+              <div class="text-white font-semibold">Carlos Rodríguez</div>
+              <div class="text-green-200 text-xs">Miembro desde hace 1 año</div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+              <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+              <p class="text-green-100 text-sm mb-4">"Las plantas mensuales gratis son una sorpresa hermosa. Mi casa está llena de vida."</p>
+              <div class="text-white font-semibold">Ana Martínez</div>
+              <div class="text-green-200 text-xs">Miembro desde hace 6 meses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Sección Instagram -->
     <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
     <div class="max-w-4xl mx-auto text-center">
@@ -666,8 +1386,17 @@
                   </button>
                 </div>
                 
+                <div class="bg-green-50 rounded-xl p-4 mt-4">
+                  <div class="flex items-center justify-center gap-2 text-green-800 font-semibold mb-2">
+                    <span>🚚</span>
+                    <span>ENVÍO GRATIS MISMO DÍA EN MENDOZA</span>
+                  </div>
+                  <p class="text-xs text-green-700 text-center">
+                    Pedidos antes de las 14hs se entregan el mismo día • Miembros premium siempre gratis
+                  </p>
+                </div>
                 <div class="text-center mt-4">
-                  <p class="text-xs text-gray-500">🔒 Pago seguro • Envío en 24hs • Garantía total</p>
+                  <p class="text-xs text-gray-500">🔒 Pago seguro • Garantía total • Soporte WhatsApp</p>
                 </div>
               </div>
             </div>
@@ -677,13 +1406,176 @@
     </div>
 
     <script src="cart.js"></script>
-    <script src="modal.js"></script>
-    <!-- Modal de Sugerencias de Jardinería -->
-    <div id="tips-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden p-4 z-50">
-      <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-6 relative">
-        <button onclick="closeTipsModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">✕</button>
-        <h3 id="tips-modal-title" class="text-2xl font-bold mb-4">Sugerencias de Jardinería</h3>
-        <div id="tips-modal-content" class="text-gray-700 text-sm space-y-4"></div>
+    <script src="autumn-features.js?v=2.0"></script>
+    <!-- Modal de Oferta del Día -->
+    <div id="daily-offer-modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto animate-modal-enter">
+        <!-- Header con gradiente otoñal -->
+        <div class="bg-gradient-to-r from-orange-600 via-red-500 to-amber-600 text-white p-8 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 to-red-600/90"></div>
+          <div class="relative z-10">
+            <button onclick="closeDailyOfferModal()" class="absolute top-0 right-0 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-all">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <div class="text-center">
+              <h2 class="text-4xl font-black mb-4">🔥 OFERTA ESPECIAL DE OTOÑO 🔥</h2>
+              <p class="text-xl opacity-90">Pack Premium con 50% de descuento - Solo por hoy</p>
+              <div class="mt-4 inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2">
+                <span>⏰</span>
+                <span id="offer-countdown" class="font-bold">23:59:59</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido del Pack -->
+        <div class="p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Productos incluidos -->
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-6">🎁 Pack Otoño Premium incluye:</h3>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 bg-orange-50 rounded-xl">
+                  <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                       alt="Crisantemos" class="w-16 h-16 rounded-lg object-cover">
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900">Crisantemos Premium x3</h4>
+                    <p class="text-sm text-gray-600">Colores surtidos</p>
+                    <span class="text-orange-600 font-bold">$25.500</span>
+                  </div>
+                </div>
+                
+                <div class="flex items-center gap-4 p-4 bg-orange-50 rounded-xl">
+                  <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                       alt="Kit cuidado" class="w-16 h-16 rounded-lg object-cover">
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900">Kit Cuidado Otoñal</h4>
+                    <p class="text-sm text-gray-600">Abono + protector</p>
+                    <span class="text-orange-600 font-bold">$8.500</span>
+                  </div>
+                </div>
+                
+                <div class="flex items-center gap-4 p-4 bg-green-50 rounded-xl">
+                  <div class="w-16 h-16 rounded-lg bg-green-500 flex items-center justify-center text-white text-2xl">
+                    🎁
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900">Macetas Decorativas x3</h4>
+                    <p class="text-sm text-gray-600">¡GRATIS en este pack!</p>
+                    <span class="text-green-600 font-bold">REGALO</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resumen y compra -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">💰 Resumen de Compra</h3>
+              
+              <div class="space-y-3 mb-6">
+                <div class="flex justify-between">
+                  <span>Precio normal:</span>
+                  <span class="line-through text-gray-500">$34.000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Descuento otoño:</span>
+                  <span class="text-red-600 font-bold">-50%</span>
+                </div>
+                <div class="border-t pt-3 flex justify-between text-xl font-bold">
+                  <span>Total hoy:</span>
+                  <span class="text-orange-600">$17.000</span>
+                </div>
+              </div>
+
+              <div class="text-center mb-6">
+                <p class="text-sm text-gray-600 mb-2">Cantidad:</p>
+                <div class="flex items-center justify-center gap-4">
+                  <button onclick="decreaseOfferQuantity()" class="bg-gray-200 hover:bg-gray-300 rounded-full w-10 h-10 flex items-center justify-center font-bold">-</button>
+                  <span id="offer-quantity" class="text-2xl font-bold">1</span>
+                  <button onclick="increaseOfferQuantity()" class="bg-gray-200 hover:bg-gray-300 rounded-full w-10 h-10 flex items-center justify-center font-bold">+</button>
+                </div>
+              </div>
+
+              <button onclick="addOfferToCart()" 
+                      class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl mb-4">
+                🛒 Añadir al Carrito
+              </button>
+              
+              <button onclick="buyOfferNow()" 
+                      class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl">
+                ⚡ Comprar Ahora
+              </button>
+              
+              <div class="bg-green-50 rounded-xl p-4 mt-4">
+                <div class="flex items-center justify-center gap-2 text-green-800 font-semibold mb-2">
+                  <span>🚚</span>
+                  <span>ENVÍO GRATIS MISMO DÍA EN MENDOZA</span>
+                </div>
+                <p class="text-xs text-green-700 text-center">
+                  Pedidos antes de las 14hs se entregan el mismo día • Miembros premium siempre gratis
+                </p>
+              </div>
+              <p class="text-xs text-gray-500 text-center mt-4">
+                🔒 Pago seguro • Garantía 30 días • Soporte 24/7
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Consejos de Temporada -->
+    <div id="season-tips-modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto animate-modal-enter">
+        <!-- Header dinámico según temporada -->
+        <div id="tips-header" class="bg-gradient-to-r from-orange-600 to-red-600 text-white p-8 relative overflow-hidden">
+          <div class="relative z-10">
+            <button onclick="closeSeasonTipsModal()" class="absolute top-0 right-0 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-all">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <div class="text-center">
+              <h2 class="text-4xl font-black mb-4">
+                <span id="tips-season-icon">🍂</span>
+                <span id="tips-season-title">Consejos para Otoño</span>
+                <span id="tips-season-icon-2">🍁</span>
+              </h2>
+              <p class="text-xl opacity-90" id="tips-season-subtitle">Guía completa para cuidar tu jardín durante el otoño mendocino</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido de consejos -->
+        <div class="p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Consejos principales -->
+            <div id="main-tips">
+              <h3 class="text-2xl font-bold text-gray-900 mb-6">📋 Consejos Principales</h3>
+              <div class="space-y-6" id="tips-content">
+                <!-- Contenido dinámico según temporada -->
+              </div>
+            </div>
+
+            <!-- Plantas recomendadas -->
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-6">🌱 Plantas Recomendadas</h3>
+              <div class="space-y-4" id="recommended-plants">
+                <!-- Contenido dinámico según temporada -->
+              </div>
+              
+              <!-- Calendario de actividades -->
+              <div class="mt-8 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6">
+                <h4 class="text-lg font-bold text-gray-900 mb-4">📅 Calendario del Mes</h4>
+                <div id="monthly-calendar" class="space-y-2 text-sm">
+                  <!-- Contenido dinámico -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     </body></html>
