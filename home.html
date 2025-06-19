@@ -1,0 +1,689 @@
+<html><head>
+    <meta charset="utf-8"/>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <title>Los Cocos - Tu oasis verde en Mendoza</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+          :root {
+            --primary-color: #4CAF50;--secondary-color: #F5F5F5;--text-primary: #1F2937;--text-secondary: #4B5563;--accent-color: #388E3C;}
+          body {
+            font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+          }
+          .hover-primary:hover {
+            color: var(--primary-color);
+          }
+          .bg-primary {
+            background-color: var(--primary-color) !important;
+          }
+          .text-primary-fg {
+            color: var(--primary-color) !important;
+          }
+          .border-primary {
+            border-color: var(--primary-color) !important;
+          }
+          
+          /* Animaciones para el modal */
+          @keyframes modalSlideIn {
+            from {
+              opacity: 0;
+              transform: translateY(-50px) scale(0.95);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+          }
+          .animate-modal-enter {
+            animation: modalSlideIn 0.3s ease-out;
+          }
+
+          /* Animaciones para el Hero mejorado */
+          @keyframes slowZoom {
+            0% { transform: scale(1.1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1.1); }
+          }
+          .animate-slow-zoom {
+            animation: slowZoom 20s ease-in-out infinite;
+          }
+
+          @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(74, 222, 128, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(74, 222, 128, 0.8), 0 0 60px rgba(34, 197, 94, 0.6); }
+          }
+          .animate-title-glow {
+            animation: titleGlow 3s ease-in-out infinite;
+          }
+
+          @keyframes floatLeaf {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+          }
+
+          .particle {
+            position: absolute;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: floatLeaf linear infinite;
+          }
+
+          .leaf-1 {
+            left: 10%;
+            animation-duration: 15s;
+            animation-delay: 0s;
+          }
+
+          .leaf-2 {
+            left: 25%;
+            animation-duration: 18s;
+            animation-delay: 3s;
+          }
+
+          .leaf-3 {
+            left: 50%;
+            animation-duration: 12s;
+            animation-delay: 6s;
+          }
+
+          .leaf-4 {
+            left: 75%;
+            animation-duration: 20s;
+            animation-delay: 2s;
+          }
+
+          .leaf-5 {
+            left: 90%;
+            animation-duration: 16s;
+            animation-delay: 8s;
+          }
+
+          /* Efecto parallax sutil */
+          .parallax-bg {
+            transform: translateZ(0);
+            will-change: transform;
+          }
+        </style>
+    </head>
+    <body class="bg-[var(--secondary-color)]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden text-[var(--text-primary)]">
+    <div class="layout-container flex h-full grow flex-col overflow-y-auto">
+    <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white px-6 sm:px-10 py-4 shadow-sm">
+    <div class="flex items-center gap-8">
+    <a class="flex items-center gap-3 text-[var(--text-primary)]" href="#">
+    <div class="size-8 text-[var(--primary-color)]">
+    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_6_535)">
+    <path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+    </g>
+    <defs>
+    <clipPath id="clip0_6_535">
+    <rect fill="white" height="48" width="48"></rect>
+    </clipPath>
+    </defs>
+    </svg>
+    </div>
+    <h1 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-tight">Los Cocos</h1>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6">
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#">Inicio</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#productos">Productos</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#servicios">Servicios</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#consejos">Consejos</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#contacto">Contacto</a>
+    </nav>
+    </div>
+    <div class="flex items-center gap-3">
+    <label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+    <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+    <div class="text-[var(--text-secondary)] flex border border-gray-300 bg-white items-center justify-center pl-3 rounded-l-lg border-r-0">
+    <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+    <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+    </svg>
+    </div>
+    <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-gray-300 bg-white h-full placeholder:text-[var(--text-secondary)] px-3 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Buscar plantas..." value=""/>
+    </div>
+    </label>
+    <button class="flex md:hidden max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors">
+    <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+    <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+    </svg>
+    </button>
+    <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors relative">
+    <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+    <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+    </svg>
+    <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white" id="cart-count" style="display:none">0</span>
+    </button>
+    <button class="lg:hidden flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors">
+    <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,88H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
+    </button>
+    </div>
+    </header>
+    <main class="flex-1 bg-white">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Video de Fondo -->
+      <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Plantas tropicales" 
+             class="w-full h-full object-cover scale-110 animate-slow-zoom">
+        <div class="absolute inset-0 bg-gradient-to-r from-green-900/80 via-green-800/70 to-emerald-900/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+      </div>
+
+      <!-- Partículas flotantes -->
+      <div class="absolute inset-0 z-10">
+        <div class="particle leaf-1">🌿</div>
+        <div class="particle leaf-2">🍃</div>
+        <div class="particle leaf-3">🌱</div>
+        <div class="particle leaf-4">🌿</div>
+        <div class="particle leaf-5">🍃</div>
+      </div>
+
+      <!-- Contenido Principal -->
+      <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <!-- Badge de Oferta Superior -->
+        <div class="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-full text-sm font-bold mb-8 animate-bounce shadow-2xl">
+          <span class="animate-pulse">🔥</span>
+          <span>GRAN OFERTA DEL DÍA - 40% OFF</span>
+          <span class="animate-pulse">🔥</span>
+        </div>
+
+        <!-- Título Principal con Efectos -->
+        <div class="mb-8">
+          <h1 class="text-6xl sm:text-7xl md:text-8xl font-black text-white mb-4 tracking-tight">
+            <span class="bg-gradient-to-r from-green-400 via-emerald-300 to-teal-300 bg-clip-text text-transparent drop-shadow-2xl animate-title-glow">
+              Los Cocos
+            </span>
+          </h1>
+          <div class="w-32 h-2 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto rounded-full animate-pulse"></div>
+        </div>
+
+        <!-- Subtítulo Mejorado -->
+        <p class="text-xl sm:text-2xl md:text-3xl text-green-100 font-light mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+          Tu <span class="font-bold text-white">oasis verde</span> en el corazón de Mendoza
+          <br class="hidden sm:block">
+          <span class="text-emerald-200">Plantas exclusivas • Diseño profesional • Asesoramiento experto</span>
+        </p>
+
+        <!-- Grid de Destacados -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <div class="text-4xl mb-3">🌿</div>
+            <h3 class="text-white font-bold mb-2">+500 Especies</h3>
+            <p class="text-green-100 text-sm">Desde suculentas hasta árboles frutales</p>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <div class="text-4xl mb-3">🚚</div>
+            <h3 class="text-white font-bold mb-2">Entrega 24hs</h3>
+            <p class="text-green-100 text-sm">Rápido y seguro a toda Mendoza</p>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <div class="text-4xl mb-3">🏆</div>
+            <h3 class="text-white font-bold mb-2">15 Años</h3>
+            <p class="text-green-100 text-sm">Experiencia cultivando sueños verdes</p>
+          </div>
+        </div>
+
+                 <!-- Selector de Temporadas -->
+         <div class="mb-12">
+           <h3 class="text-white text-xl font-semibold mb-6">🌸 Elige tu temporada favorita</h3>
+           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+             <button onclick="selectSeason('primavera')" id="season-primavera" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
+               <div class="text-2xl mb-2 group-hover:animate-bounce">🌸</div>
+               <div class="font-semibold text-sm">Primavera</div>
+               <div class="text-xs text-green-200">Floración</div>
+             </button>
+             
+             <button onclick="selectSeason('verano')" id="season-verano" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
+               <div class="text-2xl mb-2 group-hover:animate-bounce">☀️</div>
+               <div class="font-semibold text-sm">Verano</div>
+               <div class="text-xs text-green-200">Crecimiento</div>
+             </button>
+             
+             <button onclick="selectSeason('otono')" id="season-otono" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
+               <div class="text-2xl mb-2 group-hover:animate-bounce">🍂</div>
+               <div class="font-semibold text-sm">Otoño</div>
+               <div class="text-xs text-green-200">Preparación</div>
+             </button>
+             
+             <button onclick="selectSeason('invierno')" id="season-invierno" class="season-btn bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-white text-center group">
+               <div class="text-2xl mb-2 group-hover:animate-bounce">❄️</div>
+               <div class="font-semibold text-sm">Invierno</div>
+               <div class="text-xs text-green-200">Descanso</div>
+             </button>
+           </div>
+           
+           <!-- Consejos por Temporada -->
+           <div id="season-tips" class="mt-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 max-w-2xl mx-auto">
+             <h4 class="text-white font-semibold mb-3 flex items-center gap-2">
+               <span id="season-icon">🌸</span>
+               <span id="season-title">Consejos de Primavera</span>
+             </h4>
+             <p id="season-advice" class="text-green-100 text-sm leading-relaxed">
+               La primavera es perfecta para plantar nuevas especies. Aumenta el riego gradualmente y prepara el sustrato con compost fresco.
+             </p>
+           </div>
+         </div>
+
+         <!-- Botones de Acción Mejorados -->
+         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+           <a href="#productos" 
+              class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110 hover:shadow-green-500/25">
+             <span class="relative z-10 flex items-center gap-2">
+               <span>Explorar Catálogo</span>
+               <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+               </svg>
+             </span>
+             <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+           </a>
+           
+           <button onclick="openProductModal()" 
+                   class="group relative overflow-hidden bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110 hover:shadow-red-500/25 animate-pulse">
+             <span class="relative z-10 flex items-center gap-2">
+               <span class="animate-pulse">🔥</span>
+               <span>Ver Oferta del Día</span>
+               <span class="animate-pulse">🔥</span>
+             </span>
+             <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+           </button>
+         </div>
+
+        <!-- Indicador de Scroll -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 animate-bounce">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
+      </div>
+    </section>
+    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[var(--secondary-color)]" id="productos">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Ofertas Exclusivas</h2>
+    <div id="home-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRAd5Y6McGQvBa1LkJLXDoAhPLLdPOCM8wX36OgDCyX6yW65sHLq3M83HSRhRk3W9b-OiQDbkf5xSoem2mtCfcCeNCblBAWX4Uv2kwqO5CKlOGowyG04Ui4WqIDZXSgEdibS5gS8lw3CkwvNQkkQij9lkhW_rihNaEvShmTI6iqqke7WiUfLLxQKwspnoBKOIta8deYLvsqpSA92jd9WkEzFyvT5kzHgum72voCFS7dOqe25DomIQBU85r8a5C6VrdWT10jbsAejxG");'>
+    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
+    </div>
+    <div class="p-5 sm:p-6 flex-grow">
+    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Suculentas en Promoción</h3>
+    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Descubre nuestra variada colección de suculentas con descuentos especiales. Perfectas para dar vida a cualquier rincón.</p>
+    </div>
+    <div class="p-5 sm:p-6 border-t border-gray-200">
+    <a class="text-sm font-medium text-primary-fg hover:text-[var(--accent-color)] transition-colors" href="single.html?product=suculentas">Ver Detalles →</a>
+    </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4GK-Xiz5KljSdBEcuvc4w51JDOBXuYbZtDgNU1j9Lx1PZzWwIv2WdAKyS87YGXpGz5OI1Uam6cKBPTCSDHmhgbOSsOP_Hno9zYwRoCA10jEA7Kfb2pOR-Y3S7x7OrN_PywiiREFnHwuMizqWb8h-2OpulW_PrUbqK95IFo3ZRJD4_3u2MxHyL1ZoUSaxql0AulnBGPtyErxJq91TBkGZ1EMETCouz2v2cQyeVIimihiS6z9JVfBsCnvdzx50FQF-fL0Oec_vo2Mnj");'>
+    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
+    </div>
+    <div class="p-5 sm:p-6 flex-grow">
+    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Flores de Temporada</h3>
+    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Llena tu hogar de color y alegría con nuestras flores frescas de temporada. Calidad y belleza garantizadas.</p>
+    </div>
+    <div class="p-5 sm:p-6 border-t border-gray-200">
+    <a class="text-sm font-medium text-primary-fg hover:text-[var(--accent-color)] transition-colors" href="single.html?product=flores">Ver Detalles →</a>
+    </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrKIqPu9ty2RWPZsd2OXWUWNbRJ4a7W7d3N_sdSWY8GHrxqFYGocwrTpix3BhkDGEhwRz0Xhue1QgTvoH0lm7JLpMhzv0fMMVG0i7gwIXtT7bSL0hB5Khe8LtZOexN3ryb_ikM_2q1b_FwPjFL_Lz8HKLjNEferwp9ZKDO5Q8ApcHa34xVYVtyLSYCbww1uir7W7iKTDZCWzPL5QgpaVIRodw3r4tNJEMrmWChS4NZnk0IZGwV7ilZyOrjlDPjQ76YOPoKM44fUR2Y");'>
+    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
+    </div>
+    <div class="p-5 sm:p-6 flex-grow">
+    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Plantas de Interior Exóticas</h3>
+    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Transforma tus espacios interiores con nuestra selección de plantas exóticas, fáciles de cuidar y llenas de vida.</p>
+    </div>
+    <div class="p-5 sm:p-6 border-t border-gray-200">
+    <a class="text-sm font-medium text-primary-fg hover:text-[var(--accent-color)] transition-colors" href="single.html?product=interiores">Ver Detalles →</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white" id="servicios">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Servicios de Diseño de Paisajes</h2>
+    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
+    <div class="w-full lg:w-1/2 h-64 sm:h-80 lg:h-auto bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJmbnBefvNWE0PqQT1qZmoD1_fDReq-3tFFZzRKeBwsxuIsoaPY5F0cpNXSweLGAOiZc9GU5ko-o0UySKgYKkqW7CB4Ed9GRlIvqVZeCh1NSdpXim2_Vo28McfMG1-Ns08rPXiZRboOItZ_know1Tm0mm2hRYI1fjHY9D7CwbU-uq3h4eEi5h6nqvovi8J0GhGAjV7skSwMMj17qPz9Abxy4at4X0jralYVk4axwMtKZeXKTbrSDkq14ji23mfxsgSNsLF2o6UxeHX");'></div>
+    <div class="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12">
+    <h3 class="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] mb-4">Diseño de Paisajes Personalizado</h3>
+    <p class="text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed mb-6">Creamos espacios verdes únicos que reflejan tu estilo y armonizan con el encantador entorno mendocino. Desde pequeños balcones hasta grandes jardines, nuestro equipo de expertos te asesorará.</p>
+    <a class="bg-primary hover:bg-[var(--accent-color)] text-white text-sm sm:text-base font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105" href="#">
+                          Más Información
+                        </a>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[var(--secondary-color)]" id="consejos">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Consejos de Jardinería</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-48 sm:h-56 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNZ-SuznL8sPdEQj4AjMYN8ZEWera7iMfRsWxzk6Sbq_0D6IVMMsb7jtt427s5sF6hxCFXsEefTbcRRTYLP-bgSdlQMLqTMwrmMXE55wVem0Q4BEFLOS-duzDXBhdJqm4mIFeFMevFeyipWEW4TzIL3SdjxEAQ7ll9bWJsGwle78vfsjkkyFDLnc7iIR2YJUovC5dL9AOdd_ODMZpmIZf93Gzis9worvH9UqcxSJ_i6OQTJ7TKLfuaiCxUQb7u6Y50dvNG-rGv0Qaf");'></div>
+    <div class="p-5 sm:p-6">
+    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-2">Cuidado Esencial de Cactus</h3>
+    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Aprende los secretos para mantener tus cactus saludables y florecientes con nuestra guía completa.</p>
+    </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-48 sm:h-56 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-rtDrmCSCfMZMONxv29P68mfw43pRdtgv29ADzmi_Un37gpphh6SUGUZVgaWozjo7_1qPbpupGvIzIIhUWWuSac5O5zPHMinhetbXLG7rO2bfDuPreCk14KHs3fDE7vX0kJEtrjhXAsOo5varUuwmJK3TbiWK3_o5Dyo1hPhwX6OZEZXH2wy02-iT4o17AIjr85F7N_bybevIFrdSGsffbM4sBqwrK4XfQE4tuuHf1QxOij7S38qG1iHpTmIQUronqokd7LbHBi7d");'></div>
+    <div class="p-5 sm:p-6">
+    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-2">Riego Eficiente para tu Jardín</h3>
+    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Domina las mejores técnicas de riego para asegurar un jardín vigoroso y ahorrar agua.</p>
+    </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-48 sm:h-56 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrHC1pVVg8uQX_h82o3VhjAAVtgxYCYdrLlgM_ko1HGzSz-ef2olnRchNWizoJsUguy7pQOLIO3Ab4eQK6poiCqPlgEAjAA9XKYE4CAgMWiMlmCSrWtm7PBZsv0XE6MfUv3n8sk_FvmNuyUvAkcHGm8IFq10vfkLYuiffYjqCQ2Y7nBRdkw6EoJ_8bjx2lIyhjhfiTBdqvPq8nfdZimEvG3pffePh3l_Za_iuZ6a4XgjVVrnssFackdwyzEv2n6pGqAH0XNuAM8nkM");'></div>
+    <div class="p-5 sm:p-6">
+    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-2">Control Natural de Plagas</h3>
+    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Descubre métodos ecológicos y efectivos para proteger tus plantas de las plagas comunes.</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white" id="productos-destacados">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Productos Destacados</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRGMcs-m6Kb_qe9DGwWUYyOsPfYdBTajN6NgOKefxzeY44aebNUbEea0-AHZ63erGbt6RNt66oqWoPzDDae56ufTJlMFYAB3lbbN7vs66KIlRYvfsqjozrxf8fDHBC8JTSuMu5yxYLT9Fxc09SQz4Yq3ZXstQBMP3I9fyAVQ2SWnAt7GZhHJOvEsgp_FXPP2Dr4QSxsFDKxVfaNmi0onbYEmuiu-zesYX7dg42y1Yu1VNZDos_U26EpC6hzh59M5DF57f8UW_Zfw1I");'></div>
+    <div class="p-5 sm:p-6 flex-grow">
+    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1">Rosales Encantadores</h3>
+    <p class="text-[var(--text-secondary)] text-sm mb-3">Una amplia variedad de rosales para embellecer tu jardín y perfumar tus días.</p>
+    <span class="text-lg font-bold text-primary-fg">$12.500 ARS</span>
+    </div>
+    <div class="p-5 sm:p-6 border-t border-gray-200">
+    <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="rosales" data-product-name="Rosales Encantadores" data-product-price="12500">Añadir al Carrito</button>
+    </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIBncUh4bnuR-K8RhUmSlk4JG6i6VX7l27JJqaceROWmPoXpCxPUJOMt4w7Cw5tGfBnb7NUgEVUYTU-s56WxNr8BqcjuqGtcPTfp6A0VWlD8ZuKZoE8PvlPOnkj7NdLIn0uh9yoTKIlmZoMZKtwrsGAAblEPesO9vRxSebK5VxDBKrEsS4MLHGNOg_w3RnCztVUfok1JBwNqDSKfTXD5nCmSCYwtmjAFHP1SSZULOucJm-Rz9jMc7X0mycjf0JWdSBwJlszYI3M4tv");'></div>
+    <div class="p-5 sm:p-6 flex-grow">
+    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1">Lavanda Relajante</h3>
+    <p class="text-[var(--text-secondary)] text-sm mb-3">Crea un ambiente de paz y tranquilidad con nuestra lavanda de aroma intenso.</p>
+    <span class="text-lg font-bold text-primary-fg">$8.900 ARS</span>
+    </div>
+    <div class="p-5 sm:p-6 border-t border-gray-200">
+    <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="lavanda" data-product-name="Lavanda Relajante" data-product-price="8900">Añadir al Carrito</button>
+    </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAujPWdoc9L8I7cBQaz4R1UoTBf5IPitL6VDUAvovmpWoL0qURqFv706nmEokjBMpXgdoRWkFmu3sikd77oahna3-oC2MOUXvVJ1x1ntP5qvqHcajXIOUca4QgEEb3jIUJeMkbUoePGnq1ky83VvaEEzypcX-WLwiihDqDA7lMWxQmgaxKLJ7sOCqhSpLW7a3RcwUOS7t9bwCn8B0KkPp3iHaYmVZdkF9cSVX2PAPwlKIQY5Q7Bop6m_-2ZnqRVlKV2Y1j7aZ4Jf8aC");'></div>
+    <div class="p-5 sm:p-6 flex-grow">
+    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1">Hierbas Aromáticas Frescas</h3>
+    <p class="text-[var(--text-secondary)] text-sm mb-3">Cultiva tus propias hierbas aromáticas para dar un toque fresco y delicioso a tus comidas.</p>
+    <span class="text-lg font-bold text-primary-fg">$6.750 ARS</span>
+    </div>
+    <div class="p-5 sm:p-6 border-t border-gray-200">
+    <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="hierbas" data-product-name="Hierbas Aromáticas Frescas" data-product-price="6750">Añadir al Carrito</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Sección Instagram -->
+    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-10 sm:mb-12">Síguenos en Instagram</h2>
+    <p class="text-[var(--text-secondary)] text-lg mb-8">Descubre nuestras últimas novedades, consejos y la belleza de nuestras plantas</p>
+    
+    <!-- Instagram Embed Real -->
+    <div class="max-w-xl mx-auto">
+      <!-- Instagram Embed Script -->
+      <blockquote class="instagram-media" 
+                  data-instgrm-permalink="https://www.instagram.com/viveroloscocos/" 
+                  data-instgrm-version="14" 
+                  style="background:#FFF; border:0; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        
+        <!-- Fallback mientras carga el embed -->
+        <div style="padding:16px;">
+          <div style="display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="#E4405F">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span style="font-weight:bold; margin-left:8px; color:#262626;">@viveroloscocos</span>
+          </div>
+          <p style="color:#8e8e8e; font-size:14px; text-align:center; margin-bottom:16px;">
+            Cargando contenido de Instagram...
+          </p>
+          <a href="https://www.instagram.com/viveroloscocos/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color:white; text-decoration:none; padding:12px 24px; border-radius:8px; font-weight:bold; display:inline-block;">
+            Ver en Instagram
+          </a>
+        </div>
+      </blockquote>
+    </div>
+    
+    <!-- Cargar script de Instagram -->
+    <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+    </section>
+
+    <section class="bg-[var(--secondary-color)] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" id="contacto">
+    <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">Visítanos o Contáctanos</h2>
+    <p class="text-[var(--text-secondary)] text-lg sm:text-xl leading-relaxed mb-8">
+                      Estamos ubicados en el corazón de Mendoza, listos para ayudarte a crear tu espacio verde soñado. ¡Te esperamos!
+                    </p>
+    <a class="bg-primary hover:bg-[var(--accent-color)] text-white text-base sm:text-lg font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105" href="mailto:contacto@loscocos.com.ar">
+                      Contáctanos Ahora
+                    </a>
+    <p class="text-sm text-[var(--text-secondary)] mt-6">Av. San Martín 1234, Mendoza, Argentina</p>
+    <p class="text-sm text-[var(--text-secondary)]">Tel: (261) 456-7890</p>
+    </div>
+    </section>
+    </main>
+    <footer class="bg-gray-800 text-gray-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+    <h3 class="text-lg font-semibold text-white mb-4">Los Cocos</h3>
+    <p class="text-sm">Tu aliado para un jardín espectacular en Mendoza. Calidad, variedad y el mejor asesoramiento.</p>
+    </div>
+    <div>
+    <h3 class="text-lg font-semibold text-white mb-4">Enlaces Rápidos</h3>
+    <ul class="space-y-2 text-sm">
+    <li><a class="hover:text-primary-fg transition-colors" href="#">Inicio</a></li>
+    <li><a class="hover:text-primary-fg transition-colors" href="#productos">Productos</a></li>
+    <li><a class="hover:text-primary-fg transition-colors" href="#servicios">Servicios</a></li>
+    <li><a class="hover:text-primary-fg transition-colors" href="#consejos">Consejos</a></li>
+    <li><a class="hover:text-primary-fg transition-colors" href="#contacto">Contacto</a></li>
+    </ul>
+    </div>
+    <div>
+    <h3 class="text-lg font-semibold text-white mb-4">Síguenos</h3>
+    <div class="flex space-x-4">
+    <a class="text-gray-400 hover:text-white transition-colors" href="#">
+    <span class="sr-only">Instagram</span>
+    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+    <path clip-rule="evenodd" d="M12.315 2.042c-.062-.18-.217-.336-.395-.395C11.504 1.524 11.228 1.5 10.5 1.5s-1.004.024-1.42.147c-.178.06-.333.215-.395.395C8.268 2.46 8.244 2.736 8.244 3.46s.024.999.147 1.42c.06.178.215.333.395.395.416.123.692.147 1.42.147s1.004-.024 1.42-.147c.178-.06.333-.215.395-.395.123-.416.147-.692.147-1.42s-.024-.999-.147-1.42zM6.75 7.5a.75.75 0 000 1.5h10.5a.75.75 0 000-1.5H6.75zM3 9.75A.75.75 0 013.75 9h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 9.75zM3 12.75A.75.75 0 013.75 12h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12.75zM3 15.75A.75.75 0 013.75 15h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 15.75z" fill-rule="evenodd"></path>
+    <path d="M4.514 1.362A4.5 4.5 0 00.014 5.862v12.276a4.5 4.5 0 004.5 4.5h14.972a4.5 4.5 0 004.5-4.5V5.862a4.5 4.5 0 00-4.5-4.5H4.514zM22.5 5.862a3 3 0 00-3-3H4.5a3 3 0 00-3 3v12.276a3 3 0 003 3h15a3 3 0 003-3V5.862z"></path>
+    <path d="M12 6.75a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zm0 9a3.75 3.75 0 110-7.5 3.75 3.75 0 010 7.5z"></path>
+    <circle cx="18.375" cy="5.625" r="1.125"></circle>
+    </svg>
+    </a>
+    <a class="text-gray-400 hover:text-white transition-colors" href="#">
+    <span class="sr-only">Facebook</span>
+    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+    <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+    </svg>
+    </a>
+    </div>
+    </div>
+    </div>
+    <div class="mt-8 border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center text-sm">
+    <p>© 2024 Los Cocos. Todos los derechos reservados.</p>
+    <div class="flex space-x-4 mt-4 sm:mt-0">
+    <a class="hover:text-primary-fg transition-colors" href="#">Política de Privacidad</a>
+    <a class="hover:text-primary-fg transition-colors" href="#">Términos y Condiciones</a>
+    </div>
+    </div>
+    </div>
+    </footer>
+    </div>
+    </div>
+    
+    <!-- Modal Mejorado con Múltiples Productos -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-7xl w-full max-h-[95vh] overflow-y-auto overflow-x-hidden animate-modal-enter">
+        
+        <!-- Header Premium -->
+        <div id="modal-header" class="bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white p-6">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center gap-6">
+              <!-- Timer Destacado -->
+              <div class="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3">
+                <div class="text-xs opacity-90 mb-1">⚡ OFERTA TERMINA EN:</div>
+                <div id="countdown-timer" class="text-2xl font-bold">
+                  <div class="flex items-center gap-2">
+                    <span class="animate-pulse">⏰</span>
+                    <span>23:59:59</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Badges -->
+              <div class="flex gap-3">
+                <div class="bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                  ⭐ PACK PREMIUM
+                </div>
+                <div class="bg-white text-red-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                  🔥 -40% HOY
+                </div>
+              </div>
+            </div>
+            
+            <button onclick="closeProductModal()" class="bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Título Principal -->
+        <div class="text-center py-6 bg-gradient-to-b from-gray-50 to-white">
+          <h2 id="modal-title-season" class="text-4xl font-black text-gray-900 mb-2">Ofertas de Temporada</h2>
+          <p class="text-gray-600 text-lg">3 plantas seleccionadas por nuestros expertos + envío gratis</p>
+          <p id="modal-subtitle-season" class="text-gray-600 text-lg">Ofertas especiales de la temporada actual</p>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div id="season-product-grid" class="grid lg:grid-cols-3 gap-8 p-8 bg-gray-50">
+          <!-- Productos se inyectan dinámicamente según la temporada -->
+        </div>
+
+        <!-- Resumen y Compra -->
+        <div class="bg-white border-t-4 border-green-500 p-8">
+          <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              
+              <!-- Resumen del Pack -->
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">🌟 Resumen del Pack Premium</h3>
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center border-b pb-2">
+                    <span>Monstera Deliciosa Premium</span>
+                    <span class="font-semibold">$15.000</span>
+                  </div>
+                  <div class="flex justify-between items-center border-b pb-2">
+                    <span>Pothos Dorado + Maceta</span>
+                    <span class="font-semibold">$5.100</span>
+                  </div>
+                  <div class="flex justify-between items-center border-b pb-2">
+                    <span>Suculenta Mix (3 unidades)</span>
+                    <span class="font-semibold text-green-600">GRATIS</span>
+                  </div>
+                  <div class="flex justify-between items-center border-b pb-2">
+                    <span>Envío Express</span>
+                    <span class="font-semibold text-green-600">GRATIS</span>
+                  </div>
+                  <div class="flex justify-between items-center text-lg font-bold pt-2">
+                    <span>Total del Pack:</span>
+                    <div class="text-right">
+                      <span class="text-gray-500 line-through text-sm">$38.000</span>
+                      <span class="text-2xl text-green-600 ml-2" id="pack-total">$20.100</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Beneficios Adicionales -->
+                <div class="mt-6 bg-green-50 rounded-xl p-4">
+                  <h4 class="font-semibold text-green-900 mb-2">🎁 Beneficios incluidos:</h4>
+                  <ul class="text-sm text-green-800 space-y-1">
+                    <li>✅ Guía de cuidados personalizada</li>
+                    <li>✅ Soporte WhatsApp 24/7</li>
+                    <li>✅ Garantía de 30 días</li>
+                    <li>✅ Fertilizante premium gratis</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Controles de Compra -->
+              <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6">
+                <div class="text-center mb-6">
+                  <div class="text-sm text-gray-600 mb-2">Cantidad de Packs:</div>
+                  <div class="flex items-center justify-center gap-4">
+                    <button onclick="decreasePackQuantity()" class="bg-white hover:bg-gray-100 border-2 border-gray-300 rounded-full w-10 h-10 flex items-center justify-center font-bold transition-all">-</button>
+                    <span id="pack-quantity" class="text-2xl font-bold text-gray-900 min-w-8 text-center">1</span>
+                    <button onclick="increasePackQuantity()" class="bg-white hover:bg-gray-100 border-2 border-gray-300 rounded-full w-10 h-10 flex items-center justify-center font-bold transition-all">+</button>
+                  </div>
+                </div>
+                
+                <div class="text-center mb-6">
+                  <div class="text-sm text-gray-600">Total Final:</div>
+                  <div id="final-total" class="text-3xl font-black text-green-600">$20.100 ARS</div>
+                  <div class="text-xs text-gray-500">Ahorro: $17.900 (47%)</div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="space-y-4">
+                  <button onclick="addPackToCart()" 
+                          class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5.4M7 13l-1.1 5.4m0 0h9.2m-9.2 0L17 21"></path>
+                    </svg>
+                    <span>Añadir Pack al Carrito</span>
+                  </button>
+                  
+                  <button onclick="buyPackNow()" 
+                          class="w-full bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white py-4 px-6 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span>Comprar Pack Ahora</span>
+                  </button>
+                </div>
+                
+                <div class="text-center mt-4">
+                  <p class="text-xs text-gray-500">🔒 Pago seguro • Envío en 24hs • Garantía total</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="modal.js"></script>
+    <!-- Modal de Sugerencias de Jardinería -->
+    <div id="tips-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden p-4 z-50">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-6 relative">
+        <button onclick="closeTipsModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">✕</button>
+        <h3 id="tips-modal-title" class="text-2xl font-bold mb-4">Sugerencias de Jardinería</h3>
+        <div id="tips-modal-content" class="text-gray-700 text-sm space-y-4"></div>
+      </div>
+    </div>
+    </body></html>
