@@ -160,6 +160,100 @@ function selectSeason(season) {
   openTipsModal(season);
 }
 
+// --- Product Rendering for Homepage Grids ---
+/**
+ * Renders products from the global `products` array into a specified container.
+ * Filters products by category and links them to their single product page.
+ * @param {string} containerId - The ID of the HTML element to populate.
+ * @param {string} categoryToShow - The category of products to display.
+ * @param {string} [searchTermFilter=''] - Optional: A search term to filter products (logic to be fully added later).
+ */
+function renderProducts(containerId, categoryToShow, searchTermFilter = '') {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    console.error(`[renderProducts] Container with ID '${containerId}' not found.`);
+    return;
+  }
+
+  if (typeof products === 'undefined' || !Array.isArray(products)) {
+    console.error('[renderProducts] Global products array is not available from js/products.js.');
+    container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">Error: Product data is unavailable.</p>';
+    return;
+  }
+
+  let productsToDisplay = products.filter(product => product.category === categoryToShow);
+
+  const lowerSearchTerm = searchTermFilter.trim().toLowerCase(); // Process search term once
+
+  if (lowerSearchTerm) { // Apply search filter if a search term is provided
+    productsToDisplay = productsToDisplay.filter(product =>
+      product.name.toLowerCase().includes(lowerSearchTerm) ||
+      (product.description && product.description.toLowerCase().includes(lowerSearchTerm))
+    );
+  }
+
+  container.innerHTML = ''; // Clear previous content
+
+  if (productsToDisplay.length === 0) {
+    if (lowerSearchTerm) { // If search was active and resulted in no products
+      container.innerHTML = `<p class="col-span-full text-center text-gray-500 py-8">No products match your search: "${searchTermFilter}"</p>`;
+    } else { // If no search term, but category is empty
+      container.innerHTML = `<p class="col-span-full text-center text-gray-500 py-8">No products currently in this category.</p>`;
+    }
+    return; // Important to return after setting empty message
+  }
+
+  container.innerHTML = productsToDisplay.map(product => {
+    const priceHtml = product.oldPrice
+      ? `<span class="text-gray-500 line-through text-sm mr-2">${product.oldPrice}</span><span class="text-xl font-bold text-primary-fg">${product.newPrice}</span>`
+      : `<span class="text-xl font-bold text-primary-fg">${product.newPrice}</span>`;
+
+    const buttonHtml = `
+      <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors"
+              data-product-id="${product.id}"
+              data-product-name="${product.name}"
+              data-product-price="${parseFloat(String(product.newPrice).replace('$', ''))}">
+        Añadir al Carrito
+      </button>`;
+
+    const productLink = `single.html?productID=${product.id}`;
+    let productContentHtml;
+
+    if (categoryToShow === 'destacados') {
+      productContentHtml = `
+        <a href="${productLink}" class="block hover:no-underline">
+          <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1 group-hover:text-primary-fg transition-colors">${product.name}</h3>
+        </a>
+        <p class="text-[var(--text-secondary)] text-sm mb-3 h-16 overflow-hidden">${product.description.substring(0, 100)}${product.description.length > 100 ? '...' : ''}</p>
+        <div class="mb-3">${priceHtml}</div>`;
+    } else { // 'ofertas' and other categories
+      productContentHtml = `
+        <a href="${productLink}" class="block hover:no-underline">
+          <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2 group-hover:text-primary-fg transition-colors">${product.name}</h3>
+        </a>
+        <p class="text-[var(--text-secondary)] text-sm leading-relaxed mb-3 h-20 overflow-hidden">${product.description.substring(0, 120)}${product.description.length > 120 ? '...' : ''}</p>
+        ${product.oldPrice ? `<p class="text-sm text-red-500">Antes: ${product.oldPrice}</p>` : ''}
+        <p class="text-lg font-bold text-primary-fg mb-3">Ahora: ${product.newPrice}</p>`;
+    }
+
+    return `
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
+        <a href="${productLink}" class="block">
+          <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" style="background-image: url('${product.imageSrc}');">
+            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300"></div>
+          </div>
+        </a>
+        <div class="p-5 sm:p-6 flex-grow">
+          ${productContentHtml}
+        </div>
+        <div class="p-5 sm:p-6 border-t border-gray-200">
+          ${buttonHtml}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+
 // Función para abrir el modal
 function openProductModal() {
   const modal = document.getElementById('product-modal');
@@ -355,19 +449,22 @@ setTimeout(() => {
   }
 }, 3000);
 
-// Inicialización cuando el DOM esté listo
+// --- Initialization on DOMContentLoaded ---
 document.addEventListener('DOMContentLoaded', () => {
-  // Inicializar temporada por defecto
-  const currentSeason = getCurrentSeason();
-  selectSeason(currentSeason);
+  const currentActualSeason = getCurrentSeason();
+  selectSeason(currentActualSeason); // This also calls updateHomeOffers (which calls renderProducts for 'ofertas')
+
+  // Render "Productos Destacados" section initially
+  renderProducts('productos-destacados-grid', 'destacados');
   
-  // Cargar ofertas iniciales en la home
-  updateHomeOffers(currentSeason);
-  
-  // Mostrar popup de cuidados inicial
-  openTipsModal(currentSeason);
-  
-  // Configurar event listeners
+  // Setup cart buttons for initially rendered products.
+  if (window.CartAPI && typeof window.CartAPI.setupCartButtons === 'function') {
+    window.CartAPI.setupCartButtons();
+  } else {
+    console.warn('[modal.js DOMContentLoaded] CartAPI.setupCartButtons not found.');
+  }
+
+  // Event listeners for modals (product modal and tips modal)
   const modal = document.getElementById('product-modal');
   if (modal) {
     // Cerrar modal al hacer clic fuera
@@ -380,16 +477,62 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Cerrar modal con tecla Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOpen) {
+    if (e.key === 'Escape' && modalOpen) { // modalOpen is for product-modal
       closeProductModal();
     }
+    // No generic escape handler for tips-modal as it doesn't have a global open state var
   });
+
+  // Click outside to close for #tips-modal
+  const tipsModalElement = document.getElementById('tips-modal');
+  if (tipsModalElement) {
+    tipsModalElement.addEventListener('click', (e) => {
+      if (e.target === tipsModalElement) {
+        closeTipsModal();
+      }
+    });
+  }
   
   // Inicializar cantidad del pack
   updatePackQuantityDisplay();
+
+  // --- Event Listener for Search Input ---
+  const searchInput = document.getElementById('product-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      filterProductsOnHome(this.value);
+    });
+  } else {
+    console.warn('[modal.js DOMContentLoaded] Product search input "product-search-input" not found.');
+  }
+  // --- End Search Input Listener ---
 });
 
-// Función para inyectar productos dinámicamente
+
+/**
+ * Filters and re-renders products on the homepage based on the search term.
+ * @param {string} searchTerm - The term from the search input.
+ */
+function filterProductsOnHome(searchTerm) {
+  const lowerSearchTerm = searchTerm.trim().toLowerCase();
+
+  renderProducts('home-product-grid', 'ofertas', lowerSearchTerm);
+  renderProducts('productos-destacados-grid', 'destacados', lowerSearchTerm);
+
+  // After re-rendering products, cart buttons might need their listeners re-attached
+  if (window.CartAPI && typeof window.CartAPI.setupCartButtons === 'function') {
+    window.CartAPI.setupCartButtons();
+  } else {
+    console.warn('[filterProductsOnHome] CartAPI.setupCartButtons not found.');
+  }
+}
+
+
+/**
+ * Populates the product grid within the main product modal (`#season-product-grid`).
+ * Uses `seasonalProducts` for modal-specific seasonal items.
+ * @param {string} season - The season for which to display products.
+ */
 function updateProductGrid(season) {
   const grid = document.getElementById('season-product-grid');
   if (!grid) return;
@@ -436,22 +579,15 @@ function closeTipsModal() {
 }
 
 // Función para actualizar ofertas de la home según temporada
+/**
+ * Updates the "Ofertas Exclusivas" section on the homepage.
+ * Calls `renderProducts` to display items from the main `products` list
+ * that belong to the 'ofertas' category. The `season` parameter is currently
+ * passed but not used by `renderProducts` to filter these offers by season.
+ * @param {string} season - The current season.
+ */
 function updateHomeOffers(season) {
-  const grid = document.getElementById('home-product-grid');
-  if (!grid) return;
-  const prods = seasonalProducts[season] || seasonalProducts['primavera'];
-  grid.innerHTML = prods.map(p => `
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-      <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style="background-image: url('${p.image}');">
-        <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
-      </div>
-      <div class="p-5 sm:p-6 flex-grow">
-        <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">${p.name}</h3>
-        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Disfruta de ${p.name} esta temporada.</p>
-      </div>
-      <div class="p-5 sm:p-6 border-t border-gray-200">
-        <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="${p.id}" data-product-name="${p.name}" data-product-price="${p.newPrice}">Añadir al Carrito</button>
-      </div>
-    </div>
-  `).join('');
-} 
+  // Renders general 'ofertas' products from the main `products` list.
+  // The `season` parameter is available if seasonal filtering of these offers is desired later.
+  renderProducts('home-product-grid', 'ofertas'); // searchTermFilter is omitted, defaults to empty
+}

@@ -112,8 +112,8 @@
     <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden text-[var(--text-primary)]">
     <div class="layout-container flex h-full grow flex-col overflow-y-auto">
     <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white px-6 sm:px-10 py-4 shadow-sm">
-    <div class="flex items-center gap-8">
-    <a class="flex items-center gap-3 text-[var(--text-primary)]" href="#">
+    <div class="flex items-center gap-4 sm:gap-8"> <!-- Adjusted gap for small screens -->
+    <a class="flex items-center gap-3 text-[var(--text-primary)]" href="home.html">
     <div class="size-8 text-[var(--primary-color)]">
     <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_6_535)">
@@ -129,22 +129,22 @@
     <h1 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-tight">Los Cocos</h1>
     </a>
     <nav class="hidden lg:flex items-center gap-6">
-    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#">Inicio</a>
-    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#productos">Productos</a>
-    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#servicios">Servicios</a>
-    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#consejos">Consejos</a>
-    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="#contacto">Contacto</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="home.html">Inicio</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="home.html#productos">Productos</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="home.html#servicios">Servicios</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="home.html#consejos">Consejos</a>
+    <a class="text-[var(--text-secondary)] hover-primary text-sm font-medium leading-normal transition-colors" href="home.html#contacto">Contacto</a>
     </nav>
     </div>
-    <div class="flex items-center gap-3">
-    <label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+    <div class="flex items-center gap-2 sm:gap-3"> <!-- Adjusted gap for small screens -->
+    <label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64 mr-2 sm:mr-0"> {/* Added margin for small screens */}
     <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
     <div class="text-[var(--text-secondary)] flex border border-gray-300 bg-white items-center justify-center pl-3 rounded-l-lg border-r-0">
     <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
     <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
     </svg>
     </div>
-    <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-gray-300 bg-white h-full placeholder:text-[var(--text-secondary)] px-3 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Buscar plantas..." value=""/>
+    <input id="product-search-input" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-gray-300 bg-white h-full placeholder:text-[var(--text-secondary)] px-3 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Buscar plantas..." value=""/>
     </div>
     </label>
     <button class="flex md:hidden max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors">
@@ -152,12 +152,12 @@
     <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
     </svg>
     </button>
-    <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors relative">
-    <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
-    <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
-    </svg>
-    <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white" id="cart-count" style="display:none">0</span>
-    </button>
+    <a href="cart.html" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors relative" aria-label="Carrito de compras">
+      <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+      <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+      </svg>
+      <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white" id="cart-count" style="display:none">0</span>
+    </a>
     <button class="lg:hidden flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-transparent text-[var(--text-secondary)] hover:bg-gray-100 transition-colors">
     <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,88H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
     </button>
@@ -308,42 +308,7 @@
     <div class="max-w-7xl mx-auto">
     <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Ofertas Exclusivas</h2>
     <div id="home-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-    <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRAd5Y6McGQvBa1LkJLXDoAhPLLdPOCM8wX36OgDCyX6yW65sHLq3M83HSRhRk3W9b-OiQDbkf5xSoem2mtCfcCeNCblBAWX4Uv2kwqO5CKlOGowyG04Ui4WqIDZXSgEdibS5gS8lw3CkwvNQkkQij9lkhW_rihNaEvShmTI6iqqke7WiUfLLxQKwspnoBKOIta8deYLvsqpSA92jd9WkEzFyvT5kzHgum72voCFS7dOqe25DomIQBU85r8a5C6VrdWT10jbsAejxG");'>
-    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
-    </div>
-    <div class="p-5 sm:p-6 flex-grow">
-    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Suculentas en Promoción</h3>
-    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Descubre nuestra variada colección de suculentas con descuentos especiales. Perfectas para dar vida a cualquier rincón.</p>
-    </div>
-    <div class="p-5 sm:p-6 border-t border-gray-200">
-    <a class="text-sm font-medium text-primary-fg hover:text-[var(--accent-color)] transition-colors" href="single.html?product=suculentas">Ver Detalles →</a>
-    </div>
-    </div>
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-    <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4GK-Xiz5KljSdBEcuvc4w51JDOBXuYbZtDgNU1j9Lx1PZzWwIv2WdAKyS87YGXpGz5OI1Uam6cKBPTCSDHmhgbOSsOP_Hno9zYwRoCA10jEA7Kfb2pOR-Y3S7x7OrN_PywiiREFnHwuMizqWb8h-2OpulW_PrUbqK95IFo3ZRJD4_3u2MxHyL1ZoUSaxql0AulnBGPtyErxJq91TBkGZ1EMETCouz2v2cQyeVIimihiS6z9JVfBsCnvdzx50FQF-fL0Oec_vo2Mnj");'>
-    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
-    </div>
-    <div class="p-5 sm:p-6 flex-grow">
-    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Flores de Temporada</h3>
-    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Llena tu hogar de color y alegría con nuestras flores frescas de temporada. Calidad y belleza garantizadas.</p>
-    </div>
-    <div class="p-5 sm:p-6 border-t border-gray-200">
-    <a class="text-sm font-medium text-primary-fg hover:text-[var(--accent-color)] transition-colors" href="single.html?product=flores">Ver Detalles →</a>
-    </div>
-    </div>
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-    <div class="relative w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrKIqPu9ty2RWPZsd2OXWUWNbRJ4a7W7d3N_sdSWY8GHrxqFYGocwrTpix3BhkDGEhwRz0Xhue1QgTvoH0lm7JLpMhzv0fMMVG0i7gwIXtT7bSL0hB5Khe8LtZOexN3ryb_ikM_2q1b_FwPjFL_Lz8HKLjNEferwp9ZKDO5Q8ApcHa34xVYVtyLSYCbww1uir7W7iKTDZCWzPL5QgpaVIRodw3r4tNJEMrmWChS4NZnk0IZGwV7ilZyOrjlDPjQ76YOPoKM44fUR2Y");'>
-    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
-    </div>
-    <div class="p-5 sm:p-6 flex-grow">
-    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Plantas de Interior Exóticas</h3>
-    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Transforma tus espacios interiores con nuestra selección de plantas exóticas, fáciles de cuidar y llenas de vida.</p>
-    </div>
-    <div class="p-5 sm:p-6 border-t border-gray-200">
-    <a class="text-sm font-medium text-primary-fg hover:text-[var(--accent-color)] transition-colors" href="single.html?product=interiores">Ver Detalles →</a>
-    </div>
-    </div>
+      <!-- Productos de ofertas se cargarán dinámicamente aquí -->
     </div>
     </div>
     </section>
@@ -390,43 +355,11 @@
     </div>
     </div>
     </section>
-    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white" id="productos-destacados">
+    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white" id="productos-destacados-section"> <!-- Renamed section ID for clarity if needed, or keep as productos-destacados -->
     <div class="max-w-7xl mx-auto">
     <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-10 sm:mb-12">Productos Destacados</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-    <div class="w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRGMcs-m6Kb_qe9DGwWUYyOsPfYdBTajN6NgOKefxzeY44aebNUbEea0-AHZ63erGbt6RNt66oqWoPzDDae56ufTJlMFYAB3lbbN7vs66KIlRYvfsqjozrxf8fDHBC8JTSuMu5yxYLT9Fxc09SQz4Yq3ZXstQBMP3I9fyAVQ2SWnAt7GZhHJOvEsgp_FXPP2Dr4QSxsFDKxVfaNmi0onbYEmuiu-zesYX7dg42y1Yu1VNZDos_U26EpC6hzh59M5DF57f8UW_Zfw1I");'></div>
-    <div class="p-5 sm:p-6 flex-grow">
-    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1">Rosales Encantadores</h3>
-    <p class="text-[var(--text-secondary)] text-sm mb-3">Una amplia variedad de rosales para embellecer tu jardín y perfumar tus días.</p>
-    <span class="text-lg font-bold text-primary-fg">$12.500 ARS</span>
-    </div>
-    <div class="p-5 sm:p-6 border-t border-gray-200">
-    <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="rosales" data-product-name="Rosales Encantadores" data-product-price="12500">Añadir al Carrito</button>
-    </div>
-    </div>
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-    <div class="w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIBncUh4bnuR-K8RhUmSlk4JG6i6VX7l27JJqaceROWmPoXpCxPUJOMt4w7Cw5tGfBnb7NUgEVUYTU-s56WxNr8BqcjuqGtcPTfp6A0VWlD8ZuKZoE8PvlPOnkj7NdLIn0uh9yoTKIlmZoMZKtwrsGAAblEPesO9vRxSebK5VxDBKrEsS4MLHGNOg_w3RnCztVUfok1JBwNqDSKfTXD5nCmSCYwtmjAFHP1SSZULOucJm-Rz9jMc7X0mycjf0JWdSBwJlszYI3M4tv");'></div>
-    <div class="p-5 sm:p-6 flex-grow">
-    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1">Lavanda Relajante</h3>
-    <p class="text-[var(--text-secondary)] text-sm mb-3">Crea un ambiente de paz y tranquilidad con nuestra lavanda de aroma intenso.</p>
-    <span class="text-lg font-bold text-primary-fg">$8.900 ARS</span>
-    </div>
-    <div class="p-5 sm:p-6 border-t border-gray-200">
-    <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="lavanda" data-product-name="Lavanda Relajante" data-product-price="8900">Añadir al Carrito</button>
-    </div>
-    </div>
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transform hover:shadow-xl transition-shadow duration-300">
-    <div class="w-full h-56 sm:h-64 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAujPWdoc9L8I7cBQaz4R1UoTBf5IPitL6VDUAvovmpWoL0qURqFv706nmEokjBMpXgdoRWkFmu3sikd77oahna3-oC2MOUXvVJ1x1ntP5qvqHcajXIOUca4QgEEb3jIUJeMkbUoePGnq1ky83VvaEEzypcX-WLwiihDqDA7lMWxQmgaxKLJ7sOCqhSpLW7a3RcwUOS7t9bwCn8B0KkPp3iHaYmVZdkF9cSVX2PAPwlKIQY5Q7Bop6m_-2ZnqRVlKV2Y1j7aZ4Jf8aC");'></div>
-    <div class="p-5 sm:p-6 flex-grow">
-    <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-1">Hierbas Aromáticas Frescas</h3>
-    <p class="text-[var(--text-secondary)] text-sm mb-3">Cultiva tus propias hierbas aromáticas para dar un toque fresco y delicioso a tus comidas.</p>
-    <span class="text-lg font-bold text-primary-fg">$6.750 ARS</span>
-    </div>
-    <div class="p-5 sm:p-6 border-t border-gray-200">
-    <button class="w-full bg-primary hover:bg-[var(--accent-color)] text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors" data-add-cart data-product-id="hierbas" data-product-name="Hierbas Aromáticas Frescas" data-product-price="6750">Añadir al Carrito</button>
-    </div>
-    </div>
+    <div id="productos-destacados-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Productos destacados se cargarán dinámicamente aquí -->
     </div>
     </div>
     </section>
@@ -675,9 +608,10 @@
         </div>
       </div>
     </div>
-
+    <script src="js/products.js"></script>
     <script src="cart.js"></script>
     <script src="modal.js"></script>
+    <script src="js/home-search.js"></script> <!-- Added home page search script -->
     <!-- Modal de Sugerencias de Jardinería -->
     <div id="tips-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden p-4 z-50">
       <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-6 relative">
