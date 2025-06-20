@@ -1,250 +1,516 @@
 <html><head>
     <meta charset="utf-8"/>
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <!-- Google Fonts mejoradas para mejor legibilidad -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Los Cocos - Tu oasis verde en Mendoza</title>
     <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
           :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #F5F5F5;
+            --primary-color: #10B981;
+            --primary-dark: #059669;
+            --secondary-color: #F8FAFC;
             --text-primary: #1F2937;
-            --text-secondary: #4B5563;
-            --accent-color: #388E3C;
-            --autumn-primary: #D97706;
-            --autumn-secondary: #FED7AA;
-            --autumn-accent: #EA580C;
+            --text-secondary: #6B7280;
+            --accent-color: #F59E0B;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
           }
           
           body {
-            font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--secondary-color);
           }
           
-          .hover-primary:hover {
-            color: var(--primary-color);
+          /* Sistema de tipografía mejorado */
+          .font-display {
+            font-family: "Poppins", "Inter", sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
           }
-          .bg-primary {
-            background-color: var(--primary-color) !important;
+          
+          .font-body {
+            font-family: "Inter", system-ui, sans-serif;
+            font-weight: 400;
           }
-          .text-primary-fg {
-            color: var(--primary-color) !important;
+          
+          /* Tamaños de texto legibles - NO MÁS TEXTO DIMINUTO */
+          .text-xs { font-size: 0.875rem !important; line-height: 1.25 !important; }
+          .text-sm { font-size: 1rem !important; line-height: 1.5 !important; }
+          .text-base { font-size: 1.125rem !important; line-height: 1.6 !important; }
+          .text-lg { font-size: 1.25rem !important; line-height: 1.7 !important; }
+          .text-xl { font-size: 1.5rem !important; line-height: 1.6 !important; }
+
+          /* Sistema de botones limpio y profesional */
+          .btn-clean {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.5;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
           }
-          .border-primary {
-            border-color: var(--primary-color) !important;
+          
+          .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: 1px solid transparent;
+          }
+          
+          .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, var(--primary-dark), #047857);
+          }
+          
+          .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+          }
+          
+          .btn-secondary:hover {
+            background: #F9FAFB;
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
           }
 
-          /* Estilos de otoño */
-          .autumn-gradient {
-            background: linear-gradient(135deg, #D97706 0%, #EA580C 50%, #DC2626 100%);
+          /* Cards y contenedores limpios */
+          .clean-card {
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
           }
-          .autumn-card {
-            background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
-            border: 1px solid rgba(217, 119, 6, 0.2);
+          
+          .clean-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #D1D5DB;
           }
 
-          /* Animaciones mejoradas */
-          @keyframes modalSlideIn {
-            from {
-              opacity: 0;
-              transform: translateY(-50px) scale(0.95);
+          /* Banner superior sin superposición */
+          .top-banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          /* Header mejorado */
+          .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+          }
+
+          /* Container responsivo */
+          .container-clean {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+          }
+
+          /* Timeline premium estacional - Basado en el boceto */
+          .timeline-premium {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+          }
+          
+          .timeline-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 2rem;
+          }
+          
+          .season-marker-premium {
+            position: relative;
+            z-index: 10;
+          }
+          
+          .season-card-premium {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+          }
+          
+          .season-card-premium:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.3);
+          }
+          
+          .season-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ec4899, #f59e0b, #ef4444, #3b82f6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          
+          .season-card-premium:hover::before {
+            opacity: 1;
+          }
+          
+          .season-icon-premium {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+          }
+          
+          .season-icon-premium::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          
+          .season-marker-premium:hover .season-icon-premium {
+            transform: rotate(360deg) scale(1.15);
+          }
+          
+          .season-marker-premium:hover .season-icon-premium::after {
+            opacity: 1;
+          }
+          
+          .season-content-premium {
+            position: relative;
+          }
+          
+          .season-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+          
+          .season-description {
+            font-style: italic;
+            opacity: 0.8;
+          }
+          
+          .active-season .season-card-premium {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+          }
+          
+          .active-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.625rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            animation: glow-pulse 2s infinite;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
+          
+          @keyframes glow-pulse {
+            0%, 100% { 
+              opacity: 1; 
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
             }
-            to {
-              opacity: 1;
-              transform: translateY(0) scale(1);
+            50% { 
+              opacity: 0.8; 
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 255, 255, 0.5);
             }
           }
-          .animate-modal-enter {
-            animation: modalSlideIn 0.3s ease-out;
+
+          /* Línea conectora horizontal mejorada */
+          .timeline-connector {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+              #ec4899 0%, 
+              #f59e0b 25%, 
+              #ef4444 50%, 
+              #3b82f6 75%, 
+              #8b5cf6 100%
+            );
+            border-radius: 2px;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+          }
+          
+          .timeline-connector::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(90deg, 
+              rgba(236, 72, 153, 0.3) 0%, 
+              rgba(245, 158, 11, 0.3) 25%, 
+              rgba(239, 68, 68, 0.3) 50%, 
+              rgba(59, 130, 246, 0.3) 75%, 
+              rgba(139, 92, 246, 0.3) 100%
+            );
+            border-radius: 3px;
+            filter: blur(4px);
           }
 
-          @keyframes slowZoom {
-            0% { transform: scale(1.05); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1.05); }
+          /* Panel de información mejorado */
+          .season-info-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 3rem;
           }
-          .animate-slow-zoom {
-            animation: slowZoom 25s ease-in-out infinite;
+          
+          .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+          }
+          
+          .info-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
           }
 
-          @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(217, 119, 6, 0.6); }
-            50% { text-shadow: 0 0 40px rgba(234, 88, 12, 0.8), 0 0 60px rgba(220, 38, 38, 0.6); }
+          /* Responsive mejorado */
+          @media (max-width: 1024px) {
+            .timeline-premium {
+              padding: 2rem 1rem;
+            }
+            
+            .season-card-premium {
+              padding: 1.5rem 1rem;
+            }
+            
+            .season-icon-premium {
+              width: 3.5rem;
+              height: 3.5rem;
+              font-size: 1.75rem;
+            }
+            
+            .timeline-connector {
+              display: none;
+            }
           }
-          .animate-title-glow {
-            animation: titleGlow 4s ease-in-out infinite;
+          
+          @media (max-width: 768px) {
+            .timeline-premium {
+              padding: 1.5rem 0.75rem;
+            }
+            
+            .season-card-premium {
+              padding: 1.25rem 0.75rem;
+            }
+            
+            .season-icon-premium {
+              width: 3rem;
+              height: 3rem;
+              font-size: 1.5rem;
+              margin-bottom: 1rem;
+            }
           }
 
-          @keyframes floatLeaf {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+          /* Mejoras de accesibilidad */
+          .btn-clean:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+          }
+          
+          .clean-card:focus-within {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
           }
 
+          /* Colores estacionales simplificados */
+          .season-spring { background: linear-gradient(135deg, #10B981, #059669); }
+          .season-summer { background: linear-gradient(135deg, #F59E0B, #D97706); }
+          .season-autumn { background: linear-gradient(135deg, #EA580C, #DC2626); }
+          .season-winter { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+
+          /* Timeline estacional simplificado */
+          .season-card {
+            transition: all 0.3s ease;
+          }
+          
+          .season-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          }
+          
+          .active-season {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Animaciones suaves */
+          .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+          }
+
+          /* Animaciones de partículas */
           .particle {
             position: absolute;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
             pointer-events: none;
-            animation: floatLeaf linear infinite;
           }
 
-          .leaf-1 { left: 8%; animation-duration: 18s; animation-delay: 0s; }
-          .leaf-2 { left: 23%; animation-duration: 22s; animation-delay: 4s; }
-          .leaf-3 { left: 45%; animation-duration: 16s; animation-delay: 8s; }
-          .leaf-4 { left: 67%; animation-duration: 24s; animation-delay: 2s; }
-          .leaf-5 { left: 85%; animation-duration: 20s; animation-delay: 6s; }
+          .leaf-1 { top: 20%; left: 10%; animation-delay: 0s; }
+          .leaf-2 { top: 60%; right: 15%; animation-delay: 2s; }
+          .leaf-3 { top: 40%; left: 20%; animation-delay: 4s; }
+          .leaf-4 { bottom: 30%; right: 25%; animation-delay: 1s; }
+          .leaf-5 { top: 80%; left: 70%; animation-delay: 3s; }
+
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+          }
+
+          /* Animaciones de títulos */
+          @keyframes title-glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+          }
+
+          .animate-title-glow {
+            animation: title-glow 3s ease-in-out infinite;
+          }
 
           @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.4); }
-            50% { box-shadow: 0 0 40px rgba(234, 88, 12, 0.8), 0 0 60px rgba(217, 119, 6, 0.6); }
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 165, 0, 0.8); }
           }
+
           .animate-pulse-glow {
             animation: pulse-glow 2s ease-in-out infinite;
           }
 
           @keyframes bounce-gentle {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-10px); }
           }
+
           .animate-bounce-gentle {
             animation: bounce-gentle 2s ease-in-out infinite;
           }
 
-          /* Efectos hover mejorados */
-          .hover-lift {
-            transition: all 0.3s ease;
+          @keyframes slow-zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
           }
-          .hover-lift:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+
+          .animate-slow-zoom {
+            animation: slow-zoom 20s ease-in-out infinite alternate;
           }
 
           /* Gradientes estacionales */
-          .season-spring { background: linear-gradient(135deg, #10B981 0%, #34D399 100%); }
-          .season-summer { background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); }
-          .season-autumn { background: linear-gradient(135deg, #D97706 0%, #EA580C 100%); }
-          .season-winter { background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); }
-
-          /* Clases dinámicas para características */
-          .features-spring .feature-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(52, 211, 153, 0.1) 100%); border: 1px solid rgba(16, 185, 129, 0.2); }
-          .features-summer .feature-card { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%); border: 1px solid rgba(245, 158, 11, 0.2); }
-          .features-autumn .feature-card { background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%); border: 1px solid rgba(217, 119, 6, 0.2); }
-          .features-winter .feature-card { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%); border: 1px solid rgba(59, 130, 246, 0.2); }
-
-          /* Animaciones para partículas por temporada */
-          .particles-spring .particle { animation: floatSpring linear infinite; }
-          .particles-summer .particle { animation: floatSummer linear infinite; }
-          .particles-autumn .particle { animation: floatLeaf linear infinite; }
-          .particles-winter .particle { animation: floatWinter linear infinite; }
-
-          @keyframes floatSpring {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
+          .autumn-gradient {
+            background: linear-gradient(90deg, #f59e0b, #ea580c, #dc2626);
           }
 
-          @keyframes floatSummer {
-            0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
-            10% { opacity: 1; }
-            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg) scale(0.9); opacity: 0; }
+          /* Efectos de modal */
+          @keyframes modal-enter {
+            from {
+              opacity: 0;
+              transform: scale(0.9) translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
           }
 
-          @keyframes floatWinter {
-            0% { transform: translateY(-100px) rotate(0deg) scale(0.8); opacity: 0; }
-            10% { opacity: 1; }
-            50% { transform: translateY(50vh) rotate(180deg) scale(1); }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg) scale(1.2); opacity: 0; }
+          .animate-modal-enter {
+            animation: modal-enter 0.3s ease-out;
           }
 
-          /* Colores de texto dinámicos */
-          .text-spring { color: #10B981; }
-          .text-summer { color: #F59E0B; }
-          .text-autumn { color: #EA580C; }
-          .text-winter { color: #3B82F6; }
-
-          /* Fondos de overlay dinámicos */
-          .overlay-spring { background: linear-gradient(to right, rgba(16, 185, 129, 0.85), rgba(52, 211, 153, 0.75), rgba(6, 182, 212, 0.85)); }
-          .overlay-summer { background: linear-gradient(to right, rgba(245, 158, 11, 0.85), rgba(251, 191, 36, 0.75), rgba(249, 115, 22, 0.85)); }
-          .overlay-autumn { background: linear-gradient(to right, rgba(217, 119, 6, 0.85), rgba(220, 38, 38, 0.75), rgba(180, 83, 9, 0.85)); }
-          .overlay-winter { background: linear-gradient(to right, rgba(59, 130, 246, 0.85), rgba(96, 165, 250, 0.75), rgba(67, 56, 202, 0.85)); }
-
-          /* Estilos para la línea de tiempo estacional */
-          .season-marker {
-            position: relative;
-            z-index: 10;
-          }
-          
-          .season-marker:hover .w-16 {
-            transform: scale(1.15) !important;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
-          }
-          
-          @keyframes seasonPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-          }
-          
-          .season-marker[data-season] .w-16 {
-            transition: all 0.3s ease;
-          }
-          
-          .season-marker.active .w-16 {
-            animation: seasonPulse 2s ease-in-out infinite;
-          }
-          
-          /* Animación del indicador de temporada actual */
-          @keyframes indicatorGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); }
-          }
-          
-          #current-season-indicator .w-6 {
-            animation: indicatorGlow 2s ease-in-out infinite;
-          }
-          
-          /* Efectos de progreso en la línea de tiempo */
-          .timeline-segment {
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-          }
-          
-          .timeline-segment::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s ease;
-          }
-          
-          .timeline-segment.active::before {
-            left: 100%;
-          }
+          /* Iconos con tamaños específicos */
+          .icon-small { font-size: 1.25rem; }
+          .icon-medium { font-size: 1.5rem; }
+          .icon-large { font-size: 3rem; }
         </style>
     </head>
     <body class="bg-[var(--secondary-color)]">
     <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden text-[var(--text-primary)]">
     <div class="layout-container flex h-full grow flex-col overflow-y-auto">
-    <!-- Banner de Envío Gratuito -->
-    <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-center py-3 px-4 relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-r from-green-600/90 to-emerald-600/90"></div>
-      <div class="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
-        <span class="animate-bounce">🚚</span>
-        <span>ENVÍO GRATIS EL MISMO DÍA EN MENDOZA</span>
-        <span class="hidden sm:inline">• Pedidos antes de las 14hs</span>
-        <span class="animate-bounce">⚡</span>
+    <!-- Banner de Envío Gratuito - Diseño limpio y sin superposición -->
+    <div class="top-banner text-white text-center">
+      <div class="container-clean flex items-center justify-center gap-3 font-medium">
+        <span class="icon-medium">🚚</span>
+        <span class="font-semibold">ENVÍO GRATIS EL MISMO DÍA EN MENDOZA</span>
+        <span class="hidden sm:inline opacity-90">• Pedidos antes de las 14hs</span>
+        <span class="icon-medium">⚡</span>
       </div>
     </div>
     
-    <header class="sticky top-0 z-40 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white px-6 sm:px-10 py-4 shadow-sm">
+    <header class="main-header flex items-center justify-between">
     <div class="flex items-center gap-8">
     <a class="flex items-center gap-3 text-[var(--text-primary)]" href="#">
     <div class="size-8 text-[var(--primary-color)]">
@@ -304,145 +570,113 @@
         <img id="hero-background" 
              src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
              alt="Vivero Los Cocos" 
-             class="w-full h-full object-cover animate-slow-zoom transition-opacity duration-1000">
-        <div id="hero-overlay" class="absolute inset-0 bg-gradient-to-r from-orange-900/85 via-red-800/75 to-amber-900/85 transition-all duration-1000"></div>
+             class="w-full h-full object-cover">
+        <div id="hero-overlay" class="absolute inset-0 bg-gradient-to-r from-orange-900/85 via-red-800/75 to-amber-900/85"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-      </div>
-
-      <!-- Partículas de otoño -->
-      <div class="absolute inset-0 z-10">
-        <div class="particle leaf-1">🍂</div>
-        <div class="particle leaf-2">🍁</div>
-        <div class="particle leaf-3">🍃</div>
-        <div class="particle leaf-4">🍂</div>
-        <div class="particle leaf-5">🍁</div>
       </div>
 
       <!-- Contenido Principal -->
       <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Indicador de Temporada Actual con Selector -->
-        <div class="text-center mb-8">
-          <div id="season-indicator" class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500/90 to-red-500/90 backdrop-blur-md text-white px-8 py-4 rounded-2xl shadow-2xl animate-pulse-glow transition-all duration-500">
-            <span class="text-2xl animate-bounce-gentle" id="season-icon-left">🍂</span>
+        <!-- Indicador de Temporada Actual -->
+        <div class="text-center mb-12">
+          <div id="season-indicator" class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500/90 to-red-500/90 backdrop-blur-md text-white px-8 py-4 rounded-2xl shadow-2xl">
+            <span class="text-2xl" id="season-icon-left">🍂</span>
             <div class="text-left">
               <div class="text-sm font-medium opacity-90">Temporada Actual</div>
               <div class="text-xl font-bold" id="current-season">Otoño 2024</div>
             </div>
-            <span class="text-2xl animate-bounce-gentle" id="season-icon-right">🍁</span>
+            <span class="text-2xl" id="season-icon-right">🍁</span>
           </div>
           
           <!-- Selector de Temporadas para Testing -->
-          <div class="mt-4">
+          <div class="mt-6">
             <p class="text-white/80 text-sm mb-3">🧪 Modo Testing - Cambiar Temporada:</p>
             <div class="flex justify-center gap-3 flex-wrap">
               <button onclick="changeSeason('primavera')" 
-                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
+                      class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
                 🌸 Primavera
               </button>
               <button onclick="changeSeason('verano')" 
-                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
+                      class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
                 ☀️ Verano
               </button>
               <button onclick="changeSeason('otono')" 
-                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 ring-2 ring-white/50">
+                      class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 ring-2 ring-white/50">
                 🍂 Otoño
               </button>
               <button onclick="changeSeason('invierno')" 
-                      class="season-test-btn bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
+                      class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105">
                 ❄️ Invierno
               </button>
             </div>
           </div>
+        </div>
+
+        <!-- Timeline Estacional Simplificado -->
+        <div class="max-w-5xl mx-auto mb-12">
+          <!-- Header del Timeline -->
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-xl shadow-lg">
+              <span class="text-xl">🗓️</span>
+              <span class="font-bold text-lg">Calendario Estacional 2024</span>
+              <span class="text-xl">✨</span>
+            </div>
+          </div>
           
-          <!-- Línea de Tiempo Estacional -->
-          <div class="mt-8 max-w-4xl mx-auto">
-            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20">
-              <h3 class="text-white text-lg font-bold text-center mb-6">📅 Calendario Estacional 2024</h3>
-              
-              <!-- Línea de Tiempo -->
-              <div class="relative">
-                <!-- Línea base del camino -->
-                <div class="absolute top-1/2 left-0 right-0 h-2 bg-white/20 rounded-full transform -translate-y-1/2"></div>
-                
-                <!-- Segmentos de colores estacionales -->
-                <div class="absolute top-1/2 left-0 w-1/4 h-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-l-full transform -translate-y-1/2 shadow-lg"></div>
-                <div class="absolute top-1/2 left-1/4 w-1/4 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 transform -translate-y-1/2 shadow-lg"></div>
-                <div class="absolute top-1/2 left-1/2 w-1/4 h-2 bg-gradient-to-r from-orange-500 to-red-600 transform -translate-y-1/2 shadow-lg"></div>
-                <div class="absolute top-1/2 left-3/4 w-1/4 h-2 bg-gradient-to-r from-blue-400 to-slate-500 rounded-r-full transform -translate-y-1/2 shadow-lg"></div>
-                
-                <!-- Marcadores estacionales -->
-                <div class="relative flex justify-between items-center py-8">
-                  <!-- Primavera -->
-                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('primavera')" 
-                       data-season="primavera">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
-                      🌸
-                    </div>
-                    <div class="mt-3 text-white">
-                      <div class="font-bold text-sm">Primavera</div>
-                      <div class="text-xs opacity-80">Sep - Nov</div>
-                      <div class="text-xs opacity-60">Floración</div>
-                    </div>
-                  </div>
-                  
-                  <!-- Verano -->
-                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('verano')" 
-                       data-season="verano">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
-                      ☀️
-                    </div>
-                    <div class="mt-3 text-white">
-                      <div class="font-bold text-sm">Verano</div>
-                      <div class="text-xs opacity-80">Dic - Feb</div>
-                      <div class="text-xs opacity-60">Cosecha</div>
-                    </div>
-                  </div>
-                  
-                  <!-- Otoño -->
-                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('otono')" 
-                       data-season="otono">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
-                      🍂
-                    </div>
-                    <div class="mt-3 text-white">
-                      <div class="font-bold text-sm">Otoño</div>
-                      <div class="text-xs opacity-80">Mar - May</div>
-                      <div class="text-xs opacity-60">Preparación</div>
-                    </div>
-                  </div>
-                  
-                  <!-- Invierno -->
-                  <div class="season-marker text-center group cursor-pointer" onclick="changeSeason('invierno')" 
-                       data-season="invierno">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-slate-500 rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-white/30 group-hover:scale-110 transition-all duration-300 hover:shadow-2xl">
-                      ❄️
-                    </div>
-                    <div class="mt-3 text-white">
-                      <div class="font-bold text-sm">Invierno</div>
-                      <div class="text-xs opacity-80">Jun - Ago</div>
-                      <div class="text-xs opacity-60">Descanso</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Indicador de temporada actual -->
-                <div id="current-season-indicator" class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-500" 
-                     style="left: 62.5%;">
-                  <div class="w-6 h-6 bg-white rounded-full shadow-2xl border-2 border-orange-400 animate-pulse"></div>
-                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
-                    Estamos aquí
-                  </div>
-                </div>
+          <!-- Timeline Cards Horizontales -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+            <!-- Primavera -->
+            <div class="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer border border-white/20" onclick="changeSeason('primavera')" data-season="primavera">
+              <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-pink-400 to-green-500 rounded-full flex items-center justify-center text-white text-xl shadow-md">🌸</div>
+              <h4 class="font-bold text-gray-900 text-sm mb-1">Primavera</h4>
+              <p class="text-xs text-gray-600 mb-2">Sep - Nov</p>
+              <div class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded-full">🌱 Floración</div>
+            </div>
+            
+            <!-- Verano -->
+            <div class="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer border border-white/20" onclick="changeSeason('verano')" data-season="verano">
+              <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white text-xl shadow-md">☀️</div>
+              <h4 class="font-bold text-gray-900 text-sm mb-1">Verano</h4>
+              <p class="text-xs text-gray-600 mb-2">Dic - Feb</p>
+              <div class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">🌻 Cosecha</div>
+            </div>
+            
+            <!-- Otoño - ACTUAL -->
+            <div class="bg-white backdrop-blur-sm rounded-xl p-4 text-center shadow-lg transition-all duration-300 cursor-pointer border-2 border-orange-400 ring-2 ring-orange-300/50 relative" onclick="changeSeason('otono')" data-season="otono">
+              <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white text-xl shadow-md">🍂</div>
+              <h4 class="font-bold text-gray-900 text-sm mb-1">Otoño</h4>
+              <p class="text-xs text-gray-600 mb-2">Mar - May</p>
+              <div class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full">🍁 Preparación</div>
+              <div class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">ACTUAL</div>
+            </div>
+            
+            <!-- Invierno -->
+            <div class="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer border border-white/20" onclick="changeSeason('invierno')" data-season="invierno">
+              <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white text-xl shadow-md">❄️</div>
+              <h4 class="font-bold text-gray-900 text-sm mb-1">Invierno</h4>
+              <p class="text-xs text-gray-600 mb-2">Jun - Ago</p>
+              <div class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">🏠 Descanso</div>
+            </div>
+          </div>
+          
+          <!-- Panel de Información Estacional -->
+          <div id="season-info-panel" class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+            <div class="text-center mb-6">
+              <div id="season-info-badge" class="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                <span id="season-info-icon">🍂</span>
+                <span id="season-info-text">Consejos para Otoño</span>
               </div>
-              
-              <!-- Información adicional -->
-              <div class="mt-6 text-center">
-                <p class="text-white/80 text-sm">
-                  <span class="inline-block w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
-                  Cada temporada trae sus propias plantas y cuidados especiales
-                </p>
-              </div>
+            </div>
+            
+            <div id="season-tips-grid" class="grid md:grid-cols-2 gap-6 text-white/90">
+              <!-- Contenido dinámico de consejos -->
+            </div>
+            
+            <div class="text-center mt-6">
+              <button id="season-tips-button" onclick="openSeasonTipsPopup()" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                🍂 Ver más consejos para Otoño
+              </button>
             </div>
           </div>
         </div>
@@ -462,86 +696,76 @@
           </p>
         </div>
 
-        <!-- Oferta del Día Destacada -->
+        <!-- Oferta del Día Simplificada -->
         <div class="text-center mb-12">
           <button id="offer-button" onclick="openDailyOfferPopup()" 
-                  class="group relative overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-red-600 hover:from-red-700 hover:via-orange-600 hover:to-red-700 text-white px-12 py-6 rounded-3xl shadow-2xl transition-all duration-300 transform hover:scale-110 animate-pulse-glow">
-            <div class="relative z-10 flex items-center gap-4">
-              <span id="offer-icon-left" class="text-3xl animate-bounce">🔥</span>
-              <div class="text-left">
-                <div id="offer-title" class="text-sm font-medium opacity-90">OFERTA ESPECIAL DE OTOÑO</div>
-                <div id="offer-text" class="text-2xl font-black">¡Pack Otoñal 50% OFF!</div>
-                <div class="text-sm opacity-90">Solo por hoy - Clic para ver</div>
-              </div>
-              <span id="offer-icon-right" class="text-3xl animate-bounce">🍂</span>
+                  class="btn-clean btn-primary smooth-transition group max-w-md mx-auto flex items-center gap-4">
+            <span id="offer-icon-left" class="icon-medium">🔥</span>
+            <div class="text-left">
+              <div id="offer-title" class="font-display font-bold">OFERTA ESPECIAL DE OTOÑO</div>
+              <div id="offer-text" class="font-body text-white/90">¡Pack Otoñal 50% OFF!</div>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+            <span id="offer-icon-right" class="icon-medium">🍂</span>
           </button>
         </div>
 
-        <!-- Grid de Características Dinámicas -->
-        <div id="features-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
-          <div class="autumn-card backdrop-blur-md rounded-3xl p-8 hover:bg-orange-500/20 transition-all duration-300 hover-lift">
-            <div id="feature-1-icon" class="text-5xl mb-4 text-center">🍂</div>
-            <h3 id="feature-1-title" class="text-white font-bold text-xl mb-3 text-center">Plantas de Otoño</h3>
-            <p id="feature-1-description" class="text-orange-100 text-center leading-relaxed">Crisantemos, asters y plantas que brillan en esta temporada dorada</p>
+        <!-- Grid de Características Simplificado -->
+        <div id="features-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
+          <div class="clean-card p-6 text-center smooth-transition hover:scale-105">
+            <div id="feature-1-icon" class="icon-large mb-4">🍂</div>
+            <h3 id="feature-1-title" class="font-display font-bold text-gray-900 text-xl mb-3">Plantas de Otoño</h3>
+            <p id="feature-1-description" class="font-body text-gray-600 leading-relaxed">Crisantemos, asters y plantas que brillan en esta temporada dorada</p>
           </div>
           
-          <div class="autumn-card backdrop-blur-md rounded-3xl p-8 hover:bg-orange-500/20 transition-all duration-300 hover-lift">
-            <div id="feature-2-icon" class="text-5xl mb-4 text-center">🌰</div>
-            <h3 id="feature-2-title" class="text-white font-bold text-xl mb-3 text-center">Preparación Invernal</h3>
-            <p id="feature-2-description" class="text-orange-100 text-center leading-relaxed">Abonos, mulch y todo lo necesario para proteger tu jardín</p>
+          <div class="clean-card p-6 text-center smooth-transition hover:scale-105">
+            <div id="feature-2-icon" class="icon-large mb-4">🌰</div>
+            <h3 id="feature-2-title" class="font-display font-bold text-gray-900 text-xl mb-3">Preparación Invernal</h3>
+            <p id="feature-2-description" class="font-body text-gray-600 leading-relaxed">Abonos, mulch y todo lo necesario para proteger tu jardín</p>
           </div>
           
-          <div class="autumn-card backdrop-blur-md rounded-3xl p-8 hover:bg-orange-500/20 transition-all duration-300 hover-lift">
-            <div id="feature-3-icon" class="text-5xl mb-4 text-center">🍁</div>
-            <h3 id="feature-3-title" class="text-white font-bold text-xl mb-3 text-center">Consejos Expertos</h3>
-            <p id="feature-3-description" class="text-orange-100 text-center leading-relaxed">Guías personalizadas para cada etapa del otoño mendocino</p>
+          <div class="clean-card p-6 text-center smooth-transition hover:scale-105">
+            <div id="feature-3-icon" class="icon-large mb-4">🍁</div>
+            <h3 id="feature-3-title" class="font-display font-bold text-gray-900 text-xl mb-3">Consejos Expertos</h3>
+            <p id="feature-3-description" class="font-body text-gray-600 leading-relaxed">Guías personalizadas para cada etapa del otoño mendocino</p>
           </div>
         </div>
 
-        <!-- Consejos de Temporada Inteligentes -->
+        <!-- Consejos de Temporada Simplificados -->
         <div class="text-center mb-12">
           <button onclick="openSeasonTipsPopup()" 
-                  class="group bg-white/15 backdrop-blur-md border border-white/30 rounded-2xl p-6 hover:bg-white/25 transition-all duration-300 hover-lift max-w-2xl mx-auto block">
+                  class="btn-clean btn-secondary smooth-transition group max-w-2xl mx-auto block p-6">
             <div class="flex items-center justify-center gap-4 mb-4">
-              <span class="text-3xl" id="season-tip-icon">🍂</span>
-              <h3 id="season-tip-title" class="text-white font-bold text-xl">Consejos para Otoño</h3>
-              <span class="text-3xl" id="season-tip-icon-2">🍁</span>
+              <span class="icon-medium" id="season-tip-icon">🍂</span>
+              <h3 id="season-tip-title" class="font-display font-bold text-gray-900 text-xl">Consejos para Otoño</h3>
+              <span class="icon-medium" id="season-tip-icon-2">🍁</span>
             </div>
-            <p class="text-orange-100 leading-relaxed mb-4" id="season-tip-preview">
+            <p class="font-body text-gray-600 leading-relaxed mb-4" id="season-tip-preview">
               Es momento de preparar tu jardín para el invierno. Abona la tierra, protege las plantas sensibles y planifica las podas.
             </p>
-            <div class="text-orange-200 text-sm font-medium group-hover:text-white transition-colors">
+            <div class="font-body text-green-600 font-medium group-hover:text-green-700 transition-colors">
               ✨ Clic para ver consejos detallados ✨
             </div>
           </button>
         </div>
 
-        <!-- Botones de Acción Dinámicos -->
+        <!-- Botones de Acción Simplificados -->
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a id="action-button-1" href="#especies-otono" 
-             class="group relative overflow-hidden bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110">
-            <span class="relative z-10 flex items-center gap-2">
-              <span>🍂</span>
-              <span>Ver Plantas de Otoño</span>
-              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+             class="btn-clean btn-primary smooth-transition flex items-center gap-3">
+            <span>🍂</span>
+            <span class="font-display font-semibold">Ver Plantas de Otoño</span>
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
           </a>
           
           <a id="action-button-2" href="#preparacion-otono" 
-             class="group relative overflow-hidden bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-110">
-            <span class="relative z-10 flex items-center gap-2">
-              <span>🌰</span>
-              <span>Guía de Preparación</span>
-              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-            </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+             class="btn-clean btn-secondary smooth-transition flex items-center gap-3">
+            <span>🌰</span>
+            <span class="font-display font-semibold">Guía de Preparación</span>
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
           </a>
         </div>
 
@@ -558,17 +782,17 @@
     <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50" id="especies-otono">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
-            <span>🍂</span>
-            <span>ESPECIAL OTOÑO 2024</span>
-            <span>🍁</span>
+          <div id="species-banner" class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
+            <span id="species-icon-left">🍂</span>
+            <span id="species-banner-text">ESPECIAL OTOÑO 2024</span>
+            <span id="species-icon-right">🍁</span>
           </div>
           <h2 class="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
-            <span class="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+            <span id="species-title" class="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
               Especies de Temporada
             </span>
           </h2>
-          <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p id="species-description" class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Descubre las plantas que más brillan durante el otoño mendocino. Colores vibrantes y resistencia natural para esta época del año.
           </p>
         </div>
@@ -596,7 +820,7 @@
                   <span class="text-sm text-gray-500">(127)</span>
                 </div>
               </div>
-              <button class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+              <button class="btn-clean btn-primary w-full smooth-transition"
                       data-add-cart data-product-id="crisantemos" data-product-name="Crisantemos Premium" data-product-price="8500">
                 🛒 Añadir al Carrito
               </button>
@@ -625,7 +849,7 @@
                   <span class="text-sm text-gray-500">(89)</span>
                 </div>
               </div>
-              <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+              <button class="btn-clean btn-primary w-full smooth-transition"
                       data-add-cart data-product-id="asters" data-product-name="Asters Multicolor" data-product-price="6200">
                 🛒 Añadir al Carrito
               </button>
@@ -654,7 +878,7 @@
                   <span class="text-sm text-gray-500">(156)</span>
                 </div>
               </div>
-              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+              <button class="btn-clean btn-primary w-full smooth-transition"
                       data-add-cart data-product-id="cyclamen" data-product-name="Cyclamen Persicum" data-product-price="7800">
                 🛒 Añadir al Carrito
               </button>
@@ -726,19 +950,19 @@
     </div>
     </section>
 
-    <!-- Sección Preparación de Jardín para Otoño -->
-    <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-amber-900 via-orange-800 to-red-900 text-white" id="preparacion-otono">
+    <!-- Sección Preparación de Jardín -->
+    <section id="preparation-section" class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-amber-900 via-orange-800 to-red-900 text-white">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
-            <span>🌰</span>
-            <span>GUÍA PROFESIONAL</span>
-            <span>🍂</span>
+          <div id="preparation-banner" class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg">
+            <span id="prep-icon-left">🌰</span>
+            <span id="prep-banner-text">GUÍA PROFESIONAL</span>
+            <span id="prep-icon-right">🍂</span>
           </div>
-          <h2 class="text-4xl sm:text-5xl font-black text-white mb-6">
+          <h2 id="preparation-title" class="text-4xl sm:text-5xl font-black text-white mb-6">
             Prepara tu Jardín para el Otoño
           </h2>
-          <p class="text-xl text-orange-100 max-w-4xl mx-auto leading-relaxed">
+          <p id="preparation-description" class="text-xl text-orange-100 max-w-4xl mx-auto leading-relaxed">
             Sigue nuestra guía paso a paso para que tu jardín luzca espectacular durante el otoño y esté preparado para el invierno mendocino.
           </p>
         </div>
@@ -821,37 +1045,18 @@
 
           <!-- Productos Recomendados -->
           <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-300">
-            <h3 class="text-2xl font-bold text-white mb-6 text-center">🛒 Kit Preparación Otoño</h3>
-            <div class="space-y-4 mb-6">
-              <div class="flex items-center justify-between py-3 border-b border-white/20">
-                <span class="text-orange-100">Compost Orgánico Premium (20kg)</span>
-                <span class="text-white font-bold">$4.500</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-white/20">
-                <span class="text-orange-100">Abono NPK Liberación Lenta</span>
-                <span class="text-white font-bold">$3.200</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-white/20">
-                <span class="text-orange-100">Aceite de Neem Concentrado</span>
-                <span class="text-white font-bold">$2.800</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-white/20">
-                <span class="text-orange-100">Manta Térmica Jardín (5m²)</span>
-                <span class="text-white font-bold">$5.100</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-white/20">
-                <span class="text-orange-100">Mulch Corteza Pino (50L)</span>
-                <span class="text-white font-bold">$2.900</span>
-              </div>
+            <h3 id="kit-title" class="text-2xl font-bold text-white mb-6 text-center">🛒 Kit Preparación Otoño</h3>
+            <div id="kit-products" class="space-y-4 mb-6">
+              <!-- Productos se inyectan dinámicamente -->
             </div>
             
             <div class="text-center mb-6">
-              <div class="text-sm text-orange-200 mb-2">Precio individual: $18.500</div>
-              <div class="text-3xl font-black text-white">Kit Completo: $14.500</div>
-              <div class="text-sm text-yellow-200 font-bold">¡Ahorrás $4.000!</div>
+              <div id="kit-individual-price" class="text-sm text-orange-200 mb-2">Precio individual: $18.500</div>
+              <div id="kit-final-price" class="text-3xl font-black text-white">Kit Completo: $14.500</div>
+              <div id="kit-savings" class="text-sm text-yellow-200 font-bold">¡Ahorrás $4.000!</div>
             </div>
 
-            <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl"
+            <button id="kit-button" class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl"
                     data-add-cart data-product-id="kit-otono" data-product-name="Kit Preparación Otoño" data-product-price="14500">
               🛒 Comprar Kit Completo
             </button>
@@ -860,32 +1065,9 @@
 
         <!-- Calendario de Actividades -->
         <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 text-center">
-          <h3 class="text-3xl font-bold text-white mb-6">📅 Calendario de Actividades Otoñales</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white/10 rounded-2xl p-6">
-              <h4 class="text-xl font-bold text-yellow-300 mb-3">Marzo</h4>
-              <ul class="text-orange-100 text-sm space-y-2">
-                <li>🌱 Siembra de otoño</li>
-                <li>🍂 Primera aplicación de abono</li>
-                <li>💧 Ajuste de riego</li>
-              </ul>
-            </div>
-            <div class="bg-white/10 rounded-2xl p-6">
-              <h4 class="text-xl font-bold text-yellow-300 mb-3">Abril</h4>
-              <ul class="text-orange-100 text-sm space-y-2">
-                <li>✂️ Podas de formación</li>
-                <li>🍂 Recolección de hojas</li>
-                <li>🌿 Plantación de bulbos</li>
-              </ul>
-            </div>
-            <div class="bg-white/10 rounded-2xl p-6">
-              <h4 class="text-xl font-bold text-yellow-300 mb-3">Mayo</h4>
-              <ul class="text-orange-100 text-sm space-y-2">
-                <li>❄️ Protección contra heladas</li>
-                <li>🌰 Última fertilización</li>
-                <li>🏠 Preparación de invernaderos</li>
-              </ul>
-            </div>
+          <h3 id="calendar-title" class="text-3xl font-bold text-white mb-6">📅 Calendario de Actividades Otoñales</h3>
+          <div id="calendar-months" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Contenido dinámico del calendario -->
           </div>
         </div>
       </div>
@@ -1406,7 +1588,7 @@
     </div>
 
     <script src="cart.js"></script>
-    <script src="autumn-features.js?v=2.0"></script>
+    <script src="autumn-features.js?v=6.1"></script>
     <!-- Modal de Oferta del Día -->
     <div id="daily-offer-modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
       <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto animate-modal-enter">
