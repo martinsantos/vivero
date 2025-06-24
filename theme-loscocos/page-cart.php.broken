@@ -1,0 +1,1561 @@
+<?php
+/**
+ * Template para la página del carrito - Vivero Los Cocos
+ * Diseño profesional con imágenes, iconos y resumen elegante
+ */
+
+// El código de auto-rellenado fue eliminado para prevenir conflictos.
+// Use el script /fill-cart.php para pruebas.
+
+get_header(); ?>
+
+<!-- Cargar Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+/* Estilos mejorados para la página del carrito */
+.cart-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+  padding: 2rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.cart-container {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr !important;
+  gap: 2rem !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 2rem !important;
+}
+
+.cart-main {
+  background: white !important;
+  border-radius: 24px !important;
+  padding: 2.5rem !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(16, 185, 129, 0.1) !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.cart-sidebar {
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  grid-column: 1 / -1;
+}
+
+.cart-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #10b981, #059669, #047857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cart-subtitle {
+  color: #6b7280;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Productos en el carrito mejorados */
+.cart-items-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+  width: 100% !important;
+}
+
+/* FORZAR IMÁGENES VISIBLES - CSS ULTRA AGRESIVO */
+.cart-item-image img,
+.cart-product-image,
+img[src*="data:image/svg"],
+img[alt="Planta"] {
+  width: 140px !important;
+  height: 140px !important;
+  min-width: 140px !important;
+  min-height: 140px !important;
+  max-width: 140px !important;
+  max-height: 140px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  border: 3px solid #10b981 !important;
+  border-radius: 12px !important;
+  background: white !important;
+  object-fit: cover !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* PLACEHOLDER PERSONALIZADO PARA PRODUCTOS */
+.loscocos-product-placeholder {
+  width: 140px !important;
+  height: 140px !important;
+  min-width: 140px !important;
+  min-height: 140px !important;
+  max-width: 140px !important;
+  max-height: 140px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  border: 3px solid #047857 !important;
+  border-radius: 12px !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  box-shadow: 0 4px 12px rgba(16,185,129,0.3) !important;
+  overflow: hidden !important;
+  line-height: 1.2 !important;
+  padding: 8px !important;
+}
+
+.cart-item-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 2rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.cart-item-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #10b981, #059669);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.cart-item-card:hover {
+  border-color: #10b981;
+  box-shadow: 0 8px 40px rgba(16, 185, 129, 0.2);
+  transform: translateY(-4px);
+  background: white;
+}
+
+.cart-item-card:hover::before {
+  transform: scaleX(1);
+}
+
+.cart-item-image {
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.cart-item-image::before {
+  content: "🌱 Producto" !important;
+  display: block !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+
+/* Ocultar cualquier imagen gris existente */
+.cart-item-image img {
+  display: none !important;
+}
+
+.cart-item-image .loscocos-product-placeholder {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cart-item-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cart-item-details {
+  flex: 1 !important;
+  min-width: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.cart-item-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  line-height: 1.3;
+}
+
+.cart-item-name .cart-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.cart-item-description {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.cart-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cart-item-category {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1e40af;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid #93c5fd;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-item-stock {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #166534;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid #86efac;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.quantity-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.quantity-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.quantity-btn:active {
+  transform: translateY(0);
+}
+
+.quantity-input {
+  width: 80px;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #1f2937;
+  background: transparent;
+  outline: none;
+}
+
+.cart-item-price {
+  font-size: 1.75rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.price-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
+
+.remove-item-btn {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #dc2626;
+  border: 2px solid #f87171;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+}
+
+.remove-item-btn:hover {
+  background: linear-gradient(135deg, #fecaca, #fca5a5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Resumen del carrito mejorado */
+.cart-summary {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 2px solid #e2e8f0;
+}
+
+.summary-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.summary-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary-subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.summary-items {
+  margin-bottom: 2rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item-name {
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.summary-item-value {
+  font-weight: 700;
+  color: #10b981;
+}
+
+.summary-total {
+  background: #10b981;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.summary-total-label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.summary-total-amount {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.checkout-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkout-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+  text-decoration: none;
+  color: white;
+}
+
+.continue-shopping {
+  background: transparent;
+  color: #10b981;
+  border: 2px solid #10b981;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.continue-shopping:hover {
+  background: #10b981;
+  color: white;
+  text-decoration: none;
+}
+
+/* Estados vacíos mejorados */
+.empty-cart {
+  text-align: center;
+  padding: 4rem 2rem;
+  grid-column: 1 / -1;
+}
+
+.empty-cart-animation {
+  font-size: 8rem;
+  margin-bottom: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+.empty-cart-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.empty-cart-text {
+  color: #6b7280;
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.empty-cart-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.empty-cart-btn {
+  background: #10b981;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+.empty-cart-btn:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+  text-decoration: none;
+  color: white;
+}
+
+.empty-cart-btn.secondary {
+  background: transparent;
+  color: #10b981;
+  border: 2px solid #10b981;
+  box-shadow: none;
+}
+
+.empty-cart-btn.secondary:hover {
+  background: #10b981;
+  color: white;
+}
+
+/* Responsive mejorado */
+@media (max-width: 1024px) {
+  .cart-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cart-sidebar {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-title {
+    font-size: 2.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .cart-container {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+  }
+  
+  .cart-item-card {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .cart-item-image {
+    margin-right: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .cart-item-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .empty-cart-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Animaciones y efectos adicionales */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+</style>
+
+<main class="cart-page">
+  <div class="cart-container">
+    
+    <!-- Header del carrito -->
+    <div class="cart-header fade-in">
+      <h1 class="cart-title">
+        🛒 Tu Carrito de Compras
+      </h1>
+      <p class="cart-subtitle">Revisa tus productos antes de finalizar la compra en Vivero Los Cocos</p>
+    </div>
+    
+    <?php
+    // Verificar si WooCommerce está activo
+    if (class_exists('WooCommerce')) {
+        if (WC()->cart->is_empty()) {
+            // Carrito vacío
+            ?>
+            <div class="empty-cart fade-in">
+              <div class="empty-cart-animation">🛒</div>
+              <h2 class="empty-cart-title">Tu carrito está vacío</h2>
+              <p class="empty-cart-text">
+                ¡Descubre nuestros increíbles productos y llena tu carrito con plantas y accesorios únicos para tu jardín!<br>
+                <strong>Tenemos más de 50 variedades de plantas esperándote</strong>
+              </p>
+              <div class="empty-cart-actions">
+                <a href="<?php echo wc_get_cart_url(); ?>?auto_fill=1" class="empty-cart-btn" style="background: linear-gradient(135deg, #10b981, #059669); margin-bottom: 1rem;">
+                  🌱 Agregar Productos de Prueba
+                </a>
+                <a href="<?php echo wc_get_page_permalink('shop') ?: home_url('/shop/'); ?>" class="empty-cart-btn">
+                  🏪 Explorar Productos
+                </a>
+                <a href="<?php echo home_url(); ?>" class="empty-cart-btn secondary">
+                  🏠 Volver al Inicio
+                </a>
+              </div>
+            </div>
+            <?php
+        } else {
+            // Carrito con productos - mostrar productos personalizados
+            ?>
+            <!-- Contenido principal del carrito -->
+            <div class="cart-main fade-in" style="width: 100% !important;">
+              <div class="cart-items-container" style="display: block !important; width: 100% !important;">
+                <?php
+                $product_count = 0;
+                foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+                    $product = $cart_item['data'];
+                    $product_id = $cart_item['product_id'];
+                    $quantity = $cart_item['quantity'];
+                    $product_count++;
+                    
+                    if ($product && $product->exists() && $quantity > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
+                        $product_permalink = apply_filters('woocommerce_cart_item_permalink', $product->is_visible() ? $product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
+                        ?>
+                        
+                        <!-- PRODUCTO <?php echo $product_count; ?>: <?php echo esc_html($product->get_name()); ?> -->
+                        <div style="
+                            display: flex !important;
+                            background: white !important;
+                            border-radius: 16px !important;
+                            padding: 24px !important;
+                            margin-bottom: 20px !important;
+                            border: 2px solid #e5e7eb !important;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+                            width: 100% !important;
+                            box-sizing: border-box !important;
+                            align-items: center !important;
+                            gap: 24px !important;
+                        " data-key="<?php echo esc_attr($cart_item_key); ?>">
+                            
+                            <!-- IMAGEN DEL PRODUCTO -->
+                            <div style="
+                                width: 120px !important;
+                                height: 120px !important;
+                                min-width: 120px !important;
+                                background: transparent !important;
+                                border-radius: 12px !important;
+                                display: flex !important;
+                                align-items: center !important;
+                                justify-content: center !important;
+                                position: relative !important;
+                                overflow: hidden !important;
+                                flex-shrink: 0 !important;
+                                border: 2px solid #e5e7eb !important;
+                            ">
+                                <?php
+                                // --- SOLUCIÓN SIMPLE PARA IMÁGENES ---
+                                $product = $cart_item['data'];
+                                
+                                // Intentar obtener imagen estándar de WooCommerce
+                                $thumbnail = $product->get_image('woocommerce_thumbnail', array(
+                                    'style' => 'width: 120px !important; height: 120px !important; object-fit: cover; border-radius: 12px;'
+                                ));
+                                
+                                if ($thumbnail) {
+                                    echo $thumbnail;
+                                } else {
+                                    // Fallback simple con emoji
+                                    echo '<div style="width: 120px; height: 120px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">🌱</div>';
+                                }
+                                ?>
+                                
+                                <!-- Badge de Stock -->
+                                <div style="
+                                    position: absolute !important;
+                                    top: 6px !important;
+                                    right: 6px !important;
+                                    background: #047857 !important;
+                                    color: white !important;
+                                    padding: 2px 6px !important;
+                                    border-radius: 6px !important;
+                                    font-size: 8px !important;
+                                    font-weight: bold !important;
+                                ">✓</div>
+                            </div>
+                            
+                            <!-- INFORMACIÓN DEL PRODUCTO -->
+                            <div style="flex: 1 !important; min-width: 0 !important;">
+                                <!-- Nombre del Producto -->
+                                <h3 style="
+                                    font-size: 20px !important;
+                                    font-weight: bold !important;
+                                    color: #1f2937 !important;
+                                    margin: 0 0 8px 0 !important;
+                                    display: flex !important;
+                                    align-items: center !important;
+                                    gap: 8px !important;
+                                ">
+                                    <span style="
+                                        width: 20px !important;
+                                        height: 20px !important;
+                                        background: #10b981 !important;
+                                        border-radius: 50% !important;
+                                        display: flex !important;
+                                        align-items: center !important;
+                                        justify-content: center !important;
+                                        font-size: 12px !important;
+                                        color: white !important;
+                                    ">🌱</span>
+                                    <?php echo esc_html($product->get_name()); ?>
+                                </h3>
+                                
+                                <!-- Precio del Producto -->
+                                <div style="
+                                    font-size: 24px !important;
+                                    font-weight: bold !important;
+                                    color: #10b981 !important;
+                                    margin-bottom: 12px !important;
+                                ">
+                                    <?php echo WC()->cart->get_product_price($product); ?>
+                                    <?php if ($quantity > 1): ?>
+                                        <span style="font-size: 14px; color: #6b7280; font-weight: normal;">
+                                            (<?php echo $quantity; ?> × <?php echo wc_price($product->get_price()); ?>)
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <!-- Descripción corta -->
+                                <p style="
+                                    color: #6b7280 !important;
+                                    font-size: 14px !important;
+                                    margin: 0 0 16px 0 !important;
+                                    line-height: 1.4 !important;
+                                ">
+                                    <?php 
+                                    $description = $product->get_short_description();
+                                    if (empty($description)) {
+                                        echo "Perfecta para decorar tu hogar. Fácil cuidado y resistente.";
+                                    } else {
+                                        echo wp_trim_words($description, 12);
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                            
+                            <!-- CONTROLES DE CANTIDAD Y ACCIONES -->
+                            <div style="
+                                display: flex !important;
+                                flex-direction: column !important;
+                                align-items: center !important;
+                                gap: 12px !important;
+                                flex-shrink: 0 !important;
+                            ">
+                                <!-- Control de Cantidad -->
+                                <div style="
+                                    display: flex !important;
+                                    align-items: center !important;
+                                    gap: 8px !important;
+                                    background: #f9fafb !important;
+                                    border: 1px solid #e5e7eb !important;
+                                    border-radius: 8px !important;
+                                    padding: 8px !important;
+                                ">
+                                    <button onclick="updateQuantity('<?php echo esc_attr($cart_item_key); ?>', -1)" style="
+                                        width: 32px !important;
+                                        height: 32px !important;
+                                        background: #10b981 !important;
+                                        color: white !important;
+                                        border: none !important;
+                                        border-radius: 6px !important;
+                                        cursor: pointer !important;
+                                        display: flex !important;
+                                        align-items: center !important;
+                                        justify-content: center !important;
+                                        font-size: 16px !important;
+                                        font-weight: bold !important;
+                                    ">−</button>
+                                    
+                                    <span class="cart-item-qty" style="
+                                        min-width: 40px !important;
+                                        text-align: center !important;
+                                        font-weight: bold !important;
+                                        font-size: 18px !important;
+                                        color: #1f2937 !important;
+                                    "><?php echo $quantity; ?></span>
+                                    
+                                    <button onclick="updateQuantity('<?php echo esc_attr($cart_item_key); ?>', 1)" style="
+                                        width: 32px !important;
+                                        height: 32px !important;
+                                        background: #10b981 !important;
+                                        color: white !important;
+                                        border: none !important;
+                                        border-radius: 6px !important;
+                                        cursor: pointer !important;
+                                        display: flex !important;
+                                        align-items: center !important;
+                                        justify-content: center !important;
+                                        font-size: 16px !important;
+                                        font-weight: bold !important;
+                                    ">+</button>
+                                </div>
+                                
+                                <!-- Botón Eliminar -->
+                                <button onclick="removeItem('<?php echo esc_attr($cart_item_key); ?>')" style="
+                                    width: 40px !important;
+                                    height: 40px !important;
+                                    background: #fee2e2 !important;
+                                    color: #dc2626 !important;
+                                    border: 1px solid #fecaca !important;
+                                    border-radius: 8px !important;
+                                    cursor: pointer !important;
+                                    display: flex !important;
+                                    align-items: center !important;
+                                    justify-content: center !important;
+                                    font-size: 16px !important;
+                                " title="Eliminar producto">🗑️</button>
+                            </div>
+                        </div>
+                        
+                        <?php
+                    }
+                }
+                
+                echo "<!-- DEBUG: Se procesaron $product_count productos -->";
+                
+                // Si no hay productos
+                if ($product_count == 0) {
+                    echo '<div style="text-align: center; padding: 3rem; color: #6b7280;">';
+                    echo '<div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div>';
+                    echo '<h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">Tu carrito está vacío</h3>';
+                    echo '<p>¡Agrega algunos productos para comenzar!</p>';
+                    echo '<a href="' . home_url() . '" style="display: inline-block; margin-top: 1rem; background: #10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Ver Productos</a>';
+                    echo '</div>';
+                }
+                ?>
+              </div>
+            </div>
+            
+            <!-- SIDEBAR DEL RESUMEN -->
+            <div style="
+                position: fixed !important;
+                top: 50% !important;
+                right: 20px !important;
+                transform: translateY(-50%) !important;
+                width: 320px !important;
+                background: white !important;
+                border-radius: 16px !important;
+                padding: 24px !important;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+                border: 2px solid #e5e7eb !important;
+                z-index: 1000 !important;
+            ">
+                <!-- Header del Resumen -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h3 style="
+                        font-size: 20px !important;
+                        font-weight: bold !important;
+                        color: #1f2937 !important;
+                        margin: 0 0 8px 0 !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 8px !important;
+                    ">
+                        <span style="font-size: 24px;">📋</span>
+                        Resumen de Compra
+                    </h3>
+                    <p style="color: #6b7280; font-size: 14px; margin: 0;">Vivero Los Cocos</p>
+                </div>
+                
+                <!-- Items del Carrito -->
+                <div style="margin-bottom: 20px;">
+                    <?php
+                    $cart_total = 0;
+                    $item_count = 0;
+                    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+                        $product = $cart_item['data'];
+                        $quantity = $cart_item['quantity'];
+                        $item_count += $quantity;
+                        $line_total = $cart_item['line_total'];
+                        $cart_total += $line_total;
+                        
+                        if ($product && $product->exists()) {
+                            ?>
+                            <div style="
+                                display: flex !important;
+                                justify-content: space-between !important;
+                                align-items: center !important;
+                                padding: 12px 0 !important;
+                                border-bottom: 1px solid #f3f4f6 !important;
+                            ">
+                                <div>
+                                    <div style="
+                                        font-weight: 600 !important;
+                                        color: #1f2937 !important;
+                                        font-size: 14px !important;
+                                        margin-bottom: 4px !important;
+                                    ">
+                                        <?php echo esc_html(wp_trim_words($product->get_name(), 4)); ?>
+                                    </div>
+                                    <div style="
+                                        color: #6b7280 !important;
+                                        font-size: 12px !important;
+                                    ">
+                                        Cantidad: <?php echo $quantity; ?>
+                                    </div>
+                                </div>
+                                <div style="
+                                    font-weight: bold !important;
+                                    color: #10b981 !important;
+                                    font-size: 14px !important;
+                                ">
+                                    <?php echo wc_price($line_total); ?>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+                
+                <!-- Totales -->
+                <div style="
+                    background: #f9fafb !important;
+                    border-radius: 12px !important;
+                    padding: 16px !important;
+                    margin-bottom: 20px !important;
+                ">
+                    <div style="
+                        display: flex !important;
+                        justify-content: space-between !important;
+                        margin-bottom: 8px !important;
+                    ">
+                        <span style="color: #6b7280; font-size: 14px;">Subtotal:</span>
+                        <span style="font-weight: 600; color: #1f2937; font-size: 14px;">
+                            <?php echo WC()->cart->get_cart_subtotal(); ?>
+                        </span>
+                    </div>
+                    
+                    <div style="
+                        display: flex !important;
+                        justify-content: space-between !important;
+                        margin-bottom: 8px !important;
+                    ">
+                        <span style="color: #6b7280; font-size: 14px;">Envío:</span>
+                        <span style="font-weight: 600; color: #10b981; font-size: 14px;">GRATIS</span>
+                    </div>
+                    
+                    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 12px 0;">
+                    
+                    <div style="
+                        display: flex !important;
+                        justify-content: space-between !important;
+                        align-items: center !important;
+                    ">
+                        <span style="
+                            font-weight: bold !important;
+                            color: #1f2937 !important;
+                            font-size: 16px !important;
+                        ">Total:</span>
+                        <span style="
+                            font-weight: bold !important;
+                            color: #10b981 !important;
+                            font-size: 18px !important;
+                        ">
+                            <?php echo WC()->cart->get_total(); ?>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Botones de Acción -->
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="<?php echo wc_get_checkout_url(); ?>" style="
+                        background: linear-gradient(135deg, #10b981, #059669) !important;
+                        color: white !important;
+                        padding: 14px 20px !important;
+                        border-radius: 8px !important;
+                        text-decoration: none !important;
+                        font-weight: bold !important;
+                        text-align: center !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 8px !important;
+                        font-size: 16px !important;
+                    ">
+                        <span>💳</span>
+                        Finalizar Compra
+                    </a>
+                    
+                    <a href="<?php echo home_url(); ?>" style="
+                        background: transparent !important;
+                        color: #10b981 !important;
+                        border: 2px solid #10b981 !important;
+                        padding: 12px 20px !important;
+                        border-radius: 8px !important;
+                        text-decoration: none !important;
+                        font-weight: 600 !important;
+                        text-align: center !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 8px !important;
+                        font-size: 14px !important;
+                    ">
+                        <span>🌱</span>
+                        Seguir Comprando
+                    </a>
+                </div>
+                
+                <!-- Garantías Los Cocos -->
+                <div style="
+                    margin-top: 20px !important;
+                    padding-top: 20px !important;
+                    border-top: 1px solid #e5e7eb !important;
+                ">
+                    <h4 style="
+                        font-size: 14px !important;
+                        font-weight: bold !important;
+                        color: #1f2937 !important;
+                        margin: 0 0 12px 0 !important;
+                        text-align: center !important;
+                    ">🏆 Garantías Los Cocos</h4>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b7280;">
+                            <span style="color: #10b981;">✅</span>
+                            <span>Plantas 100% saludables</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b7280;">
+                            <span style="color: #10b981;">🚚</span>
+                            <span>Envío gratis el mismo día</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b7280;">
+                            <span style="color: #10b981;">💡</span>
+                            <span>Consejos de cuidado incluidos</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b7280;">
+                            <span style="color: #10b981;">🔄</span>
+                            <span>Garantía de 30 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    } else {
+        // WooCommerce no está activo
+        ?>
+        <div class="empty-cart fade-in">
+          <div class="empty-cart-animation">⚠️</div>
+          <h2 class="empty-cart-title">WooCommerce no está activo</h2>
+          <p class="empty-cart-text">
+            Para usar el carrito de compras, necesitas tener WooCommerce instalado y activado.
+          </p>
+          <div class="empty-cart-actions">
+            <a href="<?php echo home_url(); ?>" class="empty-cart-btn">
+              🏠 Volver al Inicio
+            </a>
+          </div>
+        </div>
+        <?php
+    }
+    ?>
+    
+  </div>
+</main>
+
+<script>
+// ===== CARRITO LOS COCOS - JAVASCRIPT MEJORADO v2 =====
+// Variables globales
+const AJAX_URL = '<?php echo admin_url("admin-ajax.php"); ?>';
+const CART_NONCE = '<?php echo wp_create_nonce("cart_nonce"); ?>';
+
+console.log('🚀 Carrito Los Cocos iniciado');
+console.log('🔑 AJAX_URL:', AJAX_URL);
+console.log('🔐 CART_NONCE:', CART_NONCE);
+
+// Función SUPER ROBUSTA para actualizar cantidad
+function updateQuantity(cartKey, change) {
+    console.log('🔄 updateQuantity iniciado:', cartKey, 'cambio:', change);
+    
+    // Verificar variables globales PRIMERO
+    if (!AJAX_URL || !CART_NONCE) {
+        console.error('❌ Variables globales no disponibles:', {AJAX_URL, CART_NONCE});
+        alert('Error: Configuración AJAX no disponible');
+        return;
+    }
+    
+    // Buscar el elemento de cantidad con el selector específico y único
+    const quantityElement = document.querySelector(`[data-key="${cartKey}"] .cart-item-qty`);
+    
+    if (!quantityElement) {
+        console.error('❌ No se encontró elemento de cantidad con selector .cart-item-qty para:', cartKey);
+        alert('Error CRÍTICO: No se encontró el elemento de cantidad. Contactar a soporte.');
+        return;
+    }
+    
+    // Limpiar el contenido antes de parsear para evitar NaN
+    const qtyText = quantityElement.textContent.trim();
+    console.log(`🔍 Texto de cantidad encontrado: "${qtyText}"`);
+    const currentQty = parseInt(qtyText, 10);
+    
+    if (isNaN(currentQty)) {
+        console.error('❌ Error de parseo a número (NaN) para el texto:', qtyText);
+        alert('Error: La cantidad actual no es un número válido.');
+        return;
+    }
+
+    const newQty = Math.max(1, currentQty + change);
+    
+    console.log('📊 Cantidad:', currentQty, '->', newQty);
+    
+    // Actualizar visualmente INMEDIATAMENTE
+    quantityElement.textContent = newQty;
+    quantityElement.style.background = '#fbbf24';
+    quantityElement.style.color = 'white';
+    
+    // Deshabilitar botones temporalmente
+    const allButtons = document.querySelectorAll(`[data-key="${cartKey}"] button`);
+    allButtons.forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+        btn.style.cursor = 'wait';
+    });
+    
+    // Mostrar notificación inmediata
+    showNotification('🔄 Actualizando cantidad...', 'info');
+    
+    // Preparar datos AJAX
+    const formData = new FormData();
+    formData.append('action', 'update_cart_quantity');
+    formData.append('cart_key', cartKey);
+    formData.append('quantity', newQty);
+    formData.append('nonce', CART_NONCE);
+    
+    console.log('📤 Enviando datos AJAX:', {
+        action: 'update_cart_quantity',
+        cart_key: cartKey,
+        quantity: newQty,
+        nonce: CART_NONCE
+    });
+    
+    // Enviar petición AJAX con timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos timeout
+    
+    fetch(AJAX_URL, {
+        method: 'POST',
+        body: formData,
+        signal: controller.signal
+    })
+    .then(response => {
+        clearTimeout(timeoutId);
+        console.log('📡 Respuesta recibida:', response.status, response.statusText);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        return response.text();
+    })
+    .then(text => {
+        console.log('📄 Respuesta texto (primeros 200 chars):', text.substring(0, 200));
+        
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (parseError) {
+            console.error('❌ Error parseando JSON:', parseError);
+            console.log('📄 Texto completo:', text);
+            throw new Error('Respuesta no es JSON válido');
+        }
+        
+        console.log('📦 Datos parseados:', data);
+        
+        if (data.success) {
+            console.log('✅ Cantidad actualizada correctamente en el servidor');
+            
+            // Restaurar estilo normal
+            quantityElement.style.background = '#f9fafb';
+            quantityElement.style.color = '#1f2937';
+            
+            showNotification('✅ Cantidad actualizada correctamente', 'success');
+            
+            // Actualizar contador del carrito si existe
+            if (data.data && data.data.count !== undefined) {
+                const cartCount = document.querySelector('.cart-count');
+                if (cartCount) {
+                    cartCount.textContent = data.data.count;
+                    console.log('🔢 Contador del carrito actualizado:', data.data.count);
+                }
+            }
+            
+        } else {
+            console.error('❌ Error del servidor:', data.data);
+            
+            // Revertir cambio visual
+            quantityElement.textContent = currentQty;
+            quantityElement.style.background = '#fee2e2';
+            quantityElement.style.color = '#dc2626';
+            
+            showNotification('❌ Error: ' + (data.data || 'Error desconocido'), 'error');
+            
+            setTimeout(() => {
+                quantityElement.style.background = '#f9fafb';
+                quantityElement.style.color = '#1f2937';
+            }, 3000);
+        }
+    })
+    .catch(error => {
+        clearTimeout(timeoutId);
+        console.error('❌ Error AJAX:', error);
+        
+        // Revertir cambio visual
+        quantityElement.textContent = currentQty;
+        quantityElement.style.background = '#fee2e2';
+        quantityElement.style.color = '#dc2626';
+        
+        let errorMessage = 'Error de conexión';
+        if (error.name === 'AbortError') {
+            errorMessage = 'Timeout: La petición tardó demasiado';
+        } else if (error.message) {
+            errorMessage = error.message;
+        }
+        
+        showNotification('❌ ' + errorMessage, 'error');
+        
+        setTimeout(() => {
+            quantityElement.style.background = '#f9fafb';
+            quantityElement.style.color = '#1f2937';
+        }, 3000);
+    })
+    .finally(() => {
+        // Rehabilitar botones SIEMPRE
+        allButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+        });
+        console.log('🔓 Botones rehabilitados');
+    });
+}
+
+// Función SUPER ROBUSTA para eliminar producto
+function removeItem(cartKey) {
+    console.log('🗑️ removeItem iniciado:', cartKey);
+    
+    if (!confirm('¿Estás seguro de eliminar este producto del carrito?')) {
+        console.log('❌ Usuario canceló eliminación');
+        return;
+    }
+    
+    // Verificar variables globales
+    if (!AJAX_URL || !CART_NONCE) {
+        console.error('❌ Variables globales no disponibles para eliminar');
+        alert('Error: Configuración AJAX no disponible');
+        return;
+    }
+    
+    const productElement = document.querySelector(`[data-key="${cartKey}"]`);
+    if (!productElement) {
+        console.error('❌ No se encontró elemento del producto:', cartKey);
+        alert('Error: Producto no encontrado');
+        return;
+    }
+    
+    // Deshabilitar todo el producto
+    const allButtons = productElement.querySelectorAll('button');
+    allButtons.forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = '0.3';
+    });
+    
+    productElement.style.opacity = '0.7';
+    productElement.style.pointerEvents = 'none';
+    
+    showNotification('🗑️ Eliminando producto...', 'info');
+    
+    // Preparar datos
+    const formData = new FormData();
+    formData.append('action', 'remove_cart_item');
+    formData.append('cart_key', cartKey);
+    formData.append('nonce', CART_NONCE);
+    
+    console.log('📤 Enviando eliminación:', cartKey);
+    
+    fetch(AJAX_URL, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        console.log('📡 Respuesta eliminar:', response.status);
+        return response.text();
+    })
+    .then(text => {
+        console.log('📄 Respuesta eliminar texto:', text.substring(0, 100));
+        
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (parseError) {
+            console.error('❌ Error parseando JSON eliminar:', parseError);
+            throw new Error('Respuesta no es JSON válido');
+        }
+        
+        if (data.success) {
+            console.log('✅ Producto eliminado correctamente');
+            showNotification('✅ Producto eliminado del carrito', 'success');
+            
+            // Animar eliminación
+            productElement.style.transition = 'all 0.5s ease';
+            productElement.style.transform = 'translateX(-100%)';
+            productElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                productElement.remove();
+                console.log('🗑️ Elemento removido del DOM');
+                
+                // Verificar si el carrito está vacío
+                const remainingItems = document.querySelectorAll('[data-key]');
+                if (remainingItems.length === 0) {
+                    console.log('🛒 Carrito vacío, recargando página...');
+                    setTimeout(() => location.reload(), 1000);
+                }
+            }, 500);
+            
+        } else {
+            console.error('❌ Error del servidor eliminando:', data.data);
+            showNotification('❌ Error eliminando: ' + (data.data || 'Error desconocido'), 'error');
+            
+            // Restaurar elemento
+            productElement.style.opacity = '1';
+            productElement.style.pointerEvents = 'auto';
+            allButtons.forEach(btn => {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            });
+        }
+    })
+    .catch(error => {
+        console.error('❌ Error eliminando:', error);
+        showNotification('❌ Error de conexión eliminando', 'error');
+        
+        // Restaurar elemento
+        productElement.style.opacity = '1';
+        productElement.style.pointerEvents = 'auto';
+        allButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        });
+    });
+}
+
+// Sistema de notificaciones mejorado
+function showNotification(message, type = 'info') {
+    console.log('📢 Notificación:', message, type);
+    
+    // Remover notificaciones existentes
+    const existingNotifications = document.querySelectorAll('.loscocos-notification');
+    existingNotifications.forEach(n => n.remove());
+    
+    const notification = document.createElement('div');
+    notification.className = 'loscocos-notification';
+    
+    const colors = {
+        success: '#10b981',
+        error: '#ef4444',
+        info: '#3b82f6',
+        warning: '#f59e0b'
+    };
+    
+    notification.style.cssText = `
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        background: ${colors[type] || colors.info} !important;
+        color: white !important;
+        padding: 16px 24px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+        z-index: 999999 !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        max-width: 350px !important;
+        animation: slideInRight 0.3s ease !important;
+        border: 2px solid rgba(255,255,255,0.2) !important;
+    `;
+    
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Auto-eliminar después de 4 segundos
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// Agregar estilos CSS para animaciones
+const styleSheet = document.createElement('style');
+styleSheet.textContent = `
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+    
+    /* Mejoras visuales para botones */
+    button:hover:not(:disabled) {
+        transform: scale(1.05) !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    button:active:not(:disabled) {
+        transform: scale(0.95) !important;
+    }
+    
+    button:disabled {
+        cursor: not-allowed !important;
+    }
+`;
+document.head.appendChild(styleSheet);
+
+// Inicialización cuando carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🛒 Carrito Los Cocos completamente cargado');
+    console.log('🔧 Configuración:', {
+        AJAX_URL: AJAX_URL,
+        CART_NONCE: CART_NONCE ? 'Disponible' : 'No disponible'
+    });
+    
+    // Contar productos
+    const cartItems = document.querySelectorAll('[data-key]');
+    console.log('📦 Productos en carrito:', cartItems.length);
+    
+    if (cartItems.length > 0) {
+        cartItems.forEach((item, index) => {
+            const cartKey = item.getAttribute('data-key');
+            console.log(`📦 Producto ${index + 1}: ${cartKey}`);
+        });
+        
+        showNotification('🛒 Carrito cargado correctamente', 'success');
+    } else {
+        console.log('🛒 Carrito vacío');
+    }
+    
+    // Test de funcionalidad (solo en desarrollo)
+    if (window.location.hostname === 'localhost') {
+        setTimeout(() => {
+            console.log('🧪 Modo desarrollo detectado - funciones listas para testing');
+        }, 2000);
+    }
+});
+
+// Función de debug para testing manual
+window.debugCartFunctions = function() {
+    console.log('🔍 Debug de funciones del carrito:');
+    console.log('- AJAX_URL:', AJAX_URL);
+    console.log('- CART_NONCE:', CART_NONCE);
+    console.log('- Productos:', document.querySelectorAll('[data-key]').length);
+    console.log('- updateQuantity: disponible');
+    console.log('- removeItem: disponible');
+    console.log('- showNotification: disponible');
+    
+    showNotification('🔍 Funciones de debug ejecutadas - ver consola', 'info');
+};
+
+console.log('✅ JavaScript del carrito completamente inicializado');
+console.log('💡 Tip: Ejecuta debugCartFunctions() en la consola para debug');
+</script>
+
+<?php get_footer(); ?> 

@@ -1,0 +1,106 @@
+# WordPress Core
+/wp-
+!wp-content/
+
+# Theme files
+/theme-loscocos-backup-*
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Debug logs
+*.log
+
+# Database files
+*.sql
+*.sqlite
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# WooCommerce
+wp-content/uploads/woocommerce_uploads/
+wp-content/wc-logs/*
+!wp-content/wc-logs/.htaccess
+
+# Backup files
+*.bak
+*.backup-*
+
+# Data files
+*.csv
+*.xlsx
+*.xls
+
+# Development and test files
+/test-*.php
+/debug-*.php
+/cart-*.php
+/quick-*.php
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local development config overrides
+wp-config-local.php
+
+# Ignore everything in wp-content except themes and plugins
+wp-content/*
+!wp-content/plugins/
+!wp-content/themes/
+!wp-content/languages/
+!wp-content/mu-plugins/
+
+# Ignore plugins and themes but allow our custom theme
+wp-content/plugins/*
+!wp-content/plugins/index.php
+wp-content/themes/*
+!wp-content/themes/theme-loscocos/
+!wp-content/themes/index.php
+
+# Ignore uploads but allow .htaccess
+wp-content/uploads/**
+!wp-content/uploads/.htaccess
+!wp-content/uploads/woocommerce-placeholder-*.png
+
+# Ignore cache directories
+**/cache/
+**/w3tc-config/
+**/w3tc/
+
+# Ignore specific development files
+add-*.php
+assign-*.php
+create-*.php
+setup-*.php
+*.sh
+Dockerfile.*
+*.conf
+*.init
+
+# Keep specific files
+!README-DOCKER.md
+!docker-compose.yml
+!nginx.conf
+!nginx-site.conf
+!env.example
+!wp-config.php
