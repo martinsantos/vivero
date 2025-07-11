@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Los Cocos</title>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+          :root {
+            --primary-color: #4CAF50;--secondary-color: #F5F5F5;--text-primary: #1F2937;--text-secondary: #4B5563;--accent-color: #388E3C;}
+          body {
+            font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+          }
+          .hover-primary:hover {
+            color: var(--primary-color);
+          }
+          .bg-primary {
+            background-color: var(--primary-color) !important;
+          }
+          .text-primary-fg {
+            color: var(--primary-color) !important;
+          }
+          .border-primary {
+            border-color: var(--primary-color) !important;
+          }
+          
+          /* Custom animations */
+          @keyframes slideInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-slide-up {
+            animation: slideInUp 0.6s ease-out;
+          }
+          
+          @keyframes pulse-green {
+            0%, 100% { 
+              box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); 
+            }
+            50% { 
+              box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); 
+            }
+          }
+          .animate-pulse-green {
+            animation: pulse-green 2s infinite;
+          }
+          
+          /* Security badges */
+          .security-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          }
+          
+          /* Payment method icons */
+          .payment-icon {
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+          }
+          .payment-method:hover .payment-icon {
+            filter: grayscale(0%);
+          }
+          
+          /* Progress bar */
+          .progress-step {
+            position: relative;
+          }
+          .progress-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 100%;
+            height: 2px;
+            background: #e5e7eb;
+            transform: translateY(-50%);
+            z-index: -1;
+          }
+          .progress-step:last-child::after {
+            display: none;
+          }
+          .progress-step.active::after {
+            background: var(--primary-color);
+          }
+        </style>
+</head>
+<body class="bg-gray-50 text-[var(--text-primary)]">
+    <!-- Header simplificado para checkout -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <a href="home.html" class="flex items-center gap-3">
+                    <div class="size-8 text-[var(--primary-color)]">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_6_535)">
+                                <path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6_535">
+                                    <rect fill="white" height="48" width="48"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1 class="text-xl font-bold">Los Cocos</h1>
+                </a>
+                
+                <!-- Progress Bar -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="progress-step active flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                        <span class="text-sm font-medium">Carrito</span>
+                    </div>
+                    <div class="progress-step active flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                        <span class="text-sm font-medium">Checkout</span>
+                    </div>
+                    <div class="progress-step flex items-center gap-2">
+                        <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                        <span class="text-sm text-gray-500">Confirmación</span>
+                    </div>
+                </div>
+                
+                <!-- Security badges -->
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-1 text-xs text-gray-600">
+                        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="hidden sm:block">Pago Seguro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Formulario de Checkout (Columna izquierda) -->
+            <div class="lg:col-span-8">
+                <form id="checkout-form" class="space-y-8 animate-slide-up">
+                    
+                    <!-- Información de Contacto -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold">Información de Contacto</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Nombre *</label>
+                                <input type="text" id="firstName" name="firstName" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                       placeholder="Tu nombre">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Apellido *</label>
+                                <input type="text" id="lastName" name="lastName" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                       placeholder="Tu apellido">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                       placeholder="tu@email.com">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
+                                <input type="tel" id="phone" name="phone" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                       placeholder="(261) 123-4567">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información de Envío -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold">Dirección de Envío</h2>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Dirección *</label>
+                                <input type="text" id="address" name="address" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                       placeholder="Calle y número">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-700 mb-2">Ciudad *</label>
+                                    <select id="city" name="city" required 
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                                        <option value="">Seleccionar</option>
+                                        <option value="mendoza">Mendoza Capital</option>
+                                        <option value="godoy-cruz">Godoy Cruz</option>
+                                        <option value="las-heras">Las Heras</option>
+                                        <option value="maipu">Maipú</option>
+                                        <option value="lujan">Luján de Cuyo</option>
+                                        <option value="san-martin">San Martín</option>
+                                        <option value="rivadavia">Rivadavia</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="postalCode" class="block text-sm font-medium text-gray-700 mb-2">Código Postal</label>
+                                    <input type="text" id="postalCode" name="postalCode" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                           placeholder="5500">
+                                </div>
+                                <div>
+                                    <label for="province" class="block text-sm font-medium text-gray-700 mb-2">Provincia</label>
+                                    <input type="text" id="province" name="province" value="Mendoza" readonly
+                                           class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-600">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">Notas adicionales (opcional)</label>
+                                <textarea id="notes" name="notes" rows="3" 
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                          placeholder="Instrucciones especiales de entrega, referencias, etc."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Método de Pago -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold">Método de Pago</h2>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <!-- Tarjeta de Crédito/Débito -->
+                            <div class="payment-method border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary transition-colors">
+                                <label class="flex items-center gap-4 cursor-pointer">
+                                    <input type="radio" name="paymentMethod" value="card" checked 
+                                           class="w-4 h-4 text-primary border-gray-300 focus:ring-primary">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="font-medium">Tarjeta de Crédito/Débito</span>
+                                            <div class="flex gap-1">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" class="payment-icon h-6">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="payment-icon h-6">
+                                            </div>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Pago seguro con todas las tarjetas principales</p>
+                                    </div>
+                                </label>
+                                
+                                <div id="card-details" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="md:col-span-2">
+                                        <label for="cardNumber" class="block text-sm font-medium text-gray-700 mb-2">Número de Tarjeta *</label>
+                                        <input type="text" id="cardNumber" name="cardNumber" required 
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                               placeholder="1234 5678 9012 3456" maxlength="19">
+                                    </div>
+                                    <div>
+                                        <label for="cardExpiry" class="block text-sm font-medium text-gray-700 mb-2">Vencimiento *</label>
+                                        <input type="text" id="cardExpiry" name="cardExpiry" required 
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                               placeholder="MM/AA" maxlength="5">
+                                    </div>
+                                    <div>
+                                        <label for="cardCVC" class="block text-sm font-medium text-gray-700 mb-2">CVC *</label>
+                                        <input type="text" id="cardCVC" name="cardCVC" required 
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                               placeholder="123" maxlength="4">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="cardName" class="block text-sm font-medium text-gray-700 mb-2">Nombre en la Tarjeta *</label>
+                                        <input type="text" id="cardName" name="cardName" required 
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                               placeholder="Nombre como aparece en la tarjeta">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Transferencia Bancaria -->
+                            <div class="payment-method border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary transition-colors">
+                                <label class="flex items-center gap-4 cursor-pointer">
+                                    <input type="radio" name="paymentMethod" value="transfer" 
+                                           class="w-4 h-4 text-primary border-gray-300 focus:ring-primary">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="font-medium">Transferencia Bancaria</span>
+                                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">5% descuento</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Te enviaremos los datos bancarios por email</p>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <!-- Mercado Pago -->
+                            <div class="payment-method border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary transition-colors">
+                                <label class="flex items-center gap-4 cursor-pointer">
+                                    <input type="radio" name="paymentMethod" value="mercadopago" 
+                                           class="w-4 h-4 text-primary border-gray-300 focus:ring-primary">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="font-medium">Mercado Pago</span>
+                                            <div class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">MP</div>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Paga con billetera virtual, efectivo o cuotas sin interés</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Resumen del Pedido (Columna derecha) -->
+            <div class="lg:col-span-4">
+                <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 sticky top-8 animate-slide-up" style="animation-delay: 0.2s">
+                    <h3 class="text-2xl font-bold mb-6">Resumen del Pedido</h3>
+                    
+                    <!-- Items del carrito -->
+                    <div id="checkout-items" class="space-y-4 mb-6">
+                        <!-- Los items se cargarán aquí dinámicamente -->
+                    </div>
+                    
+                    <!-- Cupón de descuento -->
+                    <div class="border-t border-gray-200 pt-6 mb-6">
+                        <div class="flex gap-2">
+                            <input type="text" id="couponCode" 
+                                   class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                   placeholder="Código de descuento">
+                            <button type="button" id="applyCoupon" 
+                                    class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-medium transition-colors">
+                                Aplicar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Totales -->
+                    <div class="border-t border-gray-200 pt-6 space-y-3">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal:</span>
+                            <span id="checkout-subtotal">$0</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Envío:</span>
+                            <span id="checkout-shipping">Gratis</span>
+                        </div>
+                        <div id="discount-row" class="flex justify-between text-green-600" style="display: none;">
+                            <span>Descuento:</span>
+                            <span id="checkout-discount">-$0</span>
+                        </div>
+                        <div class="flex justify-between text-xl font-bold text-gray-900 border-t border-gray-200 pt-3">
+                            <span>Total:</span>
+                            <span id="checkout-total">$0</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Garantías y beneficios -->
+                    <div class="mt-6 space-y-3">
+                        <div class="flex items-center gap-3 text-sm text-gray-600">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Envío gratis en Mendoza</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-600">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Garantía de plantas saludables</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-600">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Soporte 24/7 para cuidados</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón de compra -->
+                    <button type="submit" form="checkout-form" id="complete-purchase" 
+                            class="w-full mt-8 bg-primary hover:bg-[var(--accent-color)] text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-pulse-green">
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            <span>Completar Compra</span>
+                        </div>
+                    </button>
+                    
+                    <!-- Security badges -->
+                    <div class="mt-6 flex items-center justify-center gap-4">
+                        <div class="security-badge text-white px-3 py-1 rounded-full text-xs font-medium">
+                            🔒 SSL 256-bit
+                        </div>
+                        <div class="flex items-center gap-1 text-xs text-gray-500">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Pago Verificado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer simplificado -->
+    <footer class="bg-gray-800 text-gray-300 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-sm">© 2024 Los Cocos. Todos los derechos reservados.</p>
+                <div class="flex justify-center gap-4 mt-2 text-xs">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
+                    <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+                    <a href="#" class="hover:text-white transition-colors">Cambios y Devoluciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="cart.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
