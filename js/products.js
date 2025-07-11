@@ -7,7 +7,7 @@ const products = [
   {
     id: 'p1', // Changed to string ID
     name: "Suculenta Echeveria",
-    imageSrc: "img/productos/suculenta_1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1459156212016-c812468e2115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     oldPrice: "$150",
     newPrice: "$100",
     description: "La Echeveria es una suculenta popular conocida por sus hermosas rosetas y su fácil cuidado. Ideal para principiantes, añade un toque decorativo a cualquier espacio interior o exterior con suficiente luz.",
@@ -22,13 +22,13 @@ const products = [
     offerDetails: {
       title: "¡Echeveria en Oferta Especial!",
       description: "Llévate esta hermosa Suculenta Echeveria con un 33% de descuento por tiempo limitado. Perfecta para iniciar tu colección.",
-      imageSrc: "img/ofertas/echeveria_oferta.jpg" // Example offer image
+      imageSrc: "https://images.unsplash.com/photo-1459156212016-c812468e2115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     }
   },
   {
     id: 'p2', // Changed to string ID
     name: "Cactus Globoso",
-    imageSrc: "img/productos/cactus_1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     oldPrice: "$200",
     newPrice: "$180",
     description: "Este cactus globoso, probablemente un Echinocactus grusonii joven, es una pieza central impresionante. Con sus espinas doradas y forma esférica, es resistente y de bajo mantenimiento.",
@@ -45,7 +45,7 @@ const products = [
   {
     id: 'p3', // Changed to string ID
     name: "Orquídea Phalaenopsis",
-    imageSrc: "img/productos/flor_1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$350",
     description: "La Orquídea Phalaenopsis, u orquídea mariposa, es una de las más fáciles de cuidar en interiores. Sus elegantes flores pueden durar meses, aportando un toque sofisticado.",
     category: "destacados",
@@ -59,13 +59,13 @@ const products = [
     offerDetails: {
       title: "Belleza Exótica: Phalaenopsis",
       description: "Adorna tu hogar con la elegancia de una Orquídea Phalaenopsis. Disponible en varios colores.",
-      imageSrc: "img/ofertas/phalaenopsis_detalle.jpg" // Example offer image
+      imageSrc: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     }
   },
   {
     id: 'p4', // Changed to string ID
     name: "Helecho Boston",
-    imageSrc: "img/productos/helecho_1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1600459489110-58e4fd28cb05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$250",
     description: "El Helecho Boston (Nephrolepis exaltata) es conocido por sus frondas arqueadas y plumosas que crean un ambiente fresco y natural. Es un excelente purificador de aire.",
     category: "destacados",
@@ -81,7 +81,7 @@ const products = [
   {
     id: 'p5', // Changed to string ID
     name: "Rosal Miniatura",
-    imageSrc: "img/productos/rosal_1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$220",
     description: "Los Rosales Miniatura ofrecen la belleza clásica de las rosas en un formato compacto, ideal para macetas en balcones, terrazas o interiores luminosos.",
     category: "flores",
@@ -97,7 +97,7 @@ const products = [
   {
     id: 'p6', // Changed to string ID
     name: "Aloe Vera",
-    imageSrc: "img/productos/aloe_1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1598374446045-3b19a513d375?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$120",
     description: "El Aloe Vera no solo es una planta suculenta fácil de cuidar, sino que también es conocida por las propiedades medicinales del gel de sus hojas.",
     category: "suculentas",
@@ -115,7 +115,7 @@ const products = [
   {
     id: 'spring_1',
     name: "Tulipanes Holandeses",
-    imageSrc: "img/productos/tulipanes.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1529539792455-d227a94b1ae4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     oldPrice: "$180",
     newPrice: "$150",
     description: "Coloridos tulipanes para alegrar tu primavera.",
@@ -127,7 +127,7 @@ const products = [
   {
     id: 'spring_2',
     name: "Jacintos Perfumados",
-    imageSrc: "img/productos/jacintos.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$160",
     description: "Jacintos con fragancia embriagadora, anuncian la primavera.",
     category: "destacados",
@@ -138,7 +138,7 @@ const products = [
   {
     id: 'summer_1',
     name: "Girasol Gigante",
-    imageSrc: "img/productos/girasol.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1572441710263-6f5b32fce6fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     oldPrice: "$120",
     newPrice: "$90",
     description: "Impresionantes girasoles para el verano.",
@@ -150,7 +150,7 @@ const products = [
   {
     id: 'autumn_1',
     name: "Crisantemos Otoñales",
-    imageSrc: "img/productos/crisantemos.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1571689933690-27157af1dbd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$130",
     description: "Crisantemos en tonos cálidos para el otoño.",
     category: "ofertas",
@@ -161,7 +161,7 @@ const products = [
   {
     id: 'winter_1',
     name: "Poinsettia (Flor de Pascua)",
-    imageSrc: "img/productos/poinsettia.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     newPrice: "$170",
     description: "La tradicional Flor de Pascua para decorar en invierno.",
     category: "ofertas",
