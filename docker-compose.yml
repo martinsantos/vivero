@@ -11,10 +11,14 @@ services:
       MYSQL_ROOT_PASSWORD: root_password_2024
     volumes:
       - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - loscocos_network
 
-  # WordPress
+  # WordPress con WP-CLI
   wordpress:
     image: wordpress:latest
     container_name: loscocos_wordpress
@@ -26,13 +30,50 @@ services:
       WORDPRESS_DB_NAME: loscocos_wp
       WORDPRESS_DB_USER: loscocos_user
       WORDPRESS_DB_PASSWORD: loscocos_2024
-      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG: 0
     volumes:
       - wordpress_data:/var/www/html
       - ./wp-config.php:/var/www/html/wp-config.php
-      - ./theme-loscocos:/var/www/html/wp-content/themes/loscocos
+      - ./wp-content:/var/www/html/wp-content
+      - ./docker-init-production.sh:/usr/local/bin/docker-init.sh
     ports:
       - "8080:80"
+    networks:
+      - loscocos_network
+
+  # Nginx for better file handling
+  nginx:
+    image: nginx:alpine
+    container_name: loscocos_nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx-mime.conf:/etc/nginx/conf.d/mime.conf:ro
+      - wordpress_data:/var/www/html
+    ports:
+      - "8082:80"
+    networks:
+      - loscocos_network
+
+  # WP-CLI para configuración automática
+  wpcli:
+    image: wordpress:cli
+    container_name: loscocos_wpcli
+    depends_on:
+      - db
+      - wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: loscocos_wp
+      WORDPRESS_DB_USER: loscocos_user
+      WORDPRESS_DB_PASSWORD: loscocos_2024
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-config.php:/var/www/html/wp-config.php
+      - ./wp-content:/var/www/html/wp-content
+      - ./docker-init-production.sh:/usr/local/bin/docker-init.sh
+    command: sh -c "sleep 30 && /usr/local/bin/docker-init.sh"
+    networks:
+      - loscocos_network
 
   # phpMyAdmin
   phpmyadmin:
@@ -48,6 +89,8 @@ services:
       PMA_PASSWORD: root_password_2024
     ports:
       - "8081:80"
+    networks:
+      - loscocos_network
 
 volumes:
   db_data:
