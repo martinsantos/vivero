@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Infografía Presupuesto – Ultima Milla</title>
+
+<!-- Estilos -->
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin:0;
+  padding:20px;
+  background:#f9fafb;
+}
+h1 { text-align:center; color:#333; }
+.infografia { max-width:800px; margin:auto;}
+.bar, .section ul li { position:relative; margin-bottom:12px; }
+.label { display:block; font-weight:bold; margin-bottom:4px; }
+.value { height:20px; background:#007bff; width:0%; }
+</style>
+
+<!-- Anime.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/dist/anime.min.js"></script>
+</head>
+<body>
+
+<h1>Resumen del Presupuesto (2025)</h1>
+
+<div class="infografia">
+
+  <!-- Barra total inversión -->
+  <div class="bar" id="total-inv">
+    <span class="label">Total Inversión: $36,388,000</span>
+    <div class="value"></div>
+  </div>
+
+  <!-- Desglose de Inversión -->
+  <div class="section">
+    <h2>Desglose de Inversión</h2>
+    <ul>
+      <li id="anarch"><span class="label">Análisis y Arquitectura: $3,840,000</span><div class="value"></div></li>
+      <li id="backend"><span class="label">Backend: $12,000,000</span><div class="value"></div></li>
+      <li id="frontend"><span class="label">Frontend: $7,200,000</span><div class="value"></div></li>
+      <li id="integr"><span class="label">Integración y APIs: $4,400,000</span><div class="value"></div></li>
+      <li id="qa"><span class="label">QA & Testing: $2,400,000</span><div class="value"></div></li>
+      <li id="devops"><span class="label">DevOps y Deploy: $2,600,000</span><div class="value"></div></li>
+      <li id="cap"><span class="label">Capacitación: $640,000</span><div class="value"></div></li>
+      <li id="pm"><span class="label">PM + Scrum Master: $3,308,000</span><div class="value"></div></li>
+    </ul>
+  </div>
+
+  <!-- Infraestructura Cloud (Anual) -->
+  <div class="section">
+    <h2>Infraestructura Cloud (Anual)</h2>
+    <ul>
+      <li id="k8s"><span class="label">Kubernetes Cluster: $5,400</span><div class="value"></div></li>
+      <li id="db"><span class="label">PostgreSQL: $3,360</span><div class="value"></div></li>
+      <li id="redis"><span class="label">Redis Cache: $1,440</span><div class="value"></div></li>
+      <li id="storage"><span class="label">Object Storage: $1,020</span><div class="value"></div></li>
+      <li id="lb"><span class="label">Load Balancer: $780</span><div class="value"></div></li>
+      <li id="monitoring"><span class="label">Monitoring Stack: $1,800</span><div class="value"></div></li>
+      <li id="email"><span class="label">Email Service: $540</span><div class="value"></div></li>
+      <li id="cdn"><span class="label">CDN CloudFlare: $240</span><div class="value"></div></li>
+      <li id="backup"><span class="label">Backup & DR: $2,160</span><div class="value"></div></li>
+    </ul>
+  </div>
+
+  <!-- Plan de Pagos Optimizado -->
+  <div class="section">
+    <h2>Plan de Pagos Optimizado</h2>
+    <ul>
+      <li id="firma"><span class="label">Firma de Contrato: 30% ($10,916,400)</span><div class="value"></div></li>
+      <li id="core"><span class="label">Core Platform Ready: 20% ($7,277,600)</span><div class="value"></div></li>
+      <li id="business"><span class="label">Business Services Complete: 25% ($9,097,000)</span><div class="value"></div></li>
+      <li id="advanced"><span class="label">Advanced Features: 15% ($5,458,200)</span><div class="value"></div></li>
+      <li id="goLive"><span class="label">Go-Live Successful: 10% ($3,638,800)</span><div class="value"></div></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- Animaciones con Anime.js -->
+<script>
+const data = {
+  totalInv: { value: 100 },
+  arch: { value: 10.0 },
+  backend: { value: 32.8 },
+  frontend: { value: 19.7 },
+  integr: { value: 12.1 },
+  qa: { value: 6.6 },
+  devops: { value: 7.1 },
+  cap: { value: 1.8 },
+  pm: { value: 9.1 },
+
+  k8s: { value: 14.8 },
+  db: { value: 9.2 },
+  redis: { value: 4.0 },
+  storage: { value: 2.8 },
+  lb: { value: 2.1 },
+  monitoring: { value: 5.0 },
+  email: { value: 1.5 },
+  cdn: { value: 0.7 },
+  backup: { value: 6.0 },
+
+  firma: { value: 30 },
+  core: { value: 20 },
+  business: { value: 25 },
+  advanced: { value: 15 },
+  goLive: { value: 10 }
+};
+
+function animateBar(id, dataObj) {
+  const bar = document.getElementById(id);
+  const valueDiv = bar.querySelector('.value');
+  anime({
+    targets: valueDiv,
+    width: `${dataObj.value}%`,
+    easing: 'easeOutExpo',
+    duration: 800,
+    delay: 200
+  });
+}
+
+animateBar('total-inv', data.totalInv);
+
+setTimeout(() => {
+  ['anarch','backend','frontend','integr','qa','devops','cap','pm'].forEach(id => animateBar(id, data[id]));
+}, 1200);
+
+setTimeout(() => {
+  ['k8s','db','redis','storage','lb','monitoring','email','cdn','backup'].forEach(id => animateBar(id, data[id]));
+}, 2400);
+
+setTimeout(() => {
+  ['firma','core','business','advanced','goLive'].forEach(id => animateBar(id, data[id]));
+}, 3600);
+</script>
+</body>
+</html>

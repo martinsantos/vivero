@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Epilogue:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Vivero Los Cocos - My Account</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1dc91d",
+            "background-light": "#f6f8f6",
+            "background-dark": "#112111",
+          },
+          fontFamily: {
+            "display": ["Epilogue"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-stone-800 dark:text-stone-200">
+<div class="flex flex-col min-h-screen">
+<header class="bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">eco</span>
+<h2 class="text-xl font-bold">Vivero Los Cocos</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Plants</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Supplies</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Flowers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-500">search</span>
+<input class="form-input w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-stone-800 dark:text-stone-200 bg-background-light dark:bg-background-dark focus:ring-2 focus:ring-primary/50 border-none h-10 placeholder:text-stone-500 pl-10 pr-4 text-sm font-normal" placeholder="Search" value=""/>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-full size-10 bg-background-light dark:bg-background-dark hover:bg-primary/10 dark:hover:bg-primary/20 text-stone-600 dark:text-stone-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite_border</span>
+</button>
+<button class="flex items-center justify-center rounded-full size-10 bg-background-light dark:bg-background-dark hover:bg-primary/10 dark:hover:bg-primary/20 text-stone-600 dark:text-stone-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBU8SYeh85kH_2QzLDNioouo5h_HjwHzXdv43VKMUt2CM4Vzf9NwQlICFZ00h1fYMDp4fmzSD7jjrVGG8AaTn2Q8hW-GAlpoOQVRijKwE-Y8r4gXnDUdZgq6rXVIgIRaLWDv0MHWPdA3scXuNYRfxTXLsrlBr4OTiDD2pzQN_ixMOv9bs_Mvs6EwYjzel3kwLgue5I53ayS2H3MpAw31NqtRCSOOBovscdRcujql_J2Shuae8pAHGuf1s0RSnYtmOHSnkWXrf8YLgu1");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-5xl mx-auto">
+<div class="mb-8">
+<h1 class="text-4xl font-bold tracking-tight text-stone-900 dark:text-white">My Account</h1>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="lg:w-1/4">
+<nav class="flex flex-col gap-1">
+<a class="px-4 py-2 rounded-lg text-left text-stone-600 dark:text-stone-300 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">Overview</a>
+<a class="px-4 py-2 rounded-lg text-left bg-primary/10 dark:bg-primary/20 text-primary font-bold" href="#">My Orders</a>
+<a class="px-4 py-2 rounded-lg text-left text-stone-600 dark:text-stone-300 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">Account Settings</a>
+<a class="px-4 py-2 rounded-lg text-left text-stone-600 dark:text-stone-300 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">Addresses</a>
+</nav>
+</aside>
+<div class="lg:w-3/4">
+<div class="bg-white dark:bg-background-dark/50 rounded-xl shadow-sm">
+<div class="p-6">
+<h2 class="text-2xl font-bold text-stone-900 dark:text-white mb-6">Past Orders</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-stone-200 dark:border-stone-700">
+<th class="px-4 py-3 text-sm font-medium text-stone-600 dark:text-stone-400">Order Number</th>
+<th class="px-4 py-3 text-sm font-medium text-stone-600 dark:text-stone-400">Date</th>
+<th class="px-4 py-3 text-sm font-medium text-stone-600 dark:text-stone-400">Total</th>
+<th class="px-4 py-3 text-sm font-medium text-stone-600 dark:text-stone-400">Status</th>
+<th class="px-4 py-3 text-sm font-medium text-stone-600 dark:text-stone-400 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-stone-200 dark:divide-stone-700">
+<tr>
+<td class="px-4 py-4 text-sm font-medium text-stone-800 dark:text-stone-200">#12345</td>
+<td class="px-4 py-4 text-sm text-stone-600 dark:text-stone-400">July 15, 2023</td>
+<td class="px-4 py-4 text-sm text-stone-600 dark:text-stone-400">$75.00</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary">Delivered</span>
+</td>
+<td class="px-4 py-4 text-right">
+<a class="text-sm font-medium text-primary hover:underline" href="#">View Details</a>
+</td>
+</tr>
+<tr>
+<td class="px-4 py-4 text-sm font-medium text-stone-800 dark:text-stone-200">#67890</td>
+<td class="px-4 py-4 text-sm text-stone-600 dark:text-stone-400">June 20, 2023</td>
+<td class="px-4 py-4 text-sm text-stone-600 dark:text-stone-400">$120.50</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary">Delivered</span>
+</td>
+<td class="px-4 py-4 text-right">
+<a class="text-sm font-medium text-primary hover:underline" href="#">View Details</a>
+</td>
+</tr>
+<tr>
+<td class="px-4 py-4 text-sm font-medium text-stone-800 dark:text-stone-200">#11223</td>
+<td class="px-4 py-4 text-sm text-stone-600 dark:text-stone-400">May 5, 2023</td>
+<td class="px-4 py-4 text-sm text-stone-600 dark:text-stone-400">$50.00</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary">Delivered</span>
+</td>
+<td class="px-4 py-4 text-right">
+<a class="text-sm font-medium text-primary hover:underline" href="#">View Details</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-background-dark/50 border-t border-stone-200 dark:border-stone-800 mt-16">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-sm font-bold text-stone-900 dark:text-white mb-4">Shop</h3>
+<ul class="space-y-2">
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Plants</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Supplies</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Flowers</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Gifts</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold text-stone-900 dark:text-white mb-4">About</h3>
+<ul class="space-y-2">
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Our Story</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Blog</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold text-stone-900 dark:text-white mb-4">Support</h3>
+<ul class="space-y-2">
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">FAQs</a></li>
+<li><a class="text-sm text-stone-600 dark:text-stone-400 hover:text-primary" href="#">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold text-stone-900 dark:text-white mb-4">Stay Connected</h3>
+<p class="text-sm text-stone-600 dark:text-stone-400 mb-4">Join our newsletter for updates and promotions.</p>
+<form class="flex">
+<input class="form-input w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-md text-stone-800 dark:text-stone-200 bg-background-light dark:bg-background-dark focus:ring-2 focus:ring-primary/50 border border-stone-300 dark:border-stone-700 h-10 placeholder:text-stone-500 px-4 text-sm font-normal" placeholder="Your email" type="email"/>
+<button class="bg-primary text-white px-4 h-10 rounded-r-md hover:bg-primary/90 transition-colors" type="submit">Sign Up</button>
+</form>
+</div>
+</div>
+<div class="mt-8 border-t border-stone-200 dark:border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-stone-500 dark:text-stone-400">
+<p>© 2024 Vivero Los Cocos. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+
+</body></html>

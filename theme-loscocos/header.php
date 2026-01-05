@@ -4,6 +4,13 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    <?php
+    $site_icon = get_site_icon_url(32);
+    if (!$site_icon) {
+        $site_icon = get_template_directory_uri() . '/placeholder.svg';
+    }
+    ?>
+    <link rel="icon" href="<?php echo esc_url($site_icon); ?>" sizes="32x32" />
     <?php wp_head(); ?>
     <style>
         /* Base styles */
@@ -37,6 +44,9 @@
         
         /* Container */
         .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
+
+        /* Normalizar imágenes sin tamaño para evitar reflows/hide "Marcador" */
+        img { max-width: 100%; height: auto; display: block; }
         
         /* Product Grid */
         .product-grid { 

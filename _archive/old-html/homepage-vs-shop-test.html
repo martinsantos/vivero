@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔍 Homepage vs Shop Test - Los Cocos</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: sans-serif; margin: 40px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; }
+        .test-container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; padding: 40px 20px; }
+        .hero h1 { font-size: 3.5rem; margin: 0; text-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.3rem; margin: 20px 0; opacity: 0.9; }
+        .test-section { background: rgba(255,255,255,0.95); color: #333; padding: 35px; margin: 25px 0; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
+        .comparison-item { background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 25px; border-radius: 12px; }
+        .working { border-left: 6px solid #28a745; }
+        .broken { border-left: 6px solid #dc3545; }
+        .fixed { border-left: 6px solid #ffc107; }
+        .iframe-container { border: 3px solid #333; border-radius: 12px; overflow: hidden; margin: 20px 0; }
+        .iframe-container h3 { margin: 0 0 15px 0; font-size: 1.2rem; }
+        iframe { width: 100%; height: 600px; border: none; }
+        .test-result { padding: 20px; margin: 15px 0; border-radius: 10px; font-weight: 600; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .info { background: #cce8ff; color: #004085; border: 1px solid #b8daff; }
+        .button { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer; text-decoration: none; display: inline-block; margin: 10px; font-weight: 600; }
+        .button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .code-block { background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 14px; margin: 15px 0; overflow-x: auto; }
+        .highlight { background: #ffd700; color: #333; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .badge { display: inline-block; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; margin: 5px; }
+        .badge-issue { background: #dc3545; color: white; }
+        .badge-fix { background: #28a745; color: white; }
+        .badge-test { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="hero">
+            <h1>🔍 HOMEPAGE vs SHOP</h1>
+            <p>Diagnosticando por qué la tienda funciona pero la home no</p>
+            <div>
+                <span class="badge badge-issue">ISSUE FOUND</span>
+                <span class="badge badge-fix">FIX APPLIED</span>
+                <span class="badge badge-test">TESTING</span>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🕵️ PROBLEMA IDENTIFICADO</h2>
+            
+            <div class="test-result error">
+                <strong>ROOT CAUSE:</strong> El JavaScript del carousel y los scripts de WooCommerce AJAX <strong>solo se cargan en `is_front_page()`</strong>, pero el homepage requiere funcionalidad WooCommerce completa.
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item working">
+                    <h3>✅ TIENDA (Funciona)</h3>
+                    <ul>
+                        <li><strong>URL:</strong> /tienda/</li>
+                        <li><strong>Template:</strong> WooCommerce shop template</li>
+                        <li><strong>Scripts:</strong> WooCommerce AJAX scripts automáticos</li>
+                        <li><strong>Botones:</strong> Funcionan perfectamente</li>
+                        <li><strong>Reason:</strong> WooCommerce maneja todo automáticamente</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-item broken">
+                    <h3>❌ HOMEPAGE (No funciona)</h3>
+                    <ul>
+                        <li><strong>URL:</strong> / (root)</li>
+                        <li><strong>Template:</strong> front-page.php</li>
+                        <li><strong>Scripts:</strong> Solo carousel JS, sin WooCommerce AJAX</li>
+                        <li><strong>Botones:</strong> No responden</li>
+                        <li><strong>Reason:</strong> Falta integración WooCommerce</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔧 SOLUCIÓN IMPLEMENTADA</h2>
+            
+            <div class="test-result success">
+                <strong>FIX 1:</strong> Extendí la condición de carga de WooCommerce scripts para incluir `is_front_page()`
+            </div>
+            
+            <div class="test-result success">
+                <strong>FIX 2:</strong> Agregué localización específica de parámetros WooCommerce AJAX para el homepage
+            </div>
+            
+            <div class="test-result success">
+                <strong>FIX 3:</strong> Aseguré que los scripts se cargan en el orden correcto con dependencias
+            </div>
+            
+            <div class="code-block">
+<strong>ANTES (functions.php):</strong>
+// Scripts WooCommerce solo en páginas WooCommerce
+if (function_exists('is_woocommerce') || function_exists('is_cart') || function_exists('is_checkout')) {
+  wp_enqueue_script('wc-add-to-cart');
+}
+
+<strong>DESPUÉS (functions.php):</strong>
+// Scripts WooCommerce en páginas WooCommerce + HOMEPAGE
+if (function_exists('is_woocommerce') || function_exists('is_cart') || function_exists('is_checkout') || <span class="highlight">is_front_page()</span>) {
+  wp_enqueue_script('wc-add-to-cart');
+  wp_enqueue_script('wc-cart-fragments');
+  wp_enqueue_script('woocommerce');
+}
+
+// Localización específica para homepage
+if (<span class="highlight">is_front_page()</span> && function_exists('WC')) {
+  wp_localize_script('loscocos-home-carousel', 'wc_add_to_cart_params', array(
+    'ajax_url' => WC()->ajax_url(),
+    'wc_ajax_url' => WC_AJAX::get_endpoint('%%endpoint%%'),
+    // ... más parámetros WooCommerce
+  ));
+}
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🧪 COMPARACIÓN EN VIVO</h2>
+            
+            <div class="test-result info">
+                <strong>PRUEBA:</strong> Abre ambas páginas y prueba los botones "Agregar al carrito" en los carousels/grids de productos.
+            </div>
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="http://localhost:8080/" target="_blank" class="button">🏠 Homepage (ARREGLADO)</a>
+                <a href="http://localhost:8080/tienda/" target="_blank" class="button">🛒 Tienda (YA FUNCIONABA)</a>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="iframe-container">
+                    <h3>🏠 HOMEPAGE - Ahora debería funcionar</h3>
+                    <iframe src="http://localhost:8080/" title="Homepage Fixed"></iframe>
+                </div>
+                
+                <div class="iframe-container">
+                    <h3>🛒 TIENDA - Siempre funcionó</h3>
+                    <iframe src="http://localhost:8080/tienda/" title="Shop Working"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>✅ RESULTADOS ESPERADOS</h2>
+            
+            <div class="test-result success">
+                ✅ <strong>Homepage:</strong> Botones "Agregar al carrito" en carousel funcionan
+            </div>
+            
+            <div class="test-result success">
+                ✅ <strong>Tienda:</strong> Sigue funcionando como antes
+            </div>
+            
+            <div class="test-result success">
+                ✅ <strong>AJAX:</strong> Productos se agregan sin recargar página
+            </div>
+            
+            <div class="test-result success">
+                ✅ <strong>Feedback:</strong> Botones muestran "Agregando..." → "¡Agregado!"
+            </div>
+            
+            <div class="test-result success">
+                ✅ <strong>Contador:</strong> Cart count se actualiza automáticamente
+            </div>
+            
+            <div class="test-result success">
+                ✅ <strong>Console:</strong> Sin errores JavaScript
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔍 CÓMO VERIFICAR EL FIX</h2>
+            
+            <div class="test-result info">
+                <strong>PASOS DE VERIFICACIÓN:</strong>
+            </div>
+            
+            <ol style="font-size: 1.1rem; line-height: 1.8;">
+                <li><strong>Abre la homepage</strong> (http://localhost:8080/)</li>
+                <li><strong>Localiza cualquier carousel</strong> (Promociones, Novedades, Más vendidos)</li>
+                <li><strong>Haz click en "Agregar al carrito"</strong> en cualquier producto</li>
+                <li><strong>Verifica el feedback visual:</strong> "Agregando..." → "¡Agregado!"</li>
+                <li><strong>Revisa el contador del carrito</strong> (debe aumentar)</li>
+                <li><strong>Abre browser console</strong> (F12) - no debe haber errores</li>
+                <li><strong>Compara con la tienda</strong> - ambas deben funcionar igual</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h2>🚨 SI AÚN NO FUNCIONA</h2>
+            
+            <div class="test-result warning">
+                <strong>DEBUG STEPS:</strong><br>
+                1. Hard refresh (Cmd+Shift+R o Ctrl+Shift+R)<br>
+                2. Check browser console for errors<br>
+                3. Verify scripts are loading in Network tab<br>
+                4. Clear any caching plugins
+            </div>
+            
+            <div class="code-block">
+<strong>Debug Commands (Browser Console):</strong>
+
+// Check if WooCommerce scripts loaded
+typeof wc_add_to_cart_params !== 'undefined'
+
+// Check if jQuery loaded  
+typeof jQuery !== 'undefined'
+
+// Check if buttons have correct classes
+document.querySelectorAll('.ajax_add_to_cart').length > 0
+
+// Test manual button click
+document.querySelector('.add_to_cart_button')?.click()
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('🔍 Homepage vs Shop Diagnostic Test Loaded');
+        console.log('🎯 Testing WooCommerce script loading fix');
+        
+        // Auto-refresh iframes to show latest changes
+        setInterval(function() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                iframe.src = iframe.src;
+            });
+        }, 45000);
+        
+        setTimeout(() => {
+            console.log('✅ Fix applied: WooCommerce scripts now load on homepage');
+            console.log('🏠 Test homepage buttons: http://localhost:8080/');
+            console.log('🛒 Compare with shop: http://localhost:8080/tienda/');
+        }, 1000);
+    </script>
+</body>
+</html>

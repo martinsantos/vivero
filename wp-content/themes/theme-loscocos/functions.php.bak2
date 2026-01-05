@@ -1,0 +1,506 @@
+<?php
+
+// AJAX Setup
+function loscocos_ajax_setup() {
+    wp_enqueue_script('cart-woocommerce', get_template_directory_uri() . '/js/cart-woocommerce.js', array('jquery'), '2.0.0', true);
+    wp_localize_script('cart-woocommerce', 'loscocos_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('loscocos_ajax_nonce')
+    ));
+}
+add_action('wp_enqueue_scripts', 'loscocos_ajax_setup');
+
+// AJAX Add to Cart Handler
+function loscocos_add_to_cart() {
+    check_ajax_referer('loscocos_ajax_nonce', 'nonce');
+    
+    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+    
+    if ($product_id <= 0) {
+        wp_send_json_error('Invalid product ID');
+    }
+    
+    $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
+    
+    if ($passed_validation) {
+        $added = WC()->cart->add_to_cart($product_id, $quantity);
+        
+        if ($added) {
+            $data = array(
+                'message' => __('Product added to cart successfully', 'loscocos'),
+                'cart_count' => WC()->cart->get_cart_contents_count(),
+                'fragments' => apply_filters('woocommerce_add_to_cart_fragments', array())
+            );
+            wp_send_json_success($data);
+        } else {
+            wp_send_json_error(__('Error adding product to cart', 'loscocos'));
+        }
+    } else {
+        wp_send_json_error(__('Product validation failed', 'loscocos'));
+    }
+}
+add_action('wp_ajax_loscocos_add_to_cart', 'loscocos_add_to_cart');
+add_action('wp_ajax_nopriv_loscocos_add_to_cart', 'loscocos_add_to_cart');
+/**
+ * Functions para Vivero Los Cocos - Estrategia de Archivos Físicos
+ */
+
+// Incluir sistema unificado
+require_once get_template_directory() . '/includes/url-manager.php';
+
+// Enqueue scripts and styles
+function loscocos_enqueue_scripts() {
+    // Enqueue Google Fonts
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap', array(), null);
+    
+    // Enqueue Material Icons
+    wp_enqueue_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), null);
+    
+    // Enqueue unified styles FIRST
+    wp_enqueue_style('loscocos-unified', get_template_directory_uri() . '/assets/css/unified-styles.css', array(), '1.0.0');
+    
+    // Enqueue theme styles
+    wp_enqueue_style('loscocos-style', get_stylesheet_uri(), array('loscocos-unified'), '1.0.0');
+    
+    // Load Tailwind CSS - Always use compiled file
+    wp_enqueue_style('tailwind-css', get_template_directory_uri() . '/css/tailwind.min.css', array(), '3.3.0');
+    
+    // Enqueue Tailwind config
+    wp_enqueue_script('tailwind-config', get_template_directory_uri() . '/js/tailwind-config.js', array(), '1.0.0', false);
+    
+    // Ensure WooCommerce cart fragments script is loaded first
+    if (function_exists('is_woocommerce')) {
+        wp_enqueue_script('wc-cart-fragments');
+    }
+    
+    // Sistema de carrito desactivado temporalmente - Usando versión del child theme
+    /*
+    $cart_js_path = get_template_directory() . '/js/cart-woocommerce.js';
+    if (file_exists($cart_js_path)) {
+        wp_enqueue_script(
+            'loscocos-cart',
+            get_template_directory_uri() . '/js/cart-woocommerce.js',
+            array('jquery', 'wc-cart-fragments'),
+            filemtime($cart_js_path),
+            true
+        );
+        
+        // Localize script for AJAX
+        wp_localize_script('loscocos-cart', 'loscocos_ajax', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('loscocos-nonce'),
+            'add_to_cart_nonce' => wp_create_nonce('add-to-cart-nonce'),
+            'is_cart' => is_cart(),
+            'wc_ajax_url' => WC_AJAX::get_endpoint('%%endpoint%%')
+        ));
+    }
+    */
+    
+    // Enqueue custom scripts if the file exists
+    $main_js_path = get_template_directory() . '/js/main.js';
+    if (file_exists($main_js_path)) {
+        wp_enqueue_script(
+            'loscocos-script',
+            get_template_directory_uri() . '/js/main.js',
+            array('jquery', 'loscocos-cart'),
+            filemtime($main_js_path),
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'loscocos_enqueue_scripts');
+
+// Add AJAX handlers for cart operations
+add_action('wp_ajax_loscocos_add_to_cart', 'loscocos_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_loscocos_add_to_cart', 'loscocos_ajax_add_to_cart');
+
+// Standard WooCommerce AJAX add to cart handler
+add_action('wp_ajax_add_to_cart', 'wc_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_add_to_cart', 'wc_ajax_add_to_cart');
+
+// Standard WooCommerce AJAX add to cart handler
+add_action('wp_ajax_add_to_cart', 'loscocos_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_add_to_cart', 'loscocos_ajax_add_to_cart');
+
+add_action('wp_ajax_loscocos_update_cart', 'loscocos_ajax_update_cart');
+add_action('wp_ajax_nopriv_loscocos_update_cart', 'loscocos_ajax_update_cart');
+
+add_action('wp_ajax_loscocos_remove_item', 'loscocos_ajax_remove_item');
+add_action('wp_ajax_nopriv_loscocos_remove_item', 'loscocos_ajax_remove_item');
+
+/**
+ * AJAX handler for adding items to cart
+ */
+function loscocos_ajax_add_to_cart() {
+    check_ajax_referer('loscocos-nonce', 'nonce');
+    
+    $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
+    $quantity = isset($_POST['quantity']) ? wc_stock_amount($_POST['quantity']) : 1;
+    
+    // GARANTIZAR QUE SOLO SE AÑADA 1 PRODUCTO POR VEZ
+    $quantity = min($quantity, 1);
+    
+    if ($product_id <= 0) {
+        wp_send_json_error('ID de producto no válido');
+        return;
+    }
+    
+    $product = wc_get_product($product_id);
+    
+    if (!$product) {
+        wp_send_json_error('Producto no encontrado');
+        return;
+    }
+    
+    // Add to cart
+    $cart_item_key = WC()->cart->add_to_cart($product_id, $quantity);
+    
+    if ($cart_item_key) {
+        // Get updated cart fragments
+        $fragments = array();
+        
+        // Get mini cart
+        ob_start();
+        woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+        
+        $fragments['div.widget_shopping_cart_content'] = '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>';
+        
+        // Cart hash
+        $fragments['cart_hash'] = WC()->cart->get_cart_hash();
+        
+        // Cart items count
+        $fragments['cart_count'] = WC()->cart->get_cart_contents_count();
+        
+        wp_send_json_success(array(
+            'message' => 'Producto añadido al carrito',
+            'fragments' => $fragments,
+            'cart_hash' => WC()->cart->get_cart_hash(),
+            'cart_count' => WC()->cart->get_cart_contents_count()
+        ));
+    } else {
+        wp_send_json_error('No se pudo agregar el producto al carrito');
+    }
+}
+
+/**
+ * AJAX handler for updating cart item quantities
+ */
+function loscocos_ajax_update_cart() {
+    check_ajax_referer('loscocos-nonce', 'nonce');
+    
+    $cart_item_key = isset($_POST['cart_item_key']) ? wc_clean($_POST['cart_item_key']) : '';
+    $quantity = isset($_POST['quantity']) ? wc_stock_amount($_POST['quantity']) : 0;
+    
+    if (empty($cart_item_key)) {
+        wp_send_json_error('Clave de artículo del carrito no válida');
+        return;
+    }
+    
+    // Update cart
+    $cart_updated = WC()->cart->set_quantity($cart_item_key, $quantity);
+    
+    if ($cart_updated) {
+        // Get updated cart fragments
+        $fragments = array();
+        
+        // Get mini cart
+        ob_start();
+        woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+        
+        $fragments['div.widget_shopping_cart_content'] = '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>';
+        
+        // Cart hash
+        $fragments['cart_hash'] = WC()->cart->get_cart_hash();
+        
+        // Cart items count
+        $fragments['cart_count'] = WC()->cart->get_cart_contents_count();
+        
+        wp_send_json_success(array(
+            'message' => 'Carrito actualizado',
+            'fragments' => $fragments,
+            'cart_hash' => WC()->cart->get_cart_hash(),
+            'cart_count' => WC()->cart->get_cart_contents_count(),
+            'subtotal' => WC()->cart->get_cart_subtotal()
+        ));
+    } else {
+        wp_send_json_error('No se pudo actualizar el carrito');
+    }
+}
+
+/**
+ * AJAX handler for removing items from cart
+ */
+function loscocos_ajax_remove_item() {
+    check_ajax_referer('loscocos-nonce', 'nonce');
+    
+    $cart_item_key = isset($_POST['cart_item_key']) ? wc_clean($_POST['cart_item_key']) : '';
+    
+    if (empty($cart_item_key)) {
+        wp_send_json_error('Clave de artículo del carrito no válida');
+        return;
+    }
+    
+    // Remove item from cart
+    $cart_updated = WC()->cart->remove_cart_item($cart_item_key);
+    
+    if ($cart_updated) {
+        // Get updated cart fragments
+        $fragments = array();
+        
+        // Get mini cart
+        ob_start();
+        woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+        
+        $fragments['div.widget_shopping_cart_content'] = '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>';
+        
+        // Cart hash
+        $fragments['cart_hash'] = WC()->cart->get_cart_hash();
+        
+        // Cart items count
+        $fragments['cart_count'] = WC()->cart->get_cart_contents_count();
+        
+        wp_send_json_success(array(
+            'message' => 'Producto eliminado del carrito',
+            'fragments' => $fragments,
+            'cart_hash' => WC()->cart->get_cart_hash(),
+            'cart_count' => WC()->cart->get_cart_contents_count(),
+            'subtotal' => WC()->cart->get_cart_subtotal()
+        ));
+    } else {
+        wp_send_json_error('No se pudo eliminar el producto del carrito');
+    }
+}
+
+// Configuración básica del tema
+function loscocos_theme_setup() {
+    // Add theme support
+    add_theme_support('woocommerce');
+    add_theme_support('post-thumbnails');
+    add_theme_support('title-tag');
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
+    add_theme_support('custom-logo', array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ));
+    
+    // Register navigation menus
+    register_nav_menus(array(
+        'primary' => __('Menú Principal', 'loscocos'),
+        'footer'  => __('Menú de Pie', 'loscocos'),
+    ));
+}
+add_action('after_setup_theme', 'loscocos_theme_setup');
+
+// =================================================================================
+// SISTEMA DE IMÁGENES SVG - GUARDANDO COMO ARCHIVOS
+// =================================================================================
+
+function loscocos_get_product_image($product_id) {
+    $upload_dir = wp_upload_dir();
+    $images_dir = $upload_dir['basedir'] . '/loscocos-images';
+    $images_url = $upload_dir['baseurl'] . '/loscocos-images';
+    $image_path = $images_dir . '/' . $product_id . '.svg';
+    $image_url = $images_url . '/' . $product_id . '.svg';
+
+    // También verificar el formato alternativo que aparece en los logs
+    $alt_image_path = $upload_dir['basedir'] . '/product-' . $product_id . '-placeholder.svg';
+    $alt_image_url = $upload_dir['baseurl'] . '/product-' . $product_id . '-placeholder.svg';
+
+    if (file_exists($image_path)) {
+        return $image_url;
+    } elseif (file_exists($alt_image_path)) {
+        return $alt_image_url;
+    }
+
+    $product = wc_get_product($product_id);
+    if (!$product) {
+        // Crear imagen placeholder genérica
+        $generic_svg = '<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad-generic-' . $product_id . '" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#9ca3af" />
+                    <stop offset="100%" stop-color="#6b7280" />
+                </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grad-generic-' . $product_id . ')" rx="12"/>
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="80" fill="white">📦</text>
+            <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">Producto</text>
+        </svg>';
+        
+        wp_mkdir_p($images_dir);
+        file_put_contents($image_path, $generic_svg);
+        
+        return $image_url;
+    }
+
+    $product_name = $product->get_name();
+    $color1 = '#059669';
+    $color2 = '#10b981';
+    $icon = '🌱'; // Usando un emoji válido
+    
+    $svg = '<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="grad-' . $product_id . '" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="' . $color1 . '" />
+                <stop offset="100%" stop-color="' . $color2 . '" />
+            </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad-' . $product_id . ')" rx="12"/>
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="80" fill="white">' . $icon . '</text>
+        <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">' . esc_html($product_name) . '</text>
+    </svg>';
+    
+    wp_mkdir_p($images_dir);
+    file_put_contents($image_path, $svg);
+    
+    return $image_url;
+}
+
+// =================================================================================
+// FILTRO UNIVERSAL PARA FORZAR IMÁGENES EN TODO EL SITIO
+// =================================================================================
+
+add_filter('woocommerce_product_get_image', 'loscocos_force_svg_image_file', 10, 2);
+
+function loscocos_force_svg_image_file($image, $product) {
+    $image_url = loscocos_get_product_image($product->get_id());
+    return '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($product->get_name()) . '" />';
+}
+
+// =================================================================================
+// FORZAR TEMPLATE SINGLE-PRODUCT PARA PRODUCTOS INDIVIDUALES
+// =================================================================================
+
+// Forzar el uso del template single-product para productos individuales
+function loscocos_force_single_product_template($template) {
+    global $wp_query;
+    
+    // Si es una consulta de producto individual estándar de WooCommerce
+    if (is_singular('product')) {
+        // Buscar el template single-product.php en el tema
+        $single_product_template = locate_template('single-product.php');
+        if ($single_product_template) {
+            return $single_product_template;
+        }
+        
+        // Si no existe, buscar en woocommerce/single-product.php
+        $woo_single_template = locate_template('woocommerce/single-product.php');
+        if ($woo_single_template) {
+            return $woo_single_template;
+        }
+    }
+    
+    return $template;
+}
+add_filter('template_include', 'loscocos_force_single_product_template', 99);
+
+// =================================================================================
+// ENDPOINTS AJAX ADICIONALES PARA EL CARRITO
+// =================================================================================
+
+// Registrar endpoints AJAX faltantes
+add_action('wp_ajax_loscocos_remove_from_cart', 'loscocos_ajax_remove_from_cart');
+add_action('wp_ajax_nopriv_loscocos_remove_from_cart', 'loscocos_ajax_remove_from_cart');
+
+add_action('wp_ajax_loscocos_get_cart_count', 'loscocos_ajax_get_cart_count');
+add_action('wp_ajax_nopriv_loscocos_get_cart_count', 'loscocos_ajax_get_cart_count');
+
+/**
+ * AJAX handler for removing items from cart
+ */
+function loscocos_ajax_remove_from_cart() {
+    check_ajax_referer('loscocos-nonce', 'nonce');
+    
+    $cart_item_key = isset($_POST['cart_item_key']) ? wc_clean($_POST['cart_item_key']) : '';
+    
+    if (empty($cart_item_key)) {
+        wp_send_json_error('Clave de artículo del carrito no válida');
+        return;
+    }
+    
+    // Remove item from cart
+    $removed = WC()->cart->remove_cart_item($cart_item_key);
+    
+    if ($removed) {
+        // Get updated cart fragments
+        $fragments = array();
+        
+        // Get mini cart
+        ob_start();
+        woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+        
+        $fragments['div.widget_shopping_cart_content'] = '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>';
+        
+        // Cart hash
+        $fragments['cart_hash'] = WC()->cart->get_cart_hash();
+        
+        // Cart items count
+        $fragments['cart_count'] = WC()->cart->get_cart_contents_count();
+        
+        wp_send_json_success(array(
+            'message' => 'Producto eliminado del carrito',
+            'fragments' => $fragments,
+            'cart_hash' => WC()->cart->get_cart_hash(),
+            'cart_count' => WC()->cart->get_cart_contents_count(),
+            'subtotal' => WC()->cart->get_cart_subtotal()
+        ));
+    } else {
+        wp_send_json_error('No se pudo eliminar el producto del carrito');
+    }
+}
+
+/**
+ * AJAX handler for getting cart count
+ */
+function loscocos_ajax_get_cart_count() {
+    // No necesita nonce para solo obtener el contador
+    
+    $cart_count = WC()->cart->get_cart_contents_count();
+    $cart_total = WC()->cart->get_cart_total();
+    $cart_subtotal = WC()->cart->get_cart_subtotal();
+    
+    wp_send_json_success(array(
+        'cart_count' => $cart_count,
+        'cart_total' => $cart_total,
+        'cart_subtotal' => $cart_subtotal,
+        'cart_hash' => WC()->cart->get_cart_hash()
+    ));
+}
+
+// =================================================================================
+// ASEGURAR QUE JQUERY ESTÉ CARGADO
+// =================================================================================
+
+function loscocos_enqueue_jquery() {
+    if (!wp_script_is('jquery', 'enqueued')) {
+        wp_enqueue_script('jquery');
+    }
+}
+add_action('wp_enqueue_scripts', 'loscocos_enqueue_jquery', 1);
+
+// Redirect uncategorized category to shop
+function loscocos_redirect_uncategorized() {
+    if (is_product_category('uncategorized')) {
+        wp_redirect(wc_get_page_permalink('shop'));
+        exit;
+    }
+}
+add_action('template_redirect', 'loscocos_redirect_uncategorized');
+
+// =================================================================================
+// MEJORAR EL HANDLER DE updateQuantity
+// =================================================================================
+
+// Crear alias para el handler de updateQuantity
+function loscocos_update_cart_handler() {
+    loscocos_ajax_update_cart();
+}
+
+?>

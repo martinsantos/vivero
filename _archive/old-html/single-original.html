@@ -1,0 +1,127 @@
+<html><head>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Los Cocos - Monstera Deliciosa</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<meta charset="utf-8"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #c5e0b7;
+        --secondary-color: #f2f3f1;
+        --text-primary: #141613;
+        --text-secondary: #727f6c;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+      }
+      .hero-gradient {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 40%);
+      }
+    </style>
+</head>
+<body class="bg-white text-[var(--text-primary)]">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[var(--secondary-color)] px-6 sm:px-10 py-4">
+<div class="flex items-center gap-6 sm:gap-8">
+<div class="flex items-center gap-3 sm:gap-4 text-[var(--text-primary)]">
+<div class="size-5 sm:size-6 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<h1 class="text-[var(--text-primary)] text-xl sm:text-2xl font-bold leading-tight tracking-[-0.015em]">Los Cocos</h1>
+</div>
+<nav class="hidden sm:flex items-center gap-6 sm:gap-9">
+<a class="text-[var(--text-primary)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Inicio</a>
+<a class="text-[var(--text-primary)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Plantas</a>
+<a class="text-[var(--text-primary)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Ofertas</a>
+<a class="text-[var(--text-primary)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Contacto</a>
+</nav>
+</div>
+<div class="flex items-center gap-2 sm:gap-4">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[var(--text-secondary)] flex border-none bg-[var(--secondary-color)] items-center justify-center pl-3 sm:pl-4 rounded-l-xl border-r-0">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-[var(--text-primary)] focus:outline-0 focus:ring-0 border-none bg-[var(--secondary-color)] focus:border-none h-full placeholder:text-[var(--text-secondary)] px-3 sm:px-4 pl-2 text-sm font-normal leading-normal" placeholder="Buscar plantas..." value=""/>
+</div>
+</label>
+<button aria-label="Buscar" class="flex md:hidden max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-[var(--secondary-color)] text-[var(--text-primary)] hover:bg-gray-200 transition-colors">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</button>
+<button aria-label="Carrito de compras" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-[var(--secondary-color)] text-[var(--text-primary)] hover:bg-gray-200 transition-colors">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+</svg>
+<span id="cart-count" class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white" style="display:none">0</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8 sm:py-12 bg-gray-50">
+<div class="layout-content-container flex flex-col max-w-4xl w-full px-4 sm:px-6 lg:px-8">
+<div class="bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-xl shadow-lg hero-gradient min-h-[300px] sm:min-h-[400px] relative" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAn0TfHctr1wu9PFstvVZS2n2_Q1vN-wZ3Si6_mzg6EWiGPn3zsH8_928JJVNLuV5L2yZHVGVo8dbDNH9OaYEkBvwKLoKRulMnzYTaDfMAGpDnu_qBvd6VoVM4reIKCDxdj0ENoepLyalrsfG4jezEJquG1kSlUgurmJL9-KSFwOgNxcmBP0O6_HLC29Uhu_axTPVzoSJNVFLxAVayMeJroLXMY0sjPXyUhnhcpwNoqEQrBELDN0K3ZilyZzK1twmlKk8SJrI9yGcYd");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="relative p-6 sm:p-8">
+<h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight drop-shadow-md">Monstera Deliciosa</h1>
+</div>
+</div>
+<div class="bg-white shadow-lg rounded-xl mt-[-40px] sm:mt-[-60px] relative z-10 mx-4 sm:mx-8 p-6 sm:p-8">
+<section class="mb-8">
+<p class="text-[var(--text-secondary)] text-base leading-relaxed">
+                  La Monstera Deliciosa, también conocida como 'Costilla de Adán', es una planta tropical espectacular, célebre por sus imponentes hojas verdes oscuro con perforaciones naturales únicas. Originaria de las selvas tropicales de América Central y del Sur, esta planta no solo es un elemento decorativo impresionante, sino que también purifica el aire, añadiendo un toque exótico y saludable a cualquier espacio interior.
+                </p>
+</section>
+<section class="mb-8">
+<h2 class="text-[var(--text-primary)] text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.015em] mb-4">Cuidados Esenciales</h2>
+<ul class="list-disc list-inside text-[var(--text-secondary)] space-y-2 text-base leading-relaxed">
+<li><strong>Luz:</strong> Prefiere luz indirecta brillante. Evite la luz solar directa intensa, que puede quemar sus hojas.</li>
+<li><strong>Riego:</strong> Moderado. Deje que la capa superior del suelo (aproximadamente 2-3 cm) se seque entre riegos. Reduzca el riego en invierno.</li>
+<li><strong>Humedad:</strong> Aprecia la humedad alta. Considere pulverizar sus hojas regularmente o usar un humidificador, especialmente en ambientes secos.</li>
+<li><strong>Sustrato:</strong> Utilice una mezcla de tierra bien drenada, rica en materia orgánica.</li>
+<li><strong>Soporte:</strong> Proporcione un tutor o soporte musgoso para que la planta trepe a medida que crece, imitando su hábitat natural.</li>
+<li><strong>Temperatura:</strong> Ideal entre 18°C y 27°C. Evite corrientes de aire frío.</li>
+</ul>
+</section>
+<section class="bg-[var(--primary-color)] bg-opacity-20 p-6 rounded-lg border border-[var(--primary-color)]">
+<h2 class="text-[var(--text-primary)] text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.015em] mb-3">¡Oferta Especial!</h2>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="w-full md:w-1/3 h-48 md:h-auto bg-center bg-no-repeat bg-cover rounded-lg shadow-md flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuActoyQzv_28MuPhWt9GUF5UuAe2gKOCWbR3VHFeLFsa4HMpEA5YQ37Kc0kWWhuE7kra-P5h41idBKa-Ro9Mey_nan8sNoUUbY0dU4QglWyuyFI8OH2LAPlZe56Spyk8Kx04V-EI3v1BoiLaJCBDjSdldFWuXqZcYpmmjsadU1qsDxZl4b5rZ6k7az6i2YJuw0OtHndpZZ1SRCjwev7tg_OpsCBs27xa5TDz8HrkuQKvEIFB_zuDDWXrQajH893JZcfPJpqw5qsCJW5");'></div>
+<div class="flex-grow">
+<p class="text-[var(--text-primary)] text-xl sm:text-2xl font-bold leading-tight">20% de Descuento</p>
+<p class="text-[var(--text-secondary)] text-base leading-relaxed my-2">
+                      Aproveche un <strong>20% de descuento</strong> en todas nuestras hermosas Monsteras Deliciosas durante este mes. ¡No se pierda esta oferta por tiempo limitado para llevarse a casa esta joya tropical!
+                    </p>
+<button class="mt-4 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-[var(--primary-color)] text-[var(--text-primary)] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-80 transition-colors" data-add-cart data-product-id="monstera" data-product-name="Monstera Deliciosa" data-product-price="20000">
+<span class="truncate">Comprar Ahora</span>
+</button>
+</div>
+</div>
+</section>
+<div class="flex justify-end pt-8">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-[var(--primary-color)] text-[var(--text-primary)] text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-80 transition-colors shadow-md hover:shadow-lg" data-add-cart data-product-id="monstera" data-product-name="Monstera Deliciosa" data-product-price="20000">
+<span class="truncate">Agregar al Carrito</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-[var(--secondary-color)] text-[var(--text-secondary)] py-8 px-6 sm:px-10 text-center text-sm">
+<p>© 2024 Los Cocos. Todos los derechos reservados.</p>
+<p>Mendoza, Argentina.</p>
+</footer>
+</div>
+</div>
+<script src="cart.js"></script>
+</body></html>

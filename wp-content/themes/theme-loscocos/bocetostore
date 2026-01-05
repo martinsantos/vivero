@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tienda Vivero Los Cocos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+    }
+    .search-input::placeholder {
+      color: #9ca3af;
+    }
+    .badge-green {
+      background-color: #10B981;
+      color: white;
+    }
+    .category-item {
+      transition: all 0.3s ease-in-out;
+      border: 1px solid transparent;
+      flex-shrink: 0;
+    }
+    .category-item:hover {
+      transform: scale(1.05);
+      border-color: #6ee7b7;
+      box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.2);
+    }
+    .category-item.active {
+      background-color: #10B981;
+      color: white;
+      box-shadow: 0 8px 16px -4px rgba(16, 185, 129, 0.3);
+    }
+    .category-item.active .material-icons {
+      color: white !important;
+    }
+    .category-item.active .category-count {
+      opacity: 0.8;
+    }
+    .category-icon-container {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    .category-item:hover .category-icon-container {
+      transform: rotateY(180deg);
+    }
+    .category-name {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 0.25rem;
+    }
+    .category-count {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    .category-item.active .category-count {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .hero-image-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+    .hero-image-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.07);
+    }
+    .hero-image-card img {
+      transition: transform 0.5s ease;
+    }
+    .hero-image-card:hover img {
+      transform: scale(1.05);
+    }
+    .hero-image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0) 100%);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      height: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .hero-image-card:hover .hero-image-overlay {
+      opacity: 1;
+    }
+    .hero-image-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    .hero-image-button {
+      background-color: #10B981;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.2s ease;
+    }
+    .hero-image-button:hover {
+      background-color: #059669;
+    }
+    .hero-image-button .material-icons {
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a class="flex items-center text-2xl font-bold text-green-600" href="#">
+<span class="material-icons mr-2 text-3xl text-green-500">local_florist</span> Los Cocos
+      </a>
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-gray-600 hover:text-green-600" href="#">Inicio</a>
+<a class="text-gray-600 hover:text-green-600" href="#">Productos</a>
+<a class="text-gray-600 hover:text-green-600" href="#">Servicios</a>
+<a class="text-gray-600 hover:text-green-600" href="#">Consejos</a>
+<a class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 flex items-center" href="#">
+<span class="material-icons mr-2">star</span> Club Premium
+        </a>
+<a class="text-gray-600 hover:text-green-600" href="#">Contacto</a>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input class="search-input bg-gray-100 border border-gray-300 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent w-48 md:w-64" placeholder="Buscar plantas..." type="text"/>
+<span class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+</div>
+<a class="relative text-gray-600 hover:text-green-600" href="#">
+<span class="material-icons text-2xl">shopping_cart</span>
+<span class="absolute -top-2 -right-2 badge-green text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">15</span>
+</a>
+<button class="md:hidden text-gray-600">
+<span class="material-icons">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 py-12">
+<section class="mb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<h1 class="text-5xl font-bold text-green-600 mb-6 leading-tight">
+            Tu Jardín, <span class="text-emerald-500">Nuestro Paraíso</span>
+</h1>
+<p class="text-xl text-gray-600 max-w-lg mb-8">
+            Descubre nuestra amplia selección de plantas y todo lo necesario para transformar tu espacio en un oasis verde.
+          </p>
+<a class="bg-green-500 text-white px-8 py-4 rounded-full hover:bg-green-600 text-lg font-semibold flex items-center justify-center w-fit transition-transform duration-300 ease-in-out transform hover:scale-105" href="#">
+            Explorar Productos <span class="material-icons ml-2">arrow_forward</span>
+</a>
+<div class="mt-10 flex items-center space-x-6">
+<span class="flex items-center text-sm text-green-700 font-medium">
+<span class="material-icons mr-2 text-yellow-500">star</span> Calidad Premium
+            </span>
+<span class="text-gray-300">•</span>
+<span class="flex items-center text-sm text-green-700 font-medium">
+<span class="material-icons mr-2 text-blue-500">local_shipping</span> Envío Rápido
+            </span>
+<span class="text-gray-300">•</span>
+<span class="flex items-center text-sm text-green-700 font-medium">
+<span class="material-icons mr-2 text-green-500">support_agent</span> Asesoramiento Experto
+            </span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="hero-image-card">
+<img alt="Plantas de interior" class="w-full h-72 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDhegemwzGd2gHoTlapMnmn_gjFxT035VtFU_c86lSDDIv8tbvXFNAx7Z7LwLdRNSr3jpZ3e7EqKBFJlG9QD9CCwvx5O8IoDJ_C1y_uu_pmjrgiG5fszB51Tzyp9vIm9TF2uJfR7827k8KJRNFlg60UJUwpab3auMhZ09t6Oea9-iPfKdBTf_1owqXljd04SfzXaiZP4SZPwXWbwhWqxiyDfx4VxMdI7v3b72gaix8nIs2cjGF5hVsDWrjE9W-CHMh4L3wBVi8JVs"/>
+<div class="hero-image-overlay">
+<h3 class="hero-image-title">Plantas de Interior</h3>
+<a class="hero-image-button" href="#">Ver Colección <span class="material-icons">chevron_right</span></a>
+</div>
+</div>
+<div class="hero-image-card">
+<img alt="Herramientas de jardinería" class="w-full h-72 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9bZshsxya7pjqsYbLhdLkkcLEWRUCvZDZSWzqqdjU3QAmYgWT0V_lsLunS_WCmPBReTJu5Ml9OzeRtB6SMMOzByIqIPYiRv-QXBypgPjgmskT_DyrCuH7VMqvExtN2Jo-mRyDEv5E7C46wqHAJWIgd4Z6wPTRe_0USEm6u3IxNfj_uzVL8eqia8ni2wfMCRUdn51nAnh3gBgzYtbo3yt0VSu1O9YYNuIYesqpcghubxA3KV_EQMTU7UzTUScOqpqL6IsNj6f0Vjw"/>
+<div class="hero-image-overlay">
+<h3 class="hero-image-title">Herramientas</h3>
+<a class="hero-image-button" href="#">Descubrir <span class="material-icons">chevron_right</span></a>
+</div>
+</div>
+<div class="hero-image-card col-span-2">
+<img alt="Flores vibrantes" class="w-full h-80 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-lcQnnZnB1tNEk6ieZNiVFtKzrE8EIMeeoIvf_T0zcABpLfiZFFo4zrksAQQWSxW3kG4J_s7G2l7lHk7kjj9C8nFCC2FD9eajS9rnEo1olJKPuvXnEe_ve8TUA7yH1vqWNSHjbC3mWZYzFvtk_Ao9Nhwl1wIq5OV9eNGgdHgtyznv7n-V6h74oqJaDr-xWE3gb5lMFUdnKsHhP3R9rXqF4JXB-wM1vijDaBuGcIlWJ2yv47dxfVigUdjBi8qftnrLOere7AGyp9c"/>
+<div class="hero-image-overlay">
+<h3 class="hero-image-title">Flores de Temporada</h3>
+<a class="hero-image-button" href="#">Comprar Ahora <span class="material-icons">shopping_bag</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-6 md:p-10 rounded-2xl shadow-xl mb-16">
+<h2 class="text-4xl font-bold text-center mb-12 text-green-700 flex items-center justify-center">
+<span class="material-icons mr-3 text-green-500 text-5xl transform rotate-[-15deg]">grass</span> Nuestras Categorías Estrella
+      </h2>
+<div class="flex overflow-x-auto space-x-6 pb-4 scrollbar-thin scrollbar-thumb-green-300 scrollbar-track-green-100">
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center active w-48 min-w-[180px]">
+<div class="category-icon-container bg-green-100">
+<span class="material-icons text-3xl text-green-500">apps</span>
+</div>
+<p class="category-name">Todos</p>
+<p class="category-count">Ver todo</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-lime-100">
+<span class="material-icons text-3xl text-lime-600">park</span>
+</div>
+<p class="category-name">Árboles</p>
+<p class="category-count">16 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-teal-100">
+<span class="material-icons text-3xl text-teal-600">forest</span>
+</div>
+<p class="category-name">Arbustos</p>
+<p class="category-count">41 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-emerald-100">
+<span class="material-icons text-3xl text-emerald-600">grass</span>
+</div>
+<p class="category-name">Aros y Ganchos</p>
+<p class="category-count">6 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-cyan-100">
+<span class="material-icons text-3xl text-cyan-600">eco</span>
+</div>
+<p class="category-name">Enredaderas</p>
+<p class="category-count">11 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-green-100">
+<span class="material-icons text-3xl text-green-600">spa</span>
+</div>
+<p class="category-name">Fertilizantes</p>
+<p class="category-count">3 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-orange-100">
+<span class="material-icons text-3xl text-orange-500">bug_report</span>
+</div>
+<p class="category-name">Fitosanitarios</p>
+<p class="category-count">16 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-gray-200">
+<span class="material-icons text-3xl text-gray-500">construction</span>
+</div>
+<p class="category-name">Hierros y Soportes</p>
+<p class="category-count">1 producto</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-yellow-100">
+<span class="material-icons text-3xl text-yellow-700">potted_plant</span>
+</div>
+<p class="category-name">Macetas Fibrocemento</p>
+<p class="category-count">40 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-pink-100">
+<span class="material-icons text-3xl text-pink-500">filter_vintage</span>
+</div>
+<p class="category-name">Macetas Plásticas</p>
+<p class="category-count">297 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-purple-100">
+<span class="material-icons text-3xl text-purple-500">deck</span>
+</div>
+<p class="category-name">Ménsulas</p>
+<p class="category-count">2 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-blue-100">
+<span class="material-icons text-3xl text-blue-400">waves</span>
+</div>
+<p class="category-name">Pies Nórdicos</p>
+<p class="category-count">9 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-stone-200">
+<span class="material-icons text-3xl text-stone-600">foundation</span>
+</div>
+<p class="category-name">Pies y Bases</p>
+<p class="category-count">10 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-lime-100">
+<span class="material-icons text-3xl text-lime-500">yard</span>
+</div>
+<p class="category-name">Plantas de Interior</p>
+<p class="category-count">65 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-emerald-100">
+<span class="material-icons text-3xl text-emerald-700">potted_plant</span>
+</div>
+<p class="category-name">Porta Macetas</p>
+<p class="category-count">5 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-amber-100">
+<span class="material-icons text-3xl text-amber-600">compost</span>
+</div>
+<p class="category-name">Sustratos y Tierras</p>
+<p class="category-count">16 productos</p>
+</button>
+<button class="category-item flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md text-center w-48 min-w-[180px]">
+<div class="category-icon-container bg-slate-200">
+<span class="material-icons text-3xl text-slate-400">help_outline</span>
+</div>
+<p class="category-name">Sin Categoría</p>
+<p class="category-count">4 productos</p>
+</button>
+</div>
+</section>
+<section>
+<h2 class="text-4xl font-bold text-center mb-12 text-gray-700 flex items-center justify-center">
+<span class="material-icons mr-3 text-yellow-400 text-5xl">star_outline</span> Productos Destacados
+      </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+<img alt="Planta destacada 1" class="w-full h-56 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0TGlIIxhviEMwLijjDqymgbEcDH2KNHMntX7sbeZ8Uijf9lVDPUgsdRp2xLRRbeA3cE3caGU5QYph5zSWW_eD3NOCcQdafIzhtQsaD7r7roFIl9bYIzuTqAa1BxCxM54bMBOCsnAxsOscDNASlzv2rnFCxxcv9A84vqEJvnqbhNK3csRUKIfxkfjXK4x2BKMecZzqAaLuAG6hRq2ULvz3nJ9fjx8qAdDVsibvgiXLZ1zXT78t9_ScXzNOYELJ6WvIQKo9pT2v_zY"/>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2 text-gray-800">Nombre del Producto</h3>
+<p class="text-gray-600 text-sm mb-3">Breve descripción del producto.</p>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-bold text-green-600">$19.99</span>
+<button class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 flex items-center text-sm">
+<span class="material-icons mr-1 text-sm">add_shopping_cart</span> Añadir
+              </button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+<img alt="Planta destacada 2" class="w-full h-56 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWvZXLUOD_ZrZbUROrDtGi-P3aCcUBdRQnYZ5YnJAc9oaAG_DBRflhW7WYE07GFtmWNCBms1dE33FAYY34sQt-6_4ud-xyg_m_b0ST5Yj7nIyq28UAJ8IEj0BoDFad-vNtcluk36EwypFQH02O3P7W13UL-slFk2NsdrUXJBiAT8e2uq8GDtEXsUspQCu_jXB1s69Vfg68IRiO0gNj1rxDD90NuyV7IKQ3tRXNeJ30JpZqnZjmKE0avq8dy6EoZqiO3lvGqJ8RQ9w"/>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2 text-gray-800">Otra Planta Genial</h3>
+<p class="text-gray-600 text-sm mb-3">Descripción de esta otra planta.</p>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-bold text-green-600">$24.50</span>
+<button class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 flex items-center text-sm">
+<span class="material-icons mr-1 text-sm">add_shopping_cart</span> Añadir
+              </button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+<img alt="Planta destacada 3" class="w-full h-56 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkL4TKSNQovXoSIQa-iTEm2MKUD15iHyrX7KgeqjlLmhp0HqBPBMfReRBzL20-VRRxChXFMZAOsjXXYu8wd_lLKKSVC1oaMzEEALZZxX-egkYrISpud6CVEhEhHsEB8Wwg4a4mKycTr71EWybB7G0vidamdksepZIq28v3FScKrsxGg7lCDOY71M7DSEl-bI2hqBkoFtVHwuOiCa1zG-fUt6gJKm55P6AQ2i6ifGVklKZGezG4ulagOFyIoS4PA4WoZGUfoMnVBKg"/>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2 text-gray-800">Planta Exótica</h3>
+<p class="text-gray-600 text-sm mb-3">Ideal para interiores luminosos.</p>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-bold text-green-600">$32.00</span>
+<button class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 flex items-center text-sm">
+<span class="material-icons mr-1 text-sm">add_shopping_cart</span> Añadir
+              </button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+<img alt="Planta destacada 4" class="w-full h-56 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc9vsnq6he_oY6P6pzVSU-K6lT8mMzvXLVjR1mFIznU9dFK959eCtubrL3EukPtfdlPkXO7HU99j5eRIezDBEDtNXcz2IwddoFWAPhpxBZiYteZwrgXoDZy-buLH6UoQR5d1Q4ecJatifATe5fRt99ys411yIE8niLZbEQUHbJtySzg4Qm9ODar1qS_mieZsEp26TWhUMDcF9WgTJ_pxEGHJ3v514W6QKRNkvPdEpu1IHrq-Oxfxa6UA1fjdVkFsReJvRVYR9Vr1s"/>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2 text-gray-800">Suculenta Rara</h3>
+<p class="text-gray-600 text-sm mb-3">Fácil cuidado, poca agua.</p>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-bold text-green-600">$15.75</span>
+<button class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 flex items-center text-sm">
+<span class="material-icons mr-1 text-sm">add_shopping_cart</span> Añadir
+              </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800 text-white mt-20 py-12">
+<div class="container mx-auto px-4 text-center">
+<p>© 2023 Tienda Vivero Los Cocos. Todos los derechos reservados.</p>
+<p class="text-sm text-gray-400 mt-2">Diseñado con <span class="material-icons text-sm text-red-500 align-middle">favorite</span> para los amantes de las plantas.</p>
+</div>
+</footer>
+
+</body></html>

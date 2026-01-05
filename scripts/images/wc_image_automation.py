@@ -1,0 +1,1980 @@
+#!/usr/bin/env python3
+"""
+WooCommerce Image Automation Script
+
+- Connects to local WooCommerce REST API
+- Finds products missing images
+- Searches royalty-free images from Unsplash / Pixabay (Pexels optional)
+- Downloads, processes (resize, optional watermark, quality), saves as JPEG/WebP
+- Uploads to WordPress media library (requires WP Application Password or Basic Auth plugin)
+- Assigns media as product's main image and updates alt text
+- Batch processing with progress bars, retries, caching, and resume capability
+
+IMPORTANT
+- Do NOT write or overwrite any .env file. Env vars are read-only via python-dotenv if present.
+- For media upload, WordPress authentication is required. Recommended: Application Passwords.
+
+Example usage:
+  python wc_image_automation.py --batch-size 20 --delay 3 --dry-run
+  python wc_image_automation.py --resume --log-level DEBUG
+
+Env vars expected (via environment or .env):
+  WORDPRESS_URL=http://localhost:8080
+  WC_CONSUMER_KEY=ck_xxx
+  WC_CONSUMER_SECRET=cs_xxx
+  WP_USERNAME=admin                      # for WP REST media upload
+  WP_APP_PASSWORD=abcd efgh ijkl mnop    # application password with spaces (as provided by WP)
+  UNSPLASH_API_KEY=...
+  PIXABAY_API_KEY=...
+  PEXELS_API_KEY=...                      # optional
+"""
+
+import argparse
+import base64
+import hashlib
+import io
+import json
+import logging
+import math
+import mimetypes
+import os
+import sys
+import time
+import tempfile
+import re
+import unicodedata
+from dataclasses import dataclass
+from collections import Counter
+from typing import Any, Dict, Iterable, List, Optional, Tuple, Set
+
+import requests
+from dotenv import load_dotenv
+from PIL import Image, ImageDraw, ImageFont
+from PIL import ImageFile
+from tqdm import tqdm
+
+try:
+    from woocommerce import API as WooAPI
+except Exception:  # pragma: no cover
+    WooAPI = None
+
+try:
+    import imagehash
+    HAS_IMAGEHASH = True
+except ImportError:
+    HAS_IMAGEHASH = False
+
+# -------------------------
+# Defaults / Config
+# -------------------------
+DEFAULT_IMAGE_SIZE = (1200, 1200)
+DEFAULT_IMAGE_QUALITY = 85
+DEFAULT_BATCH_SIZE = 15
+DEFAULT_DELAY = 2.0
+MIN_RESOLUTION = (800, 600)
+STATE_FILE = ".wc_image_automation_state.json"
+GLOBAL_SHA1_FILE = ".wc_image_global_sha1.json"
+CACHE_DIR = ".cache/wc_images"
+LOG_FILE = "logs/wc_image_automation.log"
+USER_AGENT = os.getenv("HTTP_USER_AGENT", "wc-image-automation/1.0 (+http://localhost)")
+
+# -------------------------
+# Logging
+# -------------------------
+log = logging.getLogger("wc_image_automation")
+ImageFile.LOAD_TRUNCATED_IMAGES = True  # handle partially downloaded images gracefully
+
+
+def setup_logging(level: int) -> None:
+    os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+    logging.basicConfig(
+        level=level,
+        format="%(asctime)s %(levelname)s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=[
+            logging.StreamHandler(sys.stdout),
+            logging.FileHandler(LOG_FILE, encoding="utf-8"),
+        ],
+    )
+
+
+# -------------------------
+# Environment / API Clients
+# -------------------------
+@dataclass
+class EnvConfig:
+    wordpress_url: str
+    wc_key: str
+    wc_secret: str
+    wp_username: Optional[str]
+    wp_app_password: Optional[str]
+    unsplash_key: Optional[str]
+    pixabay_key: Optional[str]
+    pexels_key: Optional[str]
+    flickr_key: Optional[str]
+
+
+def load_config() -> EnvConfig:
+    load_dotenv()  # read-only; do not write
+    url = os.getenv("WORDPRESS_URL", "").strip()
+    if url and not (url.startswith("http://") or url.startswith("https://")):
+        url = "http://" + url
+    cfg = EnvConfig(
+        wordpress_url=url,
+        wc_key=os.getenv("WC_CONSUMER_KEY", ""),
+        wc_secret=os.getenv("WC_CONSUMER_SECRET", ""),
+        wp_username=os.getenv("WP_USERNAME"),
+        wp_app_password=os.getenv("WP_APP_PASSWORD"),
+        unsplash_key=os.getenv("UNSPLASH_API_KEY"),
+        pixabay_key=os.getenv("PIXABAY_API_KEY"),
+        pexels_key=os.getenv("PEXELS_API_KEY"),
+        flickr_key=os.getenv("FLICKR_API_KEY"),
+    )
+    return cfg
+
+
+def validate_config(cfg: EnvConfig) -> None:
+    if not cfg.wordpress_url:
+        raise ValueError("WORDPRESS_URL must be set, e.g., http://localhost:8080")
+    # We support two auth modes: (1) WooCommerce keys via woocommerce package, (2) WP Application Password (Basic Auth)
+    has_wc_keys = bool(cfg.wc_key and cfg.wc_secret)
+    has_wp_app = bool(cfg.wp_username and cfg.wp_app_password)
+
+    if not (has_wc_keys or has_wp_app):
+        raise RuntimeError(
+            "Missing credentials. Provide WC_CONSUMER_KEY/SECRET or WP_USERNAME/WP_APP_PASSWORD."
+        )
+
+    if has_wc_keys and WooAPI is None and not has_wp_app:
+        # If user insists on WC keys but plugin missing and no fallback available, block with actionable message
+        raise RuntimeError(
+            "Python package 'woocommerce' is not installed. Install with: pip install woocommerce, "
+            "or provide WP_USERNAME/WP_APP_PASSWORD to use Basic Auth fallback."
+        )
+
+    if has_wc_keys and WooAPI is None and has_wp_app:
+        log.warning(
+            "Package 'woocommerce' not installed; falling back to WP Application Password auth."
+        )
+    if not has_wc_keys:
+        log.warning("WC_CONSUMER_KEY/SECRET not provided; using WP Application Password if available.")
+    if not has_wp_app:
+        log.warning("WP_USERNAME/WP_APP_PASSWORD not provided; media uploads will fail without it.")
+
+
+def get_wc_api(cfg: EnvConfig):
+    # Preferred: WooCommerce consumer key/secret
+    if cfg.wc_key and cfg.wc_secret and WooAPI is not None:
+        base_url = cfg.wordpress_url.rstrip("/")
+        return WooAPI(
+            url=base_url,
+            consumer_key=cfg.wc_key,
+            consumer_secret=cfg.wc_secret,
+            version="wc/v3",
+            wp_api=True,
+            query_string_auth=True,
+        )
+    # Fallback: WP Application Password (Basic Auth) against WP REST
+    auth = get_wp_auth_header(cfg)
+    if auth:
+        return WPBasicWCClient(cfg.wordpress_url, auth)
+    raise RuntimeError(
+        "Missing WooCommerce credentials. Provide WC_CONSUMER_KEY/SECRET or WP_USERNAME/WP_APP_PASSWORD."
+    )
+
+
+def get_wp_auth_header(cfg: EnvConfig) -> Optional[Dict[str, str]]:
+    if not (cfg.wp_username and cfg.wp_app_password):
+        return None
+    # Application password may contain spaces; WP expects user:app_password
+    token = f"{cfg.wp_username}:{cfg.wp_app_password}"
+    token_b64 = base64.b64encode(token.encode("utf-8")).decode("ascii")
+    return {"Authorization": f"Basic {token_b64}"}
+
+
+class WPBasicWCClient:
+    """Minimal WooCommerce REST client using WordPress Application Password (Basic Auth).
+
+    This is used as a fallback when WC consumer key/secret are not provided.
+    It works because WooCommerce endpoints are standard WP REST endpoints and
+    accept WP Application Password authentication.
+    """
+
+    def __init__(self, base_url: str, auth_header: Dict[str, str]):
+        self._base = base_url.rstrip("/") + "/wp-json/wc/v3"
+        self._auth_header = dict(auth_header)
+
+    def get(self, endpoint: str, params: Optional[Dict[str, Any]] = None):
+        url = self._base + "/" + endpoint.lstrip("/")
+        headers = dict(self._auth_header)
+        return requests.get(url, headers=headers, params=params or {}, timeout=30)
+
+    def put(self, endpoint: str, json: Optional[Dict[str, Any]] = None):
+        url = self._base + "/" + endpoint.lstrip("/")
+        headers = {**self._auth_header, "Content-Type": "application/json"}
+        return requests.put(url, headers=headers, json=json or {}, timeout=30)
+
+
+# -------------------------
+# Utility: State / Cache
+# -------------------------
+
+
+def _is_wp_resized_derivative(filename: str) -> bool:
+    """Return True if filename looks like a WordPress-generated resized image (e.g., name-300x300.jpg or -scaled)."""
+    try:
+        base = os.path.basename(filename)
+        name, _ext = os.path.splitext(base)
+        if name.endswith("-scaled"):
+            return True
+        # pattern -<width>x<height> at the end of the stem
+        return bool(re.search(r"-\d{2,4}x\d{2,4}$", name))
+    except Exception:
+        return False
+
+
+def find_local_image(base_dir: str, keys: List[str], include_subdirs: bool = False) -> Optional[Tuple[str, str]]:
+    """Search for a curated local image file in base_dir matching any of the given keys (case-insensitive).
+    Avoid WP auto-resized derivatives; prefer originals. Returns (path, mime) or None.
+    """
+    if not base_dir:
+        return None
+    base_dir = os.path.abspath(base_dir)
+    if not os.path.isdir(base_dir):
+        return None
+
+    allowed_ext = {".jpg", ".jpeg", ".png", ".webp"}
+    norm_keys = list(dict.fromkeys([str(k or "").strip() for k in keys if str(k or "").strip()]))
+    if not norm_keys:
+        return None
+
+    candidates: List[str] = []
+    try:
+        if include_subdirs:
+            for root, _dirs, files in os.walk(base_dir):
+                for f in files:
+                    ext = os.path.splitext(f)[1].lower()
+                    if ext not in allowed_ext:
+                        continue
+                    stem = os.path.splitext(f)[0]
+                    # Check match against any key (case-insensitive). Prefer exact stem==key
+                    for k in norm_keys:
+                        if stem.lower() == k.lower() or stem.lower().startswith(k.lower() + "-"):
+                            full = os.path.join(root, f)
+                            candidates.append(full)
+                            break
+        else:
+            for f in os.listdir(base_dir):
+                ext = os.path.splitext(f)[1].lower()
+                if ext not in allowed_ext:
+                    continue
+                stem = os.path.splitext(f)[0]
+                for k in norm_keys:
+                    if stem.lower() == k.lower() or stem.lower().startswith(k.lower() + "-"):
+                        candidates.append(os.path.join(base_dir, f))
+                        break
+    except Exception:
+        return None
+
+    if not candidates:
+        return None
+
+    # Filter out WP derivatives
+    originals = [p for p in candidates if not _is_wp_resized_derivative(p)]
+    chosen_pool = originals or candidates
+    # Prefer largest file size as heuristic for highest quality
+    try:
+        chosen_pool.sort(key=lambda p: os.path.getsize(p), reverse=True)
+    except Exception:
+        pass
+    path = chosen_pool[0]
+    mime = mimetypes.guess_type(path)[0] or "image/jpeg"
+    return path, mime
+def load_state() -> Dict[str, Any]:
+    if os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            log.warning("Failed to read state file; starting fresh.")
+    return {"processed": []}
+
+
+def load_global_registry(path: str = GLOBAL_SHA1_FILE) -> Dict[str, Any]:
+    try:
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except Exception:
+        log.warning("Failed to read global registry; starting fresh.")
+    return {"sha1_to_products": {}}
+
+
+def save_global_registry(reg: Dict[str, Any], path: str = GLOBAL_SHA1_FILE) -> None:
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(reg, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        log.warning("Failed to save global registry: %s", e)
+
+
+def save_state(state: Dict[str, Any]) -> None:
+    tmp = STATE_FILE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, STATE_FILE)
+
+
+def ensure_cache_dir() -> str:
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    return CACHE_DIR
+
+
+# -------------------------
+# WooCommerce: Products without images
+# -------------------------
+
+def get_products_without_images(wcapi, per_page: int = 100, max_pages: Optional[int] = None) -> List[Dict[str, Any]]:
+    products: List[Dict[str, Any]] = []
+    page = 1
+    while True:
+        params = {"per_page": per_page, "page": page, "status": "publish"}
+        r = wcapi.get("products", params=params)
+        if r.status_code != 200:
+            raise RuntimeError(f"WooCommerce API error {r.status_code}: {r.text[:200]}")
+        data = r.json()
+        if not data:
+            break
+        for p in data:
+            imgs = p.get("images") or []
+            if len(imgs) == 0:
+                products.append(p)
+        page += 1
+        if max_pages and page > max_pages:
+            break
+    return products
+
+
+def wp_get_all_products(cfg: EnvConfig, per_page: int = 100, max_pages: Optional[int] = None) -> List[Dict[str, Any]]:
+    products: List[Dict[str, Any]] = []
+    page = 1
+    base = cfg.wordpress_url.rstrip("/") + "/wp-json/wp/v2/product"
+    headers = get_wp_auth_header(cfg) or {}
+    if not headers:
+        raise RuntimeError("WP auth missing. Set WP_USERNAME and WP_APP_PASSWORD")
+    total_pages: Optional[int] = None
+    while True:
+        params = {"per_page": per_page, "page": page, "status": "publish"}
+        r = requests.get(base, headers=headers, params=params, timeout=30)
+        if r.status_code != 200:
+            if r.status_code == 400 and "rest_post_invalid_page_number" in r.text:
+                break
+            raise RuntimeError(f"WP REST error {r.status_code}: {r.text[:200]}")
+        if total_pages is None:
+            try:
+                total_pages = int(r.headers.get("X-WP-TotalPages") or 0)
+            except Exception:
+                total_pages = 0
+        data = r.json() or []
+        if not data:
+            break
+        products.extend(data)
+        page += 1
+        if total_pages and page > total_pages:
+            break
+        if max_pages and page > max_pages:
+            break
+    return products
+
+
+def wp_get_products_by_target(cfg: EnvConfig, target: str = "missing", per_page: int = 100, max_pages: Optional[int] = None) -> List[Dict[str, Any]]:
+    """List products using WordPress REST API (post type 'product'), focusing on featured image presence.
+    This is a fallback when WooCommerce REST keys are not available.
+    - missing: featured_media == 0
+    - with-images: featured_media > 0
+    - all: all published products
+    """
+    products: List[Dict[str, Any]] = []
+    page = 1
+    base = cfg.wordpress_url.rstrip("/") + "/wp-json/wp/v2/product"
+    headers = get_wp_auth_header(cfg) or {}
+    if not headers:
+        raise RuntimeError("WP auth missing. Set WP_USERNAME and WP_APP_PASSWORD")
+    total_pages: Optional[int] = None
+    while True:
+        params = {"per_page": per_page, "page": page, "status": "publish"}
+        r = requests.get(base, headers=headers, params=params, timeout=30)
+        if r.status_code != 200:
+            # If we requested beyond last page, stop gracefully
+            if r.status_code == 400 and "rest_post_invalid_page_number" in r.text:
+                break
+            raise RuntimeError(f"WP REST error {r.status_code}: {r.text[:200]}")
+        # Capture total pages from headers (if present)
+        if total_pages is None:
+            try:
+                total_pages = int(r.headers.get("X-WP-TotalPages") or 0)
+            except Exception:
+                total_pages = 0
+        data = r.json()
+        if not data:
+            break
+        for p in data:
+            fm = int(p.get("featured_media") or 0)
+            if target == "missing" and fm == 0:
+                products.append(p)
+            elif target == "with-images" and fm > 0:
+                products.append(p)
+            elif target == "all":
+                products.append(p)
+        page += 1
+        if max_pages and page > max_pages:
+            break
+    return products
+
+
+def wp_assign_featured_media(cfg: EnvConfig, product_id: int, media_id: int, dry_run: bool = False) -> None:
+    """Assign featured image to a product via WordPress REST API by setting featured_media on the product post."""
+    if dry_run:
+        log.info("[dry-run] Would set featured_media=%s for product %s via WP REST", media_id, product_id)
+        return
+    base = cfg.wordpress_url.rstrip("/") + f"/wp-json/wp/v2/product/{int(product_id)}"
+    headers = get_wp_auth_header(cfg) or {}
+    if not headers:
+        raise RuntimeError("WP auth missing. Set WP_USERNAME and WP_APP_PASSWORD")
+    headers = {**headers, "Content-Type": "application/json"}
+    payload = {"featured_media": int(media_id)}
+    r = requests.post(base, headers=headers, json=payload, timeout=30)
+    if r.status_code not in (200, 201):
+        raise RuntimeError(f"Failed to set featured_media via WP REST for product {product_id}: {r.status_code} {r.text[:200]}")
+
+
+def get_products_by_target(wcapi, target: str = "missing", per_page: int = 100, max_pages: Optional[int] = None) -> List[Dict[str, Any]]:
+    """Fetch products according to target:
+    - missing: only products without images
+    - with-images: only products that already have one or more images
+    - all: all published products
+    """
+    products: List[Dict[str, Any]] = []
+    page = 1
+    while True:
+        params = {"per_page": per_page, "page": page, "status": "publish"}
+        r = wcapi.get("products", params=params)
+        if r.status_code != 200:
+            raise RuntimeError(f"WooCommerce API error {r.status_code}: {r.text[:200]}")
+        data = r.json()
+        if not data:
+            break
+        for p in data:
+            imgs = p.get("images") or []
+            if target == "missing" and len(imgs) == 0:
+                products.append(p)
+            elif target == "with-images" and len(imgs) > 0:
+                products.append(p)
+            elif target == "all":
+                products.append(p)
+        page += 1
+        if max_pages and page > max_pages:
+            break
+    return products
+
+
+# -------------------------
+# Image Provider Clients
+# -------------------------
+
+@dataclass
+class ImageCandidate:
+    url: str
+    width: int
+    height: int
+    source: str  # unsplash|pixabay|pexels
+    author: Optional[str] = None
+    author_url: Optional[str] = None
+    licence: Optional[str] = None
+
+
+def search_unsplash(term: str, key: str, min_w: int, min_h: int, delay: float) -> List[ImageCandidate]:
+    if not key:
+        return []
+    url = "https://api.unsplash.com/search/photos"
+    headers = {"Authorization": f"Client-ID {key}"}
+    # Broaden search: more results, no orientation restriction
+    params = {"query": term, "per_page": 30, "content_filter": "high"}
+    time.sleep(delay)
+    resp = requests.get(url, headers=headers, params=params, timeout=20)
+    if resp.status_code != 200:
+        log.debug("Unsplash %s: %s", resp.status_code, resp.text[:200])
+        return []
+    results = []
+    for item in resp.json().get("results", []):
+        w = int(item.get("width") or 0)
+        h = int(item.get("height") or 0)
+        if w < min_w or h < min_h:
+            continue
+        # Prefer 'regular' size to avoid extremely large downloads; fall back to 'full' or 'small'
+        links = item.get("urls", {})
+        src = links.get("regular") or links.get("full") or links.get("small")
+        if not src:
+            continue
+        author = (item.get("user") or {}).get("name")
+        author_url = (item.get("user") or {}).get("links", {}).get("html")
+        results.append(ImageCandidate(url=src, width=w, height=h, source="unsplash", author=author, author_url=author_url, licence="Unsplash License"))
+    return results
+
+
+# Search iNaturalist observations for photos with commercial-friendly licenses.
+#   Accepted licenses: cc0, cc-by, cc-by-sa, pd
+#   API: https://api.inaturalist.org/v1/observations
+def search_inaturalist(term: str, min_w: int, min_h: int, delay: float) -> List[ImageCandidate]:
+    url = "https://api.inaturalist.org/v1/observations"
+    # Prefer open licenses suitable for commercial use
+    photo_license = "cc0,cc-by,cc-by-sa"
+    params = {
+        "q": term,
+        "photos": True,
+        "photo_license": photo_license,
+        "per_page": 60,
+        "order": "desc",
+        "order_by": "created_at",
+    }
+    time.sleep(delay)
+    try:
+        headers = {"User-Agent": USER_AGENT}
+        resp = requests.get(url, params=params, timeout=20, headers=headers)
+    except Exception as e:
+        log.debug("iNaturalist request error: %s", e)
+        return []
+    if resp.status_code != 200:
+        log.debug("iNaturalist %s: %s", resp.status_code, resp.text[:200])
+        return []
+    data = resp.json()
+    results: List[ImageCandidate] = []
+    items = data.get("results") or []
+    LICENSE_MAP = {
+        "cc-by": "CC BY",
+        "cc-by-sa": "CC BY-SA",
+        "cc0": "CC0",
+        "pd": "Public Domain",
+    }
+    for obs in items:
+        obs_id = obs.get("id")
+        user = obs.get("user") or {}
+        author = user.get("name") or user.get("login")
+        author_url = f"https://www.inaturalist.org/observations/{obs_id}" if obs_id else None
+        photos = obs.get("photos") or []
+        for p in photos:
+            # 'url' typically points to the square variant; swap to larger size
+            # Sizes: original, large, medium, small, thumb, square
+            base_url = p.get("url")
+            if not base_url:
+                continue
+            # Prefer original, fallback to large if present in URL pattern
+            if "/square." in base_url:
+                large_url = base_url.replace("/square.", "/large.")
+                orig_url = base_url.replace("/square.", "/original.")
+            else:
+                # If the size qualifier isn't clear, just attempt original by replacing terminal filename
+                large_url = base_url
+                orig_url = base_url
+            chosen_url = orig_url or large_url
+            # iNat does not include dimensions here; assume conservative dims that pass later sorting
+            lic_code = (p.get("license_code") or "").lower()
+            licence = LICENSE_MAP.get(lic_code, lic_code.upper() if lic_code else "iNaturalist")
+            # Only include if we can attempt a reasonably large size
+            if chosen_url:
+                results.append(
+                    ImageCandidate(
+                        url=chosen_url,
+                        width=max(min_w, 1024),  # heuristic since exact dims are unknown
+                        height=max(min_h, 768),  # heuristic
+                        source="inaturalist",
+                        author=author,
+                        author_url=author_url,
+                        licence=licence,
+                    )
+                )
+    # Deduplicate by URL within provider
+    seen = set()
+    uniq: List[ImageCandidate] = []
+    for c in results:
+        if c.url in seen:
+            continue
+        seen.add(c.url)
+        uniq.append(c)
+    return uniq
+
+
+def search_flickr(term: str, key: Optional[str], min_w: int, min_h: int, delay: float) -> List[ImageCandidate]:
+    """Search Flickr for commercially usable photos.
+    Filters licenses to allow commercial use and selects the largest available size meeting min resolution.
+    """
+    if not key:
+        return []
+    # License IDs that generally allow commercial use (no-NC): CC BY, CC BY-SA, No known copyright restrictions, CC0, Public Domain Mark
+    # Ref: https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html
+    COMM_LICENSES = "4,5,7,9,10,11"
+    LICENSE_MAP = {
+        "4": "CC BY",
+        "5": "CC BY-SA",
+        "7": "No known copyright restrictions",
+        "9": "CC0",
+        "10": "Public Domain Mark",
+        "11": "U.S. Government Work",
+    }
+    url = "https://api.flickr.com/services/rest"
+    extras = "url_o,url_l,url_c,url_z,license,owner_name,path_alias,o_dims"
+    params = {
+        "method": "flickr.photos.search",
+        "api_key": key,
+        "text": term,
+        "license": COMM_LICENSES,
+        "media": "photos",
+        "content_type": 1,  # photos only
+        "safe_search": 1,
+        "sort": "relevance",
+        "per_page": 60,
+        "page": 1,
+        "format": "json",
+        "nojsoncallback": 1,
+        "extras": extras,
+    }
+    time.sleep(delay)
+    try:
+        headers = {"User-Agent": USER_AGENT}
+        resp = requests.get(url, params=params, timeout=20, headers=headers)
+    except Exception as e:
+        log.debug("Flickr request error: %s", e)
+        return []
+    if resp.status_code != 200:
+        log.debug("Flickr %s: %s", resp.status_code, resp.text[:200])
+        return []
+    data = resp.json()
+    photos = ((data.get("photos") or {}).get("photo") or [])
+    results: List[ImageCandidate] = []
+    for p in photos:
+        # Select the largest available url with known dimensions
+        # Order: original, large, c, z
+        size_fields = [
+            ("o", p.get("url_o"), p.get("width_o"), p.get("height_o")),
+            ("l", p.get("url_l"), p.get("width_l"), p.get("height_l")),
+            ("c", p.get("url_c"), p.get("width_c"), p.get("height_c")),
+            ("z", p.get("url_z"), p.get("width_z"), p.get("height_z")),
+        ]
+        chosen_url: Optional[str] = None
+        chosen_w: int = 0
+        chosen_h: int = 0
+        for _, u, w, h in size_fields:
+            try:
+                wi = int(w) if w is not None else 0
+                hi = int(h) if h is not None else 0
+            except Exception:
+                wi = hi = 0
+            if u and wi >= min_w and hi >= min_h:
+                chosen_url, chosen_w, chosen_h = u, wi, hi
+                break
+        if not chosen_url:
+            # Fallback: accept the first available larger URL if dimensions are not provided
+            for _, u, _, _ in size_fields:
+                if u:
+                    chosen_url = u
+                    # set conservative dims so later sorting works roughly
+                    chosen_w, chosen_h = min_w, min_h
+                    break
+            if not chosen_url:
+                continue
+        ownername = p.get("ownername") or None
+        owner = p.get("owner") or None
+        path_alias = p.get("pathalias") or None
+        author_url = None
+        if owner and p.get("id"):
+            if path_alias:
+                author_url = f"https://www.flickr.com/photos/{path_alias}/{p.get('id')}"
+            else:
+                author_url = f"https://www.flickr.com/photos/{owner}/{p.get('id')}"
+        lic_id = str(p.get("license") or "")
+        licence = LICENSE_MAP.get(lic_id, f"Flickr license {lic_id}") if lic_id else "Flickr"
+        results.append(
+            ImageCandidate(
+                url=chosen_url,
+                width=chosen_w,
+                height=chosen_h,
+                source="flickr",
+                author=ownername,
+                author_url=author_url,
+                licence=licence,
+            )
+        )
+    return results
+
+
+def search_pixabay(term: str, key: str, min_w: int, min_h: int, delay: float) -> List[ImageCandidate]:
+    if not key:
+        return []
+    url = "https://pixabay.com/api/"
+    params = {"key": key, "q": term, "image_type": "photo", "per_page": 50, "safesearch": "true", "orientation": "horizontal"}
+    time.sleep(delay)
+    resp = requests.get(url, params=params, timeout=20)
+    if resp.status_code != 200:
+        log.debug("Pixabay %s: %s", resp.status_code, resp.text[:200])
+        return []
+    results = []
+    for item in resp.json().get("hits", []):
+        w = int(item.get("imageWidth") or 0)
+        h = int(item.get("imageHeight") or 0)
+        if w < min_w or h < min_h:
+            continue
+        src = item.get("largeImageURL") or item.get("webformatURL")
+        if not src:
+            continue
+        results.append(ImageCandidate(url=src, width=w, height=h, source="pixabay", author=item.get("user"), author_url=None, licence="Pixabay License"))
+    return results
+
+
+# Placeholder for Pexels (optional)
+
+def search_pexels(term: str, key: Optional[str], min_w: int, min_h: int, delay: float) -> List[ImageCandidate]:
+    if not key:
+        return []
+    url = "https://api.pexels.com/v1/search"
+    headers = {"Authorization": key}
+    params = {"query": term, "per_page": 40}
+    time.sleep(delay)
+    resp = requests.get(url, headers=headers, params=params, timeout=20)
+    if resp.status_code != 200:
+        log.debug("Pexels %s: %s", resp.status_code, resp.text[:200])
+        return []
+    results = []
+    for item in resp.json().get("photos", []):
+        w = int(item.get("width") or 0)
+        h = int(item.get("height") or 0)
+        if w < min_w or h < min_h:
+            continue
+        srcset = item.get("src", {})
+        src = srcset.get("large2x") or srcset.get("large") or srcset.get("original")
+        if not src:
+            continue
+        author = (item.get("photographer") or None)
+        author_url = (item.get("photographer_url") or None)
+        results.append(ImageCandidate(url=src, width=w, height=h, source="pexels", author=author, author_url=author_url, licence="Pexels License"))
+    return results
+
+
+def search_wikimedia(term: str, min_w: int, min_h: int, delay: float) -> List[ImageCandidate]:
+    """Search Wikimedia Commons for images with commercial-friendly licenses.
+    Whitelist: CC0, Public Domain, CC-BY. Filters by minimum resolution.
+    """
+    url = "https://commons.wikimedia.org/w/api.php"
+    params = {
+        "action": "query",
+        "generator": "search",
+        "gsrsearch": term,
+        "gsrlimit": 40,
+        "gsrnamespace": 6,  # File namespace
+        "prop": "imageinfo",
+        # include mime to filter non-image (e.g., application/pdf) and exclude svg
+        "iiprop": "url|size|mime|extmetadata|canonicaltitle",
+        "format": "json",
+    }
+    time.sleep(delay)
+    try:
+        headers = {"User-Agent": USER_AGENT}
+        resp = requests.get(url, params=params, timeout=20, headers=headers)
+    except Exception as e:
+        log.debug("Wikimedia request error: %s", e)
+        return []
+    if resp.status_code != 200:
+        log.debug("Wikimedia %s: %s", resp.status_code, resp.text[:200])
+        return []
+    data = resp.json()
+    pages = (data.get("query") or {}).get("pages") or {}
+    results: List[ImageCandidate] = []
+    allowed_names = {"CC0", "Public domain", "Public Domain", "CC-BY", "CC BY", "Attribution"}
+    allowed_codes = {"cc0", "pd", "cc-by"}
+    for page in pages.values():
+        infos = page.get("imageinfo") or []
+        if not infos:
+            continue
+        ii = infos[0]
+        mime = (ii.get("mime") or "").lower()
+        # Skip non-image and SVG (PIL cannot process SVG)
+        if not mime.startswith("image/") or mime == "image/svg+xml":
+            continue
+        try:
+            w = int(ii.get("width") or 0)
+            h = int(ii.get("height") or 0)
+        except Exception:
+            w = h = 0
+        if w < min_w or h < min_h:
+            continue
+        ext = ii.get("extmetadata") or {}
+        lic_name = (ext.get("LicenseShortName") or {}).get("value") or ""
+        lic_code = (ext.get("License") or {}).get("value") or ""
+        usage = (ext.get("UsageTerms") or {}).get("value") or ""
+        if not (lic_name in allowed_names or lic_code.lower() in allowed_codes):
+            continue
+        src = ii.get("url")
+        if not src:
+            continue
+        # Additional extension-based guard (avoid .pdf, .svg, etc.)
+        lower_src = src.lower()
+        if lower_src.endswith((".pdf", ".svg")):
+            continue
+        artist = (ext.get("Artist") or {}).get("value") or None
+        author = _strip_html(artist) if artist else None
+        author_url = ii.get("descriptionurl") or None
+        licence = lic_name or lic_code or usage or "Wikimedia Commons"
+        results.append(
+            ImageCandidate(
+                url=src,
+                width=w,
+                height=h,
+                source="wikimedia",
+                author=author,
+                author_url=author_url,
+                licence=licence,
+            )
+        )
+    return results
+
+
+def search_free_images(term: str, cfg: EnvConfig, min_resolution: Tuple[int, int], delay: float, providers_order: Iterable[str]) -> List[ImageCandidate]:
+    min_w, min_h = min_resolution
+    all_results: List[ImageCandidate] = []
+    for provider in providers_order:
+        if provider == "unsplash":
+            all_results += search_unsplash(term, cfg.unsplash_key or "", min_w, min_h, delay)
+        elif provider == "pixabay":
+            all_results += search_pixabay(term, cfg.pixabay_key or "", min_w, min_h, delay)
+        elif provider == "pexels":
+            all_results += search_pexels(term, cfg.pexels_key or None, min_w, min_h, delay)
+        elif provider == "wikimedia":
+            all_results += search_wikimedia(term, min_w, min_h, delay)
+        elif provider == "flickr":
+            all_results += search_flickr(term, cfg.flickr_key or None, min_w, min_h, delay)
+        elif provider == "inaturalist":
+            all_results += search_inaturalist(term, min_w, min_h, delay)
+    # Deduplicate by URL
+    seen = set()
+    unique: List[ImageCandidate] = []
+    for c in all_results:
+        if c.url in seen:
+            continue
+        seen.add(c.url)
+        unique.append(c)
+    # Sort by resolution descending
+    unique.sort(key=lambda c: (c.width * c.height), reverse=True)
+    return unique
+
+
+# -------------------------
+# Image processing
+# -------------------------
+
+def sha1_of_bytes(data: bytes) -> str:
+    return hashlib.sha1(data).hexdigest()
+
+
+def download_to_cache(url: str) -> str:
+    ensure_cache_dir()
+    max_bytes = 15 * 1024 * 1024  # 15MB cap to avoid huge downloads/timeouts
+    attempts = 3
+    last_err: Optional[Exception] = None
+    for i in range(attempts):
+        try:
+            headers = {"User-Agent": USER_AGENT}
+            with requests.get(url, stream=True, timeout=(10, 30), headers=headers) as r:
+                r.raise_for_status()
+                ctype = r.headers.get("Content-Type", "application/octet-stream")
+                # Only accept images; reject PDFs/HTML/etc. Also skip SVG (PIL unsupported)
+                if not ctype.startswith("image/") or ctype == "image/svg+xml":
+                    raise RuntimeError(f"unsupported content-type: {ctype}")
+                ext = mimetypes.guess_extension(ctype) or ".jpg"
+                tmp_path = os.path.join(CACHE_DIR, f"tmp_{int(time.time()*1000)}{i}")
+                hasher = hashlib.sha1()
+                total = 0
+                with open(tmp_path, "wb") as f:
+                    for chunk in r.iter_content(chunk_size=8192):
+                        if not chunk:
+                            continue
+                        total += len(chunk)
+                        if total > max_bytes:
+                            raise RuntimeError("download exceeded max size cap")
+                        hasher.update(chunk)
+                        f.write(chunk)
+                digest = hasher.hexdigest()
+                cache_path = os.path.join(CACHE_DIR, f"{digest}{ext}")
+                if not os.path.exists(cache_path):
+                    os.replace(tmp_path, cache_path)
+                else:
+                    try:
+                        os.remove(tmp_path)
+                    except Exception:
+                        pass
+                return cache_path
+        except Exception as e:
+            last_err = e
+            time.sleep(1 + i)
+            continue
+    # If all retries failed, raise last error
+    raise RuntimeError(f"failed to download: {last_err}")
+
+
+def load_font(size: int = 20) -> Optional[ImageFont.FreeTypeFont]:
+    try:
+        return ImageFont.truetype("arial.ttf", size)
+    except Exception:
+        try:
+            return ImageFont.truetype("DejaVuSans.ttf", size)
+        except Exception:
+            return None
+
+
+def process_image(src_path: str, out_size: Tuple[int, int], quality: int, watermark_text: Optional[str] = None, format_preference: str = "webp") -> Tuple[str, str]:
+    """Resize to square canvas keeping aspect ratio. Optional text watermark. Save as WebP/JPEG.
+    Returns (out_path, mime_type)
+    """
+    with Image.open(src_path) as im:
+        im = im.convert("RGB")
+        target_w, target_h = out_size
+        # Compute scale preserving aspect ratio
+        scale = min(target_w / im.width, target_h / im.height)
+        new_w, new_h = max(1, int(im.width * scale)), max(1, int(im.height * scale))
+        resized = im.resize((new_w, new_h), Image.LANCZOS)
+        # Paste centered on white canvas
+        canvas = Image.new("RGB", (target_w, target_h), color=(255, 255, 255))
+        off_x = (target_w - new_w) // 2
+        off_y = (target_h - new_h) // 2
+        canvas.paste(resized, (off_x, off_y))
+        # Watermark
+        if watermark_text:
+            draw = ImageDraw.Draw(canvas)
+            font = load_font(size=max(18, target_w // 40))
+            text = watermark_text
+            text_w, text_h = draw.textsize(text, font=font)
+            margin = max(10, target_w // 50)
+            x = target_w - text_w - margin
+            y = target_h - text_h - margin
+            # shadow
+            draw.text((x + 1, y + 1), text, font=font, fill=(0, 0, 0, 128))
+            # text
+            draw.text((x, y), text, font=font, fill=(255, 255, 255))
+        # Choose format
+        fmt = "WEBP" if format_preference.lower() == "webp" else "JPEG"
+        ext = ".webp" if fmt == "WEBP" else ".jpg"
+        mime = "image/webp" if fmt == "WEBP" else "image/jpeg"
+        out_path = os.path.join(tempfile.gettempdir(), f"wcimg_{int(time.time()*1000)}{ext}")
+        canvas.save(out_path, fmt, quality=quality, optimize=True)
+        return out_path, mime
+
+
+# -------------------------
+# Upload to WordPress Media and assign to product
+# -------------------------
+
+def upload_to_wordpress(file_path: str, filename: str, alt_text: str, cfg: EnvConfig) -> Tuple[int, str]:
+    auth = get_wp_auth_header(cfg)
+    if not auth:
+        raise RuntimeError("WP auth missing. Set WP_USERNAME and WP_APP_PASSWORD to upload media.")
+    url = cfg.wordpress_url.rstrip("/") + "/wp-json/wp/v2/media"
+    with open(file_path, "rb") as f:
+        headers = {
+            **auth,
+            "Content-Disposition": f"attachment; filename=\"{filename}\"",
+        }
+        files = {"file": (filename, f, mimetypes.guess_type(filename)[0] or "image/jpeg")}
+        r = requests.post(url, headers=headers, files=files, timeout=60)
+    if r.status_code not in (200, 201):
+        raise RuntimeError(f"Media upload failed {r.status_code}: {r.text[:200]}")
+    media = r.json()
+    media_id = int(media.get("id"))
+    # Update alt text (separate request)
+    if alt_text:
+        r2 = requests.post(url + f"/{media_id}", headers=auth, json={"alt_text": alt_text}, timeout=30)
+        if r2.status_code not in (200, 201):
+            log.warning("Failed to set alt_text for media %s: %s", media_id, r2.text[:200])
+    return media_id, media.get("source_url")
+
+
+def scan_build_sha1_map(cfg: EnvConfig) -> Dict[str, List[int]]:
+    """Scan all products and build a map sha1 -> [product_ids] based on featured_media.
+    Only includes entries with valid media and computed SHA1.
+    """
+    products = wp_get_all_products(cfg)
+    sha1_map: Dict[str, List[int]] = {}
+    for p in tqdm(products, desc="Scanning media", unit="prod"):
+        pid = int(p.get("id"))
+        fm = int(p.get("featured_media") or 0)
+        if fm <= 0:
+            continue
+        try:
+            sha1, _w, _h, _src = get_media_fingerprint(cfg, fm)
+        except Exception:
+            continue
+        if not sha1:
+            continue
+        sha1_map.setdefault(sha1, []).append(pid)
+    return sha1_map
+
+
+def normalize_product_title(title: str) -> str:
+    """Preserve existing behavior for basic normalization of a given title (no suffix)."""
+    s = (title or "").strip()
+    s = re.sub(r"\b\d+\s*cm\b", " ", s, flags=re.I)
+    s = re.sub(r"\b\d+\s*(litros?|lts?|lt|l)\b", " ", s, flags=re.I)
+    s = re.sub(r"\b\d+\s*(ml|g|kg)\b", " ", s, flags=re.I)
+    s = re.sub(r"\s*[–\-]{1,}\s*", " – ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+
+    SMALL_WORDS = {"de", "del", "la", "las", "el", "los", "y", "o", "en", "para", "con"}
+    UPPER_EXCEPTIONS = {"TA", "PVC", "HDPE", "LED", "XL"}
+    out = []
+    prev_was_delim = True
+    for raw in s.split():
+        w = raw.strip()
+        if not w:
+            continue
+        lw = w.lower()
+        if lw in SMALL_WORDS and not prev_was_delim and out:
+            out.append(lw)
+            prev_was_delim = False
+            continue
+        core = w.strip()
+        if core.upper() in UPPER_EXCEPTIONS:
+            out.append(core.upper())
+        else:
+            if prev_was_delim or len(core) > 2 or len(out) == 0:
+                out.append(core[:1].upper() + core[1:])
+            else:
+                out.append(core.lower())
+        prev_was_delim = False
+
+    res = " ".join(out)
+    res = re.sub(r"\s+(\/|\-|–)\s+", r" \1 ", res)
+    return re.sub(r"\s+", " ", res).strip()
+
+def _looks_like_code(title: str) -> bool:
+    """Heurística: títulos como códigos (ej. ASPI3L) o demasiado crípticos."""
+    t = (title or "").strip()
+    if not t:
+        return True
+    # Muchos mayúsculos y dígitos, poca longitud de palabras
+    if re.fullmatch(r"[A-Z0-9\-]{4,}$", t):
+        return True
+    # Demasiadas palabras de 2-3 chars
+    toks = [w for w in re.split(r"\s+", t) if w]
+    short = sum(1 for w in toks if len(w) <= 3)
+    if len(toks) <= 3 and short >= 2:
+        return True
+    return False
+
+def infer_seo_title(product: Dict[str, Any]) -> str:
+    """Deriva un título SEO-friendly basado en los datos del producto, sin sufijos.
+    - Usa el nombre existente si es legible; si parece código (ASPI3L), genera desde slug/categorías/atributos.
+    """
+    name = (product.get("name") or ((product.get("title") or {}).get("rendered")) or "").strip()
+    if not _looks_like_code(name):
+        return normalize_product_title(name)
+
+    # Construir desde slug + categorías + atributos si el nombre parece código
+    slug = (product.get("slug") or "").strip()
+    parts = [p for p in re.split(r"[-_]+", slug) if p and not p.isdigit()]
+    base = " ".join(w[:1].upper() + w[1:] if len(w) > 2 else w.upper() for w in parts)
+
+    cats = ", ".join([c.get("name") for c in (product.get("categories") or []) if c.get("name")])
+    if cats and base:
+        base = f"{base} – {cats}"
+    elif cats:
+        base = cats
+    if not base:
+        base = name
+    return normalize_product_title(base)
+
+
+def wp_get_media(cfg: EnvConfig, media_id: int) -> Dict[str, Any]:
+    """Fetch a single media item from WP REST API."""
+    url = cfg.wordpress_url.rstrip("/") + f"/wp-json/wp/v2/media/{int(media_id)}"
+    headers = get_wp_auth_header(cfg) or {}
+    r = requests.get(url, headers=headers, timeout=30)
+    if r.status_code != 200:
+        raise RuntimeError(f"Failed to fetch media {media_id}: {r.status_code} {r.text[:200]}")
+    return r.json()
+
+
+def wp_update_product_title(cfg: EnvConfig, product_id: int, new_title: str, dry_run: bool = False) -> None:
+    """Update a product title via WordPress REST API (post type 'product')."""
+    if dry_run:
+        log.info("[dry-run] Would update title for product %s -> %s", product_id, new_title)
+        return
+    base = cfg.wordpress_url.rstrip("/") + f"/wp-json/wp/v2/product/{int(product_id)}"
+    headers = get_wp_auth_header(cfg) or {}
+    if not headers:
+        raise RuntimeError("WP auth missing. Set WP_USERNAME and WP_APP_PASSWORD")
+    headers = {**headers, "Content-Type": "application/json"}
+    payload = {"title": new_title}
+    r = requests.post(base, headers=headers, json=payload, timeout=30)
+    if r.status_code not in (200, 201):
+        raise RuntimeError(f"Failed to update title via WP REST for product {product_id}: {r.status_code} {r.text[:200]}")
+
+
+def compute_sha1_of_file(path: str) -> str:
+    h = hashlib.sha1()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def get_media_fingerprint(cfg: EnvConfig, media_id: int) -> Tuple[str, int, int, str]:
+    """Return (sha1, width, height, source_url) for a WP media item.
+    Downloads file via its source_url into cache to compute sha1 if needed.
+    """
+    j = wp_get_media(cfg, media_id)
+    src = j.get("source_url") or ""
+    # Dimensions from WP metadata (if present)
+    md = j.get("media_details") or {}
+    width = int(md.get("width") or 0)
+    height = int(md.get("height") or 0)
+    # Download to cache and compute sha1
+    if not src:
+        raise RuntimeError(f"Media {media_id} has no source_url")
+    local = download_to_cache(src)
+    sha1 = compute_sha1_of_file(local)
+    # If width/height missing, inspect file
+    if width <= 0 or height <= 0:
+        try:
+            with Image.open(local) as im:
+                width, height = im.size
+        except Exception:
+            pass
+    return sha1, width, height, src
+
+
+# -------------------------
+# Perceptual hashing (dHash) utilities
+# -------------------------
+
+def image_dhash(path: str, size: int = 9) -> int:
+    """Compute a perceptual difference hash (dHash) for an image file.
+    Returns a 64-bit integer hash (for size=9 -> 8x8 grid).
+    """
+    try:
+        with Image.open(path) as img:
+            img = img.convert("L").resize((size, size), Image.LANCZOS)
+            pixels = list(img.getdata())
+            rows = [pixels[i * size:(i + 1) * size] for i in range(size)]
+            bits = []
+            # Compare adjacent pixels horizontally to form (size-1) x size comparisons
+            for r in rows:
+                for x in range(size - 1):
+                    bits.append(1 if r[x] > r[x + 1] else 0)
+            # Pack bits into an int
+            h = 0
+            for b in bits:
+                h = (h << 1) | int(b)
+            return h
+    except Exception:
+        return 0
+
+
+def hamming_distance(a: int, b: int) -> int:
+    x = (a ^ b) & ((1 << 64) - 1)
+    # Kernighan's algorithm
+    cnt = 0
+    while x:
+        x &= x - 1
+        cnt += 1
+    return cnt
+
+
+def scan_perceptual_clusters(cfg: EnvConfig, threshold: int = 5) -> Dict[int, List[int]]:
+    """Scan all products, compute dHash for their featured images, and build clusters of
+    perceptual duplicates using a Hamming distance threshold.
+    Returns a mapping cluster_id -> list of product_ids.
+    """
+    products = wp_get_all_products(cfg)
+    pid_hash: Dict[int, int] = {}
+    pids: List[int] = []
+    for p in tqdm(products, desc="Perceptual hash", unit="prod"):
+        pid = int(p.get("id"))
+        fm = int(p.get("featured_media") or 0)
+        if fm <= 0:
+            continue
+        try:
+            j = wp_get_media(cfg, fm)
+            src = j.get("source_url") or ""
+            if not src:
+                continue
+            local = download_to_cache(src)
+            dh = image_dhash(local)
+            if dh:
+                pid_hash[pid] = dh
+                pids.append(pid)
+        except Exception:
+            continue
+
+    # Build clusters by greedy union based on threshold
+    clusters: List[List[int]] = []
+    visited: Set[int] = set()
+    for i, a in enumerate(pids):
+        if a in visited:
+            continue
+        group = [a]
+        visited.add(a)
+        for j in range(i + 1, len(pids)):
+            b = pids[j]
+            if b in visited:
+                continue
+            if hamming_distance(pid_hash[a], pid_hash[b]) <= threshold:
+                group.append(b)
+                visited.add(b)
+        if len(group) > 1:
+            clusters.append(group)
+
+    # Convert clusters to dict with incremental ids
+    result: Dict[int, List[int]] = {idx + 1: grp for idx, grp in enumerate(clusters)}
+    return result
+
+
+def assign_image_to_product(wcapi, product_id: int, media_id: int, dry_run: bool = False, mode: str = "featured") -> None:
+    """Assign media to a product.
+    mode:
+      - featured: replace images with only the new one (current default behavior)
+      - append-gallery: keep existing images and append the new media as an extra gallery image
+      - replace-featured: replace only the featured image, keep existing gallery images
+    """
+    if dry_run:
+        log.info("[dry-run] Would update product %s with media id %s (mode=%s)", product_id, media_id, mode)
+        return
+    if mode == "featured":
+        payload = {"images": [{"id": media_id}]}
+    elif mode == "append-gallery":
+        # Fetch current product to preserve existing images
+        r_get = wcapi.get(f"products/{product_id}")
+        if r_get.status_code != 200:
+            raise RuntimeError(f"Failed to read product {product_id}: {r_get.status_code} {r_get.text[:200]}")
+        prod = r_get.json()
+        existing = prod.get("images") or []
+        # Avoid duplicating if already present
+        if any(int(img.get("id")) == int(media_id) for img in existing if img.get("id") is not None):
+            payload = {"images": existing}
+        else:
+            payload = {"images": existing + [{"id": media_id}]}
+    elif mode == "replace-featured":
+        # Replace only the featured image (first), keep gallery as-is (without duplicating the new image)
+        r_get = wcapi.get(f"products/{product_id}")
+        if r_get.status_code != 200:
+            raise RuntimeError(f"Failed to read product {product_id}: {r_get.status_code} {r_get.text[:200]}")
+        prod = r_get.json()
+        existing = prod.get("images") or []
+        # Collect gallery images (everything after index 0), excluding any occurrence of media_id
+        gallery = []
+        for idx, img in enumerate(existing):
+            if idx == 0:
+                continue
+            iid = img.get("id")
+            try:
+                if iid is not None and int(iid) == int(media_id):
+                    continue
+            except Exception:
+                pass
+            gallery.append({"id": img.get("id")})
+        payload = {"images": [{"id": media_id}] + gallery}
+    else:
+        raise ValueError(f"Unknown assign mode: {mode}")
+    r = wcapi.put(f"products/{product_id}", payload)
+    if r.status_code not in (200, 201):
+        raise RuntimeError(f"Failed to assign image to product {product_id}: {r.status_code} {r.text[:200]}")
+
+
+# -------------------------
+# Main batch processor
+# -------------------------
+
+def _strip_html(text: str) -> str:
+    try:
+        # remove tags and collapse whitespace
+        t = re.sub(r"<[^>]+>", " ", text or "")
+        t = re.sub(r"\s+", " ", t).strip()
+        return t
+    except Exception:
+        return text or ""
+
+
+def build_search_terms(product: Dict[str, Any], enrich: bool = False) -> str:
+    name = (product.get("name") or "").strip()
+    cats = ", ".join([c.get("name") for c in (product.get("categories") or []) if c.get("name")])
+    pieces: List[str] = [name]
+    if cats:
+        pieces.append(cats)
+    if enrich:
+        # Tags
+        tags = ", ".join([t.get("name") for t in (product.get("tags") or []) if t.get("name")])
+        if tags:
+            pieces.append(tags)
+        # Attributes (names and options)
+        attrs = []
+        for a in (product.get("attributes") or []):
+            an = a.get("name")
+            if an:
+                attrs.append(an)
+            # options may be list or string depending on API
+            opts = a.get("options") or a.get("option")
+            if isinstance(opts, list):
+                attrs.extend([str(x) for x in opts])
+            elif isinstance(opts, str):
+                attrs.append(opts)
+        if attrs:
+            pieces.append(" ".join(attrs))
+        # Short description / description (sanitized and truncated)
+        short = _strip_html(product.get("short_description") or "")
+        desc = _strip_html(product.get("description") or "")
+        # keep first ~20 words to avoid noise
+        def head_words(t: str, n: int = 20) -> str:
+            toks = t.split()
+            return " ".join(toks[:n])
+        extra = " ".join([x for x in [head_words(short), head_words(desc)] if x])
+        if extra:
+            pieces.append(extra)
+    term = " ".join([p for p in pieces if p])
+    term = term.replace("/", " ").replace("-", " ")
+    return " ".join(term.split())
+
+
+def _strip_accents(text: str) -> str:
+    try:
+        return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+    except Exception:
+        return text
+
+
+def _simplify_term(term: str) -> str:
+    s = term.lower()
+    s = _strip_accents(s)
+    # Remove sizes like "24cm", "6 cm"
+    s = re.sub(r"\b\d+\s*cm\b", " ", s)
+    # Remove volume units like "3 litros", "7 lt", "5 lts", "10 l"
+    s = re.sub(r"\b\d+\s*(litros?|lts?|lt|l)\b", " ", s)
+    # Fix fused tokens like "litroscm"
+    s = s.replace("litroscm", " ")
+    # Replace parentheses/brackets with spaces
+    s = s.replace("(", " ").replace(")", " ")
+    # Remove brand-like tokens commonly present in names
+    s = re.sub(r"\bta\s*plastic\b", " ", s)
+    # Remove punctuation & dashes/slashes already handled
+    s = re.sub(r"[^a-z0-9\s]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def generate_search_queries(product: Dict[str, Any], enrich: bool = False, prefix: Optional[str] = None) -> List[str]:
+    """Return a prioritized list of queries from product data.
+    Includes Spanish simplification and English synonyms for categories.
+    """
+    base = build_search_terms(product, enrich=enrich)
+    simple = _simplify_term(base)
+
+    # Category synonyms (very lightweight, extend as needed)
+    cat_names = " ".join([c.get("name", "") for c in (product.get("categories") or [])])
+    cat_simple = _simplify_term(cat_names)
+
+    # Detect plant-like products
+    plant_keywords = [
+        "planta","plantas","arbusto","arbustos","interior","exterior","jardin","jardinera","vivero","houseplant",
+        "ficus","bougainvillea","olea","nandina","buxus","eugenia","equisetum","coprosma","dracena","dracaena","raphis","rhapis","aspidistra","teucrium","evonimo","euonymus","yuca","dodonea","helecho"
+    ]
+    is_plant = any(k in simple for k in plant_keywords) or any(k in cat_simple for k in plant_keywords)
+
+    queries: List[str] = []
+
+    # Prioritize exact product name for precision
+    exact_name = product.get('name', '').strip()
+    if exact_name:
+        queries.append(_simplify_term(exact_name))
+
+    if is_plant:
+        queries.append(simple)
+        for pk in plant_keywords:
+            if pk not in simple.lower():
+                mq = f"{simple} {pk}"
+                queries.append(mq)
+    else:
+        queries.append(simple)
+
+    # Category synonyms
+    if cat_simple:
+        queries.append(cat_simple)
+
+    # Detect pot/planter products (macetas, platos)
+    pot_keywords = ["maceta", "pot", "plato", "planter", "container", "pano", "paño"]
+    is_pot = any(k in simple for k in pot_keywords) or any(k in cat_simple for k in pot_keywords)
+    
+    if is_pot and not is_plant:
+        # For pots/planters, add specific queries with ecommerce context
+        pot_queries = []
+        if "maceta" in simple or "pot" in simple:
+            pot_queries.append("plant pot product white background")
+            pot_queries.append("flower pot ecommerce")
+        if "plato" in simple:
+            pot_queries.append("plant saucer product photo")
+            pot_queries.append("pot tray white background")
+        if "pano" in simple or "paño" in simple:
+            pot_queries.append("garden pot product")
+            pot_queries.append("planter ecommerce photo")
+        
+        # Add pot queries
+        for pq in pot_queries[:2]:  # Limit to 2
+            if pq not in queries:
+                queries.append(pq)
+    
+    # Add ecommerce/product photo context for ALL products
+    ecommerce_queries = []
+    if is_plant:
+        ecommerce_queries.append("potted plant product photo")
+        ecommerce_queries.append("houseplant white background")
+        ecommerce_queries.append("plant nursery product")
+    elif is_pot:
+        ecommerce_queries.append("pot product photography")
+    else:
+        ecommerce_queries.append("garden product ecommerce")
+        ecommerce_queries.append("nursery product photo")
+    
+    # Add ecommerce context queries
+    for eq in ecommerce_queries[:2]:  # Limit to 2
+        if eq not in queries:
+            queries.append(eq)
+
+    # Apply optional prefix (theme), e.g., "VIVERO DE PLANTAS"
+    if prefix:
+        pfx = prefix.strip()
+        if pfx:
+            prefixed: List[str] = []
+            seen: set = set()
+            for q in queries:
+                pq = f"{pfx} {q}".strip()
+                if pq not in seen:
+                    seen.add(pq)
+                    prefixed.append(pq)
+            return prefixed
+    # Limit to top 3 most specific queries only
+    return queries[:3]
+
+
+def batch_processor(
+    cfg: EnvConfig,
+    batch_size: int,
+    delay: float,
+    image_size: Tuple[int, int],
+    quality: int,
+    providers: List[str],
+    dry_run: bool,
+    resume: bool,
+    watermark_text: Optional[str],
+    min_resolution: Tuple[int, int],
+    target: str = "missing",
+    assign_mode: str = "featured",
+    enrich_queries: bool = False,
+    query_prefix: Optional[str] = None,
+    global_dedupe: bool = False,
+    max_success: int = 0,
+    local_dir: str = "",
+    local_include_subdirs: bool = False,
+    map_by: str = "sku",
+    product_api: str = "wc",
+) -> Dict[str, Any]:
+    wcapi = None
+    if product_api == "wc":
+        wcapi = get_wc_api(cfg)
+    state = load_state() if resume else {"processed": []}
+    processed_ids = set(state.get("processed", []))
+
+    if product_api == "wc":
+        products = get_products_by_target(wcapi, target=target)
+    else:
+        products = wp_get_products_by_target(cfg, target=target)
+    pending = [p for p in products if p.get("id") not in processed_ids]
+
+    stats = {"total": len(pending), "success": 0, "skipped": 0, "failed": 0}
+
+    # Track image SHA1s used within this run to prevent cross-product duplicates
+    run_used_sha1s: Set[str] = set()
+
+    log.info(
+        "Products selected (target=%s): %s (pending after resume: %s)",
+        target,
+        len(products),
+        len(pending),
+    )
+    if not pending:
+        return stats
+
+    for i in tqdm(range(0, len(pending), batch_size), desc="Processing batches"):
+        batch = pending[i : i + batch_size]
+        for p in tqdm(batch, leave=False, desc="Products"):
+            pid = int(p.get("id"))
+            name = p.get("name")
+            try:
+                # 1) Try curated local directory match by SKU/slug if provided
+                selected_path: Optional[str] = None
+                selected_mime: Optional[str] = None
+                selected_sha1: Optional[str] = None
+                if local_dir:
+                    sku = (p.get("sku") or "").strip()
+                    slug = (p.get("slug") or "").strip()
+                    keys: List[str] = []
+                    if map_by == "sku" and sku:
+                        keys.append(sku)
+                        # common variant: uppercase
+                        if sku.lower() != sku:
+                            keys.append(sku.lower())
+                        if sku.upper() != sku:
+                            keys.append(sku.upper())
+                    if map_by == "slug" and slug:
+                        keys.append(slug)
+                        if slug.upper() != slug:
+                            keys.append(slug.upper())
+                    # fallback: try both if one missing
+                    if not keys:
+                        for k in [sku, slug]:
+                            if k:
+                                keys.extend([k, k.lower(), k.upper()])
+                    local_found = find_local_image(local_dir, keys, include_subdirs=local_include_subdirs)
+                    if local_found:
+                        selected_path, selected_mime = local_found
+                        try:
+                            selected_sha1 = compute_sha1_of_file(selected_path)
+                        except Exception:
+                            selected_sha1 = None
+
+                # 2) If no local curated image, search and pick via providers
+                selected: Optional[ImageCandidate] = None
+                if not selected_path:
+                    queries = generate_search_queries(p, enrich=enrich_queries, prefix=query_prefix)
+                    for q in queries:
+                        imgs = []
+                        if "inaturalist" in providers:
+                            imgs.extend(search_inaturalist(q, min_w=min_resolution[0], min_h=min_resolution[1], delay=delay))
+                        if "wikimedia" in providers:
+                            imgs.extend(search_wikimedia(q, min_w=min_resolution[0], min_h=min_resolution[1], delay=delay))
+                        if "flickr" in providers:
+                            imgs.extend(search_flickr(q, key=cfg.flickr_key, min_w=min_resolution[0], min_h=min_resolution[1], delay=delay))
+                        if "unsplash" in providers:
+                            imgs.extend(search_unsplash(q, key=cfg.unsplash_key, min_w=min_resolution[0], min_h=min_resolution[1], delay=delay))
+                        if "pixabay" in providers:
+                            imgs.extend(search_pixabay(q, key=cfg.pixabay_key, min_w=min_resolution[0], min_h=min_resolution[1], delay=delay))
+                        if "pexels" in providers:
+                            imgs.extend(search_pexels(q, key=cfg.pexels_key, min_w=min_resolution[0], min_h=min_resolution[1], delay=delay))
+                        # rank by area (w*h) descending
+                        imgs.sort(key=lambda c: (c.width * c.height), reverse=True)
+                        
+                        # If global_dedupe is enabled, try multiple candidates until finding a unique one
+                        if imgs and global_dedupe:
+                            for candidate in imgs[:10]:  # Try up to 10 images
+                                try:
+                                    temp_path = download_to_cache(candidate.url)
+                                    temp_sha1 = compute_sha1_of_file(temp_path)
+                                    if temp_sha1 not in run_used_sha1s:
+                                        selected = candidate
+                                        break
+                                except Exception:
+                                    continue
+                            if selected:
+                                break
+                        elif imgs:
+                            selected = imgs[0]
+                            break
+
+                # Download/process selected image (local curated or remote)
+                try:
+                    if selected_path:
+                        local_path = selected_path
+                        out_path, mime = process_image(local_path, image_size, quality, watermark_text)
+                    elif selected:
+                        local_path = download_to_cache(selected.url)
+                        out_path, mime = process_image(local_path, image_size, quality, watermark_text)
+                    else:
+                        raise RuntimeError("No image selected")
+                    
+                    # Compute SHA1 and check global dedupe
+                    if global_dedupe:
+                        try:
+                            img_sha1 = compute_sha1_of_file(out_path)
+                            if img_sha1 in run_used_sha1s:
+                                log.warning("Image SHA1 already used (global dedupe), skipping product %s", pid)
+                                stats["skipped"] += 1
+                                continue
+                            selected_sha1 = img_sha1
+                        except Exception as sha_err:
+                            log.warning("Could not compute SHA1 for dedupe check: %s", sha_err)
+                            selected_sha1 = None
+                    
+                except Exception as e:
+                    log.warning("Download/process failed for product %s: %s", pid, e)
+                    stats["failed"] += 1
+                    continue
+
+                # Upload to WP
+                try:
+                    if dry_run:
+                        log.info("[dry-run] Would upload and assign to product %s", pid)
+                        stats["success"] += 1
+                        processed_ids.add(pid)
+                        state["processed"] = sorted(list(processed_ids))
+                        save_state(state)
+                        continue
+                    fname = os.path.basename(out_path)
+                    alt_text = (p.get("name") or ((p.get("title") or {}).get("rendered")) or "")
+                    media_id, media_url = upload_to_wordpress(out_path, fname, alt_text, cfg)
+                except Exception as e:
+                    log.warning("Upload failed for product %s: %s", pid, e)
+                    stats["failed"] += 1
+                    continue
+
+                # Assign to product depending on API
+                try:
+                    if product_api == "wc":
+                        assign_image_to_product(wcapi, pid, media_id, dry_run=False, mode=assign_mode)
+                    else:
+                        if assign_mode != "featured":
+                            log.warning("WP REST fallback only supports 'featured' mode; using featured for product %s", pid)
+                        wp_assign_featured_media(cfg, pid, media_id, dry_run=False)
+                except Exception as e:
+                    log.warning("Assign failed for product %s: %s", pid, e)
+                    stats["failed"] += 1
+                    continue
+
+                log.info("Uploaded media %s assigned to product %s (%s)", media_id, pid, media_url or "")
+
+                if global_dedupe and selected_sha1:
+                    run_used_sha1s.add(selected_sha1)
+                stats["success"] += 1
+                processed_ids.add(pid)
+                state["processed"] = sorted(list(processed_ids))
+                save_state(state)
+
+                # Stop early if we've reached the desired number of successes
+                if max_success > 0 and stats["success"] >= max_success:
+                    log.info("Reached max-success %d, stopping early", max_success)
+                    return stats
+
+                time.sleep(delay)
+            except Exception as e:
+                log.error("Product %s failed: %s", pid, e)
+                stats["failed"] += 1
+                time.sleep(delay)
+        # Batch delay
+        time.sleep(delay)
+
+    return stats
+
+
+# -------------------------
+# CLI
+# -------------------------
+
+def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Automate searching, processing, and assigning product images in WooCommerce.")
+    parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
+    parser.add_argument("--delay", type=float, default=DEFAULT_DELAY)
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"]) 
+    parser.add_argument("--watermark", default=None, help="Optional text watermark, e.g. 'Vivero'")
+    parser.add_argument("--image-size", default=f"{DEFAULT_IMAGE_SIZE[0]}x{DEFAULT_IMAGE_SIZE[1]}", help="Target size WxH, e.g. 1200x1200")
+    parser.add_argument("--quality", type=int, default=DEFAULT_IMAGE_QUALITY)
+    parser.add_argument("--providers", default="unsplash,pixabay,pexels", help="Comma-separated provider order (available: unsplash, pixabay, pexels, wikimedia, flickr, inaturalist)")
+    parser.add_argument("--min-resolution", default=f"{MIN_RESOLUTION[0]}x{MIN_RESOLUTION[1]}")
+    parser.add_argument("--target", default="missing", choices=["missing", "with-images", "all"], help="Which products to process")
+    parser.add_argument("--assign-mode", default="featured", choices=["featured", "append-gallery", "replace-featured"], help="How to assign uploaded image")
+    parser.add_argument("--enrich-queries", action="store_true", help="Enrich search queries using description, tags and attributes")
+    parser.add_argument("--query-prefix", default=None, help="Optional prefix to add to all search queries, e.g. 'VIVERO DE PLANTAS'")
+    parser.add_argument("--optimize-galleries", action="store_true", help="Deduplicate and reorder product images choosing the least-duplicated and most representative as featured")
+    parser.add_argument("--optimize-target", default="with-images", choices=["with-images", "all"], help="Which products to optimize (default: with-images)")
+    parser.add_argument("--global-dedupe", action="store_true", help="Avoid assigning the same image (by SHA1) across different products in this run")
+    parser.add_argument("--max-success", type=int, default=0, help="Stop after N successful assignments (0 = no limit)")
+    # Local curated images support
+    parser.add_argument("--local-dir", type=str, default="", help="Path to curated local images directory (matched by SKU or slug)")
+    parser.add_argument("--local-include-subdirs", action="store_true", help="Search local curated images recursively in subdirectories")
+    parser.add_argument("--map-by", type=str, default="sku", choices=["sku", "slug"], help="Primary key to match local images (default: sku)")
+    parser.add_argument("--product-api", type=str, default="wc", choices=["wc", "wp"], help="API to use for products/assignment: 'wc' (WooCommerce) or 'wp' (WordPress REST)")
+    # Global dedupe & title fix modes
+    parser.add_argument("--scan-and-dedupe", action="store_true", help="Scan all products, detect duplicate featured images by SHA1 and reassign unique images (local first, then providers)")
+    parser.add_argument("--registry-file", type=str, default=GLOBAL_SHA1_FILE, help="Path for persistent global SHA1 registry JSON")
+    parser.add_argument("--fix-titles", action="store_true", help="Normalize product titles across the catalog")
+    parser.add_argument("--title-dry-run", action="store_true", help="Preview title changes without saving")
+    # Perceptual dedupe
+    parser.add_argument("--scan-perceptual", action="store_true", help="Scan for perceptual duplicate clusters using dHash")
+    parser.add_argument("--dedupe-perceptual", action="store_true", help="Reassign images for products in perceptual duplicate clusters")
+    parser.add_argument("--phash-threshold", type=int, default=5, help="Hamming distance threshold for perceptual duplicates (default: 5)")
+    return parser.parse_args(argv)
+
+
+def parse_whxht(s: str) -> Tuple[int, int]:
+    try:
+        w, h = s.lower().split("x")
+        return int(w), int(h)
+    except Exception:
+        raise argparse.ArgumentTypeError(f"Invalid size format: {s}. Expected WxH, e.g., 1200x1200")
+
+
+def main(argv: Optional[List[str]] = None) -> None:
+    args = parse_args(argv)
+    level = getattr(logging, args.log_level.upper(), logging.INFO)
+    setup_logging(level)
+
+    try:
+        cfg = load_config()
+        validate_config(cfg)
+    except Exception as e:
+        log.error("Config error: %s", e)
+        sys.exit(2)
+
+    # Special modes that run standalone and exit
+    if getattr(args, "scan_perceptual", False):
+        try:
+            clusters = scan_perceptual_clusters(cfg, threshold=int(getattr(args, "phash_threshold", 5)))
+            total_dupe_groups = len(clusters)
+            total_products = sum(len(v) for v in clusters.values())
+            log.info("Perceptual scan finished. groups=%s products=%s", total_dupe_groups, total_products)
+            print(json.dumps({"groups": total_dupe_groups, "products": total_products, "clusters": clusters}, ensure_ascii=False))
+            return
+        except Exception as e:
+            log.exception("Fatal error (scan-perceptual): %s", e)
+            sys.exit(1)
+
+    if getattr(args, "dedupe_perceptual", False):
+        try:
+            clusters = scan_perceptual_clusters(cfg, threshold=int(getattr(args, "phash_threshold", 5)))
+            reassigned = 0
+            failures = 0
+            # Provider setup from CLI
+            providers = [p.strip() for p in getattr(args, "providers", "").split(',') if p.strip()]
+            minres = parse_whxht(getattr(args, "min_resolution", f"{MIN_RESOLUTION[0]}x{MIN_RESOLUTION[1]}"))
+            for _cid, plist in clusters.items():
+                keep = plist[0]
+                for pid in plist[1:]:
+                    try:
+                        # Fetch product from WP
+                        base_url = cfg.wordpress_url.rstrip("/") + f"/wp-json/wp/v2/product/{int(pid)}"
+                        headers = get_wp_auth_header(cfg) or {}
+                        rp = requests.get(base_url, headers=headers, timeout=30)
+                        if rp.status_code != 200:
+                            raise RuntimeError(f"fetch {pid} -> {rp.status_code}")
+                        product = rp.json()
+                        # Try local first (if provided)
+                        selected_path = None
+                        selected = None
+                        if getattr(args, "local_dir", ""):
+                            sku = (product.get("sku") or "").strip()
+                            slug = (product.get("slug") or "").strip()
+                            keys: List[str] = []
+                            key_mode = (getattr(args, "map_by", "sku") or "sku").lower()
+                            if key_mode == "sku" and sku:
+                                keys.extend([sku, sku.lower(), sku.upper()])
+                            if key_mode == "slug" and slug:
+                                keys.extend([slug, slug.lower(), slug.upper()])
+                            if not keys:
+                                for k in [sku, slug]:
+                                    if k:
+                                        keys.extend([k, k.lower(), k.upper()])
+                            lf = find_local_image(getattr(args, "local_dir", ""), keys, include_subdirs=bool(getattr(args, "local_include_subdirs", False)))
+                            if lf:
+                                selected_path, _mime = lf
+                        # Providers
+                        if not selected_path and providers:
+                            queries = generate_search_queries(product, enrich=bool(getattr(args, "enrich_queries", False)), prefix=getattr(args, "query_prefix", None))
+                            for q in queries:
+                                imgs = search_free_images(q, cfg, min_resolution=minres, delay=float(getattr(args, "delay", DEFAULT_DELAY)), providers_order=providers)
+                                if imgs:
+                                    imgs.sort(key=lambda c: (c.width * c.height), reverse=True)
+                                    selected = imgs[0]
+                                    break
+                        if not selected_path and selected is None:
+                            log.warning("Perceptual reassign skipped for product %s: no image candidate", pid)
+                            failures += 1
+                            continue
+                        if selected_path:
+                            src_path = selected_path
+                        else:
+                            src_path = download_to_cache(selected.url)
+                        out_path, _mime = process_image(src_path, DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_QUALITY, watermark_text=None, format_preference="webp")
+                        fname = os.path.basename(out_path)
+                        alt_text = (product.get("name") or ((product.get("title") or {}).get("rendered")) or "")
+                        media_id, _media_url = upload_to_wordpress(out_path, fname, alt_text, cfg)
+                        wp_assign_featured_media(cfg, int(pid), media_id, dry_run=False)
+                        reassigned += 1
+                    except Exception as e:
+                        log.warning("Perceptual reassign failed for product %s: %s", pid, e)
+                        failures += 1
+                        continue
+            log.info("Perceptual dedupe finished. Reassigned=%s failures=%s", reassigned, failures)
+            print(json.dumps({"reassigned": reassigned, "failed": failures}, ensure_ascii=False))
+            return
+        except Exception as e:
+            log.exception("Fatal error (dedupe-perceptual): %s", e)
+            sys.exit(1)
+    if getattr(args, "scan_and_dedupe", False):
+        try:
+            log.info("Scanning products and building SHA1 map...")
+            sha1_map = scan_build_sha1_map(cfg)
+            reg = load_global_registry(getattr(args, "registry_file", GLOBAL_SHA1_FILE))
+            reg_map = reg.get("sha1_to_products", {})
+            for k, v in sha1_map.items():
+                s = set(reg_map.get(k, [])) | set(v)
+                reg_map[k] = sorted(list(s))
+            reg["sha1_to_products"] = reg_map
+            save_global_registry(reg, getattr(args, "registry_file", GLOBAL_SHA1_FILE))
+
+            duplicates = {h: ids for h, ids in reg_map.items() if len(ids) > 1}
+            log.info("Found %s duplicate image hashes.", len(duplicates))
+            reassigned = 0
+            failures = 0
+            # Use provided CLI knobs for local_dir/providers/etc.
+            for _sha1, plist in duplicates.items():
+                keep = plist[0]
+                for pid in plist[1:]:
+                    try:
+                        # Fetch product from WP
+                        base_url = cfg.wordpress_url.rstrip("/") + f"/wp-json/wp/v2/product/{int(pid)}"
+                        headers = get_wp_auth_header(cfg) or {}
+                        rp = requests.get(base_url, headers=headers, timeout=30)
+                        if rp.status_code != 200:
+                            raise RuntimeError(f"fetch {pid} -> {rp.status_code}")
+                        product = rp.json()
+                        # Local first
+                        selected_path = None
+                        selected_mime = None
+                        if getattr(args, "local_dir", ""):
+                            sku = (product.get("sku") or "").strip()
+                            slug = (product.get("slug") or "").strip()
+                            keys: List[str] = []
+                            key_mode = (getattr(args, "map_by", "sku") or "sku").lower()
+                            if key_mode == "sku" and sku:
+                                keys.extend([sku, sku.lower(), sku.upper()])
+                            if key_mode == "slug" and slug:
+                                keys.extend([slug, slug.lower(), slug.upper()])
+                            if not keys:
+                                for k in [sku, slug]:
+                                    if k:
+                                        keys.extend([k, k.lower(), k.upper()])
+                            lf = find_local_image(getattr(args, "local_dir", ""), keys, include_subdirs=bool(getattr(args, "local_include_subdirs", False)))
+                            if lf:
+                                selected_path, selected_mime = lf
+                        # Providers
+                        selected = None
+                        if not selected_path and getattr(args, "providers", ""):
+                            minres = parse_whxht(getattr(args, "min_resolution", f"{MIN_RESOLUTION[0]}x{MIN_RESOLUTION[1]}"))
+                            queries = generate_search_queries(product, enrich=bool(getattr(args, "enrich_queries", False)), prefix=getattr(args, "query_prefix", None))
+                            providers = [p.strip() for p in getattr(args, "providers", "").split(',') if p.strip()]
+                            for q in queries:
+                                imgs = search_free_images(q, cfg, min_resolution=minres, delay=float(getattr(args, "delay", DEFAULT_DELAY)), providers_order=providers)
+                                if imgs:
+                                    imgs.sort(key=lambda c: (c.width * c.height), reverse=True)
+                                    selected = imgs[0]
+                                    break
+                        if not selected_path and selected is None:
+                            log.warning("Reassign skipped for product %s: no image candidate", pid)
+                            failures += 1
+                            continue
+                        if selected_path:
+                            src_path = selected_path
+                        else:
+                            src_path = download_to_cache(selected.url)
+                        out_path, _mime = process_image(src_path, DEFAULT_IMAGE_SIZE, DEFAULT_IMAGE_QUALITY, watermark_text=None, format_preference="webp")
+                        fname = os.path.basename(out_path)
+                        alt_text = (product.get("name") or ((product.get("title") or {}).get("rendered")) or "")
+                        media_id, _media_url = upload_to_wordpress(out_path, fname, alt_text, cfg)
+                        wp_assign_featured_media(cfg, int(pid), media_id, dry_run=False)
+                        reassigned += 1
+                    except Exception as e:
+                        log.warning("Reassign failed for product %s: %s", pid, e)
+                        failures += 1
+                        continue
+            log.info("Dedupe finished. Reassigned=%s failures=%s", reassigned, failures)
+            print(json.dumps({"duplicates": len(duplicates), "reassigned": reassigned, "failed": failures}, ensure_ascii=False))
+            return
+        except Exception as e:
+            log.exception("Fatal error (scan-and-dedupe): %s", e)
+            sys.exit(1)
+
+    if getattr(args, "fix_titles", False):
+        try:
+            products = wp_get_all_products(cfg)
+            changed = 0
+            for p in tqdm(products, desc="Fixing titles", unit="prod"):
+                pid = int(p.get("id"))
+                # Usar datos completos para inferir un título SEO-friendly sin sufijos
+                new = infer_seo_title(p)
+                if not new:
+                    continue
+                old = (p.get("name") or ((p.get("title") or {}).get("rendered")) or "").strip()
+                if new and new != old:
+                    try:
+                        wp_update_product_title(cfg, pid, new, dry_run=bool(getattr(args, "title_dry_run", False)))
+                        changed += 1
+                    except Exception as e:
+                        log.warning("Title update failed for %s: %s", pid, e)
+                        continue
+            log.info("Title fix finished. changed=%s dry_run=%s", changed, bool(getattr(args, "title_dry_run", False)))
+            print(json.dumps({"changed": changed, "dry_run": bool(getattr(args, "title_dry_run", False))}, ensure_ascii=False))
+            return
+        except Exception as e:
+            log.exception("Fatal error (fix-titles): %s", e)
+            sys.exit(1)
+
+    # Optimization-only mode skips assignment parameters parsing
+    if args.optimize_galleries:
+        try:
+            cfg = load_config()
+            validate_config(cfg)
+            wcapi = get_wc_api(cfg)
+            stats = optimize_galleries(wcapi, cfg, target=args.optimize_target, dry_run=args.dry_run)
+        except Exception as e:
+            log.exception("Fatal error: %s", e)
+            sys.exit(1)
+        log.info("Done. Stats: %s", stats)
+        print(json.dumps(stats, ensure_ascii=False))
+        return
+
+    try:
+        size = parse_whxht(args.image_size)
+        minres = parse_whxht(args.min_resolution)
+        providers = [p.strip() for p in args.providers.split(',') if p.strip()]
+    except Exception as e:
+        log.error("Argument error: %s", e)
+        sys.exit(2)
+
+    log.info("Starting WooCommerce image automation | dry_run=%s resume=%s", args.dry_run, args.resume)
+
+    try:
+        stats = batch_processor(
+            cfg,
+            batch_size=args.batch_size,
+            delay=args.delay,
+            image_size=size,
+            quality=args.quality,
+            providers=providers,
+            dry_run=args.dry_run,
+            resume=args.resume,
+            watermark_text=args.watermark,
+            min_resolution=minres,
+            target=args.target,
+            assign_mode=args.assign_mode,
+            enrich_queries=args.enrich_queries,
+            query_prefix=args.query_prefix,
+            global_dedupe=args.global_dedupe,
+            max_success=max(0, int(args.max_success)),
+            local_dir=(args.local_dir or ""),
+            local_include_subdirs=bool(args.local_include_subdirs),
+            map_by=(args.map_by or "sku"),
+            product_api=(args.product_api or "wc"),
+        )
+    except Exception as e:
+        log.exception("Fatal error: %s", e)
+        sys.exit(1)
+
+    log.info("Done. Stats: %s", stats)
+    print(json.dumps(stats, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

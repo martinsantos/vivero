@@ -1,0 +1,22 @@
+# Handle missing product images with SVG placeholders
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect missing product placeholder images to our handler
+    RewriteCond %{REQUEST_URI} ^/wp-content/uploads/(.*)/product-.*-placeholder\.(svg|png|jpg|jpeg|webp)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ /wp-content/themes/theme-loscos-child/placeholder-image.php [L]
+    
+    # Handle WooCommerce placeholder image
+    RewriteCond %{REQUEST_URI} ^/wp-content/uploads/woocommerce-placeholder\.(png|jpg|jpeg|webp)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ /wp-content/themes/theme-loscos-child/placeholder-image.php [L]
+</IfModule>
+
+# Set CORS headers for SVG files
+<IfModule mod_headers.c>
+    <FilesMatch "\.(svg)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>

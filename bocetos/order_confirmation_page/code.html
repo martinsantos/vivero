@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vivero Los Cocos - Order Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1dc91d",
+            "background-light": "#f6f8f6",
+            "background-dark": "#112111",
+          },
+          fontFamily: {
+            "display": ["Epilogue"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex flex-col min-h-screen">
+<header class="border-b border-black/10 dark:border-white/10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg class="lucide lucide-leaf" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg"><path d="M11 20A7 7 0 0 1 4 13H2a10 10 0 0 0 10 10zM2 13h2a7 7 0 0 1 7-7V4a10 10 0 0 0-10 9z"></path></svg>
+</div>
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Vivero Los Cocos</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Plants</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Gardening Supplies</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Flowers</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Sale</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+</button>
+<button class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+</button>
+<button class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" x2="21" y1="6" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="max-w-2xl w-full space-y-8 text-center">
+<div>
+<div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-primary/20 text-primary">
+<svg class="lucide lucide-check" fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5"></path></svg>
+</div>
+<h2 class="mt-6 text-3xl font-bold text-gray-900 dark:text-white tracking-tight">¡Gracias por tu compra!</h2>
+<p class="mt-2 text-base text-gray-600 dark:text-gray-400">Tu orden ha sido confirmada y será procesada pronto.</p>
+</div>
+<div class="bg-white dark:bg-background-dark/50 shadow-sm rounded-lg p-6 text-left space-y-6 border border-black/10 dark:border-white/10">
+<div class="flex justify-between items-center">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Orden #123456789</h3>
+<span class="text-sm text-gray-500 dark:text-gray-400">10 Mayo, 2024</span>
+</div>
+<div class="border-t border-black/10 dark:border-white/10 pt-6 space-y-4">
+<div class="flex justify-between">
+<span class="text-sm text-gray-600 dark:text-gray-400">Total</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">$75.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-gray-600 dark:text-gray-400">Método de pago</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Tarjeta de Crédito</span>
+</div>
+</div>
+<div class="border-t border-black/10 dark:border-white/10 pt-6 space-y-4">
+<div class="flex justify-between items-start">
+<span class="text-sm text-gray-600 dark:text-gray-400">Dirección de envío</span>
+<p class="text-sm font-medium text-gray-900 dark:text-white text-right">123 Maple Street<br/>Anytown, CA 91234</p>
+</div>
+<div class="flex justify-between items-start">
+<span class="text-sm text-gray-600 dark:text-gray-400">Entrega estimada</span>
+<p class="text-sm font-medium text-gray-900 dark:text-white text-right">Mayo 15 - Mayo 18</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:ring-offset-background-dark" href="#">
+              Ver detalles de la orden
+          </a>
+<a class="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center px-6 py-3 border border-black/10 dark:border-white/20 text-base font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-white dark:bg-background-dark hover:bg-black/5 dark:hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:ring-offset-background-dark" href="#">
+              Continuar comprando
+          </a>
+</div>
+</div>
+</main>
+<footer class="bg-white/50 dark:bg-background-dark/50 border-t border-black/10 dark:border-white/10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+<p>© 2024 Vivero Los Cocos. Todos los derechos reservados.</p>
+</div>
+</footer>
+</div>
+
+</body></html>

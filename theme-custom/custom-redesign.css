@@ -1,0 +1,798 @@
+/**
+ * VIVERO LOS COCOS - CUSTOM REDESIGN
+ * Basado en bocetos octubre 2025
+ * Implementación CSS-only sin modificar templates
+ */
+
+/* ============================================
+   VARIABLES CSS
+   ============================================ */
+
+:root {
+  /* Colores principales */
+  --vl-primary: #1dc91d;
+  --vl-primary-hover: #19b319;
+  --vl-primary-light: rgba(29, 201, 29, 0.1);
+  --vl-primary-dark: #168e16;
+  
+  /* Backgrounds */
+  --vl-bg-light: #f6f8f6;
+  --vl-bg-dark: #112111;
+  --vl-bg-card: #ffffff;
+  --vl-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Text */
+  --vl-text-primary: #1a1a1a;
+  --vl-text-secondary: #6b7280;
+  --vl-text-white: #ffffff;
+  --vl-text-muted: #9ca3af;
+  
+  /* Borders */
+  --vl-border-light: #e5e7eb;
+  --vl-border-primary: rgba(29, 201, 29, 0.2);
+  --vl-border-radius: 0.5rem;
+  --vl-border-radius-full: 9999px;
+  
+  /* Shadows */
+  --vl-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --vl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --vl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --vl-transition: all 0.3s ease;
+  --vl-transition-fast: all 0.15s ease;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&display=swap');
+
+body {
+  font-family: 'Epilogue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--vl-bg-light);
+  color: var(--vl-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 700;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.site-header,
+#masthead {
+  background: rgba(246, 248, 246, 0.8) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--vl-border-primary);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.site-header .site-branding h1,
+.site-header .site-title {
+  color: var(--vl-primary);
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.main-navigation a {
+  color: var(--vl-text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: var(--vl-transition-fast);
+  padding: 0.5rem 1rem;
+  border-radius: var(--vl-border-radius);
+}
+
+.main-navigation a:hover,
+.main-navigation .current-menu-item a {
+  color: var(--vl-primary);
+  background-color: var(--vl-primary-light);
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.button,
+.wp-block-button__link {
+  background-color: var(--vl-primary) !important;
+  color: var(--vl-text-white) !important;
+  border: none !important;
+  border-radius: var(--vl-border-radius) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  transition: var(--vl-transition) !important;
+  box-shadow: var(--vl-shadow-md);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.button:hover {
+  background-color: var(--vl-primary-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--vl-shadow-lg);
+}
+
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt {
+  background-color: var(--vl-primary-dark) !important;
+}
+
+/* ============================================
+   PRODUCTOS - GRID
+   ============================================ */
+
+.woocommerce ul.products {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.woocommerce ul.products li.product {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  overflow: hidden;
+  box-shadow: var(--vl-shadow-sm);
+  transition: var(--vl-transition);
+  border: 1px solid var(--vl-border-light);
+}
+
+.woocommerce ul.products li.product:hover {
+  transform: scale(1.03);
+  box-shadow: var(--vl-shadow-lg);
+  border-color: var(--vl-primary-light);
+}
+
+.woocommerce ul.products li.product img {
+  border-radius: var(--vl-border-radius) var(--vl-border-radius) 0 0;
+  transition: var(--vl-transition);
+}
+
+.woocommerce ul.products li.product:hover img {
+  transform: scale(1.05);
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--vl-text-primary);
+  margin: 1rem 0 0.5rem;
+}
+
+.woocommerce ul.products li.product .price {
+  color: var(--vl-primary);
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+
+/* ============================================
+   PRODUCTO DETALLE
+   ============================================ */
+
+.woocommerce div.product {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 2rem;
+  box-shadow: var(--vl-shadow-md);
+}
+
+.woocommerce div.product .product_title {
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--vl-text-primary);
+  margin-bottom: 1rem;
+}
+
+.woocommerce div.product p.price {
+  color: var(--vl-primary);
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+/* ============================================
+   CARRITO
+   ============================================ */
+
+.woocommerce-cart .cart-collaterals {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 2rem;
+  box-shadow: var(--vl-shadow-md);
+}
+
+.woocommerce table.shop_table {
+  border-radius: var(--vl-border-radius);
+  overflow: hidden;
+  border: 1px solid var(--vl-border-light);
+}
+
+.woocommerce table.shop_table th {
+  background-color: var(--vl-primary-light);
+  color: var(--vl-text-primary);
+  font-weight: 700;
+}
+
+/* ============================================
+   CHECKOUT
+   ============================================ */
+
+.woocommerce-checkout .woocommerce-billing-fields,
+.woocommerce-checkout .woocommerce-shipping-fields,
+.woocommerce-checkout #order_review {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 2rem;
+  box-shadow: var(--vl-shadow-md);
+  margin-bottom: 2rem;
+}
+
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select {
+  border: 1px solid var(--vl-border-light);
+  border-radius: var(--vl-border-radius);
+  padding: 0.75rem;
+  transition: var(--vl-transition-fast);
+}
+
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus,
+.woocommerce form .form-row select:focus {
+  border-color: var(--vl-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--vl-primary-light);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.site-footer {
+  background-color: var(--vl-text-primary);
+  color: var(--vl-text-white);
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.site-footer a {
+  color: var(--vl-primary);
+  transition: var(--vl-transition-fast);
+}
+
+.site-footer a:hover {
+  color: var(--vl-primary-hover);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .woocommerce ul.products {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .woocommerce div.product .product_title {
+    font-size: 1.875rem;
+  }
+  
+  .woocommerce div.product p.price {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .woocommerce ul.products {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   SHOP FILTERS (SIDEBAR)
+   ============================================ */
+
+.woocommerce-sidebar,
+.widget-area {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--vl-shadow-sm);
+  border: 1px solid var(--vl-border-light);
+}
+
+.woocommerce-widget-layered-nav-list,
+.product-categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.woocommerce-widget-layered-nav-list label,
+.product-categories li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--vl-text-primary);
+  transition: var(--vl-transition-fast);
+}
+
+.woocommerce-widget-layered-nav-list label:hover,
+.product-categories li a:hover {
+  color: var(--vl-primary);
+}
+
+/* Custom Checkbox */
+.woocommerce input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--vl-border-light);
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: var(--vl-transition-fast);
+}
+
+.woocommerce input[type="checkbox"]:checked {
+  background-color: var(--vl-primary);
+  border-color: var(--vl-primary);
+  background-image: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.woocommerce input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--vl-primary-light);
+}
+
+/* ============================================
+   PRODUCT DETAIL - GALLERY
+   ============================================ */
+
+.woocommerce div.product div.images {
+  margin-bottom: 2rem;
+}
+
+.woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
+  border-radius: var(--vl-border-radius);
+  overflow: hidden;
+  box-shadow: var(--vl-shadow-lg);
+}
+
+.woocommerce div.product div.images .flex-control-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.woocommerce div.product div.images .flex-control-thumbs li {
+  list-style: none;
+  margin: 0;
+}
+
+.woocommerce div.product div.images .flex-control-thumbs li img {
+  border-radius: var(--vl-border-radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--vl-transition-fast);
+  opacity: 0.7;
+}
+
+.woocommerce div.product div.images .flex-control-thumbs li img.flex-active,
+.woocommerce div.product div.images .flex-control-thumbs li img:hover {
+  border-color: var(--vl-primary);
+  opacity: 1;
+}
+
+/* Product Tabs */
+.woocommerce div.product .woocommerce-tabs {
+  margin-top: 3rem;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+  border-bottom: 1px solid var(--vl-border-light);
+  padding: 0;
+  margin: 0 0 2rem;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+  display: block;
+  padding: 1rem 0.5rem;
+  color: var(--vl-text-secondary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-bottom: 2px solid transparent;
+  transition: var(--vl-transition-fast);
+  text-decoration: none;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a,
+.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover {
+  color: var(--vl-primary);
+  border-bottom-color: var(--vl-primary);
+}
+
+.woocommerce div.product .woocommerce-tabs .panel {
+  color: var(--vl-text-secondary);
+  line-height: 1.6;
+}
+
+/* Related Products */
+.woocommerce .related.products,
+.woocommerce .upsells.products {
+  margin-top: 4rem;
+}
+
+.woocommerce .related.products h2,
+.woocommerce .upsells.products h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--vl-text-primary);
+}
+
+/* ============================================
+   CHECKOUT - PROGRESS BAR
+   ============================================ */
+
+.woocommerce-checkout .checkout-progress {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  box-shadow: var(--vl-shadow-sm);
+}
+
+.woocommerce-checkout .progress-bar {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: var(--vl-border-radius-full);
+  height: 0.625rem;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.woocommerce-checkout .progress-bar-fill {
+  height: 100%;
+  background-color: var(--vl-primary);
+  border-radius: var(--vl-border-radius-full);
+  transition: width 0.3s ease;
+}
+
+.woocommerce-checkout .progress-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--vl-text-muted);
+  text-align: center;
+}
+
+.woocommerce-checkout .progress-steps .step.active {
+  color: var(--vl-primary);
+}
+
+/* Checkout Forms Enhancement */
+.woocommerce-checkout .col2-set {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .woocommerce-checkout .col2-set {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.woocommerce-checkout h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--vl-text-primary);
+}
+
+/* Custom Radio Buttons */
+.woocommerce input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--vl-border-light);
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: var(--vl-transition-fast);
+  position: relative;
+}
+
+.woocommerce input[type="radio"]:checked {
+  border-color: var(--vl-primary);
+  background-color: transparent;
+}
+
+.woocommerce input[type="radio"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--vl-primary);
+}
+
+.woocommerce input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--vl-primary-light);
+}
+
+/* Payment Methods */
+.woocommerce-checkout #payment ul.payment_methods {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--vl-border-light);
+  border-radius: var(--vl-border-radius);
+  transition: var(--vl-transition-fast);
+  cursor: pointer;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li:has(input:checked) {
+  border-color: var(--vl-primary);
+  background-color: var(--vl-primary-light);
+  box-shadow: 0 0 0 2px var(--vl-primary);
+}
+
+.woocommerce-checkout #payment ul.payment_methods li label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* ============================================
+   ORDER CONFIRMATION
+   ============================================ */
+
+.woocommerce-order-received {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.woocommerce-order-received .woocommerce-thankyou-order-received {
+  background: var(--vl-primary-light);
+  border: 2px solid var(--vl-primary);
+  border-radius: var(--vl-border-radius);
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--vl-primary-dark);
+  margin-bottom: 2rem;
+}
+
+.woocommerce-order-received .woocommerce-order-overview {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--vl-shadow-md);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  list-style: none;
+}
+
+.woocommerce-order-received .woocommerce-order-overview li {
+  margin: 0;
+  padding: 0;
+}
+
+.woocommerce-order-received .woocommerce-order-overview li strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--vl-text-muted);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   ACCOUNT PAGE
+   ============================================ */
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--vl-shadow-sm);
+  border: 1px solid var(--vl-border-light);
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li {
+  margin: 0;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--vl-border-radius);
+  color: var(--vl-text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: var(--vl-transition-fast);
+  text-decoration: none;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation a:hover,
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a {
+  background-color: var(--vl-primary-light);
+  color: var(--vl-primary);
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  background: var(--vl-bg-card);
+  border-radius: var(--vl-border-radius);
+  padding: 2rem;
+  box-shadow: var(--vl-shadow-md);
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+
+.woocommerce-breadcrumb {
+  font-size: 0.875rem;
+  color: var(--vl-text-muted);
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 0;
+}
+
+.woocommerce-breadcrumb a {
+  color: var(--vl-text-muted);
+  text-decoration: none;
+  transition: var(--vl-transition-fast);
+}
+
+.woocommerce-breadcrumb a:hover {
+  color: var(--vl-primary);
+}
+
+/* ============================================
+   CHECKBOXES PERSONALIZADOS
+   ============================================ */
+
+.woocommerce input[type="checkbox"] {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--vl-border-light);
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: var(--vl-transition-fast);
+}
+
+.woocommerce input[type="checkbox"]:checked {
+  background-color: var(--vl-primary);
+  border-color: var(--vl-primary);
+  background-image: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+}
+
+/* ============================================
+   PRODUCT TABS
+   ============================================ */
+
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+  border-bottom: 1px solid var(--vl-border-light);
+  display: flex;
+  gap: 2rem;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+  padding: 1rem 0.5rem;
+  color: var(--vl-text-secondary);
+  border-bottom: 2px solid transparent;
+  transition: var(--vl-transition-fast);
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+  color: var(--vl-primary);
+  border-bottom-color: var(--vl-primary);
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Container fix */
+.container,
+.woocommerce .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container,
+  .woocommerce .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container,
+  .woocommerce .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

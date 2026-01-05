@@ -1,0 +1,110 @@
+# BEGIN WordPress
+<IfModule mod_setenvif.c>
+  # Ensure Authorization header reaches PHP (needed for WP Application Passwords)
+  SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+</IfModule>
+
+# For CGI/FastCGI setups, ensure auth headers are passed to PHP
+<IfModule mod_fcgid.c>
+  CGIPassAuth On
+</IfModule>
+<IfModule mod_cgi.c>
+  CGIPassAuth On
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Bypass Cloudflare for REST API and XML-RPC
+RewriteCond %{HTTP:CF-IPCountry} . [OR]
+RewriteCond %{REQUEST_URI} ^/wp-json/ [OR]
+RewriteCond %{REQUEST_URI} ^/xmlrpc\.php$
+RewriteRule ^ - [E=no-gzip:1,E=no-brotli:1]
+
+# Ensure HTTP_AUTHORIZATION reaches PHP for WP REST Basic Auth (App Passwords)
+RewriteCond %{HTTP:Authorization} .+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Standard WordPress rewrites
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+# Enable CORS for web fonts
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|css|js|svg)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Set cache control for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/x-javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# Handle missing product images with a placeholder SVG
+<IfModule mod_rewrite.c>
+  # Redirect missing product images to our placeholder handler
+  RewriteCond %{REQUEST_URI} ^/wp-content/uploads/.*\.(jpg|jpeg|png|gif|svg)$ [NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ /wp-content/themes/theme-loscocos-child/placeholder.svg [L,R=302,NC]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+  # Protect against XSS attacks
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Prevent MIME-type sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Protect against clickjacking
+  Header always append X-Frame-Options SAMEORIGIN
+  
+  # Enable HSTS (HTTP Strict Transport Security)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+  
+  # Content Security Policy
+  # Note: Adjust these policies based on your specific needs
+  # Header set Content-Security-Policy "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';"
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "^\.(htaccess|htpasswd|ini|log|sh|sql|sqlite|env|gitignore|gitattributes|gitmodules)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>

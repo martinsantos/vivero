@@ -1,0 +1,91 @@
+{
+  "total": 538,
+  "processed": 538,
+  "success": 538,
+  "failed": 0,
+  "tags_created": 0,
+  "tags_assigned": 1942,
+  "top_tags": [
+    [
+      "Uncategorized",
+      538
+    ],
+    [
+      "Paño",
+      330
+    ],
+    [
+      "Color",
+      297
+    ],
+    [
+      "Maceta",
+      176
+    ],
+    [
+      "3 Litros",
+      47
+    ],
+    [
+      "Producto",
+      44
+    ],
+    [
+      "Negra",
+      31
+    ],
+    [
+      "Marron terracota",
+      29
+    ],
+    [
+      "Blanca",
+      28
+    ],
+    [
+      "12 Litros",
+      21
+    ],
+    [
+      "Violeta",
+      21
+    ],
+    [
+      "15 Litros",
+      20
+    ],
+    [
+      "Beige",
+      20
+    ],
+    [
+      "Verde claro",
+      19
+    ],
+    [
+      "Naranja",
+      18
+    ],
+    [
+      "Marron clara",
+      17
+    ],
+    [
+      "10 Litros",
+      16
+    ],
+    [
+      "Amarilla",
+      16
+    ],
+    [
+      "Gris claro",
+      15
+    ],
+    [
+      "Roja",
+      14
+    ]
+  ],
+  "unique_tags": 79
+}

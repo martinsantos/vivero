@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔧 Carousel Button Diagnostic - Vivero Los Cocos</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: sans-serif; margin: 40px; background: #f0f2f5; }
+        .diagnostic-container { max-width: 1200px; margin: 0 auto; }
+        .diagnostic-section { background: white; padding: 30px; margin: 20px 0; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .test-result { padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .info { background: #cce8ff; color: #004085; border: 1px solid #b8daff; }
+        .iframe-container { border: 2px solid #dee2e6; border-radius: 8px; overflow: hidden; }
+        iframe { width: 100%; height: 800px; border: none; }
+        .test-steps { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0; }
+        .step { margin: 10px 0; padding: 10px; background: white; border-left: 4px solid #007bff; }
+        .button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; margin: 5px; }
+        .button:hover { background: #0056b3; }
+        .code-block { background: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 14px; margin: 10px 0; }
+        .highlight { background: #ffeb3b; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="diagnostic-container">
+        <h1>🔧 Carousel Button Diagnostic Tool</h1>
+        <p><strong>Objective:</strong> Test and verify that "Agregar al carrito" buttons in the horizontal carousel are clickable and not blocked by overlay elements.</p>
+        
+        <div class="diagnostic-section">
+            <h2>🎯 Applied Fixes (V2 - Aggressive)</h2>
+            <div class="test-result success">
+                ✅ <strong>CSS Overlay Complete Disable:</strong> <code>pointer-events: none !important</code> + <code>display: none !important</code>
+            </div>
+            <div class="test-result success">
+                ✅ <strong>Button Z-Index Force:</strong> <code>z-index: 999 !important</code> for all carousel buttons
+            </div>
+            <div class="test-result success">
+                ✅ <strong>JavaScript AJAX Handler:</strong> Direct WooCommerce integration with visual feedback
+            </div>
+            <div class="test-result success">
+                ✅ <strong>Event Capture:</strong> Capture phase handling to ensure button events are processed first
+            </div>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>🧪 Manual Test Protocol</h2>
+            <div class="test-steps">
+                <div class="step">
+                    <strong>Step 1:</strong> Open the homepage and locate any horizontal product carousel
+                </div>
+                <div class="step">
+                    <strong>Step 2:</strong> Try clicking on <span class="highlight">"Agregar al carrito"</span> buttons in different products
+                </div>
+                <div class="step">
+                    <strong>Step 3:</strong> Verify buttons show visual feedback: "Adding..." → "Added!"
+                </div>
+                <div class="step">
+                    <strong>Step 4:</strong> Confirm buttons don't redirect to product page
+                </div>
+                <div class="step">
+                    <strong>Step 5:</strong> Test dragging the carousel and ensure buttons still work after drag
+                </div>
+                <div class="step">
+                    <strong>Step 6:</strong> Click on product images/titles to verify navigation still works
+                </div>
+            </div>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>🌐 Live Testing Environment</h2>
+            <div class="test-result info">
+                Test the fixes directly on the live homepage:
+            </div>
+            <a href="http://localhost:8080/" target="_blank" class="button">🏠 Open Homepage</a>
+            <a href="http://localhost:8080/tienda/" target="_blank" class="button">🛒 Open Shop</a>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>📱 Live Homepage Preview</h2>
+            <div class="test-result info">
+                Test the carousel functionality directly in the iframe below:
+            </div>
+            <div class="iframe-container">
+                <iframe src="http://localhost:8080/" title="Homepage Preview"></iframe>
+            </div>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>🔍 Technical Implementation Details</h2>
+            <div class="code-block">
+                <strong>Modified Files:</strong><br>
+                • <code>/loscocos-clean-theme/assets/css/shop.css</code><br>
+                • <code>/loscocos-clean-theme/assets/js/home-carousel.js</code><br>
+                <br>
+                <strong>Key CSS Changes:</strong><br>
+                • <code>.carousel .product-card-overlay { display: none !important; }</code><br>
+                • <code>.carousel .button { z-index: 999 !important; }</code><br>
+                • <code>.carousel .add_to_cart_button { pointer-events: auto !important; }</code><br>
+                <br>
+                <strong>Key JavaScript Changes:</strong><br>
+                • Direct WooCommerce AJAX handling with <code>jQuery(button).trigger('click.woocommerce')</code><br>
+                • Event capture phase processing: <code>addEventListener('click', handler, true)</code><br>
+                • Visual feedback: "Adding..." → "Added!" transition<br>
+            </div>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>✅ Expected Test Results</h2>
+            <div class="test-result success">
+                ✅ <strong>Button Clickability:</strong> "Agregar al carrito" buttons respond to clicks
+            </div>
+            <div class="test-result success">
+                ✅ <strong>No Navigation Interference:</strong> Buttons don't trigger product page navigation
+            </div>
+            <div class="test-result success">
+                ✅ <strong>Visual Feedback:</strong> Buttons show "Adding..." → "Added!" states
+            </div>
+            <div class="test-result success">
+                ✅ <strong>AJAX Functionality:</strong> Products are added to cart via WooCommerce AJAX
+            </div>
+            <div class="test-result success">
+                ✅ <strong>Drag Compatibility:</strong> Carousel drag/scroll works without button conflicts
+            </div>
+            <div class="test-result success">
+                ✅ <strong>Product Navigation:</strong> Clicking images/titles still navigates to product pages
+            </div>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>🚨 Problem Indicators</h2>
+            <div class="test-result error">
+                ❌ <strong>Button Not Clickable:</strong> If buttons redirect to product page instead of adding to cart
+            </div>
+            <div class="test-result error">
+                ❌ <strong>No Visual Feedback:</strong> If buttons don't show "Adding..." → "Added!" states
+            </div>
+            <div class="test-result warning">
+                ⚠️ <strong>Console Errors:</strong> Check browser console for JavaScript errors
+            </div>
+            <div class="test-result warning">
+                ⚠️ <strong>CSS Not Applied:</strong> If overlay elements are still visible and blocking buttons
+            </div>
+        </div>
+        
+        <div class="diagnostic-section">
+            <h2>🔧 Debug Commands</h2>
+            <div class="code-block">
+                Open browser console and run these commands to debug:<br><br>
+                
+                <strong>Check if overlays are disabled:</strong><br>
+                <code>document.querySelectorAll('.carousel .product-card-overlay').forEach(el => console.log('Overlay display:', getComputedStyle(el).display))</code><br><br>
+                
+                <strong>Check button z-index:</strong><br>
+                <code>document.querySelectorAll('.carousel .add_to_cart_button').forEach(el => console.log('Button z-index:', getComputedStyle(el).zIndex))</code><br><br>
+                
+                <strong>Test button click simulation:</strong><br>
+                <code>document.querySelector('.carousel .add_to_cart_button')?.click()</code><br><br>
+                
+                <strong>Check for JavaScript errors:</strong><br>
+                <code>console.clear(); // Then test buttons manually</code>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('🔧 Carousel Button Diagnostic Tool Loaded');
+        console.log('🎯 Testing aggressive fixes for overlay blocking issue');
+        
+        // Auto-refresh iframe every 30 seconds to catch changes
+        setInterval(function() {
+            const iframe = document.querySelector('iframe');
+            if (iframe) {
+                iframe.src = iframe.src;
+            }
+        }, 30000);
+        
+        // Monitor for successful testing
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'carousel-test-result') {
+                console.log('🧪 Test Result:', event.data);
+            }
+        });
+    </script>
+</body>
+</html>

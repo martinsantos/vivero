@@ -1,0 +1,183 @@
+═══════════════════════════════════════════════════════════════
+👥 USUARIOS WORDPRESS - viveroloscocos.com.ar
+═══════════════════════════════════════════════════════════════
+
+📋 USUARIO ACTUAL
+─────────────────────────────────────────────────────────────
+ID:              1
+Usuario:         admin
+Email:           santosma@gmail.com
+Rol:             Administrator
+Fecha Registro:  2025-09-11 18:04:45
+Estado:          ✅ Activo
+
+⚠️  NOTA: Las contraseñas están hasheadas (bcrypt) y NO se pueden 
+   recuperar en texto plano. Solo se pueden resetear.
+
+═══════════════════════════════════════════════════════════════
+🔧 CÓMO EDITAR USUARIOS
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN 1: SCRIPT AUTOMATIZADO (RECOMENDADO) ✅
+─────────────────────────────────────────────────────────────
+
+# Listar usuarios
+./manage_users.sh list
+
+# Ver información detallada
+./manage_users.sh info admin
+
+# Cambiar contraseña
+./manage_users.sh password admin "NuevaPass123!"
+
+# Cambiar email
+./manage_users.sh email admin nuevo@email.com
+
+# Cambiar rol
+./manage_users.sh role admin shop_manager
+
+# Crear nuevo usuario
+./manage_users.sh create tienda tienda@vivero.com shop_manager "Pass123!"
+
+# Generar contraseña segura
+./manage_users.sh generate 20
+
+# Eliminar usuario
+./manage_users.sh delete 2
+
+# Ver ayuda completa
+./manage_users.sh help
+
+
+OPCIÓN 2: PANEL WORDPRESS
+─────────────────────────────────────────────────────────────
+
+URL:     https://viveroloscocos.com.ar/wp-admin/
+Usuario: admin
+Email:   santosma@gmail.com
+
+Pasos:
+1. Login en el panel
+2. Ir a: Usuarios → Todos los usuarios
+3. Click en el usuario a editar
+4. Modificar campos necesarios
+5. Click en "Actualizar perfil"
+
+
+OPCIÓN 3: WP-CLI DIRECTO
+─────────────────────────────────────────────────────────────
+
+# Conectar al servidor
+sshpass -p 'gsiB%s@0yD' ssh root@23.105.176.45
+
+# Ir al directorio WordPress
+cd /home/viveroloscocos.com.ar/public_html
+
+# Listar usuarios
+wp user list --allow-root
+
+# Cambiar contraseña
+wp user update admin --user_pass="NuevaPass123!" --allow-root
+
+# Cambiar email
+wp user update admin --user_email="nuevo@email.com" --allow-root
+
+# Crear usuario
+wp user create nuevo email@ejemplo.com \
+  --role=editor \
+  --user_pass="Pass123!" \
+  --allow-root
+
+# Ver información de usuario
+wp user get admin --allow-root
+
+═══════════════════════════════════════════════════════════════
+🔐 CAMBIAR CONTRASEÑA
+═══════════════════════════════════════════════════════════════
+
+MÉTODO 1: Con el script
+./manage_users.sh password admin "NuevaContraseña123!"
+
+MÉTODO 2: Recuperación por email
+https://viveroloscocos.com.ar/wp-login.php?action=lostpassword
+
+MÉTODO 3: WP-CLI directo
+wp user update admin --user_pass="NuevaPass123!" --allow-root
+
+═══════════════════════════════════════════════════════════════
+🆕 CREAR NUEVOS USUARIOS
+═══════════════════════════════════════════════════════════════
+
+GESTOR DE TIENDA (Shop Manager)
+./manage_users.sh create tienda tienda@vivero.com shop_manager "TiendaPass123!"
+
+EDITOR DE CONTENIDO
+./manage_users.sh create editor editor@vivero.com editor "EditorPass123!"
+
+CLIENTE DE PRUEBA
+./manage_users.sh create cliente prueba@vivero.com customer "ClientePass123!"
+
+═══════════════════════════════════════════════════════════════
+👤 ROLES DISPONIBLES
+═══════════════════════════════════════════════════════════════
+
+administrator   → Acceso total al sitio
+shop_manager    → Gestión completa de WooCommerce
+editor          → Publicar y gestionar contenido
+author          → Publicar sus propios posts
+contributor     → Escribir posts sin publicar
+subscriber      → Solo lectura
+customer        → Cliente de WooCommerce
+
+═══════════════════════════════════════════════════════════════
+🔑 GENERAR CONTRASEÑAS SEGURAS
+═══════════════════════════════════════════════════════════════
+
+./manage_users.sh generate        # 16 caracteres (default)
+./manage_users.sh generate 20     # 20 caracteres
+./manage_users.sh generate 32     # 32 caracteres
+
+═══════════════════════════════════════════════════════════════
+🚨 RECUPERACIÓN DE ACCESO
+═══════════════════════════════════════════════════════════════
+
+Si perdiste la contraseña:
+
+1. Por email:
+   https://viveroloscocos.com.ar/wp-login.php?action=lostpassword
+
+2. Por SSH:
+   sshpass -p 'gsiB%s@0yD' ssh root@23.105.176.45
+   cd /home/viveroloscocos.com.ar/public_html
+   wp user update admin --user_pass="NuevaPass123!" --allow-root
+
+3. Con el script:
+   ./manage_users.sh password admin "NuevaPass123!"
+
+═══════════════════════════════════════════════════════════════
+🔗 ACCESOS RÁPIDOS
+═══════════════════════════════════════════════════════════════
+
+PANEL WORDPRESS
+URL:      https://viveroloscocos.com.ar/wp-admin/
+Usuario:  admin
+Email:    santosma@gmail.com
+
+SERVIDOR SSH
+Host:     23.105.176.45
+Usuario:  root
+Password: gsiB%s@0yD
+
+WOOCOMMERCE
+URL:      https://viveroloscocos.com.ar/wp-admin/admin.php?page=wc-admin
+
+═══════════════════════════════════════════════════════════════
+📝 DOCUMENTACIÓN
+═══════════════════════════════════════════════════════════════
+
+USUARIOS_WORDPRESS.md       → Documentación completa
+RESUMEN_USUARIOS.md         → Resumen ejecutivo
+manage_users.sh             → Script de gestión
+manage_users.sh help        → Ayuda del script
+
+═══════════════════════════════════════════════════════════════

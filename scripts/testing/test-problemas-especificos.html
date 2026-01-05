@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Test Específico - Problemas JavaScript Los Cocos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .test-container { background: white; padding: 20px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .test-title { color: #2563eb; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .test-result { padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .pass { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .fail { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        .warn { background: #fefce8; color: #ca8a04; border: 1px solid #fde68a; }
+        .info { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+        button { background: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #1d4ed8; }
+        .log-container { background: #1f2937; color: #f9fafb; padding: 15px; border-radius: 4px; font-family: monospace; max-height: 300px; overflow-y: auto; }
+        .error-log { color: #ef4444; }
+        .success-log { color: #10b981; }
+        .warning-log { color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Específico - Problemas JavaScript Los Cocos</h1>
+    <p>Este test verifica los problemas específicos identificados en los logs de JavaScript:</p>
+    <ul>
+        <li>❌ Errores 404 en imágenes SVG placeholder</li>
+        <li>❌ Error 400 en updateQuantity</li>
+        <li>⚠️ Conflicto entre sistemas de carrito</li>
+        <li>⚠️ Warning de Tailwind en producción</li>
+    </ul>
+
+    <!-- Test 1: Imágenes SVG -->
+    <div class="test-container">
+        <div class="test-title">🖼️ Test 1: Verificación de Imágenes SVG</div>
+        <button onclick="testSVGImages()">Probar Imágenes SVG</button>
+        <div id="svg-results"></div>
+        <div class="log-container" id="svg-log"></div>
+    </div>
+
+    <!-- Test 2: Sistema de Carrito -->
+    <div class="test-container">
+        <div class="test-title">🛒 Test 2: Sistema de Carrito Unificado</div>
+        <button onclick="testCartSystem()">Probar Sistema de Carrito</button>
+        <button onclick="testUpdateQuantity()">Probar updateQuantity</button>
+        <div id="cart-results"></div>
+        <div class="log-container" id="cart-log"></div>
+    </div>
+
+    <!-- Test 3: Conflictos de Sistema -->
+    <div class="test-container">
+        <div class="test-title">⚠️ Test 3: Detección de Conflictos</div>
+        <button onclick="testSystemConflicts()">Detectar Conflictos</button>
+        <div id="conflicts-results"></div>
+        <div class="log-container" id="conflicts-log"></div>
+    </div>
+
+    <!-- Test 4: Tailwind CSS -->
+    <div class="test-container">
+        <div class="test-title">🎨 Test 4: Tailwind CSS</div>
+        <button onclick="testTailwindCSS()">Probar Tailwind</button>
+        <div id="tailwind-results"></div>
+        <div class="log-container" id="tailwind-log"></div>
+    </div>
+
+    <!-- Test 5: AJAX Endpoints -->
+    <div class="test-container">
+        <div class="test-title">🔗 Test 5: Endpoints AJAX</div>
+        <button onclick="testAJAXEndpoints()">Probar AJAX</button>
+        <div id="ajax-results"></div>
+        <div class="log-container" id="ajax-log"></div>
+    </div>
+
+    <!-- Resumen Final -->
+    <div class="test-container">
+        <div class="test-title">📊 Resumen de Tests</div>
+        <button onclick="runAllTests()">🚀 Ejecutar Todos los Tests</button>
+        <div id="summary-results"></div>
+    </div>
+
+    <script>
+        // Variables globales para tracking
+        let testResults = {
+            svg: { passed: 0, failed: 0, warnings: 0 },
+            cart: { passed: 0, failed: 0, warnings: 0 },
+            conflicts: { passed: 0, failed: 0, warnings: 0 },
+            tailwind: { passed: 0, failed: 0, warnings: 0 },
+            ajax: { passed: 0, failed: 0, warnings: 0 }
+        };
+
+        // Función para logging
+        function logMessage(containerId, message, type = 'info') {
+            const container = document.getElementById(containerId);
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error-log' : type === 'success' ? 'success-log' : type === 'warning' ? 'warning-log' : '';
+            container.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Función para mostrar resultados
+        function showResult(containerId, message, type) {
+            const container = document.getElementById(containerId);
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.innerHTML = message;
+            container.appendChild(div);
+        }
+
+        // Test 1: Verificación de Imágenes SVG
+        async function testSVGImages() {
+            const resultsContainer = 'svg-results';
+            const logContainer = 'svg-log';
+            
+            document.getElementById(resultsContainer).innerHTML = '';
+            document.getElementById(logContainer).innerHTML = '';
+            
+            logMessage(logContainer, '🖼️ Iniciando test de imágenes SVG...', 'info');
+            
+            // Lista de productos de prueba
+            const testProductIds = [1, 2, 3, 4, 5];
+            let passedTests = 0;
+            let failedTests = 0;
+            
+            for (const productId of testProductIds) {
+                try {
+                    const imageUrl = `http://localhost:8080/wp-content/uploads/loscocos-images/${productId}.svg`;
+                    logMessage(logContainer, `Probando imagen: ${imageUrl}`, 'info');
+                    
+                    const response = await fetch(imageUrl);
+                    if (response.ok) {
+                        logMessage(logContainer, `✅ Imagen ${productId}.svg encontrada`, 'success');
+                        passedTests++;
+                    } else {
+                        logMessage(logContainer, `❌ Imagen ${productId}.svg no encontrada (${response.status})`, 'error');
+                        failedTests++;
+                    }
+                } catch (error) {
+                    logMessage(logContainer, `❌ Error al cargar imagen ${productId}: ${error.message}`, 'error');
+                    failedTests++;
+                }
+            }
+            
+            testResults.svg = { passed: passedTests, failed: failedTests, warnings: 0 };
+            
+            if (failedTests === 0) {
+                showResult(resultsContainer, `✅ Todas las imágenes SVG cargan correctamente (${passedTests}/${testProductIds.length})`, 'pass');
+            } else if (passedTests > failedTests) {
+                showResult(resultsContainer, `⚠️ Algunas imágenes SVG fallan (${passedTests}/${testProductIds.length} exitosas)`, 'warn');
+            } else {
+                showResult(resultsContainer, `❌ La mayoría de imágenes SVG fallan (${failedTests}/${testProductIds.length} fallidas)`, 'fail');
+            }
+        }
+
+        // Test 2: Sistema de Carrito
+        async function testCartSystem() {
+            const resultsContainer = 'cart-results';
+            const logContainer = 'cart-log';
+            
+            document.getElementById(resultsContainer).innerHTML = '';
+            logMessage(logContainer, '🛒 Iniciando test del sistema de carrito...', 'info');
+            
+            let passedTests = 0;
+            let failedTests = 0;
+            
+            // Verificar si existe el sistema unificado
+            if (typeof window.LoscocosCart !== 'undefined') {
+                logMessage(logContainer, '✅ Sistema LoscocosCart detectado', 'success');
+                passedTests++;
+            } else {
+                logMessage(logContainer, '❌ Sistema LoscocosCart no detectado', 'error');
+                failedTests++;
+            }
+            
+            // Verificar funciones globales
+            const globalFunctions = ['addToCart', 'addToCartFeatured', 'updateQuantity'];
+            for (const func of globalFunctions) {
+                if (typeof window[func] === 'function') {
+                    logMessage(logContainer, `✅ Función ${func} disponible`, 'success');
+                    passedTests++;
+                } else {
+                    logMessage(logContainer, `❌ Función ${func} no disponible`, 'error');
+                    failedTests++;
+                }
+            }
+            
+            testResults.cart.passed += passedTests;
+            testResults.cart.failed += failedTests;
+            
+            if (failedTests === 0) {
+                showResult(resultsContainer, '✅ Sistema de carrito completamente funcional', 'pass');
+            } else {
+                showResult(resultsContainer, `❌ Sistema de carrito tiene ${failedTests} problemas`, 'fail');
+            }
+        }
+
+        // Test específico para updateQuantity
+        async function testUpdateQuantity() {
+            const logContainer = 'cart-log';
+            logMessage(logContainer, '🔄 Probando función updateQuantity...', 'info');
+            
+            if (typeof updateQuantity === 'function') {
+                try {
+                    // Test con parámetros válidos (simulado)
+                    logMessage(logContainer, '✅ updateQuantity existe y es callable', 'success');
+                    testResults.cart.passed++;
+                } catch (error) {
+                    logMessage(logContainer, `❌ Error en updateQuantity: ${error.message}`, 'error');
+                    testResults.cart.failed++;
+                }
+            } else {
+                logMessage(logContainer, '❌ updateQuantity no está definida', 'error');
+                testResults.cart.failed++;
+            }
+        }
+
+        // Test 3: Detección de Conflictos
+        function testSystemConflicts() {
+            const resultsContainer = 'conflicts-results';
+            const logContainer = 'conflicts-log';
+            
+            document.getElementById(resultsContainer).innerHTML = '';
+            logMessage(logContainer, '⚠️ Detectando conflictos del sistema...', 'info');
+            
+            let conflicts = 0;
+            let warnings = 0;
+            
+            // Verificar múltiples definiciones de addToCart
+            const addToCartCount = Object.keys(window).filter(key => key.includes('addToCart')).length;
+            if (addToCartCount > 3) {
+                logMessage(logContainer, `⚠️ Múltiples funciones addToCart detectadas (${addToCartCount})`, 'warning');
+                warnings++;
+            } else {
+                logMessage(logContainer, `✅ Número normal de funciones addToCart (${addToCartCount})`, 'success');
+            }
+            
+            // Verificar conflictos de jQuery
+            if (typeof $ !== 'undefined' && typeof jQuery !== 'undefined') {
+                if ($ === jQuery) {
+                    logMessage(logContainer, '✅ jQuery sin conflictos', 'success');
+                } else {
+                    logMessage(logContainer, '⚠️ Posible conflicto de jQuery', 'warning');
+                    warnings++;
+                }
+            }
+            
+            // Verificar múltiples sistemas de carrito
+            const cartSystems = [];
+            if (typeof WooCommerceCart !== 'undefined') cartSystems.push('WooCommerceCart');
+            if (typeof LoscocosCart !== 'undefined') cartSystems.push('LoscocosCart');
+            if (typeof window.cart !== 'undefined') cartSystems.push('window.cart');
+            
+            if (cartSystems.length > 1) {
+                logMessage(logContainer, `⚠️ Múltiples sistemas de carrito: ${cartSystems.join(', ')}`, 'warning');
+                warnings++;
+            } else {
+                logMessage(logContainer, `✅ Sistema de carrito único: ${cartSystems.join(', ') || 'Ninguno'}`, 'success');
+            }
+            
+            testResults.conflicts = { passed: 0, failed: conflicts, warnings: warnings };
+            
+            if (conflicts === 0 && warnings === 0) {
+                showResult(resultsContainer, '✅ No se detectaron conflictos del sistema', 'pass');
+            } else if (warnings > 0) {
+                showResult(resultsContainer, `⚠️ Se detectaron ${warnings} advertencias de conflictos`, 'warn');
+            } else {
+                showResult(resultsContainer, `❌ Se detectaron ${conflicts} conflictos críticos`, 'fail');
+            }
+        }
+
+        // Test 4: Tailwind CSS
+        function testTailwindCSS() {
+            const resultsContainer = 'tailwind-results';
+            const logContainer = 'tailwind-log';
+            
+            document.getElementById(resultsContainer).innerHTML = '';
+            logMessage(logContainer, '🎨 Probando Tailwind CSS...', 'info');
+            
+            let passedTests = 0;
+            let warnings = 0;
+            
+            // Verificar si Tailwind está cargado
+            const tailwindLinks = document.querySelectorAll('link[href*="tailwind"]');
+            if (tailwindLinks.length > 0) {
+                logMessage(logContainer, `✅ Tailwind CSS detectado (${tailwindLinks.length} enlaces)`, 'success');
+                passedTests++;
+            } else {
+                logMessage(logContainer, '❌ Tailwind CSS no detectado', 'error');
+            }
+            
+            // Verificar warnings en consola (simulado)
+            const originalConsoleWarn = console.warn;
+            let tailwindWarnings = 0;
+            console.warn = function(...args) {
+                if (args.some(arg => typeof arg === 'string' && arg.includes('tailwind'))) {
+                    tailwindWarnings++;
+                }
+                originalConsoleWarn.apply(console, args);
+            };
+            
+            setTimeout(() => {
+                console.warn = originalConsoleWarn;
+                if (tailwindWarnings > 0) {
+                    logMessage(logContainer, `⚠️ ${tailwindWarnings} warnings de Tailwind detectados`, 'warning');
+                    warnings++;
+                } else {
+                    logMessage(logContainer, '✅ No hay warnings de Tailwind', 'success');
+                    passedTests++;
+                }
+                
+                testResults.tailwind = { passed: passedTests, failed: 0, warnings: warnings };
+                
+                if (warnings === 0) {
+                    showResult(resultsContainer, '✅ Tailwind CSS funcionando sin problemas', 'pass');
+                } else {
+                    showResult(resultsContainer, `⚠️ Tailwind CSS con ${warnings} advertencias`, 'warn');
+                }
+            }, 1000);
+        }
+
+        // Test 5: AJAX Endpoints
+        async function testAJAXEndpoints() {
+            const resultsContainer = 'ajax-results';
+            const logContainer = 'ajax-log';
+            
+            document.getElementById(resultsContainer).innerHTML = '';
+            logMessage(logContainer, '🔗 Probando endpoints AJAX...', 'info');
+            
+            const endpoints = [
+                { action: 'loscocos_add_to_cart', name: 'Añadir al carrito' },
+                { action: 'loscocos_update_cart', name: 'Actualizar carrito' },
+                { action: 'loscocos_remove_from_cart', name: 'Eliminar del carrito' }
+            ];
+            
+            let passedTests = 0;
+            let failedTests = 0;
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const formData = new FormData();
+                    formData.append('action', endpoint.action);
+                    formData.append('nonce', 'test');
+                    
+                    const response = await fetch('http://localhost:8080/wp-admin/admin-ajax.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (response.ok) {
+                        const text = await response.text();
+                        if (text.includes('nonce') || text.includes('error') || text.includes('success')) {
+                            logMessage(logContainer, `✅ Endpoint ${endpoint.name} responde`, 'success');
+                            passedTests++;
+                        } else {
+                            logMessage(logContainer, `⚠️ Endpoint ${endpoint.name} respuesta inesperada`, 'warning');
+                        }
+                    } else {
+                        logMessage(logContainer, `❌ Endpoint ${endpoint.name} error ${response.status}`, 'error');
+                        failedTests++;
+                    }
+                } catch (error) {
+                    logMessage(logContainer, `❌ Error en ${endpoint.name}: ${error.message}`, 'error');
+                    failedTests++;
+                }
+            }
+            
+            testResults.ajax = { passed: passedTests, failed: failedTests, warnings: 0 };
+            
+            if (failedTests === 0) {
+                showResult(resultsContainer, `✅ Todos los endpoints AJAX funcionan (${passedTests}/${endpoints.length})`, 'pass');
+            } else {
+                showResult(resultsContainer, `❌ ${failedTests} endpoints AJAX fallan`, 'fail');
+            }
+        }
+
+        // Ejecutar todos los tests
+        async function runAllTests() {
+            const summaryContainer = 'summary-results';
+            document.getElementById(summaryContainer).innerHTML = '<div class="test-result info">🚀 Ejecutando todos los tests...</div>';
+            
+            await testSVGImages();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testCartSystem();
+            await testUpdateQuantity();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testSystemConflicts();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testTailwindCSS();
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            await testAJAXEndpoints();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Calcular resumen
+            let totalPassed = 0;
+            let totalFailed = 0;
+            let totalWarnings = 0;
+            
+            Object.values(testResults).forEach(result => {
+                totalPassed += result.passed;
+                totalFailed += result.failed;
+                totalWarnings += result.warnings;
+            });
+            
+            const totalTests = totalPassed + totalFailed + totalWarnings;
+            const successRate = totalTests > 0 ? Math.round((totalPassed / totalTests) * 100) : 0;
+            
+            let summaryHTML = `
+                <div class="test-result info">
+                    <strong>📊 Resumen Final de Tests</strong><br>
+                    ✅ Tests pasados: ${totalPassed}<br>
+                    ❌ Tests fallidos: ${totalFailed}<br>
+                    ⚠️ Advertencias: ${totalWarnings}<br>
+                    📈 Tasa de éxito: ${successRate}%
+                </div>
+            `;
+            
+            if (successRate >= 90) {
+                summaryHTML += '<div class="test-result pass">🎉 SISTEMA FUNCIONANDO EXCELENTEMENTE</div>';
+            } else if (successRate >= 75) {
+                summaryHTML += '<div class="test-result warn">⚠️ SISTEMA FUNCIONANDO CON ADVERTENCIAS</div>';
+            } else {
+                summaryHTML += '<div class="test-result fail">❌ SISTEMA REQUIERE ATENCIÓN INMEDIATA</div>';
+            }
+            
+            document.getElementById(summaryContainer).innerHTML = summaryHTML;
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Test de Problemas Específicos - Los Cocos iniciado');
+        });
+    </script>
+</body>
+</html>

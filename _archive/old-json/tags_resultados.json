@@ -1,0 +1,43 @@
+{
+  "total": 10,
+  "processed": 10,
+  "success": 10,
+  "failed": 0,
+  "tags_created": 0,
+  "tags_assigned": 27,
+  "top_tags": [
+    [
+      "Uncategorized",
+      10
+    ],
+    [
+      "3 Litros",
+      7
+    ],
+    [
+      "4 Litros",
+      3
+    ],
+    [
+      "Flor de Temporada",
+      2
+    ],
+    [
+      "Floral",
+      2
+    ],
+    [
+      "Lluvia",
+      1
+    ],
+    [
+      "Arbusto",
+      1
+    ],
+    [
+      "Trepadora",
+      1
+    ]
+  ],
+  "unique_tags": 8
+}

@@ -1,0 +1,448 @@
+/* Estilos de tienda seguros (sin modificar marcado de WooCommerce) */
+/* Variables unificadas en style.css (se reutilizan aquí) */
+
+/* Listas de productos en tienda, categorías y relacionados */
+/* Usamos flex-wrap para máxima compatibilidad con CSS de Woo */
+ul.products,
+.woocommerce ul.products {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: auto;
+}
+
+@media (min-width: 768px) {
+  ul.products,
+  .woocommerce ul.products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  ul.products,
+  .woocommerce ul.products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Evitar que los pseudo-elementos de clearfix de Woo ocupen la primera celda del grid */
+ul.products::before,
+ul.products::after,
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+  content: none !important;
+  display: none !important;
+}
+
+ul.products li.product,
+.woocommerce ul.products li.product {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  transition: all 0.2s ease;
+  float: none !important;
+  margin: 0 !important;
+  width: 100% !important;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  overflow: visible;
+}
+
+/* Product image container - clickable for navigation */
+.product-image-container {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.product-image-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.product-image-link:hover {
+  opacity: 0.95;
+}
+
+.product-image-link img {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* Product content - clickable for navigation */
+.product-content {
+  flex: 1;
+  padding: 1rem 0;
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.product-title-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.product-title-link:hover {
+  color: var(--primary);
+}
+
+.product-title-link .woocommerce-loop-product__title {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6rem;
+  margin: 0 0 0.5rem;
+  transition: color 0.15s ease;
+}
+
+.product-title-link:hover .woocommerce-loop-product__title {
+  color: var(--primary);
+}
+
+/* Product subtitle/description - gris suave según bocetos */
+.product-subtitle,
+.product-description {
+  font-size: 0.875rem;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0.25rem 0 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Product actions - completely separate, no interference */
+.product-actions {
+  margin-top: auto;
+}
+
+.product-actions {
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.product-actions .button,
+.product-actions .add_to_cart_button,
+.product-actions .ajax_add_to_cart {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Icon support en botones */
+.product-actions .button::before,
+.product-actions .add_to_cart_button::before,
+.product-actions .ajax_add_to_cart::before {
+  content: '🛒';
+  font-size: 1rem;
+}
+
+.product-actions .button:hover,
+.product-actions .add_to_cart_button:hover,
+.product-actions .ajax_add_to_cart:hover {
+  background: rgba(29, 201, 29, 0.9);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-actions .button:active,
+.product-actions .add_to_cart_button:active,
+.product-actions .ajax_add_to_cart:active {
+  background: var(--primary-dark);
+}
+
+/* Remove ALL overlay-related CSS since we don't use overlays anymore */
+/* Legacy overlay rules - DISABLED */
+.product-card-overlay {
+  display: none !important;
+}
+
+/* Hover effect for entire card - mínimo */
+ul.products li.product:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+ul.products li.product:hover .product-image-link {
+  opacity: 0.9;
+}
+
+/* Price styling - gris suave uniforme según bocetos */
+ul.products li.product .price,
+.woocommerce ul.products li.product .price { 
+  color: #6B7280 !important;
+  font-weight: 400; 
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0.75rem;
+  display: block;
+}
+
+ul.products li.product .price del,
+.woocommerce ul.products li.product .price del {
+  color: #9CA3AF;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+ul.products li.product .price ins,
+.woocommerce ul.products li.product .price ins {
+  text-decoration: none;
+  font-weight: 400;
+  color: #6B7280 !important;
+}
+
+ul.products li.product .price .woocommerce-Price-amount,
+.woocommerce ul.products li.product .price .woocommerce-Price-amount {
+  color: #6B7280 !important;
+}
+
+/* WooCommerce button base styles */
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button { 
+  background: var(--primary); 
+  border-radius: 8px; 
+}
+
+.woocommerce a.button:hover, 
+.woocommerce button.button:hover, 
+.woocommerce input.button:hover { 
+  background: var(--primary-dark); 
+}
+
+/* Product detail page */
+.product .summary { 
+  border-left: 1px solid var(--border-color); 
+  padding-left: 1.25rem; 
+}
+
+.woocommerce div.product .product_title { 
+  font-weight: 800; 
+}
+
+/* Badge de oferta - oculto para minimalismo */
+.woocommerce ul.products li.product .onsale,
+ul.products li.product .onsale { 
+  display: none;
+}
+
+/* Columnas según clases Woo */
+.woocommerce ul.products.columns-4, ul.products.columns-4 { grid-template-columns: repeat(4, minmax(200px, 1fr)); }
+.woocommerce ul.products.columns-3, ul.products.columns-3 { grid-template-columns: repeat(3, minmax(200px, 1fr)); }
+.woocommerce ul.products.columns-2, ul.products.columns-2 { grid-template-columns: repeat(2, minmax(200px, 1fr)); }
+.woocommerce ul.products.columns-1, ul.products.columns-1 { grid-template-columns: repeat(1, minmax(200px, 1fr)); }
+
+/* Responsive columnas */
+@media (max-width: 900px) {
+  ul.products, .woocommerce ul.products { grid-template-columns: repeat(2, minmax(200px, 1fr)); }
+}
+@media (max-width: 600px) {
+  ul.products, .woocommerce ul.products { grid-template-columns: repeat(1, minmax(200px, 1fr)); }
+}
+
+/* Related/upsells: forzar grid y reset de anchos heredados de Woo */
+.related.products ul.products,
+.upsells.products ul.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: start;
+  align-content: start;
+  grid-auto-rows: auto;
+  grid-auto-flow: row dense;
+}
+.related.products ul.products li.product,
+.upsells.products ul.products li.product { width: auto !important; float: none !important; margin: 0 !important; }
+.related.products ul.products.columns-4, .upsells.products ul.products.columns-4,
+.related.products ul.products.columns-3, .upsells.products ul.products.columns-3,
+.related.products ul.products.columns-2, .upsells.products ul.products.columns-2,
+.related.products ul.products.columns-1, .upsells.products ul.products.columns-1 {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+@media (max-width: 900px) {
+  .related.products ul.products, .upsells.products ul.products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .related.products ul.products, .upsells.products ul.products { grid-template-columns: 1fr; }
+}
+
+/* Mini contador carrito */
+.cart-link { position: relative; margin-left: auto; }
+.cart-count { position: absolute; top: -6px; right: -10px; background: var(--primary); color: #fff; font-size: 12px; border-radius: 999px; padding: 2px 6px; line-height: 1; }
+
+/* --- Tablas (carrito, totales, checkout) --- */
+.woocommerce table.shop_table { width: 100%; border: 1px solid var(--border-color); border-radius: 12px; background: #fff; }
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td { padding: .75rem 1rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+.woocommerce table.shop_table th { text-align: left; background: #f9fafb; font-weight: 700; color: var(--text-primary); }
+.woocommerce table.shop_table tr:last-child td { border-bottom: 0; }
+
+/* Cantidad */
+.woocommerce .quantity .qty { width: 72px; height: 40px; border: 1px solid var(--border-color); border-radius: 8px; text-align: center; }
+
+/* Formularios Woo */
+.woocommerce form .form-row { margin-bottom: .8rem; }
+.woocommerce form .form-row label { font-weight: 600; color: var(--text-primary); margin-bottom: .3rem; display: block; }
+
+/* Checkout dos columnas en desktop */
+.woocommerce .col2-set { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 900px) {
+  .woocommerce .col2-set { grid-template-columns: 1fr 1fr; }
+}
+
+/* Order review resaltado */
+.woocommerce-checkout-review-order { border: 1px solid var(--border-color); border-radius: 12px; background: #fff; padding: 1rem; }
+
+/* Enlaces post-add-to-cart */
+.woocommerce a.added_to_cart { display: inline-block; margin-left: .5rem; font-size: .9rem; color: var(--text-secondary); }
+
+/* Estados de botón deshabilitado */
+.woocommerce .button:disabled, .woocommerce .button.disabled, .woocommerce .button:disabled[disabled] { opacity: .6; cursor: not-allowed; }
+
+/* Checkout: pasos de progreso */
+.progress-steps { display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; margin: 0 0 1rem; }
+.progress-steps .step { padding:.35rem .6rem; border:1px solid var(--border-color); border-radius:999px; font-size:.85rem; color: var(--text-secondary); background:#f9fafb; }
+.progress-steps .step.active { background: var(--primary); color:#fff; border-color: var(--primary); }
+
+/* Checkout: badge de seguridad */
+.secure-badge { display:flex; align-items:center; gap:.4rem; color:#374151; font-size:.95rem; }
+.secure-badge .material-icons { font-size: 18px; }
+
+/* Checkout: resumen pegajoso (si el layout lo permite) */
+@media (min-width: 900px) {
+  .sticky-summary, #order_review { position: sticky; top: 90px; }
+}
+
+/* Carrito: enlace de quitar con icono */
+.woocommerce a.remove .material-icons { font-size: 20px; vertical-align: middle; }
+.woocommerce a.remove { display:inline-flex; align-items:center; gap:.25rem; }
+
+/* Gracias: banner de éxito */
+.order-success { display:flex; align-items:center; gap:.5rem; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; border-radius:12px; padding:.75rem 1rem; margin:0 0 1rem; }
+.order-success .material-icons { color:#059669; }
+
+/* --- Layout y espaciado de páginas clave --- */
+/* Cart: dos columnas en desktop (tabla + totales) */
+@media (min-width: 900px) {
+  .cart-page .woocommerce { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: start; }
+  .cart-page .woocommerce .cart-collaterals { margin: 0; }
+}
+
+/* Cart: tarjetas suaves para tabla y totales */
+.cart-page .woocommerce-cart-form,
+.cart-page .cart-collaterals {
+  background: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem;
+}
+.cart-page .cart_totals h2 { margin-top: 0; font-weight: 800; }
+
+/* Cart: alinear acciones (cupón + actualizar) limpias */
+.cart-page table.shop_table .actions { display:flex; flex-wrap: wrap; gap: .5rem; justify-content: space-between; align-items: center; }
+.cart-page .coupon { display:flex; gap:.5rem; align-items:center; }
+.cart-page .coupon .input-text { height: 40px; border-radius: 8px; }
+
+/* Checkout: tarjetas para columnas de datos */
+.checkout-page .col2-set > .col-1,
+.checkout-page .col2-set > .col-2 { background:#fff; border:1px solid var(--border-color); border-radius:12px; padding:1rem; }
+
+/* Checkout: order review ya tiene tarjeta; ajustar margen superior */
+.checkout-page #order_review { margin-top: 0; }
+
+/* Thank you: armonizar bloques */
+.order-confirmation .woocommerce-order { background:#fff; border:1px solid var(--border-color); border-radius:12px; padding:1rem; }
+.order-confirmation .woocommerce-order-overview { margin-top: .5rem; }
+
+/* --- Portada: secciones y carruseles --- */
+.home-section { margin: 1.5rem auto; }
+.home-section__header { display:flex; align-items:center; justify-content: space-between; gap: .75rem; margin-bottom: .5rem; }
+.home-section__header .section-title { margin: 0; }
+
+/* Contenedor del carrusel */
+.carousel { position: relative; }
+.carousel .carousel-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.carousel .carousel-track::-webkit-scrollbar { height: 8px; }
+.carousel .carousel-track::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 999px; }
+
+/* Lista de productos en carrusel */
+.carousel ul.products.products-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  padding-bottom: .25rem;
+}
+
+/* Items del carrusel: tarjetas reutilizadas */
+.carousel ul.products.products-carousel li.product {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+@media (min-width: 480px) { .carousel ul.products.products-carousel li.product { flex-basis: 240px; } }
+@media (min-width: 900px) { .carousel ul.products.products-carousel li.product { flex-basis: 260px; } }
+
+/* Fades laterales para indicar overflow */
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; width: 40px;
+  pointer-events: none;
+}
+.carousel::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0)); }
+.carousel::after  { right: 0; background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0)); }
+.carousel.at-start::before { opacity: 0; }
+.carousel.at-end::after   { opacity: 0; }
+
+/* Estado dragging: reduce transición visual accidental */
+.carousel.dragging, .carousel .carousel-track.dragging { cursor: grabbing; }
+.carousel.dragging .carousel-track { cursor: grabbing; }

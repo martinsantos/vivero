@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Específico del Carrito - Los Cocos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .test-result {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0.5rem;
+            border: 2px solid;
+        }
+        .test-success {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+        .test-error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">🧪 Test Específico del Carrito</h1>
+        
+        <!-- Productos de prueba con diferentes configuraciones -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Producto 1: Con data-product-id -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="font-semibold text-lg mb-2">Producto Test 1</h3>
+                <p class="text-green-600 font-bold text-xl mb-4">$15.000</p>
+                <button class="add-to-cart-unified bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full"
+                        data-product-id="1123"
+                        data-product-name="Ficus Benjamina"
+                        data-product-price="15000">
+                    <span class="material-icons text-sm">add_shopping_cart</span>
+                    <span>Añadir Test 1</span>
+                </button>
+            </div>
+            
+            <!-- Producto 2: Con formulario WooCommerce -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="font-semibold text-lg mb-2">Producto Test 2</h3>
+                <p class="text-green-600 font-bold text-xl mb-4">$8.500</p>
+                <form method="post">
+                    <input type="hidden" name="add-to-cart" value="1124">
+                    <button type="button" class="single_add_to_cart_button bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full">
+                        <span class="material-icons text-sm">add_shopping_cart</span>
+                        <span>Añadir Test 2</span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Producto 3: Con contenedor padre -->
+            <div class="bg-white rounded-lg shadow-md p-4" data-product-id="1125">
+                <h3 class="font-semibold text-lg mb-2">Producto Test 3</h3>
+                <p class="text-green-600 font-bold text-xl mb-4">$12.000</p>
+                <button class="add-to-cart bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full">
+                    <span class="material-icons text-sm">add_shopping_cart</span>
+                    <span>Añadir Test 3</span>
+                </button>
+            </div>
+            
+        </div>
+        
+        <!-- Contador del carrito -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Estado del Carrito</h2>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons text-green-600">shopping_cart</span>
+                    <span>Productos en carrito:</span>
+                    <span id="cart-count" class="bg-green-600 text-white px-2 py-1 rounded-full text-sm font-bold">0</span>
+                </div>
+                <button onclick="clearTestCart()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                    Limpiar Carrito
+                </button>
+            </div>
+        </div>
+        
+        <!-- Resultados de tests -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Resultados de Tests</h2>
+            <div id="test-results">
+                <p class="text-gray-500">Los resultados aparecerán aquí...</p>
+            </div>
+            <div class="mt-6 flex gap-4">
+                <button onclick="runCartTests()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                    🧪 Ejecutar Tests del Carrito
+                </button>
+                <button onclick="testProductDetection()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+                    🔍 Test Detección de Productos
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simular el sistema de carrito para testing
+        let testCartItems = [];
+        
+        // Función para logging de tests
+        function logTest(message, type = 'success') {
+            const resultsDiv = document.getElementById('test-results');
+            const testDiv = document.createElement('div');
+            testDiv.className = `test-result test-${type}`;
+            testDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong> - ${message}`;
+            resultsDiv.appendChild(testDiv);
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+        
+        // Test de detección de productos
+        function testProductDetection() {
+            logTest('🔍 Iniciando test de detección de productos...', 'info');
+            
+            const buttons = document.querySelectorAll('.add-to-cart-unified, .single_add_to_cart_button, .add-to-cart');
+            
+            buttons.forEach((button, index) => {
+                const productId = getProductIdTest(button);
+                if (productId) {
+                    logTest(`✅ Botón ${index + 1}: ID detectado = ${productId}`, 'success');
+                } else {
+                    logTest(`❌ Botón ${index + 1}: No se pudo detectar ID`, 'error');
+                }
+            });
+            
+            logTest(`📊 Total de botones analizados: ${buttons.length}`, 'info');
+        }
+        
+        // Función de detección de ID (copia de la función principal)
+        function getProductIdTest(button) {
+            let productId = null;
+            
+            // Método 1: data-product-id attribute
+            productId = button.getAttribute('data-product-id');
+            if (productId) {
+                console.log('🔍 ID encontrado via data-product-id:', productId);
+                return productId;
+            }
+            
+            // Método 2: dataset.productId
+            productId = button.dataset.productId;
+            if (productId) {
+                console.log('🔍 ID encontrado via dataset:', productId);
+                return productId;
+            }
+            
+            // Método 3: value attribute (para botones de WooCommerce)
+            if (button.name === 'add-to-cart' && button.value) {
+                productId = button.value;
+                console.log('🔍 ID encontrado via value:', productId);
+                return productId;
+            }
+            
+            // Método 4: buscar en el contenedor padre
+            const productCard = button.closest('[data-product-id]');
+            if (productCard) {
+                productId = productCard.getAttribute('data-product-id');
+                console.log('🔍 ID encontrado en contenedor padre:', productId);
+                return productId;
+            }
+            
+            // Método 5: buscar en formulario padre
+            const form = button.closest('form');
+            if (form) {
+                const hiddenInput = form.querySelector('input[name="add-to-cart"]');
+                if (hiddenInput && hiddenInput.value) {
+                    productId = hiddenInput.value;
+                    console.log('🔍 ID encontrado en formulario:', productId);
+                    return productId;
+                }
+            }
+            
+            return null;
+        }
+        
+        // Test completo del carrito
+        function runCartTests() {
+            logTest('🚀 Iniciando tests completos del carrito...', 'info');
+            
+            // Test 1: Detección de botones
+            const buttons = document.querySelectorAll('.add-to-cart-unified, .single_add_to_cart_button, .add-to-cart');
+            logTest(`Test 1: ${buttons.length} botones encontrados`, buttons.length > 0 ? 'success' : 'error');
+            
+            // Test 2: Detección de IDs
+            let validButtons = 0;
+            buttons.forEach(button => {
+                if (getProductIdTest(button)) {
+                    validButtons++;
+                }
+            });
+            logTest(`Test 2: ${validButtons}/${buttons.length} botones con ID válido`, validButtons > 0 ? 'success' : 'error');
+            
+            // Test 3: Simulación de añadir al carrito
+            if (validButtons > 0) {
+                const firstValidButton = Array.from(buttons).find(btn => getProductIdTest(btn));
+                if (firstValidButton) {
+                    simulateAddToCart(firstValidButton);
+                    logTest('Test 3: Simulación de añadir al carrito ejecutada', 'success');
+                }
+            }
+            
+            logTest('✅ Tests del carrito completados', 'success');
+        }
+        
+        // Simular añadir al carrito
+        function simulateAddToCart(button) {
+            const productId = getProductIdTest(button);
+            const productName = button.getAttribute('data-product-name') || `Producto ${productId}`;
+            
+            // Verificar si ya existe en el carrito
+            const existingItem = testCartItems.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+                logTest(`➕ Producto ${productName} incrementado. Nueva cantidad: ${existingItem.quantity}`, 'success');
+            } else {
+                testCartItems.push({
+                    id: productId,
+                    name: productName,
+                    quantity: 1
+                });
+                logTest(`🆕 Producto ${productName} añadido al carrito`, 'success');
+            }
+            
+            updateCartCounter();
+        }
+        
+        // Actualizar contador del carrito
+        function updateCartCounter() {
+            const totalItems = testCartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const counter = document.getElementById('cart-count');
+            counter.textContent = totalItems;
+            
+            // Animación
+            counter.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                counter.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        // Limpiar carrito de prueba
+        function clearTestCart() {
+            testCartItems = [];
+            updateCartCounter();
+            logTest('🧹 Carrito de prueba limpiado', 'info');
+        }
+        
+        // Configurar event listeners para los botones
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.add-to-cart-unified, .single_add_to_cart_button, .add-to-cart');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    simulateAddToCart(this);
+                });
+            });
+            
+            logTest('🌱 Sistema de testing inicializado', 'success');
+            logTest(`🔘 ${buttons.length} botones configurados para testing`, 'info');
+        });
+    </script>
+</body>
+</html>

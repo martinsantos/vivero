@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vivero Los Cocos</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1dc91d",
+            "background-light": "#f6f8f6",
+            "background-dark": "#112111",
+          },
+          fontFamily: {
+            "display": ["Epilogue"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-primary/20 dark:border-primary/30">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<svg class="h-8 w-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">Vivero Los Cocos</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Plants</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Supplies</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Flowers</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About Us</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">search</span>
+<input class="form-input w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-transparent bg-background-light dark:bg-background-dark h-10 placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 pr-4 text-sm font-normal border dark:border-primary/30" placeholder="Search" value=""/>
+</div>
+<button class="flex items-center justify-center rounded-full h-10 w-10 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">shopping_cart</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<section class="relative h-[60vh] min-h-[480px] bg-cover bg-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDllcAWRfcAOHU4u_gWIN6lF3SaLK-6Y8qtAMLjsDbToMm78vrJ19FZ9rWul8ScyObEK54QTHcu1j5YTPgMwCfZY0DRj__5_fS0QlPBTy6sALfvrlG5iX3oIWxJ6O0F1PTazPiI1iJqj7aeUDtq12IG-tMd-7qLkxtuXCujrDOfSwKb_HTp_caXdho1kbvQ7E9ePxmBJi5M8MlqKN6EI1VxxaEIZNaRVo5ztQwgx8JQEATP_bsD4foqmKwVWN1wA8kDDNtEdrzARVFc");'>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="max-w-3xl text-center text-white px-4">
+<h1 class="text-4xl font-black leading-tight tracking-tight md:text-6xl">Welcome to Vivero Los Cocos</h1>
+<p class="mt-4 text-lg font-normal leading-normal">Your one-stop shop for all things green. Discover our wide selection of plants, gardening supplies, and flowers to bring nature into your home.</p>
+<button class="mt-8 inline-flex items-center justify-center rounded-full h-12 px-6 bg-primary text-gray-900 dark:text-white text-base font-bold leading-normal tracking-wide shadow-lg hover:bg-opacity-90 transition-all transform hover:scale-105">
+              Shop Now
+            </button>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-10 text-center">Featured Products</h2>
+<div class="relative">
+<div class="flex overflow-x-auto pb-6 -mx-4 px-4 gap-8 [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex-shrink-0 w-72 group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMAdr1n1kxL_HbxsW9mP11Z1t9Cz6LtgVun9ELnR85jMxsTlaoDhB2_cUZrj2g6r_xKYukf4ItJwp4LOkCUaSdIMdScYkHjxwH5M1G6DLhKbMd47Nbr9mfbtpzesoK-dgZYADyfsm3x3sBDPEOu4mVVr9iWVOeVxPNbF_EXNBd9AlU4lW5cYMxcnqHMVlscJJ1QDAvcB6xp2g5bSZs_k9d_952Z4KmPfPG50sncsdinZDDIdWTtQX0H35cvPClQ_7AvQZVtXW53zb7");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Succulent Collection</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Low-maintenance succulents for any space</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+<div class="flex-shrink-0 w-72 group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9hFhPMegQFn1_rniO3MRLOUYxKCDMI938_O0qlOUwYZzI_j1-4xoYnPfu0nloN3dPXtv85ZZg-cnIYkcJxtuLgQQBF0wu-F4lzv47C914eVn4f-nXbJb-Y2lVBPFHRJMJRt5UvWVsaU6ftTyi6sUzD6Viy5-cgaz9-caY5V99vGvFUGn1AtFI-0spcPATI2CN3h9B3GXwfI35QqTJl3hW2hw5PyTOVxs1CmjAoDzcKyHMTGYFDfS91mjnqIKz9QVu70fis7sRlUDK");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Flowering Plants</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Brighten your home with our flowering plants</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+<div class="flex-shrink-0 w-72 group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3omW08p-PMKK7uukx_DnyD4_P2wLOdS709tZx7itG81kr5PNLAHorGrfAe3zP5xlKfYwX8jadxjeURPQMGzpHgk7yR7MJc_zeKp-MxwIv8Dzu-Slr2AzMtZpPSqOJ8ogUi7QbzQ796Hx1umvjceZfHBD9hJbM2nieTNpVRBprqkjXZ8_rdR_bZxK66RJ4h6VHn1E_s5IuKE4B-Yz4rfuR5aJHMfHB4HkReqcBLejc2iyUzNuDfaPVcEPfFHG0K7ivRGyldSXvdG1D");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Gardening Essentials</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Everything you need for a thriving garden</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+<div class="flex-shrink-0 w-72 group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZ2F-S4W5qTrW71p4vZfswYX50A8n1hncderI2U30mIQN-jcsjL8W9ArsKt4Gqxo7X-aM7O8jnDjrGCzWjTzNKH-gxc0xD6wnm3UjBR3IkQq0wg0xstylZehlF26kgeUqlMewIt_q9xxp-OdyPRNnCFcYLH_EatpHLVPVTh4anuywibG8Sn218_reXNkD0cJSRZaVGhUaJsgVDa8Ut2AzaR4JMR-pQ03sv_Z4tgXT4vCI8ryMhKIKwd-vbwcvnW53H-NooLycxAv4J");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Fresh Flower Bouquets</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Hand-picked bouquets for every occasion</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-10 text-center">New Arrivals</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdCbdE2enqB_KvKDkQbsfdIy7wjRpCjj8BfPBLtLNP7CPn-HAlV2KH4lfiLN7UGC59_iwnb8H4i3lpPZoWAtyUQ2QgeEVnSQgNfj-0egWtTo1niTdUnWHthBfstOTJH5B1V0G8t78bhtlzBqMvzO-aVW7ZPDwvNbtU1ADvBO0dsYeroOztP-bROjqoYzlbLO5xWmzhCBqt8r8TwOBp_-28KGEBjCYDf-s5OV1P_FeEauiIkQ3MwXSxeh6iRY1ecyh_5_t-VfCceLFk");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Tropical Palm</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Add a touch of the tropics to your home</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+<div class="group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCH6EJuikn4KlOzGlzJ9hSMRdU6vSvgJ_1qE7rob4ZzMh_pflRzVimTKSR67TknykfAKgq0oMzU01fG7WwV65c95N8YvvkWr7gcBKVVDq0DKpThmVIGDqDg_0WBCACuoNSvG53i4MnJpUqZPg_Ouxn1eWGmzcbjeAw_4zxbw00o2pPg7vjyPZLKs_3Z6-3mP3k5Fe5MUmIbqauCd-BeDNGfYRekNT4ackPH9HPZgnvoEKhjVIPosZAHx65CCe-8dKWN0IKWAsJ-5rZF");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Indoor Fern</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Elegant ferns for low-light environments</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+<div class="group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAW7RiMUKFRBi5KJFZa8gFkDzvKCnC7VfvE1Msl1uugwdYACw4uSMhHcz8AmrR7uskHBw860IOs7_mxMz5J807RG2npUfb1jh6zIS7pt7eKRCdXIdhF0CmnFgrQRbR0GGSvjOxU4m7E__tdqSGit1rkIMTrrGZCCw3yNzb9a3Xb9BO-ymH2T-tTT-3YBqy5qQBv4O9pr4WTerKaUpu72lbkMZm2tDD5BH1IRCk3P_o0s5ja7m48Nof7lSg1ei1pOQB2S9mLg4_oX5Ul");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Herb Garden Kit</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Grow your own herbs with our starter kit</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+<div class="group">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDU6qH_xYNPtaCNY_aJ5ZCBtHlRs_meTAySOM8GeJ0U81VKJ02Pm3gOS6QE6dUcqejJ-NobRg4tcpY9Jz0aTNG5FcsTD9DaHpghnjCFn-oqmjBx620_taXXIFTZTfC0ei3-Ygue-VZTq-Xptvby5IVlyQgtEU0hNqgAB3-AgmKIomVJ_C51C-UbEe_r9CzvSvuknKYa2C6ku761AvN8-ybb92aBvVSM8AqTYaHvV6WGUwLc1FISI0kCBXfZ36keIn4_DZt9Nd3qipwY");'></div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Orchid Arrangement</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Exquisite orchids for a special touch</p>
+<button class="mt-2 inline-flex items-center justify-center rounded-md h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-md hover:bg-opacity-90 transition-all w-full">
+                  Agregar al Carro
+                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-10 text-center">Seasonal Promotions</h2>
+<div class="bg-background-light dark:bg-background-dark rounded-xl shadow-lg overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
+<div class="relative h-64 w-full bg-center bg-no-repeat bg-cover lg:h-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXFYQFFCppUkz3E2TQzIRloo_yV7UHYLg4lFSNrO3g9jsWAWhov6S3Bz2XmUse_-BbbODeMOqmSWiRzPpiKuJ7EkiRl3Ls5v9Z0O0ySUZjSPJFFoV_z6SeL1FNEMWNuaV13DcyAFdnRfi1kgx0Pbzf0WJ50Qm4YcwhwCOX8NvaLdgHch13Q1Ddb2OiipDZlBsnR3tzhsyGHdasloW4QVcHGSA5-jEGIYYOG9z6ptu24B8018mzhzdprECDsIvC86i4wxtS_esU2Z57");'></div>
+<div class="p-8 lg:p-12 flex flex-col justify-center">
+<h3 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Spring Bloom Sale</h3>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Get 20% off all flowering plants this spring!</p>
+<button class="mt-6 inline-flex items-center justify-center rounded-full h-10 px-5 bg-primary text-gray-900 dark:text-white text-sm font-bold leading-normal tracking-wide self-start hover:bg-opacity-90 transition-all">
+                Shop Now
+              </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+</body></html>

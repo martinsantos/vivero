@@ -1,0 +1,284 @@
+/* ===================================
+   HERO SECTION - ESTILO BOCETO
+   Basado en bocetos originales
+   =================================== */
+
+/* Hero principal con imagen de fondo */
+.hero {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+
+/* Overlay oscuro para mejor legibilidad */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 33, 17, 0.6),
+    rgba(17, 33, 17, 0.4)
+  );
+  z-index: 1;
+}
+
+/* Contenido del hero */
+.hero .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Título del hero - Estilo boceto */
+.hero .title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Epilogue', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Subtítulo del hero */
+.hero .subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón CTA del hero */
+.hero .actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero .btn-clean.btn-primary {
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  background: #1dc91d;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(29, 201, 29, 0.3);
+  font-family: 'Epilogue', sans-serif;
+}
+
+.hero .btn-clean.btn-primary:hover {
+  background: #17a617;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 201, 29, 0.4);
+}
+
+/* Botón secundario */
+.hero .btn-clean.btn-secondary {
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid white;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: 'Epilogue', sans-serif;
+}
+
+.hero .btn-clean.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 400px;
+  }
+
+  .hero .title {
+    font-size: 2rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+  }
+
+  .hero .btn-clean {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+
+  .hero .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero .btn-clean {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 350px;
+  }
+
+  .hero .title {
+    font-size: 1.75rem;
+  }
+
+  .hero .container {
+    padding: 3rem 1rem;
+  }
+}
+
+/* ===================================
+   SECCIONES DE CONTENIDO HOME
+   =================================== */
+
+/* Featured Products Section */
+.featured-products-section {
+  margin-bottom: 4rem;
+}
+
+.featured-products-section h2 {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #112111;
+  margin-bottom: 3rem;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* New Arrivals Section */
+.new-arrivals-section {
+  margin-bottom: 4rem;
+  background: #f6f8f6;
+  padding: 4rem 0;
+}
+
+.new-arrivals-section h2 {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #112111;
+  margin-bottom: 3rem;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Seasonal Promotions Section */
+.seasonal-promotions-section {
+  margin-bottom: 4rem;
+}
+
+.seasonal-promotions-section h2 {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #112111;
+  margin-bottom: 3rem;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Promo Banner */
+.promo-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.promo-banner-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.promo-banner-content {
+  padding: 2rem;
+}
+
+.promo-banner-content h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #112111;
+  margin-bottom: 1rem;
+  font-family: 'Epilogue', sans-serif;
+}
+
+.promo-banner-content p {
+  font-size: 1rem;
+  color: #546e54;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.promo-banner-content .btn-clean {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #1dc91d;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-family: 'Epilogue', sans-serif;
+}
+
+.promo-banner-content .btn-clean:hover {
+  background: #17a617;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 201, 29, 0.3);
+}
+
+@media (max-width: 768px) {
+  .promo-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-banner-image {
+    height: 200px;
+  }
+}

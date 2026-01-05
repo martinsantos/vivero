@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivero Los Cocos - Versión Básica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            background: #f0f0f0;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #006400;
+        }
+        
+        .banner {
+            background: #006400;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            margin: 25px 0 15px;
+            color: #006400;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .product-image {
+            height: 150px;
+            background: #f5f5f5;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #006400;
+            margin: 10px 0;
+        }
+        
+        .add-to-cart {
+            background: #006400;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">🌱 Vivero Los Cocos</div>
+        </div>
+    </header>
+    
+    <div class="banner">
+        <div class="container">
+            <h1>Plantas de Calidad</h1>
+            <p>Las mejores plantas para tu hogar y jardín</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Featured Plants -->
+        <h2 class="section-title">Plantas Destacadas</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1637967886160-fd78dc3ce0fe?q=80&w=300&auto=format&fit=crop" alt="Calathea Orbifolia">
+                </div>
+                <div class="product-title">Calathea Orbifolia</div>
+                <div class="product-price">$32.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1609143739217-01b60dad1c67?q=80&w=300&auto=format&fit=crop" alt="Alocasia Polly">
+                </div>
+                <div class="product-title">Alocasia Polly</div>
+                <div class="product-price">$27.500</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1614594805320-e6a5549a8a8f?q=80&w=300&auto=format&fit=crop" alt="Maranta Leuconeura">
+                </div>
+                <div class="product-title">Maranta Leuconeura</div>
+                <div class="product-price">$22.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594050753841-3b69a64c2c7a?q=80&w=300&auto=format&fit=crop" alt="Philodendron Birkin">
+                </div>
+                <div class="product-title">Philodendron Birkin</div>
+                <div class="product-price">$29.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+        </div>
+        
+        <!-- Special Offers -->
+        <h2 class="section-title">Ofertas Especiales</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?q=80&w=300&auto=format&fit=crop" alt="Dracaena Marginata">
+                </div>
+                <div class="product-title">Dracaena Marginata</div>
+                <div class="product-price">$19.500</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?q=80&w=300&auto=format&fit=crop" alt="Begonia Maculata">
+                </div>
+                <div class="product-title">Begonia Maculata</div>
+                <div class="product-price">$17.600</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596377336486-2dace6a357e0?q=80&w=300&auto=format&fit=crop" alt="Pilea Peperomioides">
+                </div>
+                <div class="product-title">Pilea Peperomioides</div>
+                <div class="product-price">$14.400</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1604762538654-9660ecc4ffe3?q=80&w=300&auto=format&fit=crop" alt="Calathea Makoyana">
+                </div>
+                <div class="product-title">Calathea Makoyana</div>
+                <div class="product-price">$18.800</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+        </div>
+        
+        <!-- New Products -->
+        <h2 class="section-title">Nuevos Productos</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1682344382195-553372019356?q=80&w=300&auto=format&fit=crop" alt="Monstera Deliciosa">
+                </div>
+                <div class="product-title">Monstera Deliciosa</div>
+                <div class="product-price">$25.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1583829341060-f06d1b8837fe?q=80&w=300&auto=format&fit=crop" alt="Ficus Lyrata">
+                </div>
+                <div class="product-title">Ficus Lyrata</div>
+                <div class="product-price">$28.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1620127682229-33388276e540?q=80&w=300&auto=format&fit=crop" alt="Pothos Dorado">
+                </div>
+                <div class="product-title">Pothos Dorado</div>
+                <div class="product-price">$15.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1610601177013-fd1500d1d721?q=80&w=300&auto=format&fit=crop" alt="Sansevieria Trifasciata">
+                </div>
+                <div class="product-title">Sansevieria Trifasciata</div>
+                <div class="product-price">$20.000</div>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Very basic script for button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            var buttons = document.querySelectorAll('.add-to-cart');
+            
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function() {
+                    alert('Producto agregado al carrito');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

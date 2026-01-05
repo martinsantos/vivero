@@ -1,0 +1,229 @@
+/* ===================================
+   PRODUCT TABS - ESTILO BOCETO
+   Basado en bocetos originales
+   =================================== */
+
+/* Contenedor de tabs */
+.woocommerce-tabs {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Lista de tabs - Horizontal */
+.woocommerce-tabs ul.tabs {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 2rem 0;
+  padding: 0;
+  border-bottom: 2px solid #e4e8e4;
+}
+
+.woocommerce-tabs ul.tabs li {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.woocommerce-tabs ul.tabs li a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #546e54;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  font-family: 'Epilogue', sans-serif;
+  position: relative;
+  top: 2px;
+}
+
+.woocommerce-tabs ul.tabs li a:hover {
+  color: #1dc91d;
+  background: rgba(29, 201, 29, 0.05);
+  border-radius: 8px 8px 0 0;
+}
+
+/* Tab activo */
+.woocommerce-tabs ul.tabs li.active a {
+  color: #1dc91d;
+  border-bottom-color: #1dc91d;
+  font-weight: 700;
+}
+
+/* Contenido de tabs */
+.woocommerce-tabs .panel {
+  padding: 2rem 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Títulos dentro de tabs */
+.woocommerce-tabs .panel h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #112111;
+  margin-bottom: 1rem;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Contenido de descripción */
+.woocommerce-tabs .panel p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #546e54;
+  margin-bottom: 1rem;
+}
+
+/* Listas dentro de tabs */
+.woocommerce-tabs .panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.woocommerce-tabs .panel ul li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #546e54;
+}
+
+.woocommerce-tabs .panel ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #1dc91d;
+  font-weight: 700;
+}
+
+/* Reviews / Comentarios */
+#reviews .commentlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#reviews .comment {
+  border-bottom: 1px solid #e4e8e4;
+  padding: 1.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+#reviews .comment:last-child {
+  border-bottom: none;
+}
+
+#reviews .comment-text {
+  margin-left: 0;
+}
+
+#reviews .comment-author {
+  font-weight: 700;
+  color: #112111;
+  margin-bottom: 0.5rem;
+}
+
+#reviews .star-rating {
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+#reviews .description {
+  color: #546e54;
+  line-height: 1.6;
+}
+
+/* Formulario de review */
+#review_form_wrapper {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e4e8e4;
+}
+
+#review_form {
+  background: #f6f8f6;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+#review_form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #112111;
+}
+
+#review_form input,
+#review_form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e4e8e4;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+#review_form input:focus,
+#review_form textarea:focus {
+  outline: none;
+  border-color: #1dc91d;
+  box-shadow: 0 0 0 3px rgba(29, 201, 29, 0.1);
+}
+
+#review_form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#review_form .form-submit input[type="submit"] {
+  background: #1dc91d;
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Epilogue', sans-serif;
+}
+
+#review_form .form-submit input[type="submit"]:hover {
+  background: #17a617;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 201, 29, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .woocommerce-tabs ul.tabs {
+    flex-wrap: wrap;
+  }
+
+  .woocommerce-tabs ul.tabs li a {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .woocommerce-tabs .panel {
+    padding: 1.5rem 0;
+  }
+
+  #review_form {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "tests_ejecutados": 7,
+  "tests_exitosos": 7,
+  "tests_fallidos": 0,
+  "warnings": [
+    "53 imágenes compartidas"
+  ],
+  "errores": [],
+  "metricas": {
+    "total_media": 108,
+    "total_productos": 538,
+    "productos_sin_imagen": 0,
+    "urls_verificadas": 20,
+    "errores_404": 0,
+    "hashes_unicos": 100,
+    "duplicados": 0,
+    "archivos_filesystem": 108,
+    "imagenes_unicas": 106,
+    "imagenes_compartidas": 53,
+    "tiempo_carga_promedio_ms": 239.26
+  }
+}

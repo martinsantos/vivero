@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🛒 WOOCOMMERCE SHORTCODES TEST - Los Cocos</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .hero { text-align: center; padding: 60px 20px; }
+        .hero h1 { font-size: 4rem; margin: 0; text-shadow: 0 4px 8px rgba(0,0,0,0.3); font-weight: 900; }
+        .hero p { font-size: 1.5rem; margin: 30px 0; opacity: 0.95; }
+        .section { background: rgba(255,255,255,0.95); color: #333; padding: 40px; margin: 30px 0; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+        .test-controls { text-align: center; margin: 30px 0; }
+        .button { background: #28a745; color: white; padding: 18px 35px; border: none; border-radius: 50px; cursor: pointer; margin: 15px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: all 0.3s ease; }
+        .button:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(0,0,0,0.35); }
+        .iframe-container { border: 4px solid #28a745; border-radius: 20px; overflow: hidden; margin: 30px 0; }
+        iframe { width: 100%; height: 900px; border: none; }
+        .status { padding: 20px; margin: 20px 0; border-radius: 15px; }
+        .success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; border-left: 8px solid #28a745; }
+        .info { background: linear-gradient(135deg, #e7f3ff, #b3d9ff); color: #004085; border-left: 8px solid #007bff; }
+        .warning { background: linear-gradient(135deg, #fff3cd, #ffeaa7); color: #856404; border-left: 8px solid #ffc107; }
+        h2 { color: #28a745; border-bottom: 3px solid #e9ecef; padding-bottom: 15px; }
+        .step { background: #f8f9fa; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #28a745; }
+        .badge { display: inline-block; padding: 8px 16px; border-radius: 25px; font-size: 0.85rem; font-weight: 700; margin: 8px; text-transform: uppercase; letter-spacing: 0.5px; background: #28a745; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🛒 NATIVE WOOCOMMERCE SHORTCODES</h1>
+            <p>Usando productos nativos de WooCommerce con botones garantizados</p>
+            <div>
+                <span class="badge">SHORTCODES NATIVOS</span>
+                <span class="badge">BOTONES GARANTIZADOS</span>
+                <span class="badge">SIN JAVASCRIPT CUSTOM</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔄 NUEVA ESTRATEGIA IMPLEMENTADA</h2>
+            
+            <div class="success status">
+                <strong>✅ SHORTCODES NATIVOS DE WOOCOMMERCE:</strong><br>
+                • <code>[sale_products]</code> - Productos en oferta<br>
+                • <code>[recent_products]</code> - Productos recientes (Novedades)<br>
+                • <code>[best_selling_products]</code> - Productos más vendidos<br>
+                • Botones nativos de WooCommerce con AJAX integrado<br>
+                • No dependen de JavaScript personalizado
+            </div>
+            
+            <div class="info status">
+                <strong>📊 BENEFICIOS DE ESTA SOLUCIÓN:</strong><br>
+                • Los botones usan el sistema nativo de WooCommerce<br>
+                • AJAX add-to-cart funciona automáticamente<br>
+                • Compatible con todos los plugins de WooCommerce<br>
+                • CSS personalizado para layout horizontal tipo carousel<br>
+                • Mantiene toda la funcionalidad estándar
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🧪 Prueba los Nuevos Shortcodes</h2>
+            
+            <div class="step">
+                <strong>Paso 1:</strong> Carga la homepage actualizada con shortcodes nativos
+            </div>
+            <div class="step">
+                <strong>Paso 2:</strong> Busca las secciones "Promociones", "Novedades", y "Más vendidos"
+            </div>
+            <div class="step">
+                <strong>Paso 3:</strong> Haz clic en cualquier botón "Agregar al carrito"
+            </div>
+            <div class="step">
+                <strong>Paso 4:</strong> Los botones deberían funcionar inmediatamente sin problemas
+            </div>
+            
+            <div class="test-controls">
+                <button class="button" onclick="loadHomepage()">🏠 Cargar Homepage Nueva</button>
+                <button class="button" onclick="checkCart()">🛒 Ver Carrito</button>
+                <button class="button" onclick="testShop()">🏪 Comparar con Tienda</button>
+            </div>
+            
+            <div class="iframe-container">
+                <iframe id="testFrame" src="about:blank"></iframe>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✅ ¿Por Qué Esta Solución es Mejor?</h2>
+            
+            <div class="success status">
+                <strong>🎯 CONFIABILIDAD:</strong><br>
+                Los shortcodes nativos de WooCommerce están diseñados para funcionar en cualquier tema. No dependen de JavaScript personalizado que puede fallar.
+            </div>
+            
+            <div class="success status">
+                <strong>🔧 MANTENIMIENTO:</strong><br>
+                WooCommerce mantiene y actualiza estos shortcodes. No tenemos que debuggear JavaScript personalizado.
+            </div>
+            
+            <div class="success status">
+                <strong>⚡ PERFORMANCE:</strong><br>
+                Menos JavaScript = carga más rápida. Los botones funcionan con el sistema AJAX nativo optimizado de WooCommerce.
+            </div>
+            
+            <div class="success status">
+                <strong>🎨 PERSONALIZACIÓN:</strong><br>
+                Mantenemos el diseño de carousel horizontal con CSS puro, sin sacrificar la funcionalidad.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎉 Resultados Esperados</h2>
+            
+            <div class="warning status">
+                <strong>LOS BOTONES DEBERÍAN FUNCIONAR INMEDIATAMENTE:</strong><br>
+                • Clic en "Agregar al carrito" → Producto se agrega al carrito<br>
+                • Contador del carrito se actualiza automáticamente<br>
+                • Sin redirects a páginas de producto<br>
+                • Feedback visual inmediato<br>
+                • No hay errores de JavaScript en la consola
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function loadHomepage() {
+            const iframe = document.getElementById('testFrame');
+            iframe.src = 'http://localhost:8080/?' + Date.now();
+            console.log('🏠 Loading homepage with WooCommerce shortcodes...');
+            console.log('📦 Expected shortcodes: [sale_products], [recent_products], [best_selling_products]');
+            console.log('🎯 These should work out of the box with native WooCommerce functionality');
+        }
+        
+        function checkCart() {
+            window.open('http://localhost:8080/carro/', '_blank');
+        }
+        
+        function testShop() {
+            window.open('http://localhost:8080/tienda/', '_blank');
+        }
+        
+        // Initialize
+        console.log('🛒 WooCommerce Shortcode Test Page Loaded');
+        console.log('🔄 New strategy: Native shortcodes instead of custom carousel');
+        console.log('✅ This should resolve all button functionality issues');
+        console.log('📋 Click "Cargar Homepage Nueva" to test the implementation');
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+/* ===================================
+   TIENDA - ORDENAMIENTO Y BÚSQUEDA
+   Basado en bocetos originales
+   =================================== */
+
+/* Barra de búsqueda en tienda */
+.shop-search-bar {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.shop-search-bar .search-form {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.shop-search-bar .search-field {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid #e4e8e4;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.shop-search-bar .search-field:focus {
+  outline: none;
+  border-color: #1dc91d;
+  box-shadow: 0 0 0 3px rgba(29, 201, 29, 0.1);
+}
+
+.shop-search-bar .search-field::placeholder {
+  color: #546e54;
+}
+
+.shop-search-bar .material-icons {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #546e54;
+  pointer-events: none;
+}
+
+/* Contenedor de ordenamiento */
+.woocommerce-ordering-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Título de sección */
+.shop-main h1.page-title,
+.woocommerce-products-header__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #112111;
+  margin-bottom: 1.5rem;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Botones de ordenamiento - Estilo boceto */
+.woocommerce-ordering {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.woocommerce-ordering select {
+  display: none;
+}
+
+/* Crear botones visuales de ordenamiento */
+.ordering-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ordering-button {
+  padding: 0.625rem 1.25rem;
+  border: 2px solid #e4e8e4;
+  border-radius: 9999px;
+  background: white;
+  color: #112111;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Epilogue', sans-serif;
+}
+
+.ordering-button:hover {
+  border-color: #1dc91d;
+  color: #1dc91d;
+}
+
+.ordering-button.active {
+  background: #1dc91d;
+  border-color: #1dc91d;
+  color: white;
+}
+
+/* Result count */
+.woocommerce-result-count {
+  color: #546e54;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .woocommerce-ordering-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .ordering-buttons {
+    width: 100%;
+  }
+  
+  .ordering-button {
+    flex: 1;
+    text-align: center;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-10-04T21:40:02.495641",
+  "dry_run": false,
+  "min_score": 10,
+  "low_relevance_stats": {
+    "processed": 538,
+    "removed": 1138,
+    "reassigned": 0,
+    "failed": 0,
+    "skipped": 0
+  },
+  "duplicates_stats": {}
+}

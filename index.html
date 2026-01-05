@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivero Los Cocos - Tienda de Plantas y Macetas</title>
+    <link rel="stylesheet" href="loscocos-clean-theme/style.css">
+    <link rel="stylesheet" href="loscocos-clean-theme/assets/css/shop.css">
+    <style>
+        /* Additional styles for the dynamic page */
+        .hero {
+            background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+            color: #fff;
+            padding: 3rem 0;
+            margin: 0 0 2rem;
+            border-radius: 0;
+        }
+        
+        .hero-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,.12);
+            width: 100%;
+            max-width: clamp(280px, 92vw, 1100px);
+            margin-inline: auto;
+            text-align: center;
+        }
+        
+        .btn-clean {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            padding: .75rem 1.5rem;
+            border-radius: .75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.5;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: #fff;
+            border: 1px solid transparent;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            background: linear-gradient(135deg, #047857, #065f46);
+        }
+        
+        .home-section {
+            margin: 1.5rem auto;
+            max-width: 1200px;
+        }
+        
+        .home-section__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .75rem;
+            margin-bottom: .5rem;
+        }
+        
+        .section-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #111827;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+            color: #6b7280;
+        }
+        
+        /* Error state */
+        .error {
+            background: #fee2e2;
+            color: #ef4444;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #fecaca;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="container nav">
+            <div class="brand font-display">Los Cocos</div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a class="btn-clean btn-primary" href="#">Club Premium</a>
+                <div class="header-search">
+                    <input type="search" class="search-field" placeholder="Buscar productos…">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-box">
+                <h1 class="title font-display">Vivero Los Cocos</h1>
+                <p class="subtitle">Tu jardín, nuestro paraíso</p>
+                <div class="actions">
+                    <a class="btn-clean btn-primary" href="#productos">Explorar Productos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="home-section">
+            <div class="home-section__header">
+                <h2 class="section-title">Productos Destacados</h2>
+                <a class="btn-clean btn-secondary" href="#todos">Ver todo</a>
+            </div>
+            <div id="featured-products" class="products-grid">
+                <div class="loading">Cargando productos...</div>
+            </div>
+        </section>
+
+        <section class="home-section">
+            <div class="home-section__header">
+                <h2 class="section-title">Novedades</h2>
+                <a class="btn-clean btn-secondary" href="#todos">Ver todo</a>
+            </div>
+            <div id="new-products" class="products-grid">
+                <div class="loading">Cargando productos...</div>
+            </div>
+        </section>
+
+        <section id="productos" class="home-section">
+            <div class="home-section__header">
+                <h2 class="section-title">Todos los Productos</h2>
+            </div>
+            <div id="products-container" class="products-grid">
+                <div class="loading">Cargando productos...</div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            © 2025 Los Cocos - Todos los derechos reservados
+        </div>
+    </footer>
+
+    <script src="assets/js/product-data.js"></script>
+</body>
+</html>

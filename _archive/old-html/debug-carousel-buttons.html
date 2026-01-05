@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔬 DEBUG - Carousel Buttons Test</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: monospace; margin: 20px; background: #1a1a1a; color: #00ff00; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #333; background: #2a2a2a; }
+        .status { padding: 10px; margin: 10px 0; }
+        .success { background: #003300; color: #00ff00; }
+        .error { background: #330000; color: #ff0000; }
+        .warning { background: #333300; color: #ffff00; }
+        .info { background: #000033; color: #0088ff; }
+        iframe { width: 100%; height: 600px; border: 2px solid #333; }
+        .button { background: #0066cc; color: white; padding: 10px 20px; border: none; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🔬 DEBUGGING CAROUSEL BUTTONS</h1>
+    
+    <div class="test-section">
+        <h2>📋 Debugging Steps</h2>
+        <ol>
+            <li>Open browser console (F12)</li>
+            <li>Look for "🚀 WooCommerce is ready, initializing carousel buttons"</li>
+            <li>Look for "🚀 WooCommerce carousel integration loaded and ready"</li>
+            <li>Try clicking any "Agregar al carrito" button</li>
+            <li>Check if button text changes to "⏳ Agregando..."</li>
+            <li>Check if cart counter increases</li>
+        </ol>
+    </div>
+    
+    <div class="test-section">
+        <h2>🌐 Live Test</h2>
+        <button class="button" onclick="refreshIframe()">🔄 Refresh Test</button>
+        <button class="button" onclick="checkConsole()">📋 Log Debug Info</button>
+        
+        <iframe id="testFrame" src="http://localhost:8080/"></iframe>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Expected Console Messages</h2>
+        <div class="status success">✅ "🚀 WooCommerce is ready, initializing carousel buttons"</div>
+        <div class="status success">✅ "🚀 WooCommerce carousel integration loaded and ready"</div>
+        <div class="status warning">⚠️ If you don't see these messages, WooCommerce scripts aren't loading properly</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🐛 Common Issues</h2>
+        <div class="status error">❌ Script loading order issues (our fix should resolve this)</div>
+        <div class="status error">❌ WooCommerce not initialized when our script runs</div>
+        <div class="status error">❌ jQuery not available</div>
+        <div class="status error">❌ AJAX endpoint not accessible</div>
+    </div>
+    
+    <script>
+        function refreshIframe() {
+            document.getElementById('testFrame').src = 'http://localhost:8080/?' + Date.now();
+            console.log('🔄 Refreshed homepage iframe');
+        }
+        
+        function checkConsole() {
+            console.log('🔬 DEBUGGING CAROUSEL BUTTONS');
+            console.log('📅 Time:', new Date().toISOString());
+            console.log('🌐 Testing URL: http://localhost:8080/');
+            console.log('📋 Look for WooCommerce initialization messages above');
+            console.log('🎯 Try clicking "Agregar al carrito" buttons in the iframe');
+        }
+        
+        console.log('🔬 Debug page loaded');
+        console.log('📋 Script loading order should now be fixed with defer strategy');
+        console.log('⏱️ Our script should wait for WooCommerce to be ready');
+    </script>
+</body>
+</html>

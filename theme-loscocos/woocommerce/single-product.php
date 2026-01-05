@@ -1,3 +1,12 @@
+<?php
+/**
+ * WooCommerce Single Product override
+ * Reutiliza el template raíz `single-product.php` del tema
+ * para garantizar estilos y layout unificado.
+ */
+
+require get_template_directory() . '/single-product.php';
+?>
 <?php get_header(); ?>
 
 <!-- Google Fonts y Material Icons -->

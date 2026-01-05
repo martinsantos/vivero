@@ -1,0 +1,225 @@
+/* ===================================
+   TIENDA - SIDEBAR FILTROS MEJORADO
+   Basado en bocetos originales
+   =================================== */
+
+/* Sidebar de filtros - Estilo boceto */
+.woocommerce-sidebar,
+.sidebar-primary,
+.shop-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 1.5rem;
+  background: #f6f8f6;
+  border-radius: 12px;
+  border: 1px solid #e4e8e4;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+/* Título principal de filtros */
+.woocommerce-sidebar h2,
+.sidebar-primary h2,
+.shop-sidebar h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #112111;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Grupos de filtros */
+.filter-group,
+.woocommerce-widget-layered-nav,
+.widget {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e4e8e4;
+}
+
+.filter-group:last-child,
+.woocommerce-widget-layered-nav:last-child,
+.widget:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Títulos de grupos de filtros */
+.filter-group h3,
+.woocommerce-widget-layered-nav h3,
+.widget h3,
+.widget-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #112111;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Checkboxes personalizados - Estilo boceto */
+.filter-checkbox,
+.woocommerce-widget-layered-nav input[type="checkbox"],
+.widget input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #e4e8e4;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.filter-checkbox:hover,
+.woocommerce-widget-layered-nav input[type="checkbox"]:hover,
+.widget input[type="checkbox"]:hover {
+  border-color: #1dc91d;
+  background-color: rgba(29, 201, 29, 0.05);
+}
+
+.filter-checkbox:checked,
+.woocommerce-widget-layered-nav input[type="checkbox"]:checked,
+.widget input[type="checkbox"]:checked {
+  background-color: #1dc91d;
+  border-color: #1dc91d;
+}
+
+.filter-checkbox:checked::after,
+.woocommerce-widget-layered-nav input[type="checkbox"]:checked::after,
+.widget input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Labels de filtros */
+.filter-label,
+.woocommerce-widget-layered-nav label,
+.widget label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #112111;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.filter-label:hover,
+.woocommerce-widget-layered-nav label:hover,
+.widget label:hover {
+  color: #1dc91d;
+}
+
+.filter-label:last-child,
+.woocommerce-widget-layered-nav label:last-child,
+.widget label:last-child {
+  margin-bottom: 0;
+}
+
+/* Price Range Slider - Estilo boceto */
+.price-range-slider,
+.price_slider_wrapper {
+  margin-top: 1rem;
+}
+
+.price-range-track,
+.price_slider {
+  display: block;
+  height: 8px;
+  background: #e4e8e4;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.price-range-fill,
+.ui-slider-range {
+  background: #1dc91d !important;
+  height: 100%;
+  position: absolute;
+  border: none !important;
+}
+
+.ui-slider-handle {
+  width: 20px !important;
+  height: 20px !important;
+  background: #1dc91d !important;
+  border: 3px solid white !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin-left: -10px !important;
+}
+
+.ui-slider-handle:hover,
+.ui-slider-handle:focus {
+  background: #17a617 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.price-range-labels,
+.price_slider_amount {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #546e54;
+  margin-top: 0.5rem;
+}
+
+.price_label {
+  font-weight: 600;
+  color: #112111;
+}
+
+/* Botón de aplicar filtros */
+.filter-apply-btn,
+.button[name="submit"] {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #1dc91d;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Epilogue', sans-serif;
+}
+
+.filter-apply-btn:hover,
+.button[name="submit"]:hover {
+  background: #17a617;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 201, 29, 0.3);
+}
+
+/* Responsive - mobile */
+@media (max-width: 768px) {
+  .woocommerce-sidebar,
+  .sidebar-primary,
+  .shop-sidebar {
+    width: 100%;
+    position: static;
+    top: auto;
+    margin-bottom: 2rem;
+  }
+}

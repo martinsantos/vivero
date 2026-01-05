@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vivero Los Cocos - Product Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dc91d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112111",
+                        "text-light": "#112111",
+                        "text-dark": "#f6f8f6",
+                        "text-muted-light": "#546e54",
+                        "text-muted-dark": "#a8b8a8",
+                        "border-light": "#e4e8e4",
+                        "border-dark": "#2a3a2a"
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 text-text-light dark:text-text-dark" href="#">
+<span class="material-symbols-outlined text-primary text-3xl">potted_plant</span>
+<span class="text-xl font-bold">Vivero Los Cocos</span>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-text-light dark:text-text-dark" href="#">Plants</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Supplies</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Flowers</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted-light dark:text-text-muted-dark">search</span>
+<input class="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50 focus:ring-primary focus:border-primary pl-10 pr-4 py-2 text-sm placeholder:text-text-muted-light dark:placeholder:text-text-muted-dark" placeholder="Search" type="search"/>
+</div>
+<button class="p-2 rounded-full hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark">favorite_border</span>
+</button>
+<button class="flex items-center gap-2 p-2 rounded-full hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="mb-6">
+<nav class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary" href="#">Plants</a>
+<span class="mx-2">/</span>
+<span class="text-text-light dark:text-text-dark">Echeveria Elegans</span>
+</nav>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+<div>
+<div class="relative aspect-[4/3] w-full bg-cover bg-center rounded-xl shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzDTinhAqk5mSDbO3SqC08ap1tifOZaOl1LKvkKlAp6OmgRIv72dA8jz5kTdWQfV74ZHZN3zW83lDIOEP_ogaw9RzVYdSFV8ziZ4DYwvFbzexUNmwAdpSJqVvmlt2JwlnLyyCN1HSxLSYdo-VN1Zo2Xkz4BlWlik-Rr5PMEdFIea780cFZDs4AQR0ZK5FG-1CLBZiRXAxSLE-8ox5SUUThoUt92H1_hU4G1R0djt3mt5uXnXUfIAW9WqQqs2TMlfdXGbOESCRl5ArD");'></div>
+<div class="grid grid-cols-4 gap-2 mt-4">
+<div class="aspect-square w-full bg-cover bg-center rounded-lg border-2 border-primary" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzDTinhAqk5mSDbO3SqC08ap1tifOZaOl1LKvkKlAp6OmgRIv72dA8jz5kTdWQfV74ZHZN3zW83lDIOEP_ogaw9RzVYdSFV8ziZ4DYwvFbzexUNmwAdpSJqVvmlt2JwlnLyyCN1HSxLSYdo-VN1Zo2Xkz4BlWlik-Rr5PMEdFIea780cFZDs4AQR0ZK5FG-1CLBZiRXAxSLE-8ox5SUUThoUt92H1_hU4G1R0djt3mt5uXnXUfIAW9WqQqs2TMlfdXGbOESCRl5ArD");'></div>
+<div class="aspect-square w-full bg-cover bg-center rounded-lg opacity-70 hover:opacity-100 transition" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGHtjOFbPZ_x835NFe83col1SWG1F-yiLU1gQlaY5fkj03YV2gJK72hLoUeG_87FMWccCEpCy4IxGo2joEHeLwSl9RJCNM2KeszmLEjW2TrP5RAN9yNkcfRaSKHeyWFtEaar8cAzMxXL5PRTcSGaZDahtxMGXJmp3cvmbykeJEUn3-RamMvvfWh9Ao0yHMNmnu40KSBN2ImngHiPPdoag76ikzK6x5UFzjQVWNvo8KQrpGuwvz_f7Ul1KLkQbgjAWWJ3Gn8WKgUypl");'></div>
+<div class="aspect-square w-full bg-cover bg-center rounded-lg opacity-70 hover:opacity-100 transition" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4BgfPFDybAhyFtPLOEAqoJRHIS-mcUU5u0EgXfeDyROHCW521zVbzKv2y0IqDqd0XNwJotdwuEj487IEyadqEBs4MvmMv5R5gb6SZ8Ebtd7NdBTn06GvWnl2t22MeGNwBoz39Aej5xAd1IInTPwlQXASzyonAvOTCt7LHHSq_la3CfwxsbtIl5twF6Tw6f6rhzWF7OG5Q1B9O2erqJKQm5xndjcrlfXfW979LbkOEyW8HTbaDvAXx6Y9wQMXkpvMY6bXu8fD0MQ6l");'></div>
+<div class="aspect-square w-full bg-cover bg-center rounded-lg opacity-70 hover:opacity-100 transition" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4Qn5WzZ9wzQ1qnCxgiExwdn7aL6tK22M_8-lDuUYt_7lptZAj4SoTA0yZCgeQBBd1F6A8MD6q_U0voeHlrRVX__yGxnsDF53KX9_keA8NGLU0WDYkL5rSlXJMUt_PndZJgItkJkyUH7GfqDLqYqdbcri4JNYQtF1qGTndHlU69rVbRGtL4Dv_2zgclK_TJeVxM72uYXpNUeZ24EepZdVJbfa4LkjMyM4nElpJBKlsBcDJLaFtC3pDqhVgdNTPX2_GDnTP8H6ZJFER");'></div>
+</div>
+</div>
+<div class="flex flex-col">
+<h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight">Echeveria Elegans</h1>
+<p class="text-2xl font-bold text-primary mt-2">$25.00</p>
+<p class="mt-4 text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                        A beautiful, low-maintenance succulent perfect for any indoor or outdoor space. Its rosette shape and pale green leaves add a touch of elegance to your plant collection.
+                    </p>
+<div class="mt-8">
+<button class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+</div>
+<div class="mt-12 lg:mt-16">
+<div class="border-b border-border-light dark:border-border-dark">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a class="border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm" href="#">Description</a>
+<a class="border-transparent text-text-muted-light dark:text-text-muted-dark hover:text-primary hover:border-primary/50 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Care Instructions</a>
+<a class="border-transparent text-text-muted-light dark:text-text-muted-dark hover:text-primary hover:border-primary/50 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Dimensions</a>
+<a class="border-transparent text-text-muted-light dark:text-text-muted-dark hover:text-primary hover:border-primary/50 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Reviews</a>
+</nav>
+</div>
+<div class="py-6 text-text-muted-light dark:text-text-muted-dark space-y-4">
+<p>The Echeveria Elegans, also known as the Mexican Snowball, is a popular succulent prized for its symmetrical rosette shape and soft, pale green leaves. It's a relatively small succulent, typically growing up to 4 inches in diameter, making it ideal for small spaces or as part of a larger succulent arrangement.</p>
+<p>This plant is easy to care for, requiring minimal watering and thriving in bright, indirect light. Its drought-tolerant nature makes it a great choice for beginners or those who prefer low-maintenance plants.</p>
+</div>
+</div>
+<div class="mt-12 lg:mt-16">
+<h2 class="text-2xl font-bold mb-6">Related Products</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="group">
+<div class="aspect-[3/4] w-full bg-cover bg-center rounded-lg overflow-hidden mb-2 shadow-md group-hover:shadow-xl transition-shadow">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGHtjOFbPZ_x835NFe83col1SWG1F-yiLU1gQlaY5fkj03YV2gJK72hLoUeG_87FMWccCEpCy4IxGo2joEHeLwSl9RJCNM2KeszmLEjW2TrP5RAN9yNkcfRaSKHeyWFtEaar8cAzMxXL5PRTcSGaZDahtxMGXJmp3cvmbykeJEUn3-RamMvvfWh9Ao0yHMNmnu40KSBN2ImngHiPPdoag76ikzK6x5UFzjQVWNvo8KQrpGuwvz_f7Ul1KLkQbgjAWWJ3Gn8WKgUypl");'></div>
+</div>
+<h3 class="text-base font-semibold">Cactus</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$15</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] w-full bg-cover bg-center rounded-lg overflow-hidden mb-2 shadow-md group-hover:shadow-xl transition-shadow">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4BgfPFDybAhyFtPLOEAqoJRHIS-mcUU5u0EgXfeDyROHCW521zVbzKv2y0IqDqd0XNwJotdwuEj487IEyadqEBs4MvmMv5R5gb6SZ8Ebtd7NdBTn06GvWnl2t22MeGNwBoz39Aej5xAd1IInTPwlQXASzyonAvOTCt7LHHSq_la3CfwxsbtIl5twF6Tw6f6rhzWF7OG5Q1B9O2erqJKQm5xndjcrlfXfW979LbkOEyW8HTbaDvAXx6Y9wQMXkpvMY6bXu8fD0MQ6l");'></div>
+</div>
+<h3 class="text-base font-semibold">Aloe Vera</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$12</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] w-full bg-cover bg-center rounded-lg overflow-hidden mb-2 shadow-md group-hover:shadow-xl transition-shadow">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4Qn5WzZ9wzQ1qnCxgiExwdn7aL6tK22M_8-lDuUYt_7lptZAj4SoTA0yZCgeQBBd1F6A8MD6q_U0voeHlrRVX__yGxnsDF53KX9_keA8NGLU0WDYkL5rSlXJMUt_PndZJgItkJkyUH7GfqDLqYqdbcri4JNYQtF1qGTndHlU69rVbRGtL4Dv_2zgclK_TJeVxM72uYXpNUeZ24EepZdVJbfa4LkjMyM4nElpJBKlsBcDJLaFtC3pDqhVgdNTPX2_GDnTP8H6ZJFER");'></div>
+</div>
+<h3 class="text-base font-semibold">Snake Plant</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$18</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] w-full bg-cover bg-center rounded-lg overflow-hidden mb-2 shadow-md group-hover:shadow-xl transition-shadow">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzDTinhAqk5mSDbO3SqC08ap1tifOZaOl1LKvkKlAp6OmgRIv72dA8jz5kTdWQfV74ZHZN3zW83lDIOEP_ogaw9RzVYdSFV8ziZ4DYwvFbzexUNmwAdpSJqVvmlt2JwlnLyyCN1HSxLSYdo-VN1Zo2Xkz4BlWlik-Rr5PMEdFIea780cFZDs4AQR0ZK5FG-1CLBZiRXAxSLE-8ox5SUUThoUt92H1_hU4G1R0djt3mt5uXnXUfIAW9WqQqs2TMlfdXGbOESCRl5ArD");'></div>
+</div>
+<h3 class="text-base font-semibold">Mexican Snowball</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$25</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark mt-16">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-text-muted-light dark:text-text-muted-dark">
+<p>© 2024 Vivero Los Cocos. All rights reserved.</p>
+</div>
+</footer>
+</div>
+
+</body></html>

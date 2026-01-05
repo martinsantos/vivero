@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vivero Los Cocos - Products</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1dc91d",
+            "background-light": "#f6f8f6",
+            "background-dark": "#112111",
+          },
+          fontFamily: {
+            "display": ["Epilogue"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .checkbox-custom {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-width: 2px;
+        border-color: #dce5dc;
+        background-color: transparent;
+        border-radius: 0.25rem;
+        height: 1.25rem;
+        width: 1.25rem;
+    }
+    .checkbox-custom:checked {
+        background-color: #1dc91d;
+        border-color: #1dc91d;
+        background-image: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+    }
+    .checkbox-custom:focus {
+        outline: none;
+        box-shadow: none;
+        ring: 0;
+        ring-offset: 0;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-black dark:text-white">
+<div class="flex flex-col min-h-screen">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-background-light-900/10 dark:border-background-dark-50/10 px-10 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-black dark:text-white">
+<svg class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"></path>
+</svg>
+<h1 class="text-xl font-bold">Vivero Los Cocos</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary" href="#">Home</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Plants</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Supplies</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Flowers</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-background-light-900/5 dark:bg-background-dark-50/5 rounded-lg">
+<span class="pl-3 pr-2">
+<svg class="text-black/50 dark:text-white/50" fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</span>
+<input class="form-input w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent text-black dark:text-white focus:outline-0 focus:ring-0 border-none h-10 placeholder:text-black/50 dark:placeholder:text-white/50 px-2 text-sm font-normal" placeholder="Search" value=""/>
+</div>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-background-light-900/5 dark:bg-background-dark-50/5 text-black dark:text-white hover:bg-primary/20 dark:hover:bg-primary/30">
+<svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+</svg>
+</button>
+</div>
+</header>
+<main class="flex flex-1">
+<aside class="w-80 p-6 space-y-6 border-r border-background-light-900/10 dark:border-background-dark-50/10">
+<h2 class="text-2xl font-bold">Filters</h2>
+<div>
+<h3 class="text-lg font-bold mb-3">Category</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Indoor Plants</span></label>
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Outdoor Plants</span></label>
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Flowers</span></label>
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Tools</span></label>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-3">Price Range</h3>
+<div class="relative pt-1">
+<div class="flex h-2 mb-4 overflow-hidden rounded text-xs bg-background-light-900/10 dark:bg-background-dark-50/10">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary/50" style="width: 60%"></div>
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width: 25%"></div>
+</div>
+<div class="flex justify-between text-xs text-black/60 dark:text-white/60">
+<span>$0</span>
+<span>$100+</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-3">Plant Care Level</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Easy</span></label>
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Medium</span></label>
+<label class="flex items-center gap-x-3"><input class="checkbox-custom focus:ring-primary" type="checkbox"/><span class="text-sm">Difficult</span></label>
+</div>
+</div>
+</aside>
+<section class="flex-1 p-6">
+<div class="mb-6">
+<div class="flex items-center bg-background-light-900/5 dark:bg-background-dark-50/5 rounded-lg">
+<span class="pl-4 pr-2">
+<svg class="text-black/50 dark:text-white/50" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</span>
+<input class="form-input w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent text-black dark:text-white focus:outline-0 focus:ring-0 border-none h-12 placeholder:text-black/50 dark:placeholder:text-white/50 px-2 text-base font-normal" placeholder="Search for plants, supplies, or flowers" value=""/>
+</div>
+</div>
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">All Products</h2>
+<div class="flex items-center gap-2">
+<button class="h-9 px-4 flex items-center justify-center rounded bg-background-light-900/10 dark:bg-background-dark-50/10 text-sm font-medium hover:bg-primary/20 dark:hover:bg-primary/30">Sort by: Price</button>
+<button class="h-9 px-4 flex items-center justify-center rounded bg-primary text-white text-sm font-medium">Sort by: Popularity</button>
+<button class="h-9 px-4 flex items-center justify-center rounded bg-background-light-900/10 dark:bg-background-dark-50/10 text-sm font-medium hover:bg-primary/20 dark:hover:bg-primary/30">Sort by: Newest</button>
+</div>
+</div>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-6">
+<div class="group relative flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA1RP1k2oTjdea15BUSXeZ7Mugpg5mlbLRgJJoG5q71wVuILvn8QoDGe0Lf3ASOAAj0qUtoQUfrq7bdOBInjVyU3rJRvcvl1U4y4qGenTa4ArpPF3D_24Kux-32SuYPEZzgBFgDIZ69_hNYG1ILcXBFTTOpj6nhi-BNG-9FAR0zpUFV0RRNxE5TcnavNjyMSdTthvOYn5kl_-ggtBYGFZnm9vZQu6YhgzfIReWh_4yByIYgOe4KESNhNkfxQPpfK2uzVrFcd2wl31sQ");'></div>
+</div>
+<div class="flex flex-col gap-3">
+<p class="font-medium">Peace Lily</p>
+<p class="text-sm text-black/60 dark:text-white/60">$25</p>
+<button class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path></svg>
+<span>Agregar al Carro</span>
+</button>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRgaYhYOZ4if5d_b03lA6sFkBtsIzTjAgHaSV1f4zhjK0V6KG_thG6hFmjZLAwhgl4lWzw_R7JIH-3wesGbQXqsnfZSG-pswXM638kPiCYpegEPefnqeG4rX8Y6gviFZNLqUJknhNipGzhSRhBNPmbhYVSesOLpD33DzK5BXhM6yhvlrKqedFNEaDAlGm414uh_pudL8mZHmSc9ZmwGQx1U9HyERGl014l58d_CP-LmeL8v9IsmPYyZQKkOTRUQcju8YOWFPpgj8XG");'></div>
+</div>
+<div class="flex flex-col gap-3">
+<p class="font-medium">Succulent Assortment</p>
+<p class="text-sm text-black/60 dark:text-white/60">$15</p>
+<button class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path></svg>
+<span>Agregar al Carro</span>
+</button>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqHLLBRJt1ArezvVajdL-c3ltHYVj1MuJdf8l9nn36ryrmcdiFifzZy6U-N58ESaDjvgS_yBn__Dm-862LtBiSnIa7vknospxQ_mCUNw-LlyKfn1bIogQz1DQ0aLoMGTG5gWqnh9ug8h2XidS-Rty8a1y4ieW0KrIkkHcCTteCzr-VjH-psBK8UGYzrwSiKzPQMGUf5lHZKOq51toLYmR2rFV5VrqSR4RbNfeMfmDMeeimblMyuLcOnuhyWVhWnTN5EAvQLyPLT_7s");'></div>
+</div>
+<div class="flex flex-col gap-3">
+<p class="font-medium">Rose Bouquet</p>
+<p class="text-sm text-black/60 dark:text-white/60">$30</p>
+<button class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path></svg>
+<span>Agregar al Carro</span>
+</button>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKibqQwTO0W70XM2ckBlvcNFQO7He4KgNCYvhqoGTfmXmHAEnmNXAt3JNPBPMLwThFJ-yxRAJlklGgw6x23Ka4GPXYN7kb7HIjhHFeV-OHlZsXmnzxD2IsS8f2dyv9ydgr1y376wqdCzR0hSRoVuYSsdN6kS4HY9-ADnd7mdZSd5TBthusZFwaKlJ5KS3Cvn5n0cWWqFXOjAMEjOM8KVi8pToMsKv7r-6LHcragM2dTkXQfzxtUZbkV2pSLLQOo0E91a-Tie8hw18o");'></div>
+</div>
+<div class="flex flex-col gap-3">
+<p class="font-medium">Gardening Gloves</p>
+<p class="text-sm text-black/60 dark:text-white/60">$12</p>
+<button class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path></svg>
+<span>Agregar al Carro</span>
+</button>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDlyO6DduzBnQ0q7DIrpkokcE1e6Nj41MtWxk9nM5KKc13Pu7Fv45aYBixSNty_eJgDBxus4LijtRGwBVc4bbAXG54FsMurJZnetQ9M8TpXdWeldd-ypLlm4fPbhwHZI5HFwgh20945EpjYPyNZ_NOdA4e5DAGiGRCWwt4P0Uo7kLfm4Wf3IRus9FfzapAyhLqFcxIWbUE3JIZoxjHpToZ22jdPBrmVGwK8bbuRrfq6VjmHglueaNafIKELR_drNZFXDcB3TLn4lxY6");'></div>
+</div>
+<div class="flex flex-col gap-3">
+<p class="font-medium">Watering Can</p>
+<p class="text-sm text-black/60 dark:text-white/60">$8</p>
+<button class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path></svg>
+<span>Agregar al Carro</span>
+</button>
+</div>
+</div>
+<div class="group relative flex flex-col gap-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHiLgIz-zc2VW2fRbGoFol2FcJbbbKNZWLFY9t1Cgao8QmztiGBCfCcxFoMdSH-4kl7oxrLStiyYlL1dK1E2D0JWqUncdzo3gXlnHyBViOChLkMOQ3fH2clUQznMNJE838Mt49Orc3VaZya4QzHoxdRFY-rZsz-ss_63napL0XSv-_x8jJUPBq9Dh4NGExG58-3ReprejHBHFMLu5uVkPIOsj6Z0JhbH2ivZK3h3a3uyBHESEAifxqvCxMa_lWJZ_REXLdaDSPIjRq");'></div>
+</div>
+<div class="flex flex-col gap-3">
+<p class="font-medium">Fertilizer</p>
+<p class="text-sm text-black/60 dark:text-white/60">$10</p>
+<button class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path></svg>
+<span>Agregar al Carro</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+</body></html>

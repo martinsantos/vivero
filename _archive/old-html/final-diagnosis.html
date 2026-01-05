@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🧪 FINAL DIAGNOSIS - Los Cocos Carousel Buttons</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: #000; color: #00ff00; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 40px 0; background: #111; margin-bottom: 30px; }
+        .header h1 { font-size: 3rem; margin: 0; text-shadow: 0 0 20px #00ff00; }
+        .section { background: #111; padding: 30px; margin: 20px 0; border-radius: 10px; border-left: 5px solid #00ff00; }
+        .test-controls { text-align: center; margin: 20px 0; }
+        .button { background: #0066cc; color: white; padding: 15px 30px; border: none; border-radius: 8px; cursor: pointer; margin: 10px; font-weight: bold; font-size: 16px; }
+        .button:hover { background: #0088ff; }
+        .iframe-container { border: 3px solid #333; border-radius: 10px; overflow: hidden; margin: 20px 0; }
+        iframe { width: 100%; height: 800px; border: none; }
+        .console { background: #000; color: #00ff00; font-family: 'SF Mono', monospace; padding: 20px; border-radius: 8px; font-size: 14px; white-space: pre-wrap; overflow-x: auto; max-height: 400px; overflow-y: auto; }
+        .status { padding: 15px; margin: 15px 0; border-radius: 8px; }
+        .success { background: #003300; border-left: 5px solid #00ff00; }
+        .error { background: #330000; border-left: 5px solid #ff0000; color: #ff0000; }
+        .info { background: #000033; border-left: 5px solid #0088ff; color: #0088ff; }
+        .warning { background: #332200; border-left: 5px solid #ffaa00; color: #ffaa00; }
+        h2 { color: #00ff00; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        .step { background: #222; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 3px solid #00ff00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 FINAL DIAGNOSIS</h1>
+            <p>Los Cocos Carousel Button Testing</p>
+        </div>
+        
+        <div class="section">
+            <h2>🎯 Current Test: Minimal Script</h2>
+            <div class="info status">
+                We've temporarily replaced the complex carousel script with a minimal test script that only adds simple click handlers to verify if button clicking works at all.
+            </div>
+            
+            <div class="step">
+                <strong>Step 1:</strong> Load the homepage below and open browser console (F12)
+            </div>
+            <div class="step">
+                <strong>Step 2:</strong> Look for "🔬 MINIMAL TEST SCRIPT LOADED" message
+            </div>
+            <div class="step">
+                <strong>Step 3:</strong> Click any "Agregar al carrito" button in the carousel
+            </div>
+            <div class="step">
+                <strong>Step 4:</strong> Check if buttons change color (orange) and log messages appear
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🌐 Live Test Environment</h2>
+            <div class="test-controls">
+                <button class="button" onclick="loadHomepage()">🏠 Load Homepage</button>
+                <button class="button" onclick="checkElements()">🔍 Check Elements</button>
+                <button class="button" onclick="testButtonClick()">🖱️ Test Button Click</button>
+                <button class="button" onclick="clearConsole()">🧹 Clear Console</button>
+            </div>
+            
+            <div class="iframe-container">
+                <iframe id="testFrame" src="about:blank"></iframe>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 Diagnostic Console</h2>
+            <div id="diagnosticConsole" class="console">
+Diagnostic output will appear here...
+Click "Load Homepage" to begin testing.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✅ Expected Results</h2>
+            <div class="success status">
+                <strong>If buttons are working:</strong><br>
+                • You should see "🔬 MINIMAL TEST SCRIPT LOADED" in console<br>
+                • Buttons should turn orange when clicked<br>
+                • Console should show "🖱️ BUTTON CLICKED: [index] [button text]"<br>
+                • This proves the button clicking mechanism is functional
+            </div>
+            
+            <div class="error status">
+                <strong>If buttons are not working:</strong><br>
+                • Script may not be loading at all<br>
+                • Buttons may be blocked by CSS or other elements<br>
+                • JavaScript errors may be preventing execution<br>
+                • DOM timing issues may be preventing script initialization
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔄 Next Steps</h2>
+            <div class="warning status">
+                <strong>After testing minimal script:</strong><br>
+                1. If minimal script works → Problem is in complex carousel script logic<br>
+                2. If minimal script fails → Problem is with button accessibility or script loading<br>
+                3. We'll restore the full script with fixes based on results
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let diagnosticConsole = document.getElementById('diagnosticConsole');
+        let testFrame = document.getElementById('testFrame');
+        
+        function log(message, level = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = {
+                'info': '📋',
+                'success': '✅',
+                'error': '❌',
+                'warning': '⚠️'
+            }[level] || '📋';
+            
+            diagnosticConsole.textContent += `${timestamp} ${prefix} ${message}\n`;
+            diagnosticConsole.scrollTop = diagnosticConsole.scrollHeight;
+            console.log(`🧪 ${prefix}`, message);
+        }
+        
+        function clearConsole() {
+            diagnosticConsole.textContent = 'Console cleared.\n';
+            log('Console cleared');
+        }
+        
+        function loadHomepage() {
+            log('Loading homepage with minimal test script...', 'info');
+            testFrame.src = 'http://localhost:8080/?' + Date.now();
+            
+            testFrame.onload = function() {
+                log('Homepage loaded! Check browser console for script messages.', 'success');
+                
+                setTimeout(() => {
+                    log('Injecting console monitor...', 'info');
+                    injectConsoleMonitor();
+                }, 1000);
+                
+                setTimeout(() => {
+                    log('Performing element check...', 'info');
+                    checkElements();
+                }, 2000);
+            };
+        }
+        
+        function injectConsoleMonitor() {
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const script = doc.createElement('script');
+                    script.textContent = `
+                        // Monitor console output
+                        const originalLog = console.log;
+                        console.log = function(...args) {
+                            originalLog.apply(console, args);
+                            if (window.parent !== window) {
+                                window.parent.postMessage({
+                                    type: 'console',
+                                    level: 'info',
+                                    message: args.join(' ')
+                                }, '*');
+                            }
+                        };
+                        
+                        const originalError = console.error;
+                        console.error = function(...args) {
+                            originalError.apply(console, args);
+                            if (window.parent !== window) {
+                                window.parent.postMessage({
+                                    type: 'console',
+                                    level: 'error',
+                                    message: 'ERROR: ' + args.join(' ')
+                                }, '*');
+                            }
+                        };
+                        
+                        // Send initial check
+                        setTimeout(() => {
+                            window.parent.postMessage({
+                                type: 'scriptCheck',
+                                minimalTestLoaded: window.location.href.includes('localhost'),
+                                buttonsFound: document.querySelectorAll('.add_to_cart_button').length,
+                                carouselsFound: document.querySelectorAll('[data-carousel]').length
+                            }, '*');
+                        }, 500);
+                    `;
+                    doc.head.appendChild(script);
+                    log('Console monitor injected successfully', 'success');
+                } else {
+                    log('Cannot access iframe content (CORS restriction)', 'error');
+                }
+            } catch (error) {
+                log('Error injecting console monitor: ' + error.message, 'error');
+            }
+        }
+        
+        function checkElements() {
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const buttons = doc.querySelectorAll('.add_to_cart_button');
+                    const carousels = doc.querySelectorAll('[data-carousel]');
+                    const scripts = doc.querySelectorAll('script[src*="minimal-test"]');
+                    
+                    log(`Elements found:`, 'info');
+                    log(`  • Add to cart buttons: ${buttons.length}`, 'info');
+                    log(`  • Carousels: ${carousels.length}`, 'info');
+                    log(`  • Minimal test script: ${scripts.length}`, 'info');
+                    
+                    if (buttons.length > 0) {
+                        const firstButton = buttons[0];
+                        log(`First button details:`, 'info');
+                        log(`  • Text: "${firstButton.textContent.trim()}"`, 'info');
+                        log(`  • Classes: ${firstButton.className}`, 'info');
+                        log(`  • Product ID: ${firstButton.getAttribute('data-product_id')}`, 'info');
+                        log(`  • Has AJAX class: ${firstButton.classList.contains('ajax_add_to_cart')}`, 'info');
+                        
+                        if (buttons.length > 0) {
+                            log('✅ Buttons found! Ready for click testing.', 'success');
+                        }
+                    } else {
+                        log('❌ No add to cart buttons found!', 'error');
+                    }
+                } else {
+                    log('Cannot check elements (CORS restriction)', 'error');
+                    log('Please manually inspect the iframe', 'warning');
+                }
+            } catch (error) {
+                log('Error checking elements: ' + error.message, 'error');
+            }
+        }
+        
+        function testButtonClick() {
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const buttons = doc.querySelectorAll('.add_to_cart_button');
+                    if (buttons.length > 0) {
+                        log('Simulating click on first button...', 'info');
+                        buttons[0].click();
+                        log('Click simulated! Check if button changes color.', 'success');
+                    } else {
+                        log('No buttons found to click', 'error');
+                    }
+                } else {
+                    log('Cannot simulate click (CORS)', 'error');
+                    log('Please manually click buttons in the iframe above', 'warning');
+                }
+            } catch (error) {
+                log('Error simulating click: ' + error.message, 'error');
+            }
+        }
+        
+        // Listen for messages from iframe
+        window.addEventListener('message', function(event) {
+            if (event.origin === 'http://localhost:8080') {
+                if (event.data.type === 'console') {
+                    const level = event.data.level === 'error' ? 'error' : 'info';
+                    log('IFRAME: ' + event.data.message, level);
+                } else if (event.data.type === 'scriptCheck') {
+                    log('Script status check:', 'info');
+                    log(`  • Buttons found: ${event.data.buttonsFound}`, 'info');
+                    log(`  • Carousels found: ${event.data.carouselsFound}`, 'info');
+                    
+                    if (event.data.buttonsFound > 0) {
+                        log('🎯 Ready for testing! Try clicking buttons manually.', 'success');
+                    } else {
+                        log('⚠️ No buttons found - check HTML structure', 'warning');
+                    }
+                }
+            }
+        });
+        
+        // Initialize
+        log('Final diagnosis page loaded', 'success');
+        log('Click "Load Homepage" to begin comprehensive testing', 'info');
+    </script>
+</body>
+</html>

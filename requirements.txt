@@ -1,0 +1,14 @@
+# Core HTTP and APIs
+requests>=2.31.0
+woocommerce>=3.0.0
+
+# Image processing
+Pillow>=10.0.0
+opencv-python>=4.9.0.80  # optional; not strictly required by the script as written
+
+# Utilities
+python-dotenv>=1.0.1
+tqdm>=4.66.2
+
+# logging is part of Python stdlib
+imagehash==4.3.1

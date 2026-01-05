@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎯 DIRECT BUTTON TEST - Carousel Debugging</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: monospace; background: #000; color: #00ff00; margin: 20px; }
+        .test-section { background: #111; padding: 20px; margin: 20px 0; border: 1px solid #333; }
+        .button { background: #0066cc; color: white; padding: 10px 20px; border: none; margin: 10px; cursor: pointer; }
+        iframe { width: 100%; height: 800px; border: 2px solid #333; }
+        .status { padding: 10px; margin: 10px 0; }
+        .success { background: #003300; color: #00ff00; }
+        .error { background: #330000; color: #ff0000; }
+        .console { background: #000; color: #00ff00; font-family: monospace; padding: 15px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>🎯 DIRECT BUTTON TEST</h1>
+    
+    <div class="test-section">
+        <h2>🔧 STEP 1: Load Homepage and Open Console</h2>
+        <p>1. Click "Load Homepage" below</p>
+        <p>2. Open browser console (F12)</p>
+        <p>3. Look for our debug messages</p>
+        <button class="button" onclick="loadHomepage()">🏠 Load Homepage</button>
+        <div id="consoleOutput" class="console">Console output will appear here...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📋 STEP 2: Direct Button Test</h2>
+        <button class="button" onclick="injectTestScript()">💉 Inject Test Script</button>
+        <button class="button" onclick="simulateClick()">🖱️ Simulate Click</button>
+        <button class="button" onclick="checkElements()">🔍 Check Elements</button>
+    </div>
+    
+    <div class="test-section">
+        <iframe id="testFrame" src="about:blank"></iframe>
+    </div>
+    
+    <script>
+        let consoleDiv = document.getElementById('consoleOutput');
+        let testFrame = document.getElementById('testFrame');
+        
+        function log(message) {
+            consoleDiv.textContent += new Date().toLocaleTimeString() + ' - ' + message + '\\n';
+            console.log('🎯', message);
+        }
+        
+        function loadHomepage() {
+            log('Loading homepage...');
+            testFrame.src = 'http://localhost:8080/';
+            
+            testFrame.onload = function() {
+                log('Homepage loaded!');
+                setTimeout(() => {
+                    log('Checking for console messages in 2 seconds...');
+                    checkConsoleMessages();
+                }, 2000);
+            };
+        }
+        
+        function checkConsoleMessages() {
+            // We can't directly access console from iframe due to CORS,
+            // but we can inject a script to send us messages
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    log('Iframe accessible, injecting console monitor...');
+                    
+                    const script = doc.createElement('script');
+                    script.textContent = `
+                        // Override console.log to send messages to parent
+                        const originalLog = console.log;
+                        console.log = function(...args) {
+                            originalLog.apply(console, args);
+                            if (window.parent !== window) {
+                                window.parent.postMessage({
+                                    type: 'console',
+                                    message: args.join(' ')
+                                }, '*');
+                            }
+                        };
+                        
+                        // Check for our specific elements
+                        setTimeout(() => {
+                            const buttons = document.querySelectorAll('.add_to_cart_button');
+                            const carousels = document.querySelectorAll('[data-carousel]');
+                            
+                            window.parent.postMessage({
+                                type: 'elementCheck',
+                                buttons: buttons.length,
+                                carousels: carousels.length,
+                                jquery: typeof jQuery !== 'undefined',
+                                woocommerce: typeof wc_add_to_cart_params !== 'undefined'
+                            }, '*');
+                        }, 1000);
+                    `;
+                    doc.head.appendChild(script);
+                    log('Console monitor injected!');
+                } else {
+                    log('Cannot access iframe content (CORS restriction)');
+                }
+            } catch (error) {
+                log('Error accessing iframe: ' + error.message);
+            }
+        }
+        
+        function injectTestScript() {
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const script = doc.createElement('script');
+                    script.textContent = `
+                        console.log('🧪 TEST SCRIPT INJECTED');
+                        
+                        // Add immediate click handlers
+                        document.querySelectorAll('.add_to_cart_button').forEach((btn, index) => {
+                            btn.addEventListener('click', function(e) {
+                                console.log('🖱️ BUTTON CLICKED (TEST):', index, this.textContent.trim());
+                                
+                                // Show immediate visual feedback
+                                const originalText = this.innerHTML;
+                                this.innerHTML = '🧪 TEST CLICK!';
+                                this.style.background = '#ff0000';
+                                
+                                setTimeout(() => {
+                                    this.innerHTML = originalText;
+                                    this.style.background = '';
+                                }, 2000);
+                                
+                                // Let event continue for now
+                            });
+                        });
+                        
+                        console.log('🧪 Test handlers added to', document.querySelectorAll('.add_to_cart_button').length, 'buttons');
+                    `;
+                    doc.head.appendChild(script);
+                    log('Test script injected! Try clicking buttons now.');
+                } else {
+                    log('Cannot inject test script (CORS)');
+                }
+            } catch (error) {
+                log('Error injecting script: ' + error.message);
+            }
+        }
+        
+        function simulateClick() {
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const buttons = doc.querySelectorAll('.add_to_cart_button');
+                    if (buttons.length > 0) {
+                        log('Simulating click on first button...');
+                        buttons[0].click();
+                    } else {
+                        log('No buttons found to click');
+                    }
+                } else {
+                    log('Cannot simulate click (CORS)');
+                }
+            } catch (error) {
+                log('Error simulating click: ' + error.message);
+            }
+        }
+        
+        function checkElements() {
+            try {
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const buttons = doc.querySelectorAll('.add_to_cart_button');
+                    const carousels = doc.querySelectorAll('[data-carousel]');
+                    const scripts = doc.querySelectorAll('script[src*="home-carousel"]');
+                    
+                    log('Elements found:');
+                    log('- Buttons: ' + buttons.length);
+                    log('- Carousels: ' + carousels.length);
+                    log('- Home carousel script: ' + scripts.length);
+                    
+                    if (buttons.length > 0) {
+                        const firstButton = buttons[0];
+                        log('First button details:');
+                        log('- Text: ' + firstButton.textContent.trim());
+                        log('- Classes: ' + firstButton.className);
+                        log('- Product ID: ' + firstButton.getAttribute('data-product_id'));
+                        log('- Has AJAX class: ' + firstButton.classList.contains('ajax_add_to_cart'));
+                    }
+                } else {
+                    log('Cannot check elements (CORS)');
+                }
+            } catch (error) {
+                log('Error checking elements: ' + error.message);
+            }
+        }
+        
+        // Listen for messages from iframe
+        window.addEventListener('message', function(event) {
+            if (event.origin === 'http://localhost:8080') {
+                if (event.data.type === 'console') {
+                    log('IFRAME CONSOLE: ' + event.data.message);
+                } else if (event.data.type === 'elementCheck') {
+                    log('IFRAME ELEMENTS:');
+                    log('- Buttons: ' + event.data.buttons);
+                    log('- Carousels: ' + event.data.carousels);
+                    log('- jQuery: ' + event.data.jquery);
+                    log('- WooCommerce: ' + event.data.woocommerce);
+                }
+            }
+        });
+        
+        log('Direct button test ready. Click "Load Homepage" to start.');
+    </script>
+</body>
+</html>

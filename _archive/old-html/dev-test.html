@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Cocos - Test de Desarrollo</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+        
+        /* CSS Variables - Modern Design System */
+        :root {
+          --primary: #059669;
+          --primary-dark: #047857;
+          --primary-light: #10b981;
+          --gray-50: #f9fafb;
+          --gray-100: #f3f4f6;
+          --gray-200: #e5e7eb;
+          --gray-600: #4b5563;
+          --gray-900: #111827;
+          --text-primary: var(--gray-900);
+          --text-secondary: var(--gray-600);
+          --border-color: var(--gray-200);
+          --surface: #ffffff;
+          --surface-secondary: var(--gray-50);
+        }
+        
+        /* Reset and Base Styles */
+        * { box-sizing: border-box; }
+        
+        body {
+          margin: 0;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--text-primary);
+          background: var(--surface-secondary);
+        }
+        
+        .container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+        
+        /* Header */
+        .site-header {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--border-color);
+          position: sticky;
+          top: 0;
+          z-index: 50;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .nav {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 0;
+        }
+        
+        .brand h1 {
+          margin: 0;
+          font-family: 'Poppins', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+          background: linear-gradient(135deg, #047857 0%, var(--primary) 50%, #047857 100%);
+          color: white;
+          padding: 4rem 0;
+          margin: 0 0 3rem 0;
+          text-align: center;
+        }
+        
+        .hero-box {
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 1.5rem;
+          padding: 3rem 2rem;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        
+        .hero .title {
+          font-family: 'Poppins', sans-serif;
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin: 0 0 1rem 0;
+          letter-spacing: -0.02em;
+        }
+        
+        .hero .subtitle {
+          font-size: 1.25rem;
+          opacity: 0.9;
+          margin: 0 0 2rem 0;
+          font-weight: 400;
+        }
+        
+        /* Buttons */
+        .btn-clean {
+          display: inline-block;
+          padding: 0.875rem 1.5rem;
+          border-radius: 0.75rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          border: none;
+          cursor: pointer;
+        }
+        
+        .btn-primary {
+          background: var(--primary);
+          color: white;
+        }
+        
+        .btn-primary:hover {
+          background: var(--primary-dark);
+          transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+          background: white;
+          color: var(--primary);
+          border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+          background: var(--primary);
+          color: white;
+        }
+        
+        /* Home Section */
+        .home-section {
+          margin: 3rem auto;
+        }
+        
+        .home-section__header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+        
+        .section-title {
+          font-family: 'Poppins', sans-serif;
+          font-size: 2rem;
+          font-weight: 700;
+          margin: 0;
+          color: var(--text-primary);
+        }
+        
+        /* Product Grid - Classic Style (as requested) */
+        .woocommerce {
+          margin: 0;
+        }
+        
+        ul.products {
+          display: grid;
+          gap: 1rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        
+        /* Classic Product Cards */
+        li.product {
+          background: #ffffff;
+          border: 1px solid var(--border-color);
+          border-radius: 12px;
+          padding: 0.75rem;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+          transition: all 0.2s ease;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        li.product:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+          border-color: var(--gray-300);
+        }
+        
+        li.product:hover .woocommerce-loop-product__link img {
+          transform: scale(1.05);
+        }
+        
+        /* Product Images */
+        .woocommerce-loop-product__link {
+          position: relative;
+          display: block;
+          width: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+          background: #f1f5f9;
+          aspect-ratio: 1 / 1;
+          margin-bottom: 0.75rem;
+        }
+        
+        .woocommerce-loop-product__link img {
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          width: 100%; height: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+          transition: transform 0.5s ease;
+        }
+        
+        /* Product Title */
+        .woocommerce-loop-product__title {
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0 0 0.5rem 0;
+          font-size: 1rem;
+          line-height: 1.4;
+          text-decoration: none;
+        }
+        
+        .woocommerce-loop-product__title a {
+          color: inherit;
+          text-decoration: none;
+        }
+        
+        .woocommerce-loop-product__title a:hover {
+          color: var(--primary);
+        }
+        
+        /* Product Price */
+        .price {
+          color: var(--primary);
+          font-weight: 800;
+          margin: 0.25rem 0 0.75rem;
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        
+        .price del {
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          text-decoration: line-through;
+          opacity: 0.7;
+        }
+        
+        .price ins {
+          text-decoration: none;
+          color: #e11d48;
+          font-weight: 800;
+          background: rgba(225, 29, 72, 0.05);
+          padding: 0.2rem 0.4rem;
+          border-radius: 4px;
+        }
+        
+        /* Sale Badge */
+        .onsale {
+          position: absolute;
+          top: 0.5rem;
+          left: 0.5rem;
+          z-index: 3;
+          background: linear-gradient(135deg, #e11d48, #c026d3);
+          color: white;
+          font-size: 0.75rem;
+          font-weight: 700;
+          padding: 0.35rem 0.6rem;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        span.onsale:nth-child(1) {
+          background: linear-gradient(135deg, #059669, #0891b2);
+        }
+        
+        /* Add to Cart Button - Classic Style */
+        .add_to_cart_button {
+          background: var(--primary);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          padding: 0.75rem 1.25rem;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-decoration: none;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+          width: 100%;
+          margin-top: auto;
+          text-align: center;
+          display: block;
+        }
+        
+        .add_to_cart_button:hover {
+          background: var(--primary-dark);
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+          ul.products {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+          
+          .home-section__header {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          
+          .section-title {
+            font-size: 1.5rem;
+          }
+        }
+        
+        @media (max-width: 600px) {
+          ul.products {
+            grid-template-columns: 1fr;
+          }
+          
+          .hero .title {
+            font-size: 2rem;
+          }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <div class="brand">
+                <h1>🌱 Los Cocos</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="btn-clean btn-primary">Tienda</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container content">
+        <!-- Test Hero Section -->
+        <section class="hero">
+            <div class="hero-box">
+                <h1 class="title">Vivero Los Cocos</h1>
+                <p class="subtitle">Las mejores plantas para tu hogar y jardín</p>
+                <div class="actions">
+                    <a href="#productos" class="btn-clean btn-primary">Ver Productos</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Products Section -->
+        <section class="home-section">
+            <div class="home-section__header">
+                <h2 class="section-title">Plantas Destacadas</h2>
+                <a class="btn-clean btn-secondary" href="#">Ver todo</a>
+            </div>
+            
+            <div class="woocommerce">
+                <ul class="products columns-4">
+                    <li class="product">
+                        <span class="onsale">Destacado</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1637967886160-fd78dc3ce0fe?q=80&w=600&auto=format&fit=crop" alt="Calathea Orbifolia" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Calathea Orbifolia</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$32.000</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="5">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">Destacado</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1609143739217-01b60dad1c67?q=80&w=600&auto=format&fit=crop" alt="Alocasia Polly" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Alocasia Polly</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$27.500</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="6">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">Destacado</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1614594805320-e6a5549a8a8f?q=80&w=600&auto=format&fit=crop" alt="Maranta Leuconeura" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Maranta Leuconeura</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$22.000</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="7">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">Destacado</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1594050753841-3b69a64c2c7a?q=80&w=600&auto=format&fit=crop" alt="Philodendron Birkin" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Philodendron Birkin</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$29.000</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="8">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Special Offers Section -->
+        <section class="home-section">
+            <div class="home-section__header">
+                <h2 class="section-title">Ofertas Especiales</h2>
+                <a class="btn-clean btn-secondary" href="#">Ver todo</a>
+            </div>
+            
+            <div class="woocommerce">
+                <ul class="products columns-4">
+                    <li class="product">
+                        <span class="onsale">¡Oferta!</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?q=80&w=600&auto=format&fit=crop" alt="Dracaena Marginata" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Dracaena Marginata</a>
+                        </h2>
+                        <span class="price">
+                            <del><span class="amount">$26.000</span></del>
+                            <ins><span class="amount">$19.500</span></ins>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="9">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">¡Oferta!</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?q=80&w=600&auto=format&fit=crop" alt="Begonia Maculata" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Begonia Maculata</a>
+                        </h2>
+                        <span class="price">
+                            <del><span class="amount">$22.000</span></del>
+                            <ins><span class="amount">$17.600</span></ins>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="10">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">¡Oferta!</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1596377336486-2dace6a357e0?q=80&w=600&auto=format&fit=crop" alt="Pilea Peperomioides" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Pilea Peperomioides</a>
+                        </h2>
+                        <span class="price">
+                            <del><span class="amount">$18.000</span></del>
+                            <ins><span class="amount">$14.400</span></ins>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="11">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">¡Oferta!</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1604762538654-9660ecc4ffe3?q=80&w=600&auto=format&fit=crop" alt="Calathea Makoyana" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Calathea Makoyana</a>
+                        </h2>
+                        <span class="price">
+                            <del><span class="amount">$24.000</span></del>
+                            <ins><span class="amount">$18.800</span></ins>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="12">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- New Products Section -->
+        <section class="home-section" id="productos">
+            <div class="home-section__header">
+                <h2 class="section-title">Nuevos Productos</h2>
+                <a class="btn-clean btn-secondary" href="#">Ver todo</a>
+            </div>
+            
+            <!-- Test Product Grid with WooCommerce-like structure -->
+            <div class="woocommerce">
+                <ul class="products columns-4">
+                    <li class="product">
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1682344382195-553372019356?q=80&w=600&auto=format&fit=crop" alt="Monstera Deliciosa" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Monstera Deliciosa</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$25.000</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="1">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <span class="onsale">¡Oferta!</span>
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1583829341060-f06d1b8837fe?q=80&w=600&auto=format&fit=crop" alt="Ficus Lyrata" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Ficus Lyrata</a>
+                        </h2>
+                        <span class="price">
+                            <del><span class="amount">$35.000</span></del>
+                            <ins><span class="amount">$28.000</span></ins>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="2">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1620127682229-33388276e540?q=80&w=600&auto=format&fit=crop" alt="Pothos Dorado" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Pothos Dorado</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$15.000</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="3">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                    
+                    <li class="product">
+                        <a href="#" class="woocommerce-loop-product__link">
+                            <img src="https://images.unsplash.com/photo-1610601177013-fd1500d1d721?q=80&w=600&auto=format&fit=crop" alt="Sansevieria Trifasciata" loading="lazy">
+                        </a>
+                        <h2 class="woocommerce-loop-product__title">
+                            <a href="#">Sansevieria Trifasciata</a>
+                        </h2>
+                        <span class="price">
+                            <span class="amount">$20.000</span>
+                        </span>
+                        <a href="#" class="button add_to_cart_button" data-product_id="4">
+                            Agregar al carrito
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple test script for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.add_to_cart_button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const originalText = this.textContent;
+                    this.textContent = '✓ Agregado';
+                    this.style.background = '#10b981';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

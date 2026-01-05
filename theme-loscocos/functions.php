@@ -52,6 +52,28 @@ function loscocos_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'loscocos_enqueue_scripts');
 
+// Reemplazar el thumbnail de productos en listados por nuestro SVG por ID
+add_filter('woocommerce_get_product_thumbnail', function ($html, $size = 'woocommerce_thumbnail', $deprecated = null) {
+    if (!function_exists('wc_get_product')) {
+        return $html;
+    }
+    global $product;
+    if (!$product || !is_a($product, 'WC_Product')) {
+        return $html;
+    }
+    $image_url = loscocos_get_product_image($product->get_id());
+    return '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($product->get_name()) . '" loading="lazy" />';
+}, 10, 3);
+
+// Fallback del placeholder de WooCommerce para evitar "Marcador" sin imagen
+add_filter('woocommerce_placeholder_img_src', function ($src) {
+    $placeholder = get_template_directory_uri() . '/placeholder.svg';
+    if (file_exists(get_template_directory() . '/placeholder.svg')) {
+        return $placeholder;
+    }
+    return $src;
+});
+
 // Add AJAX handlers for cart operations
 add_action('wp_ajax_loscocos_add_to_cart', 'loscocos_ajax_add_to_cart');
 add_action('wp_ajax_nopriv_loscocos_add_to_cart', 'loscocos_ajax_add_to_cart');
@@ -238,36 +260,100 @@ function loscocos_get_product_image($product_id) {
     $image_path = $images_dir . '/' . $product_id . '.svg';
     $image_url = $images_url . '/' . $product_id . '.svg';
 
+    // Crear directorio si no existe
+    if (!file_exists($images_dir)) {
+        wp_mkdir_p($images_dir);
+        // Asegurar permisos correctos
+        chmod($images_dir, 0755);
+    }
+
+    // Si ya existe, devolverlo
     if (file_exists($image_path)) {
         return $image_url;
     }
 
     $product = wc_get_product($product_id);
     if (!$product) {
-        return get_template_directory_uri() . '/images/placeholder.svg';
+        return get_template_directory_uri() . '/placeholder.svg';
     }
 
     $product_name = $product->get_name();
-    $color1 = '#059669';
-    $color2 = '#10b981';
-    $icon = '🌱'; // Usando un emoji válido
+    $price = $product->get_price();
     
-    $svg = '<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="grad-' . $product_id . '" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="' . $color1 . '" />
-                <stop offset="100%" stop-color="' . $color2 . '" />
-            </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grad-' . $product_id . ')" rx="12"/>
-        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="80" fill="white">' . $icon . '</text>
-        <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">' . esc_html($product_name) . '</text>
-    </svg>';
+    // Colores para gradientes basados en el ID del producto
+    $colors = [
+        ['#10b981', '#059669'], // Verde
+        ['#3b82f6', '#1d4ed8'], // Azul
+        ['#8b5cf6', '#7c3aed'], // Púrpura
+        ['#f59e0b', '#d97706'], // Amarillo
+        ['#ef4444', '#dc2626'], // Rojo
+        ['#06b6d4', '#0891b2'], // Cian
+        ['#84cc16', '#65a30d'], // Lima
+        ['#f97316', '#ea580c'], // Naranja
+    ];
     
-    wp_mkdir_p($images_dir);
-    file_put_contents($image_path, $svg);
+    // Emojis para productos
+    $emojis = ['🌱', '🌿', '🍃', '🌾', '🌳', '🌲', '🌴', '🌵', '🌺', '🌻', '🌼', '🌷', '🌹', '🥀', '🌸'];
     
-    return $image_url;
+    // Seleccionar color y emoji basado en el ID
+    $color_index = $product_id % count($colors);
+    $emoji_index = $product_id % count($emojis);
+    $color_pair = $colors[$color_index];
+    $emoji = $emojis[$emoji_index];
+    
+    // Generar nombre corto
+    $display_name = mb_strlen($product_name) > 18 ? mb_substr($product_name, 0, 18) . '...' : $product_name;
+    
+    $svg = '<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad-' . $product_id . '" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="' . $color_pair[0] . '" />
+            <stop offset="100%" stop-color="' . $color_pair[1] . '" />
+        </linearGradient>
+        <filter id="shadow-' . $product_id . '" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+        </filter>
+    </defs>
+    
+    <!-- Fondo con gradiente -->
+    <rect width="100%" height="100%" fill="url(#grad-' . $product_id . ')" rx="20" ry="20"/>
+    
+    <!-- Patrón decorativo -->
+    <circle cx="80" cy="80" r="40" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="320" cy="120" r="30" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="280" cy="280" r="35" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="120" cy="320" r="25" fill="rgba(255,255,255,0.1)"/>
+    
+    <!-- Emoji principal -->
+    <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" 
+          font-size="80" filter="url(#shadow-' . $product_id . ')">' . $emoji . '</text>
+    
+    <!-- Nombre del producto -->
+    <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" 
+          font-family="system-ui, sans-serif" font-size="18" 
+          fill="white" font-weight="600" filter="url(#shadow-' . $product_id . ')">' . esc_html($display_name) . '</text>
+    
+    <!-- Precio -->
+    <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" 
+          font-family="system-ui, sans-serif" font-size="22" 
+          fill="white" font-weight="bold" filter="url(#shadow-' . $product_id . ')">$' . number_format($price, 0) . '</text>
+    
+    <!-- Indicador "Los Cocos" -->
+    <text x="50%" y="95%" dominant-baseline="middle" text-anchor="middle" 
+          font-family="system-ui, sans-serif" font-size="12" 
+          fill="rgba(255,255,255,0.8)" font-weight="400">Los Cocos</text>
+</svg>';
+    
+    // Guardar archivo
+    $result = file_put_contents($image_path, $svg);
+    if ($result !== false) {
+        chmod($image_path, 0644);
+        return $image_url;
+    }
+    
+    // Fallback si no se pudo escribir
+    return get_template_directory_uri() . '/placeholder.svg';
 }
 
 // =================================================================================

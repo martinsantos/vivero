@@ -1,0 +1,282 @@
+/* ===================================
+   TIENDA - LAYOUT CON SIDEBAR FILTROS
+   =================================== */
+
+/* Main shop layout - 2 columnas */
+.shop-archive-wrap {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.shop-archive-wrap .shop-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Sidebar de filtros */
+.woocommerce-sidebar,
+.sidebar-primary,
+.shop-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+/* Contenedor principal de productos */
+.shop-main .woocommerce-products-header,
+.shop-main .shop-content,
+.shop-main .products-section {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Título de filtros */
+.woocommerce-sidebar h2,
+.sidebar-primary h2,
+.shop-sidebar h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Grupos de filtros */
+.filter-group,
+.woocommerce-widget-layered-nav,
+.widget {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group:last-child,
+.woocommerce-widget-layered-nav:last-child,
+.widget:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Títulos de grupos */
+.filter-group h3,
+.woocommerce-widget-layered-nav h3,
+.widget h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* Checkboxes personalizados */
+.filter-checkbox,
+.woocommerce-widget-layered-nav input[type="checkbox"],
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.filter-checkbox:hover,
+.woocommerce-widget-layered-nav input[type="checkbox"]:hover,
+input[type="checkbox"]:hover {
+  border-color: var(--primary);
+  background-color: rgba(29, 201, 29, 0.05);
+}
+
+.filter-checkbox:checked,
+.woocommerce-widget-layered-nav input[type="checkbox"]:checked,
+input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  background-image: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.filter-checkbox:focus,
+.woocommerce-widget-layered-nav input[type="checkbox"]:focus,
+input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 201, 29, 0.1);
+}
+
+/* Labels de filtros */
+.filter-label,
+.woocommerce-widget-layered-nav label,
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  transition: color var(--transition-base);
+}
+
+.filter-label:hover,
+.woocommerce-widget-layered-nav label:hover,
+label:hover {
+  color: var(--primary);
+}
+
+.filter-label:last-child,
+.woocommerce-widget-layered-nav label:last-child,
+label:last-child {
+  margin-bottom: 0;
+}
+
+/* Radio buttons personalizados */
+.filter-radio,
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.filter-radio:hover,
+input[type="radio"]:hover {
+  border-color: var(--primary);
+  background-color: rgba(29, 201, 29, 0.05);
+}
+
+.filter-radio:checked,
+input[type="radio"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  background-image: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.filter-radio:focus,
+input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 201, 29, 0.1);
+}
+
+/* Price range slider */
+.price-range-slider {
+  margin-top: 1rem;
+}
+
+.price-range-track {
+  display: flex;
+  height: 0.5rem;
+  background: var(--bg-tertiary);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.price-range-fill {
+  background: var(--primary);
+  height: 100%;
+}
+
+.price-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive - mobile */
+@media (max-width: 768px) {
+  .shop-archive-wrap {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .shop-archive-wrap .woocommerce-sidebar,
+  .sidebar-primary,
+  .shop-sidebar {
+    width: 100%;
+    position: static;
+    top: auto;
+  }
+
+  .shop-main .woocommerce-products-header,
+  .shop-main .shop-content,
+  .shop-main .products-section {
+    width: 100%;
+  }
+}
+
+/* Botón "Aplicar Filtros" (si es necesario) */
+.filter-apply-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-apply-btn:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+/* Limpiar filtros */
+.filter-clear-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-clear-btn:hover {
+  background: rgba(29, 201, 29, 0.05);
+  border-color: var(--primary);
+}
+
+/* Contador de filtros activos */
+.filter-count {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}

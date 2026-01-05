@@ -1,0 +1,67 @@
+/**
+ * WooCommerce Styles for Los Cocos Child Theme
+ * These styles complement the Tailwind CSS classes and provide specific WooCommerce overrides
+ */
+
+/* Cart Page Styles */
+.woocommerce-cart .woocommerce {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+}
+
+.woocommerce-cart-form {
+    @apply bg-white shadow overflow-hidden sm:rounded-lg mb-8;
+}
+
+.cart_totals {
+    @apply bg-white shadow overflow-hidden sm:rounded-lg p-6;
+}
+
+/* Buttons */
+.woocommerce-button, 
+.button, 
+button.button, 
+input.button, 
+button.button.alt, 
+input.button.alt, 
+.button.alt, 
+#respond input#submit.alt, 
+#respond input#submit, 
+#content input.button, 
+#content input.button.alt {
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500;
+}
+
+/* Form Elements */
+.woocommerce-input-wrapper input[type="text"],
+.woocommerce-input-wrapper input[type="email"],
+.woocommerce-input-wrapper input[type="tel"],
+.woocommerce-input-wrapper input[type="number"],
+.woocommerce-input-wrapper textarea,
+.woocommerce-input-wrapper select {
+    @apply mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm;
+}
+
+/* Tables */
+.woocommerce table.shop_table {
+    @apply min-w-full divide-y divide-gray-200;
+}
+
+.woocommerce table.shop_table th {
+    @apply px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.woocommerce table.shop_table td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .woocommerce-cart .woocommerce {
+        @apply px-2;
+    }
+    
+    .woocommerce-cart-form,
+    .cart_totals {
+        @apply -mx-2 sm:mx-0;
+    }
+}

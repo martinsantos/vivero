@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vivero Los Cocos - Shopping Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dc91d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112111",
+                        "text-light": "#112111",
+                        "text-dark": "#f6f8f6",
+                        "text-muted-light": "#546e54",
+                        "text-muted-dark": "#a8b8a8",
+                        "border-light": "#e4e8e4",
+                        "border-dark": "#2a3a2a"
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 text-text-light dark:text-text-dark" href="#">
+<span class="material-symbols-outlined text-primary text-3xl">potted_plant</span>
+<span class="text-xl font-bold">Vivero Los Cocos</span>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Plants</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Supplies</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Flowers</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark">favorite_border</span>
+</button>
+<button class="flex items-center gap-2 p-2 rounded-full bg-primary/10 dark:bg-primary/20">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+<span class="text-sm font-bold text-primary">3</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="mb-8">
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Your Shopping Cart</h1>
+<p class="mt-2 text-text-muted-light dark:text-text-muted-dark">Review your items and proceed to checkout.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+<div class="lg:col-span-2 bg-white dark:bg-background-dark/50 rounded-xl shadow-lg p-6">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzDTinhAqk5mSDbO3SqC08ap1tifOZaOl1LKvkKlAp6OmgRIv72dA8jz5kTdWQfV74ZHZN3zW83lDIOEP_ogaw9RzVYdSFV8ziZ4DYwvFbzexUNmwAdpSJqVvmlt2JwlnLyyCN1HSxLSYdo-VN1Zo2Xkz4BlWlik-Rr5PMEdFIea780cFZDs4AQR0ZK5FG-1CLBZiRXAxSLE-8ox5SUUThoUt92H1_hU4G1R0djt3mt5uXnXUfIAW9WqQqs2TMlfdXGbOESCRl5ArD");'></div>
+<div class="flex-grow">
+<h3 class="font-bold text-lg">Echeveria Elegans</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">Succulent</p>
+<p class="text-primary font-bold mt-1">$25.00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full bg-border-light dark:bg-border-dark hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-bold w-8 text-center">1</span>
+<button class="p-2 rounded-full bg-border-light dark:bg-border-dark hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="p-2 rounded-full hover:bg-red-500/10 transition-colors">
+<span class="material-symbols-outlined text-red-500">delete</span>
+</button>
+</div>
+<div class="border-t border-border-light dark:border-border-dark"></div>
+<div class="flex items-center gap-4">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGHtjOFbPZ_x835NFe83col1SWG1F-yiLU1gQlaY5fkj03YV2gJK72hLoUeG_87FMWccCEpCy4IxGo2joEHeLwSl9RJCNM2KeszmLEjW2TrP5RAN9yNkcfRaSKHeyWFtEaar8cAzMxXL5PRTcSGaZDahtxMGXJmp3cvmbykeJEUn3-RamMvvfWh9Ao0yHMNmnu40KSBN2ImngHiPPdoag76ikzK6x5UFzjQVWNvo8KQrpGuwvz_f7Ul1KLkQbgjAWWJ3Gn8WKgUypl");'></div>
+<div class="flex-grow">
+<h3 class="font-bold text-lg">Cactus</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">Plant</p>
+<p class="text-primary font-bold mt-1">$15.00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full bg-border-light dark:bg-border-dark hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-bold w-8 text-center">2</span>
+<button class="p-2 rounded-full bg-border-light dark:bg-border-dark hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="p-2 rounded-full hover:bg-red-500/10 transition-colors">
+<span class="material-symbols-outlined text-red-500">delete</span>
+</button>
+</div>
+<div class="border-t border-border-light dark:border-border-dark"></div>
+<div class="flex items-center gap-4">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4BgfPFDybAhyFtPLOEAqoJRHIS-mcUU5u0EgXfeDyROHCW521zVbzKv2y0IqDqd0XNwJotdwuEj487IEyadqEBs4MvmMv5R5gb6SZ8Ebtd7NdBTn06GvWnl2t22MeGNwBoz39Aej5xAd1IInTPwlQXASzyonAvOTCt7LHHSq_la3CfwxsbtIl5twF6Tw6f6rhzWF7OG5Q1B9O2erqJKQm5xndjcrlfXfW979LbkOEyW8HTbaDvAXx6Y9wQMXkpvMY6bXu8fD0MQ6l");'></div>
+<div class="flex-grow">
+<h3 class="font-bold text-lg">Aloe Vera</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">Plant</p>
+<p class="text-primary font-bold mt-1">$12.00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full bg-border-light dark:bg-border-dark hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-bold w-8 text-center">1</span>
+<button class="p-2 rounded-full bg-border-light dark:bg-border-dark hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="p-2 rounded-full hover:bg-red-500/10 transition-colors">
+<span class="material-symbols-outlined text-red-500">delete</span>
+</button>
+</div>
+</div>
+<div class="mt-6">
+<a class="flex items-center gap-2 text-primary font-medium hover:underline" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+<span>Continue Shopping</span>
+</a>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark/50 rounded-xl shadow-lg p-6 lg:p-8">
+<h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+<div class="space-y-4">
+<div class="flex justify-between">
+<p class="text-text-muted-light dark:text-text-muted-dark">Subtotal</p>
+<p class="font-medium">$67.00</p>
+</div>
+<div class="flex justify-between">
+<p class="text-text-muted-light dark:text-text-muted-dark">Shipping</p>
+<p class="font-medium">$5.00</p>
+</div>
+<div class="border-t border-border-light dark:border-border-dark my-4"></div>
+<div class="flex justify-between text-lg font-bold">
+<p>Total</p>
+<p>$72.00</p>
+</div>
+</div>
+<div class="mt-8">
+<button class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+<span>Proceed to Checkout</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark mt-16">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-text-muted-light dark:text-text-muted-dark">
+<p>© 2024 Vivero Los Cocos. All rights reserved.</p>
+</div>
+</footer>
+</div>
+
+</body></html>
