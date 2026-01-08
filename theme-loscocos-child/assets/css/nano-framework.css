@@ -1,0 +1,193 @@
+/* 
+   NANO BANANA FRAMEWORK 
+   v1.0.0 - World Class Design System 
+*/
+
+:root {
+    /* Colors */
+    --nano-bg: #fdfdfd;
+    --nano-text-main: #1a1a1a;
+    --nano-banana-yellow: #e4fd2d; /* Acid Lime/Banana Mix for pop */
+    --nano-glass-border: rgba(255, 255, 255, 0.2);
+    --nano-glass-surface: rgba(255, 255, 255, 0.05);
+    
+    /* Typography */
+    --font-serif: 'Merriweather', serif; /* Elegant, editorial */
+    --font-tech: 'Outfit', sans-serif;   /* Clean, modern, tech */
+    
+    /* Spacing */
+    --spacing-unit: 8px;
+    --container-width: 1440px;
+}
+
+/* Base Reset for Nano Pages */
+.nano-body {
+    background-color: var(--nano-bg);
+    color: var(--nano-text-main);
+    font-family: var(--font-tech);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Typography Utilities */
+.nano-heading-hero {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: white;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.nano-heading-section {
+    font-family: var(--font-tech);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: var(--nano-text-main);
+}
+
+/* Glassmorphism Utilities */
+.nano-glass {
+    background: var(--nano-glass-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--nano-glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.nano-glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Components */
+
+/* 1. Nano Button */
+.btn-nano {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    border-radius: 99px;
+    background: var(--nano-banana-yellow);
+    color: #000;
+    font-family: var(--font-tech);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-nano:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--nano-banana-yellow);
+}
+
+/* 2. Masonry Grid Card */
+.nano-card {
+    background: white;
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.nano-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+}
+
+.nano-card-image-wrapper {
+    position: relative;
+    padding-top: 110%; /* Tall ratio */
+    overflow: visible; /* Allow pop-out */
+    margin-bottom: 24px;
+}
+
+.nano-card-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nano-card:hover .nano-card-image {
+    transform: translate(-50%, -55%) scale(1.1); /* Pop out effect */
+}
+
+/* 3. Hero Layout */
+.nano-hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.nano-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.nano-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+    z-index: 1;
+}
+
+.nano-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 90vw;
+}
+
+/* Floating Nav */
+.nano-nav {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 12px 32px;
+    border-radius: 100px;
+    display: flex;
+    gap: 32px;
+}
+
+.nano-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nano-nav-link:hover {
+    opacity: 1;
+}
