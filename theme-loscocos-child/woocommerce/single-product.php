@@ -218,69 +218,79 @@ do_action('woocommerce_before_main_content');
                                 <p class="text-neutral-medium">Otros productos que te pueden interesar</p>
                             </div>
                             
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
                                 <?php foreach ($related_products as $related_id):
                                     $related = wc_get_product($related_id);
                                     if (!$related) continue;
-                                    $categories = wc_get_product_category_list($related_id, ', ');
+                                    $rel_categories = wp_get_post_terms($related_id, 'product_cat');
+                                    $rel_category = ($rel_categories && !is_wp_error($rel_categories)) ? $rel_categories[0]->name : '';
+                                    $rel_short_desc = $related->get_short_description();
+                                    $rel_trimmed_desc = $rel_short_desc ? wp_trim_words($rel_short_desc, 12, '...') : '';
+                                    $rel_image = $related->get_image_id() ? wp_get_attachment_image_url($related->get_image_id(), 'woocommerce_thumbnail') : wc_placeholder_img_src();
                                     ?>
-                                    <!-- Card matching shop style -->
-                                    <div class="product-card-shop bg-white rounded-2xl shadow-md overflow-hidden border border-neutral-100 hover:shadow-xl transition-all duration-300 flex flex-col">
-                                        <!-- Image -->
-                                        <a href="<?php echo esc_url($related->get_permalink()); ?>" class="block aspect-square overflow-hidden bg-neutral-100">
-                                            <?php if ($related->get_image_id()): ?>
-                                                <img src="<?php echo esc_url(wp_get_attachment_image_url($related->get_image_id(), 'woocommerce_thumbnail')); ?>" 
-                                                     alt="<?php echo esc_attr($related->get_name()); ?>"
-                                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                                            <?php else: ?>
-                                                <div class="w-full h-full flex items-center justify-center text-neutral-400">Sin imagen</div>
-                                            <?php endif; ?>
+                                    <!-- Card with inline styles matching shop -->
+                                    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%;">
+                                        
+                                        <!-- Imagen cuadrada -->
+                                        <a href="<?php echo esc_url($related->get_permalink()); ?>" style="display: block; position: relative; width: 100%; padding-top: 100%; background: #f5f5f5; overflow: hidden;">
+                                            <img src="<?php echo esc_url($rel_image); ?>" 
+                                                 alt="<?php echo esc_attr($related->get_name()); ?>" 
+                                                 loading="lazy"
+                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                                         </a>
                                         
-                                        <!-- Content -->
-                                        <div class="p-4 flex flex-col flex-grow">
-                                            <!-- Title -->
-                                            <a href="<?php echo esc_url($related->get_permalink()); ?>" class="block">
-                                                <h3 class="font-semibold text-neutral-dark mb-1 line-clamp-2 hover:text-primary transition-colors min-h-[2.5rem]">
+                                        <!-- Contenido -->
+                                        <div style="padding: 16px; display: flex; flex-direction: column; flex-grow: 1;">
+                                            
+                                            <!-- Título -->
+                                            <h3 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #1f2937; line-height: 1.4; height: 42px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                                <a href="<?php echo esc_url($related->get_permalink()); ?>" style="color: inherit; text-decoration: none;">
                                                     <?php echo esc_html($related->get_name()); ?>
-                                                </h3>
-                                            </a>
+                                                </a>
+                                            </h3>
                                             
-                                            <!-- Category -->
-                                            <?php if ($categories): ?>
-                                                <p class="text-xs text-neutral-400 uppercase tracking-wide mb-2"><?php echo strip_tags($categories); ?></p>
-                                            <?php endif; ?>
+                                            <!-- Categoría -->
+                                            <div style="font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; height: 14px; overflow: hidden;">
+                                                <?php echo esc_html($rel_category); ?>
+                                            </div>
                                             
-                                            <!-- Short description -->
-                                            <div class="h-10 mb-3">
-                                                <?php if ($related->get_short_description()): ?>
-                                                    <p class="text-sm text-neutral-500 line-clamp-2"><?php echo wp_trim_words($related->get_short_description(), 10); ?></p>
+                                            <!-- Descripción -->
+                                            <div style="font-size: 13px; color: #6b7280; line-height: 1.4; margin-bottom: 12px; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                                <?php echo $rel_trimmed_desc ? esc_html($rel_trimmed_desc) : '&nbsp;'; ?>
+                                            </div>
+                                            
+                                            <!-- Footer -->
+                                            <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid #f0f0f0;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                                    <span style="font-size: 20px; font-weight: 700; color: #059669;">
+                                                        $<?php echo number_format($related->get_price(), 0, ',', '.'); ?>
+                                                    </span>
+                                                    <?php if ($related->is_in_stock()) : ?>
+                                                        <span style="font-size: 12px; color: #10b981;">En stock</span>
+                                                    <?php else : ?>
+                                                        <span style="font-size: 12px; color: #ef4444;">Agotado</span>
+                                                    <?php endif; ?>
+                                                </div>
+                                                
+                                                <?php if ($related->is_in_stock()) : ?>
+                                                    <a href="<?php echo esc_url($related->add_to_cart_url()); ?>" 
+                                                       style="display: flex; width: 100%; padding: 10px 16px; background: #059669; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
+                                                        🛒 Añadir al carrito
+                                                    </a>
+                                                <?php else : ?>
+                                                    <span style="display: block; width: 100%; padding: 10px 16px; background: #d1d5db; color: #6b7280; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;">
+                                                        Agotado
+                                                    </span>
                                                 <?php endif; ?>
                                             </div>
                                             
-                                            <div class="mt-auto">
-                                                <!-- Price and Button Row -->
-                                                <div class="flex items-center justify-between gap-2 mb-3">
-                                                    <span class="text-xl font-bold text-primary"><?php echo $related->get_price_html(); ?></span>
-                                                    <a href="<?php echo esc_url($related->add_to_cart_url()); ?>" 
-                                                       class="inline-flex items-center gap-1 px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-lg transition-colors">
-                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                                        </svg>
-                                                        Añadir
-                                                    </a>
+                                            <!-- SKU -->
+                                            <?php if ($related->get_sku()) : ?>
+                                                <div style="margin-top: 8px; font-size: 11px; color: #9ca3af; text-align: center;">
+                                                    SKU: <?php echo esc_html($related->get_sku()); ?>
                                                 </div>
-                                                
-                                                <!-- Stock and SKU -->
-                                                <div class="flex items-center justify-between text-xs text-neutral-400">
-                                                    <span class="<?php echo $related->is_in_stock() ? 'text-green-600' : 'text-red-500'; ?>">
-                                                        <?php echo $related->is_in_stock() ? 'En stock' : 'Sin stock'; ?>
-                                                    </span>
-                                                    <?php if ($related->get_sku()): ?>
-                                                        <span>SKU: <?php echo esc_html($related->get_sku()); ?></span>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
+                                            <?php endif; ?>
+                                            
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
