@@ -77,7 +77,17 @@ class LosCocos_URL_Manager {
      * Limpiar URLs problemáticas
      */
     public static function clean_product_urls() {
-        // Remover parámetros problemáticos y manejar redirects
+        // NEVER redirect in admin area - multiple checks for robustness
+        if (is_admin() || (defined('WP_ADMIN') && WP_ADMIN)) {
+            return;
+        }
+        
+        // Also check if we're in wp-admin path (ultimate fallback)
+        if (strpos($_SERVER['REQUEST_URI'], '/wp-admin/') !== false) {
+            return;
+        }
+        
+        // Remover parámetros problemáticos y manejar redirects (frontend only)
         if (isset($_GET['post_type']) && $_GET['post_type'] === 'product') {
             wp_redirect(self::get_shop_url(), 301);
             exit;
