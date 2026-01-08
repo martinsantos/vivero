@@ -1,0 +1,66 @@
+{
+  "categorias": {
+    "SUMMER SALE": [],
+    "SET PLANTA & MACETA": [
+      "Interior",
+      "Exterior"
+    ],
+    "PLANTAS": [
+      "EXTERIOR",
+      "INTERIOR"
+    ],
+    "MACETAS": [
+      "Ceramica",
+      "Platos",
+      "Plástico",
+      "Barro",
+      "Rotomoldeado"
+    ],
+    "CUIDADO Y MANTENIMIENTO": [
+      "Herramientas",
+      "Control y prevencion de plagas",
+      "Fertilizantes",
+      "Semillas",
+      "Sustratos y enmiendas"
+    ],
+    "Productos": [],
+    "AROMATIZADORES Y VELAS": [
+      "Aromatizador de ambiente y textil",
+      "Difusores",
+      "Velas"
+    ]
+  },
+  "rutas_completas": [
+    "AROMATIZADORES Y VELAS > Aromatizador de ambiente y textil",
+    "AROMATIZADORES Y VELAS > Difusores",
+    "AROMATIZADORES Y VELAS > Velas",
+    "CUIDADO Y MANTENIMIENTO > Control y prevencion de plagas",
+    "CUIDADO Y MANTENIMIENTO > Fertilizantes",
+    "CUIDADO Y MANTENIMIENTO > Herramientas",
+    "CUIDADO Y MANTENIMIENTO > Semillas",
+    "CUIDADO Y MANTENIMIENTO > Sustratos y enmiendas",
+    "MACETAS",
+    "MACETAS > Barro",
+    "MACETAS > Ceramica",
+    "MACETAS > Platos",
+    "MACETAS > Plástico",
+    "MACETAS > Rotomoldeado",
+    "PLANTAS",
+    "PLANTAS > EXTERIOR > Caracteristicas > Plantas de flor",
+    "PLANTAS > EXTERIOR > Chicas",
+    "PLANTAS > EXTERIOR > Grandes",
+    "PLANTAS > EXTERIOR > Medianas",
+    "PLANTAS > INTERIOR",
+    "PLANTAS > INTERIOR > CARACTERISTICA > Cuidado facil y poca luz",
+    "PLANTAS > INTERIOR > CARACTERISTICA > Minimalista",
+    "PLANTAS > INTERIOR > Chicas",
+    "PLANTAS > INTERIOR > Grandes",
+    "PLANTAS > INTERIOR > Medianas",
+    "Productos",
+    "SET PLANTA & MACETA",
+    "SET PLANTA & MACETA > Exterior",
+    "SET PLANTA & MACETA > Interior",
+    "SUMMER SALE"
+  ],
+  "total_productos": 631
+}

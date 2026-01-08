@@ -166,18 +166,22 @@ body {
 /* Imagen del producto */
 .product-image-unified {
   position: relative;
-  height: 200px;
+  aspect-ratio: 1 / 1; /* Square aspect ratio for uniform cards */
   overflow: hidden;
   background-color: var(--bg-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+.product-image-unified a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .product-image-unified img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.3s ease;
 }
 
@@ -203,6 +207,7 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 2.8em; /* Fixed height for 2 lines */
 }
 
 .product-category-unified {
@@ -212,6 +217,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--spacing-md);
+}
+
+/* Description area with fixed height */
+.product-description-unified {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.5em; /* Fixed height for 2 lines */
 }
 
 .product-price-unified {

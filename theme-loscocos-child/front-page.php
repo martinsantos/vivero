@@ -62,6 +62,119 @@ get_header(); ?>
         </div>
     </section>
 
+    <!-- 🔥 OFERTAS DESTACADAS - Productos con Precio y Compra Directa -->
+    <section class="py-16 relative" style="background: linear-gradient(135deg, #fef3c7 0%, #fff7ed 50%, #fef3c7 100%);">
+        <!-- Badge de Oferta -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <span style="background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%); color: white; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);">
+                🔥 Ofertas de la Semana
+            </span>
+        </div>
+        
+        <div class="container mx-auto px-4 pt-8">
+            <div class="text-center mb-10">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; font-family: 'Merriweather', serif; margin-bottom: 0.5rem;">
+                    Productos en Oferta
+                </h2>
+                <p style="color: #6b7280; font-size: 1.125rem;">Precios especiales por tiempo limitado</p>
+            </div>
+
+            <!-- Grid de Productos en Oferta -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <?php
+                // Obtener productos en oferta
+                $sale_products = wc_get_products(array(
+                    'status' => 'publish',
+                    'limit' => 4,
+                    'on_sale' => true,
+                    'orderby' => 'date',
+                    'order' => 'DESC'
+                ));
+                
+                // Si no hay productos en oferta, mostrar los más recientes
+                if (empty($sale_products)) {
+                    $sale_products = wc_get_products(array(
+                        'status' => 'publish',
+                        'limit' => 4,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ));
+                }
+                
+                foreach ($sale_products as $product) :
+                    $product_id = $product->get_id();
+                    $product_name = $product->get_name();
+                    $product_url = get_permalink($product_id);
+                    $product_image = wp_get_attachment_image_src($product->get_image_id(), 'medium');
+                    $product_image_url = $product_image ? $product_image[0] : wc_placeholder_img_src('medium');
+                    $regular_price = $product->get_regular_price();
+                    $sale_price = $product->get_sale_price();
+                    $current_price = $product->get_price();
+                    $is_on_sale = $product->is_on_sale();
+                ?>
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;">
+                    <!-- Imagen del Producto -->
+                    <a href="<?php echo esc_url($product_url); ?>" style="display: block; position: relative;">
+                        <?php if ($is_on_sale) : ?>
+                        <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: #dc2626; color: white; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; z-index: 10;">
+                            OFERTA
+                        </span>
+                        <?php endif; ?>
+                        <img src="<?php echo esc_url($product_image_url); ?>" 
+                             alt="<?php echo esc_attr($product_name); ?>"
+                             style="width: 100%; height: 200px; object-fit: cover;">
+                    </a>
+                    
+                    <!-- Info del Producto -->
+                    <div style="padding: 1rem;">
+                        <a href="<?php echo esc_url($product_url); ?>" style="text-decoration: none;">
+                            <h3 style="font-size: 1rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8rem;">
+                                <?php echo esc_html($product_name); ?>
+                            </h3>
+                        </a>
+                        
+                        <!-- Precio -->
+                        <div style="margin-bottom: 1rem;">
+                            <?php if ($is_on_sale && $regular_price) : ?>
+                                <span style="text-decoration: line-through; color: #9ca3af; font-size: 0.875rem; margin-right: 0.5rem;">
+                                    $<?php echo number_format($regular_price, 0, ',', '.'); ?>
+                                </span>
+                                <span style="font-size: 1.5rem; font-weight: 700; color: #dc2626;">
+                                    $<?php echo number_format($current_price, 0, ',', '.'); ?>
+                                </span>
+                            <?php else : ?>
+                                <span style="font-size: 1.5rem; font-weight: 700; color: #059669;">
+                                    $<?php echo number_format($current_price, 0, ',', '.'); ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <!-- Botón Agregar al Carrito -->
+                        <a href="<?php echo esc_url($product->add_to_cart_url()); ?>" 
+                           data-quantity="1" 
+                           data-product_id="<?php echo esc_attr($product_id); ?>"
+                           class="ajax_add_to_cart add_to_cart_button"
+                           style="display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; padding: 0.75rem 1rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.3s ease;">
+                            🛒 Agregar al Carrito
+                        </a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Botón Ver Todas las Ofertas -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="<?php echo wc_get_page_permalink('shop'); ?>?on_sale=1" 
+                   style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1f2937; color: white; padding: 1rem 2rem; border-radius: 9999px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                    Ver Todas las Ofertas
+                    <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Features / USP Section -->
     <section class="py-16 bg-cream border-b border-neutral-200">
         <div class="container mx-auto px-4">

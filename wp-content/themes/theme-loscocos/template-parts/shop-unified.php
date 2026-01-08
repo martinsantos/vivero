@@ -47,33 +47,25 @@ if (is_product_category()) {
 $products_query = new WP_Query($args);
 ?>
 
-<!-- Header de la tienda -->
-<div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 mb-8 text-white">
-    <div class="text-center">
-        <h1 class="text-4xl font-bold mb-4"><?php echo esc_html($page_title); ?></h1>
-        <p class="text-xl opacity-90 max-w-2xl mx-auto"><?php echo esc_html($page_description); ?></p>
-        
-        <!-- Breadcrumbs -->
-        <nav class="mt-6">
-            <div class="flex items-center justify-center gap-2 text-sm opacity-80">
-                <?php
-                $breadcrumbs = loscocos_breadcrumbs();
-                foreach ($breadcrumbs as $index => $crumb) {
-                    if ($index > 0) {
-                        echo '<span>›</span>';
-                    }
-                    
-                    if ($crumb['url']) {
-                        echo '<a href="' . esc_url($crumb['url']) . '" class="hover:text-white transition-colors">';
-                        echo esc_html($crumb['name']);
-                        echo '</a>';
-                    } else {
-                        echo '<span class="font-semibold">' . esc_html($crumb['name']) . '</span>';
-                    }
-                }
-                ?>
-            </div>
-        </nav>
+<!-- Banner de Tienda - Estilo Premium con Imagen de Fondo -->
+<div class="shop-banner relative overflow-hidden" style="margin-top: -2rem; margin-left: -1rem; margin-right: -1rem; margin-bottom: 2rem;">
+    <!-- Imagen de Fondo -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+             alt="Plantas del vivero" 
+             style="width: 100%; height: 100%; object-fit: cover;">
+        <!-- Overlay degradado -->
+        <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(5,46,22,0.85) 100%);"></div>
+    </div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10 text-center text-white" style="padding: 8rem 2rem 4rem 2rem;">
+        <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 4px 8px rgba(0,0,0,0.4); font-family: 'Merriweather', serif;">
+            <?php echo esc_html($page_title); ?>
+        </h1>
+        <p style="font-size: 1.25rem; opacity: 0.95; max-width: 600px; margin: 0 auto; text-shadow: 1px 2px 4px rgba(0,0,0,0.3);">
+            <?php echo esc_html($page_description); ?>
+        </p>
     </div>
 </div>
 

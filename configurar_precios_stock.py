@@ -163,20 +163,29 @@ def configurar_precio_categoria(producto: Dict, wordpress_url: str, wc_key: str,
         return False
 
 
-def configurar_desde_csv(producto: Dict, precios_dict: Dict, wordpress_url: str, wc_key: str, wc_secret: str, dry_run: bool = False) -> bool:
-    """Configura precio desde archivo CSV"""
+def configurar_desde_csv(producto: Dict, precios_sku: Dict, precios_nombre: Dict, wordpress_url: str, wc_key: str, wc_secret: str, dry_run: bool = False) -> bool:
+    """Configura precio desde archivos CSV (SKU o Nombre)"""
     producto_id = producto['id']
-    sku = producto.get('sku', '')
+    sku = (producto.get('sku') or '').strip()
+    name = (producto.get('name') or '').lower().strip()
     
-    # Buscar precio en diccionario
-    precio = precios_dict.get(str(producto_id)) or precios_dict.get(sku)
+    # Buscar precio: 1. SKU, 2. Nombre exacto
+    precio = precios_sku.get(sku) or precios_nombre.get(name)
     
     if not precio:
-        log.warning(f"Producto {producto_id} no encontrado en CSV, usando precio default")
-        precio = PRECIOS_CATEGORIA['default']
+        # Intento 3: Buscar si el nombre del producto contiene alguna de las llaves del diccionario de nombres
+        # (Búsqueda parcial para casos donde el título en WC es más largo)
+        for key_name, p in precios_nombre.items():
+            if key_name in name:
+                precio = p
+                break
+
+    if not precio:
+        log.warning(f"Producto {producto_id} ({name}) no encontrado en CSVs, usando precio categoria")
+        precio = determinar_precio_categoria(producto)
     
     datos = {
-        'regular_price': str(precio),
+        'regular_price': str(int(precio)),
         'stock_status': 'instock',
         'manage_stock': True,
         'stock_quantity': 10
@@ -196,28 +205,34 @@ def configurar_desde_csv(producto: Dict, precios_dict: Dict, wordpress_url: str,
         return False
 
 
-def cargar_precios_csv(csv_path: str) -> Dict:
-    """Carga precios desde archivo CSV"""
+def cargar_precios_dict(csv_path: str, key_col: str) -> Dict:
+    """Carga precios desde archivo CSV a un diccionario"""
     precios = {}
-    
+    if not os.path.exists(csv_path):
+        log.warning(f"Archivo no encontrado: {csv_path}")
+        return precios
+        
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            # Soporta CSV con columnas: id, sku, precio
-            if 'id' in row and 'precio' in row:
-                precios[row['id']] = float(row['precio'])
-            if 'sku' in row and 'precio' in row:
-                precios[row['sku']] = float(row['precio'])
+            if key_col in row and 'precio' in row:
+                key = row[key_col].lower().strip()
+                try:
+                    precios[key] = float(row['precio'])
+                except:
+                    continue
     
-    log.info(f"Precios cargados desde CSV: {len(precios)} productos")
+    log.info(f"Cargados {len(precios)} precios desde {csv_path}")
     return precios
 
 
 def main():
     parser = argparse.ArgumentParser(description='Configurar precios y stock en WooCommerce')
-    parser.add_argument('--modo', choices=['prueba', 'categoria', 'custom'], required=True,
+    parser.add_argument('--modo', choices=['prueba', 'categoria', 'custom', '2026'], required=True,
                         help='Modo de configuración de precios')
     parser.add_argument('--csv', help='Archivo CSV con precios (para modo custom)')
+    parser.add_argument('--csv-sku', help='CSV SKU (para modo 2026)', default='data/master_prices_sku_2026.csv')
+    parser.add_argument('--csv-name', help='CSV Nombre (para modo 2026)', default='data/master_prices_name_2026.csv')
     parser.add_argument('--dry-run', action='store_true', help='Simular sin aplicar cambios')
     parser.add_argument('--limite', type=int, help='Limitar cantidad de productos a procesar')
     args = parser.parse_args()
@@ -243,9 +258,13 @@ def main():
         log.info(f"Limitando a {args.limite} productos")
     
     # Cargar precios CSV si aplica
-    precios_dict = {}
+    precios_sku = {}
+    precios_nombre = {}
     if args.modo == 'custom':
-        precios_dict = cargar_precios_csv(args.csv)
+        precios_sku = cargar_precios_dict(args.csv, 'sku')
+    elif args.modo == '2026':
+        precios_sku = cargar_precios_dict(args.csv_sku, 'sku')
+        precios_nombre = cargar_precios_dict(args.csv_name, 'name')
     
     # Procesar productos
     log.info(f"Configurando precios y stock en modo: {args.modo}")
@@ -260,7 +279,9 @@ def main():
         elif args.modo == 'categoria':
             exito = configurar_precio_categoria(producto, wordpress_url, wc_key, wc_secret, args.dry_run)
         elif args.modo == 'custom':
-            exito = configurar_desde_csv(producto, precios_dict, wordpress_url, wc_key, wc_secret, args.dry_run)
+            exito = configurar_desde_csv(producto, precios_sku, {}, wordpress_url, wc_key, wc_secret, args.dry_run)
+        elif args.modo == '2026':
+            exito = configurar_desde_csv(producto, precios_sku, precios_nombre, wordpress_url, wc_key, wc_secret, args.dry_run)
         
         if exito:
             stats['exitosos'] += 1

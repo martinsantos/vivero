@@ -51,7 +51,7 @@ if ($product->is_on_sale()) {
 
 <a href="<?php echo esc_url($product_url); ?>" class="group block bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden h-full flex flex-col">
     <!-- Imagen del producto -->
-    <div class="relative pt-[100%] bg-gray-100">
+    <div class="relative aspect-square bg-gray-100 overflow-hidden">
         <?php
         // Obtener la imagen del producto con fallback SVG si no hay thumbnail
         if ( function_exists('loscocos_get_product_image_url') ) {
@@ -63,10 +63,10 @@ if ($product->is_on_sale()) {
         }
         $image_alt = $product->get_name() ?: get_the_title();
         ?>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="w-full h-full">
             <img src="<?php echo esc_url($image_src); ?>" 
                  alt="<?php echo esc_attr($image_alt); ?>" 
-                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" 
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
                  loading="lazy"
                  width="400"
                  height="400">

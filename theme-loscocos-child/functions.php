@@ -38,6 +38,22 @@ function loscocos_child_enqueue_styles()
         array('loscocos-style'),
         $version
     );
+    
+    // Enqueue premium category navigation styles
+    wp_enqueue_style(
+        'loscocos-category-nav',
+        get_stylesheet_directory_uri() . '/assets/css/category-navigation.css',
+        array('loscocos-child-style'),
+        $version
+    );
+    
+    // Enqueue product infographic styles
+    wp_enqueue_style(
+        'loscocos-product-infographic',
+        get_stylesheet_directory_uri() . '/assets/css/product-infographic.css',
+        array('loscocos-child-style'),
+        $version
+    );
 }
 add_action('wp_enqueue_scripts', 'loscocos_child_enqueue_styles');
 
@@ -296,3 +312,8 @@ function loscocos_child_woocommerce_setup()
     add_theme_support('wc-product-gallery-slider');
 }
 add_action('after_setup_theme', 'loscocos_child_woocommerce_setup');
+
+/**
+ * Include Product Infographic Custom Fields
+ */
+require_once LOSCOCOS_CHILD_PATH . '/inc/product-infographic-fields.php';

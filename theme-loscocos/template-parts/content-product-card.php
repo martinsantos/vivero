@@ -58,10 +58,10 @@ if ($product->is_on_sale()) {
         $image_src = $image_id ? wp_get_attachment_image_url($image_id, 'woocommerce_thumbnail') : wc_placeholder_img_src('woocommerce_thumbnail');
         $image_alt = $product->get_name() ?: get_the_title();
         ?>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0">
             <img src="<?php echo esc_url($image_src); ?>" 
                  alt="<?php echo esc_attr($image_alt); ?>" 
-                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" 
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
                  loading="lazy"
                  width="400"
                  height="400">

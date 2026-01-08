@@ -1,0 +1,449 @@
+/**
+ * Premium Category Navigation System
+ * Vivero Los Cocos - World-Class Category Experience
+ * 
+ * Features:
+ * - Hierarchical visual design with parent/child relationships
+ * - Glassmorphism and modern aesthetics
+ * - Elegant micro-animations
+ * - Perfect contrast and accessibility
+ * - Responsive design
+ */
+
+/* ========================================
+   CATEGORY NAVIGATION CONTAINER
+   ======================================== */
+.woocommerce-categories-nav,
+.product-categories-filter {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    border-radius: 20px;
+    padding: 24px 32px;
+    margin-bottom: 32px;
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 20px 25px -5px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.woocommerce-categories-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+
+/* Header title for category section */
+.categories-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.categories-header h3 {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 0.7;
+}
+
+.categories-header .icon {
+    width: 20px;
+    height: 20px;
+    fill: #10b981;
+}
+
+/* ========================================
+   CATEGORY LIST STRUCTURE
+   ======================================== */
+.category-list,
+.product-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ========================================
+   CATEGORY PILLS (PARENT LEVEL)
+   ======================================== */
+.category-item,
+.product-categories li,
+.cat-item {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.category-link,
+.product-categories li a,
+.cat-item a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.category-link:hover,
+.product-categories li a:hover,
+.cat-item a:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.5);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 16px -4px rgba(16, 185, 129, 0.3),
+        0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+/* Active/Current category */
+.category-link.active,
+.current-cat > a,
+.cat-item.current-cat > a {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 
+        0 4px 12px rgba(16, 185, 129, 0.4),
+        0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Category count badge */
+.category-count,
+.count,
+.cat-item .count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 6px;
+    transition: all 0.3s ease;
+}
+
+.category-link:hover .category-count,
+.product-categories li a:hover .count,
+.cat-item a:hover .count {
+    background: rgba(16, 185, 129, 0.3);
+    color: #fff;
+}
+
+/* ========================================
+   HIERARCHICAL CATEGORIES (PARENT-CHILD)
+   ======================================== */
+/* Parent categories with children */
+.has-children,
+.cat-parent {
+    position: relative;
+}
+
+.has-children > .category-link::after,
+.cat-parent > a::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid currentColor;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.has-children:hover > .category-link::after,
+.cat-parent:hover > a::after {
+    transform: rotate(180deg);
+}
+
+/* Subcategory dropdown */
+.children,
+.cat-item .children {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 12px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    box-shadow: 
+        0 20px 40px -8px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.children::before,
+.cat-item .children::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 8px;
+    background: inherit;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.has-children:hover > .children,
+.cat-parent:hover > .children {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Subcategory items */
+.children .category-item,
+.children li,
+.cat-item .children li {
+    display: block;
+    width: 100%;
+}
+
+.children .category-link,
+.children a,
+.cat-item .children a {
+    display: flex;
+    width: 100%;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    justify-content: space-between;
+}
+
+.children .category-link:hover,
+.children a:hover,
+.cat-item .children a:hover {
+    background: rgba(16, 185, 129, 0.15);
+    transform: none;
+    box-shadow: none;
+}
+
+/* ========================================
+   SPECIAL CATEGORY TYPES (ICONS/COLORS)
+   ======================================== */
+/* Type-based styling with icons */
+.cat-fertilizantes a::before,
+.category-fertilizantes::before {
+    content: '🌱';
+    margin-right: 8px;
+}
+
+.cat-insecticidas a::before,
+.category-insecticidas::before {
+    content: '🪲';
+    margin-right: 8px;
+}
+
+.cat-funguicidas a::before,
+.category-funguicidas::before {
+    content: '🍄';
+    margin-right: 8px;
+}
+
+.cat-herbicidas a::before,
+.category-herbicidas::before {
+    content: '🌿';
+    margin-right: 8px;
+}
+
+.cat-molusquicidas a::before,
+.category-molusquicidas::before {
+    content: '🐌';
+    margin-right: 8px;
+}
+
+/* ========================================
+   "ALL" BUTTON - SPECIAL STYLING
+   ======================================== */
+.show-all-btn,
+.cat-item:first-child a,
+[data-category="all"] {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%) !important;
+    border-color: rgba(139, 92, 246, 0.3) !important;
+    color: #a78bfa !important;
+}
+
+.show-all-btn:hover,
+.cat-item:first-child a:hover,
+[data-category="all"]:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    box-shadow: 
+        0 8px 16px -4px rgba(139, 92, 246, 0.3),
+        0 0 0 1px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+    .woocommerce-categories-nav,
+    .product-categories-filter {
+        padding: 16px 20px;
+        border-radius: 16px;
+    }
+    
+    .category-list,
+    .product-categories {
+        gap: 8px;
+    }
+    
+    .category-link,
+    .product-categories li a,
+    .cat-item a {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+    }
+    
+    .children,
+    .cat-item .children {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        border-radius: 24px 24px 0 0;
+        min-width: 100%;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+    
+    .has-children:hover > .children,
+    .cat-parent:hover > .children {
+        transform: translateY(0);
+    }
+    
+    .children::before,
+    .cat-item .children::before {
+        display: none;
+    }
+}
+
+/* ========================================
+   SCROLL INDICATOR FOR MOBILE
+   ======================================== */
+.category-scroll-hint {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .category-list,
+    .product-categories {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 8px;
+        margin-bottom: -8px;
+    }
+    
+    .category-list::-webkit-scrollbar,
+    .product-categories::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .category-item,
+    .product-categories li,
+    .cat-item {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
+    
+    .category-scroll-hint {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.7rem;
+        animation: pulse 2s infinite;
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Loading state */
+.category-link.loading {
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.08) 25%, 
+        rgba(255,255,255,0.15) 50%, 
+        rgba(255,255,255,0.08) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* ========================================
+   WOOCOMMERCE INTEGRATION OVERRIDES
+   ======================================== */
+/* Force apply to WooCommerce default category widgets */
+.woocommerce.widget_product_categories ul.product-categories {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+}
+
+.woocommerce.widget_product_categories ul.product-categories li {
+    display: inline-flex !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Shop page category filter */
+.woocommerce-archive-description + .woocommerce-products-header__title,
+.term-description {
+    margin-top: 24px;
+}
