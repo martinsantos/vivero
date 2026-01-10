@@ -24,7 +24,6 @@ $inc_files = [
     '/inc/class-wc-customizations.php',
     '/inc/template-functions.php',
     '/inc/product-infographic-fields.php',
-    '/inc/class-nano-loader.php', // Nano Prototype
 ];
 
 foreach ($inc_files as $file) {
@@ -44,10 +43,6 @@ add_action('after_setup_theme', function() {
     
     if (class_exists('LosCocos_WC_Customizations')) {
         LosCocos_WC_Customizations::init();
-    }
-
-    if (class_exists('LosCocos_Nano_Loader')) {
-        LosCocos_Nano_Loader::init();
     }
 }, 5);
 

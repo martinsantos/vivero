@@ -1,3 +1,22 @@
+# Vivero Los Cocos - Proyecto Integral
+
+## Estado del Proyecto (Enero 2026) -> **ESTABLE**
+Se ha realizado un refactor integral de la instalación para garantizar estabilidad, rendimiento y coherencia estética.
+
+### Cambios Principales
+- **Theme Clean-up**: Eliminados prototipos "Nano" experimentales. El tema hijo ahora utiliza `page-cart.php` nativo con estética "Organic Premium" (Verde Bosque/Terracota).
+- **Imágenes**: Se eliminaron los placeholders y se restauraron las imágenes reales de producto.
+- **Servicios**: Se corrigieron permisos de `uploads` (nginx:nginx 775) para eliminar errores de PHP.
+- **SEO**: Se implementó `robots.txt` y se aseguraron los headers correctos en los templates custom.
+
+### Arquitectura de Archivos (Refactorizada)
+- `/theme-loscocos-child/`: Tema limpio.
+    - `page-cart.php`: Template del carrito optimizado.
+    - `assets/css/premium-cart.css`: Estilos unificados.
+- `/metrics_and_scripts/`: Scripts de mantenimiento y auditoría (Python/PHP).
+
+---
+
 ## 🎉 PROYECTO COMPLETADO - OCTUBRE 2025
 
 ### ✅ TODOS LOS OBJETIVOS SUPERADOS 🏆
@@ -289,6 +308,57 @@ Se ejecutó el script `wc_image_automation.py` directamente en el servidor de pr
 - **Trust signals** (testimonios implícitos, garantías)
 - **Proceso de checkout optimizado** (una página, pocos pasos)
 - **Incentivos** (envío gratis, descuentos por método de pago)
+
+## 🛒 Page Template Checkout Fix (Enero 2026)
+
+### ✅ Problema Resuelto: Checkout Mostraba Homepage en lugar del Formulario
+
+**Problema:** El checkout (y carrito) mostraba contenido de la página principal en vez del formulario de WooCommerce.
+
+**Causa:** El tema hijo (`theme-loscocos-child`) no tenía un template `page.php`, lo que causaba que WordPress usara templates incorrectos para páginas WooCommerce.
+
+**Solución:** 
+- Creado `page.php` en el tema hijo con llamada correcta a `the_content()`
+- Esto permite que el shortcode `[woocommerce_checkout]` se renderice correctamente
+
+**Archivo creado:** `theme-loscocos-child/page.php`
+
+**Verificación:**
+- ✅ Checkout muestra formulario completo (billing, resumen, métodos de pago)
+- ✅ Carrito muestra lista de productos correctamente
+- ✅ Diseño premium aplicado en ambas páginas
+
+---
+
+## 🛠️ Resolución de Bugs Críticos (Enero 2026)
+
+### ✅ Reparación de Bloqueo en Checkout (10 de Enero 2026)
+
+**Descripción del Problema:**
+El checkout de WooCommerce no procesaba pedidos (el botón "Realizar el pedido" no hacía nada). Se identificó que jQuery y todos los scripts dependientes de WooCommerce no se cargaban en el frontend.
+
+**Causa Raíz:**
+El tema padre (`theme-loscocos`) desregistraba `jquery-migrate` en `functions.php`, pero no actualizaba el array de dependencias del handle `jquery`. Al faltar una dependencia, WordPress bloqueaba la impresión de `jquery.js`, rompiendo la funcionalidad de WooCommerce.
+
+**Solución Aplicada:**
+Se modificó la función `loscocos_remove_jquery_migrate` en `theme-loscocos/functions.php` para actualizar dinámicamente las dependencias de `jquery`:
+
+```php
+global $wp_scripts;
+if (isset($wp_scripts->registered['jquery'])) {
+    $wp_scripts->registered['jquery']->deps = array_diff(
+        $wp_scripts->registered['jquery']->deps, 
+        array('jquery-migrate')
+    );
+}
+```
+
+**Pasos de Verificación:**
+1. ✅ Verificación de carga de `jQuery 3.7.1` en consola.
+2. ✅ Verificación de presencia de `wc_checkout_params`.
+3. ✅ Prueba de pedido exitosa (#61133).
+
+---
 
 ## 🗂️ Estructura del Proyecto (Enero 2025 - Refactorizado)
 
