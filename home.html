@@ -495,6 +495,137 @@
           .icon-small { font-size: 1.25rem; }
           .icon-medium { font-size: 1.5rem; }
           .icon-large { font-size: 3rem; }
+
+          /* ========== Home Banner Plugin (WIP) ========== */
+          #home-wip-banner {
+            background: linear-gradient(135deg, #065f46 0%, #047857 40%, #059669 100%);
+            border-bottom: 3px solid #34d399;
+            overflow: hidden;
+            animation: wip-banner-slide-in 0.5s ease-out;
+          }
+
+          @keyframes wip-banner-slide-in {
+            from { max-height: 0; opacity: 0; }
+            to   { max-height: 300px; opacity: 1; }
+          }
+
+          #home-wip-banner.wip-banner-hiding {
+            animation: wip-banner-slide-out 0.4s ease-in forwards;
+          }
+
+          @keyframes wip-banner-slide-out {
+            from { max-height: 300px; opacity: 1; }
+            to   { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+          }
+
+          .wip-banner-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+          }
+
+          .wip-banner-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            animation: wip-sprout 2s ease-in-out infinite;
+          }
+
+          @keyframes wip-sprout {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50%      { transform: scale(1.15) rotate(5deg); }
+          }
+
+          .wip-banner-content {
+            flex: 1;
+          }
+
+          .wip-banner-title {
+            color: #ffffff;
+            font-family: "Poppins", "Inter", sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem;
+            line-height: 1.3;
+          }
+
+          .wip-banner-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            margin: 0 0 0.75rem;
+            line-height: 1.5;
+          }
+
+          .wip-banner-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          }
+
+          .wip-banner-cta:hover {
+            background: #1ebe5d;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+          }
+
+          .wip-banner-wa-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+
+          .wip-banner-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+          }
+
+          .wip-banner-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+          }
+
+          @media (max-width: 640px) {
+            .wip-banner-inner {
+              flex-direction: column;
+              text-align: center;
+              padding: 1rem;
+              gap: 0.75rem;
+            }
+            .wip-banner-icon { font-size: 2rem; }
+            .wip-banner-title { font-size: 1.05rem; }
+            .wip-banner-subtitle { font-size: 0.875rem; }
+            .wip-banner-close {
+              position: absolute;
+              top: 0.5rem;
+              right: 0.5rem;
+              width: 1.75rem;
+              height: 1.75rem;
+              font-size: 1.2rem;
+            }
+            #home-wip-banner { position: relative; }
+          }
+          /* ========== / Home Banner Plugin ========== */
         </style>
     </head>
     <body class="bg-[var(--secondary-color)]">
@@ -1760,4 +1891,6 @@
         </div>
       </div>
     </div>
+    <!-- Home Banner Plugin: banner temporal mientras se terminan los productos -->
+    <script src="js/home-banner-plugin.js"></script>
     </body></html>
