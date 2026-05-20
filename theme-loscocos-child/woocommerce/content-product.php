@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying product content within loops
+ * Product card for catalog loops.
  *
  * @package WooCommerce\Templates
  * @version 3.6.0
@@ -10,61 +10,91 @@ defined('ABSPATH') || exit;
 
 global $product;
 
-// Ensure visibility
 if (empty($product) || !$product->is_visible()) {
     return;
 }
+
+$product_id = $product->get_id();
+$product_url = get_permalink($product_id);
+$image_attrs = array(
+    'class' => 'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
+    'loading' => 'lazy',
+);
+$image = $product->get_image_id()
+    ? wp_get_attachment_image($product->get_image_id(), 'woocommerce_thumbnail', false, $image_attrs)
+    : '<img src="' . esc_url(wc_placeholder_img_src('woocommerce_thumbnail')) . '" alt="' . esc_attr($product->get_name()) . '" class="' . esc_attr($image_attrs['class']) . '" loading="lazy">';
+$categories = wp_get_post_terms($product_id, 'product_cat');
+$category_name = ($categories && !is_wp_error($categories)) ? $categories[0]->name : '';
+$short_description = wp_trim_words(wp_strip_all_tags($product->get_short_description()), 14, '...');
+$is_quick_add = $product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock();
 ?>
-<li <?php wc_product_class('group relative bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200 border border-gray-100', $product); ?>>
-    <?php
-    /**
-     * Hook: woocommerce_before_shop_loop_item.
-     *
-     * @hooked woocommerce_template_loop_product_link_open - 10
-     */
-    do_action('woocommerce_before_shop_loop_item');
 
-    /**
-     * Hook: woocommerce_before_shop_loop_item_title.
-     *
-     * @hooked woocommerce_show_product_loop_sale_flash - 10
-     * @hooked woocommerce_template_loop_product_thumbnail - 10
-     */
-    echo '<div class="relative overflow-hidden bg-gray-50 aspect-w-1 aspect-h-1">';
-    do_action('woocommerce_before_shop_loop_item_title');
-    echo '</div>';
+<li <?php wc_product_class('group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg', $product); ?>>
+    <a href="<?php echo esc_url($product_url); ?>" class="relative block aspect-square overflow-hidden bg-neutral-100">
+        <?php echo wp_kses_post($image); ?>
 
-    echo '<div class="p-4">';
-    
-    /**
-     * Hook: woocommerce_shop_loop_item_title.
-     *
-     * @hooked woocommerce_template_loop_product_title - 10
-     */
-    echo '<h2 class="text-lg font-medium text-gray-900 mb-2 hover:text-green-600 transition-colors">';
-    do_action('woocommerce_shop_loop_item_title');
-    echo '</h2>';
+        <div class="absolute left-3 top-3 flex flex-col gap-2">
+            <?php if ($product->is_on_sale()) : ?>
+                <span class="rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Oferta</span>
+            <?php elseif ($product->is_featured()) : ?>
+                <span class="rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Destacado</span>
+            <?php endif; ?>
+        </div>
 
-    /**
-     * Hook: woocommerce_after_shop_loop_item_title.
-     *
-     * @hooked woocommerce_template_loop_rating - 5
-     * @hooked woocommerce_template_loop_price - 10
-     */
-    echo '<div class="mt-2">';
-    do_action('woocommerce_after_shop_loop_item_title');
-    echo '</div>';
+        <?php if (!$product->is_in_stock()) : ?>
+            <span class="absolute right-3 top-3 rounded-full bg-neutral-dark px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Agotado</span>
+        <?php endif; ?>
+    </a>
 
-    echo '</div>';
+    <div class="flex flex-1 flex-col p-5">
+        <?php if ($category_name) : ?>
+            <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-primary-light">
+                <?php echo esc_html($category_name); ?>
+            </p>
+        <?php endif; ?>
 
-    /**
-     * Hook: woocommerce_after_shop_loop_item.
-     *
-     * @hooked woocommerce_template_loop_product_link_close - 5
-     * @hooked woocommerce_template_loop_add_to_cart - 10
-     */
-    echo '<div class="px-4 pb-4">';
-    do_action('woocommerce_after_shop_loop_item');
-    echo '</div>';
-    ?>
+        <h2 class="mb-3 min-h-[3.5rem] text-lg font-bold leading-snug text-primary-dark">
+            <a href="<?php echo esc_url($product_url); ?>" class="hover:text-accent">
+                <?php echo esc_html($product->get_name()); ?>
+            </a>
+        </h2>
+
+        <p class="mb-5 min-h-[2.75rem] text-sm leading-relaxed text-neutral-medium">
+            <?php echo $short_description ? esc_html($short_description) : 'Producto seleccionado por Vivero Los Cocos.'; ?>
+        </p>
+
+        <div class="mt-auto">
+            <div class="mb-4 flex items-end justify-between gap-3">
+                <div class="text-xl font-extrabold text-neutral-dark">
+                    <?php echo wp_kses_post($product->get_price_html()); ?>
+                </div>
+                <?php if ($product->is_in_stock()) : ?>
+                    <span class="rounded-full bg-secondary-light px-3 py-1 text-xs font-semibold text-primary-dark">En stock</span>
+                <?php else : ?>
+                    <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-medium">Sin stock</span>
+                <?php endif; ?>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2">
+                <?php if ($is_quick_add) : ?>
+                    <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
+                       data-quantity="1"
+                       data-product_id="<?php echo esc_attr($product_id); ?>"
+                       data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
+                       class="button product_type_simple add_to_cart_button ajax_add_to_cart inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-dark">
+                        Agregar al carrito
+                    </a>
+                <?php else : ?>
+                    <a href="<?php echo esc_url($product_url); ?>"
+                       class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-dark">
+                        Ver producto
+                    </a>
+                <?php endif; ?>
+
+                <a href="<?php echo esc_url($product_url); ?>" class="inline-flex min-h-[40px] items-center justify-center rounded-full border border-neutral-200 px-5 py-2 text-sm font-semibold text-neutral-dark transition-colors hover:border-primary hover:text-primary">
+                    Detalles y cuidados
+                </a>
+            </div>
+        </div>
+    </div>
 </li>

@@ -1,0 +1,3459 @@
+{
+  "generated_at": "2026-05-16T22:25:53.157055+00:00",
+  "mode": "manifest_only",
+  "count": 30,
+  "product_ids": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "updates": [
+    {
+      "short_description": "Maceta Plástica Rocío 6 cm. Color: Amarillo: maceta o contenedor de plastico en medida 6 cm y color Amarillo.",
+      "description": "<p>Maceta Plástica Rocío 6 cm. Color: Amarillo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 6 cm.</li><li>Material: Plastico.</li><li>Color: Amarillo.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "6 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Amarillo"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Amarillo"
+      ],
+      "category_hint": "macetas",
+      "product_id": 11,
+      "sku": "MTAPCAC6AM",
+      "name": "Maceta Plástica Rocío 6 cm. Color: Amarillo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 6 cm. Color: Amarillo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 6 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Amarillo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "6 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Amarillo"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 67,
+            "name": "Amarillo",
+            "slug": "amarillo"
+          },
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 6 cm. Color: Marrón Terracota: maceta o contenedor de plastico en medida 6 cm y color Marron Terracota.",
+      "description": "<p>Maceta Plástica Rocío 6 cm. Color: Marrón Terracota es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 6 cm.</li><li>Material: Plastico.</li><li>Color: Marron Terracota.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "6 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Marron Terracota"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Marron Terracota"
+      ],
+      "category_hint": "macetas",
+      "product_id": 12,
+      "sku": "MTAPCAC6MT",
+      "name": "Maceta Plástica Rocío 6 cm. Color: Marrón Terracota",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 6 cm. Color: Marrón Terracota. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 6 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Marrón Terracota<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "6 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Marron Terracota"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 98,
+            "name": "Marron terracota",
+            "slug": "marron-terracota"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 6 cm. Color: Verde Claro: maceta o contenedor de plastico en medida 6 cm y color Verde Claro.",
+      "description": "<p>Maceta Plástica Rocío 6 cm. Color: Verde Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 6 cm.</li><li>Material: Plastico.</li><li>Color: Verde Claro.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "6 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Verde Claro"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Verde Claro"
+      ],
+      "category_hint": "macetas",
+      "product_id": 13,
+      "sku": "MTAPCAC6VC",
+      "name": "Maceta Plástica Rocío 6 cm. Color: Verde Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 6 cm. Color: Verde Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 6 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Verde Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "6 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Verde Claro"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 97,
+            "name": "Verde claro",
+            "slug": "verde-claro"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 6 cm. Color: Naranja: maceta o contenedor de plastico en medida 6 cm y color Naranja.",
+      "description": "<p>Maceta Plástica Rocío 6 cm. Color: Naranja es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 6 cm.</li><li>Material: Plastico.</li><li>Color: Naranja.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "6 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Naranja"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Naranja"
+      ],
+      "category_hint": "macetas",
+      "product_id": 14,
+      "sku": "MTAPCAC6NA",
+      "name": "Maceta Plástica Rocío 6 cm. Color: Naranja",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 6 cm. Color: Naranja. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 6 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Naranja<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "6 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Naranja"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 66,
+            "name": "Naranja",
+            "slug": "naranja"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 6 cm. Color: Rojo: maceta o contenedor de plastico en medida 6 cm y color Rojo.",
+      "description": "<p>Maceta Plástica Rocío 6 cm. Color: Rojo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 6 cm.</li><li>Material: Plastico.</li><li>Color: Rojo.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "6 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Rojo"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Rojo"
+      ],
+      "category_hint": "macetas",
+      "product_id": 15,
+      "sku": "MTAPCAC6R",
+      "name": "Maceta Plástica Rocío 6 cm. Color: Rojo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 6 cm. Color: Rojo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 6 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Rojo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "6 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Rojo"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 65,
+            "name": "Rojo",
+            "slug": "rojo"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 8 cm. Color: Verde Claro: maceta o contenedor de plastico en medida 8 cm y color Verde Claro.",
+      "description": "<p>Maceta Plástica Rocío 8 cm. Color: Verde Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 8 cm.</li><li>Material: Plastico.</li><li>Color: Verde Claro.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "8 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Verde Claro"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Verde Claro"
+      ],
+      "category_hint": "macetas",
+      "product_id": 16,
+      "sku": "MTAPCAC8VC",
+      "name": "Maceta Plástica Rocío 8 cm. Color: Verde Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 8 cm. Color: Verde Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 8 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Verde Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "8 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Verde Claro"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 97,
+            "name": "Verde claro",
+            "slug": "verde-claro"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 8 cm. Color: Marrón Terracota: maceta o contenedor de plastico en medida 8 cm y color Marron Terracota.",
+      "description": "<p>Maceta Plástica Rocío 8 cm. Color: Marrón Terracota es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 8 cm.</li><li>Material: Plastico.</li><li>Color: Marron Terracota.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "8 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Marron Terracota"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Marron Terracota"
+      ],
+      "category_hint": "macetas",
+      "product_id": 17,
+      "sku": "MTAPCAC8MT",
+      "name": "Maceta Plástica Rocío 8 cm. Color: Marrón Terracota",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 8 cm. Color: Marrón Terracota. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 8 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Marrón Terracota<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "8 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Marron Terracota"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 98,
+            "name": "Marron terracota",
+            "slug": "marron-terracota"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 8 cm. Color: Rojo: maceta o contenedor de plastico en medida 8 cm y color Rojo.",
+      "description": "<p>Maceta Plástica Rocío 8 cm. Color: Rojo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 8 cm.</li><li>Material: Plastico.</li><li>Color: Rojo.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "8 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Rojo"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Rojo"
+      ],
+      "category_hint": "macetas",
+      "product_id": 18,
+      "sku": "MTAPCAC8R",
+      "name": "Maceta Plástica Rocío 8 cm. Color: Rojo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 8 cm. Color: Rojo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 8 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Rojo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "8 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Rojo"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 65,
+            "name": "Rojo",
+            "slug": "rojo"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Rocío 8 cm. Color: Violeta: maceta o contenedor de plastico en medida 8 cm y color Violeta.",
+      "description": "<p>Rocío 8 cm. Color: Violeta es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 8 cm.</li><li>Material: Plastico.</li><li>Color: Violeta.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "8 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Violeta"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Violeta"
+      ],
+      "category_hint": "macetas",
+      "product_id": 19,
+      "sku": "MTAPCAC8VI",
+      "name": "Rocío 8 cm. Color: Violeta",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 8 cm. Color: Violeta. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 8 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Violeta<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "8 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Violeta"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 148,
+            "name": "PLANTAS",
+            "slug": "plantas"
+          },
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 64,
+            "name": "Violeta",
+            "slug": "violeta"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 8 cm. Color: Amarillo: maceta o contenedor de plastico en medida 8 cm y color Amarillo.",
+      "description": "<p>Maceta Plástica Rocío 8 cm. Color: Amarillo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 8 cm.</li><li>Material: Plastico.</li><li>Color: Amarillo.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "8 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Amarillo"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Amarillo"
+      ],
+      "category_hint": "macetas",
+      "product_id": 20,
+      "sku": "MTAPCAC8AM",
+      "name": "Maceta Plástica Rocío 8 cm. Color: Amarillo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 8 cm. Color: Amarillo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 8 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Amarillo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "8 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Amarillo"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 67,
+            "name": "Amarillo",
+            "slug": "amarillo"
+          },
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 10 cm. Color: Violeta: maceta o contenedor de plastico en medida 10 cm y color Violeta.",
+      "description": "<p>Maceta Plástica Rocío 10 cm. Color: Violeta es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 10 cm.</li><li>Material: Plastico.</li><li>Color: Violeta.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "10 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Violeta"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Violeta"
+      ],
+      "category_hint": "macetas",
+      "product_id": 21,
+      "sku": "MTAPCAC10VI",
+      "name": "Maceta Plástica Rocío 10 cm. Color: Violeta",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 10 cm. Color: Violeta. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 10 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Violeta<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "10 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Violeta"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 64,
+            "name": "Violeta",
+            "slug": "violeta"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 10 cm. Color: Verde Claro: maceta o contenedor de plastico en medida 10 cm y color Verde Claro.",
+      "description": "<p>Maceta Plástica Rocío 10 cm. Color: Verde Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 10 cm.</li><li>Material: Plastico.</li><li>Color: Verde Claro.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "10 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Verde Claro"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Verde Claro"
+      ],
+      "category_hint": "macetas",
+      "product_id": 22,
+      "sku": "MTAPCAC10VC",
+      "name": "Maceta Plástica Rocío 10 cm. Color: Verde Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 10 cm. Color: Verde Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 10 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Verde Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "10 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Verde Claro"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 148,
+            "name": "PLANTAS",
+            "slug": "plantas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 97,
+            "name": "Verde claro",
+            "slug": "verde-claro"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 10 cm. Color: Amarillo: maceta o contenedor de plastico en medida 10 cm y color Amarillo.",
+      "description": "<p>Maceta Plástica Rocío 10 cm. Color: Amarillo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 10 cm.</li><li>Material: Plastico.</li><li>Color: Amarillo.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "10 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Amarillo"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Amarillo"
+      ],
+      "category_hint": "macetas",
+      "product_id": 23,
+      "sku": "MTAPCAC10AM",
+      "name": "Maceta Plástica Rocío 10 cm. Color: Amarillo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 10 cm. Color: Amarillo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 10 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Amarillo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "10 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Amarillo"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 67,
+            "name": "Amarillo",
+            "slug": "amarillo"
+          },
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 10 cm. Color: Naranja: maceta o contenedor de plastico en medida 10 cm y color Naranja.",
+      "description": "<p>Maceta Plástica Rocío 10 cm. Color: Naranja es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 10 cm.</li><li>Material: Plastico.</li><li>Color: Naranja.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "10 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Naranja"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Naranja"
+      ],
+      "category_hint": "macetas",
+      "product_id": 24,
+      "sku": "MTAPCAC10NA",
+      "name": "Maceta Plástica Rocío 10 cm. Color: Naranja",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 10 cm. Color: Naranja. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 10 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Naranja<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "10 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Naranja"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 66,
+            "name": "Naranja",
+            "slug": "naranja"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Marrón Claro: maceta o contenedor de plastico en medida 12 cm y color Marron clara.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Marrón Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Marron clara.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Marron clara"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Marron clara"
+      ],
+      "category_hint": "macetas",
+      "product_id": 25,
+      "sku": "MTAPR12MC",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Marrón Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Marrón Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Marrón Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Marron clara"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 99,
+            "name": "Marron clara",
+            "slug": "marron-clara"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Marrón Terracota: maceta o contenedor de plastico en medida 12 cm y color Marron terracota.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Marrón Terracota es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Marron terracota.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Marron terracota"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Marron terracota"
+      ],
+      "category_hint": "macetas",
+      "product_id": 26,
+      "sku": "MTAPR12MT",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Marrón Terracota",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Marrón Terracota. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Marrón Terracota<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Marron terracota"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 98,
+            "name": "Marron terracota",
+            "slug": "marron-terracota"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Amarillo: maceta o contenedor de plastico en medida 12 cm y color Amarilla.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Amarillo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Amarilla.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Amarilla"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Amarilla"
+      ],
+      "category_hint": "macetas",
+      "product_id": 27,
+      "sku": "MTAPR12AM",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Amarillo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Amarillo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Amarillo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Amarilla"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 91,
+            "name": "Amarilla",
+            "slug": "amarilla"
+          },
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Naranja: maceta o contenedor de plastico en medida 12 cm y color Naranja.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Naranja es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Naranja.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Naranja"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Naranja"
+      ],
+      "category_hint": "macetas",
+      "product_id": 28,
+      "sku": "MTAPR12NA",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Naranja",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Naranja. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Naranja<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Naranja"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 66,
+            "name": "Naranja",
+            "slug": "naranja"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Verde Claro: maceta o contenedor de plastico en medida 12 cm y color Verde Claro.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Verde Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Verde Claro.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Verde Claro"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Verde Claro"
+      ],
+      "category_hint": "macetas",
+      "product_id": 29,
+      "sku": "MTAPR12VC",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Verde Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Verde Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Verde Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Verde Claro"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 97,
+            "name": "Verde claro",
+            "slug": "verde-claro"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Rojo: maceta o contenedor de plastico en medida 12 cm y color Roja.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Rojo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Roja.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Roja"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Roja"
+      ],
+      "category_hint": "macetas",
+      "product_id": 30,
+      "sku": "MTAPR12R",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Rojo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Rojo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Rojo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Roja"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 96,
+            "name": "Roja",
+            "slug": "roja"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Verde Claro: maceta o contenedor de plastico en medida 12 cm y color Violeta.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Verde Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Violeta.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Violeta"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Violeta"
+      ],
+      "category_hint": "macetas",
+      "product_id": 31,
+      "sku": "MTAR12VC",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Verde Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Verde Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Verde Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Violeta"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 64,
+            "name": "Violeta",
+            "slug": "violeta"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 12 cm. Color: Negro: maceta o contenedor de plastico en medida 12 cm y color Negra.",
+      "description": "<p>Maceta Plástica Rocío 12 cm. Color: Negro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 12 cm.</li><li>Material: Plastico.</li><li>Color: Negra.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "12 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Negra"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Negra"
+      ],
+      "category_hint": "macetas",
+      "product_id": 32,
+      "sku": "MTAPR12NE",
+      "name": "Maceta Plástica Rocío 12 cm. Color: Negro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 12 cm. Color: Negro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 12 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Negro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "12 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Negra"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 95,
+            "name": "Negra",
+            "slug": "negra"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Marrón Claro: maceta o contenedor de plastico en medida 14 cm y color Marron Clara.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Marrón Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Marron Clara.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Marron Clara"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Marron Clara"
+      ],
+      "category_hint": "macetas",
+      "product_id": 33,
+      "sku": "MTAPR14MC",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Marrón Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Marrón Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Marrón Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Marron Clara"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 99,
+            "name": "Marron clara",
+            "slug": "marron-clara"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Marrón Terracota: maceta o contenedor de plastico en medida 14 cm y color Marron terracota.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Marrón Terracota es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Marron terracota.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Marron terracota"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Marron terracota"
+      ],
+      "category_hint": "macetas",
+      "product_id": 34,
+      "sku": "MTAPR14MT",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Marrón Terracota",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Marrón Terracota. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Marrón Terracota<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Marron terracota"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 98,
+            "name": "Marron terracota",
+            "slug": "marron-terracota"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Amarillo: maceta o contenedor de plastico en medida 14 cm y color Amarilla.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Amarillo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Amarilla.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Amarilla"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Amarilla"
+      ],
+      "category_hint": "macetas",
+      "product_id": 35,
+      "sku": "MTAPR14AM",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Amarillo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Amarillo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Amarillo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Amarilla"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 91,
+            "name": "Amarilla",
+            "slug": "amarilla"
+          },
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Rocío Naranja 15cm - Plástico Premium para Plantas: maceta o contenedor de plastico en medida 14 cm y color Naranja.",
+      "description": "<p>Maceta Rocío Naranja 15cm - Plástico Premium para Plantas es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Naranja.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Naranja"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Naranja"
+      ],
+      "category_hint": "macetas",
+      "product_id": 36,
+      "sku": "MTAPR14NA",
+      "name": "Maceta Rocío Naranja 15cm - Plástico Premium para Plantas",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>TA Plastic – Rocio Naranja &#8211; Producto de Vivero es un producto de calidad para tu vivero. Producto de alta calidad, ideal para jardinería y decoración. Disponible para entrega en Mendoza y alrededores.</p>\n",
+        "description": "<h3>Maceta Rocío Naranja - Diseño y Funcionalidad</h3>\n<p>La maceta Rocío en color naranja es la elección perfecta para darle vida y color a tus espacios. Fabricada en plástico de alta calidad resistente a los rayos UV, garantiza durabilidad tanto en interiores como exteriores.</p>\n<h4>Características principales:</h4>\n<ul>\n<li>✓ Diámetro: 15cm - ideal para plantas pequeñas y medianas</li>\n<li>✓ Material: Plástico premium resistente a UV y cambios climáticos</li>\n<li>✓ Sistema de drenaje integrado para evitar encharcamiento</li>\n<li>✓ Color naranja vibrante que no se decolora con el sol</li>\n<li>✓ Peso ligero, fácil de mover y reorganizar</li>\n</ul>\n<h4>Usos recomendados:</h4>\n<p>Perfecta para suculentas, cactus, aromáticas, violetas africanas y plantas de interior. Su diseño moderno combina con cualquier estilo decorativo.</p>\n<h4>Cuidados del producto:</h4>\n<p>Limpiar con paño húmedo. Resistente a temperaturas de -5°C a 50°C. Apta para clima argentino en todas las estaciones.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Naranja"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 66,
+            "name": "Naranja",
+            "slug": "naranja"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Verde Claro: maceta o contenedor de plastico en medida 14 cm y color Verde Claro.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Verde Claro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Verde Claro.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Verde Claro"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Verde Claro"
+      ],
+      "category_hint": "macetas",
+      "product_id": 37,
+      "sku": "MTAPR14VC",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Verde Claro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Verde Claro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Verde Claro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Verde Claro"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 97,
+            "name": "Verde claro",
+            "slug": "verde-claro"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Rojo: maceta o contenedor de plastico en medida 14 cm y color Roja.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Rojo es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Roja.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Roja"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Roja"
+      ],
+      "category_hint": "macetas",
+      "product_id": 38,
+      "sku": "MTAPR14R",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Rojo",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Rojo. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Rojo<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Roja"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 96,
+            "name": "Roja",
+            "slug": "roja"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Violeta: maceta o contenedor de plastico en medida 14 cm y color Violeta.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Violeta es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Violeta.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Violeta"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Violeta"
+      ],
+      "category_hint": "macetas",
+      "product_id": 39,
+      "sku": "MTAPR14VI",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Violeta",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Violeta. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Violeta<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Violeta"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          },
+          {
+            "id": 64,
+            "name": "Violeta",
+            "slug": "violeta"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Maceta Plástica Rocío 14 cm. Color: Negro: maceta o contenedor de plastico en medida 14 cm y color Negra.",
+      "description": "<p>Maceta Plástica Rocío 14 cm. Color: Negro es un accesorio pensado para ordenar, sostener o presentar plantas de manera practica en espacios interiores y exteriores.</p>\n<h3>Caracteristicas principales</h3>\n<ul><li>Medida: 14 cm.</li><li>Material: Plastico.</li><li>Color: Negra.</li><li>Uso recomendado: jardin, balcon, patio, interior luminoso o vivero.</li></ul>\n<p>Combiná este producto con plantas de tamaño compatible para lograr una presentación prolija, estable y fácil de mantener.</p>",
+      "attributes": [
+        {
+          "name": "Material",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Plastico"
+          ]
+        },
+        {
+          "name": "Medida",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "14 cm"
+          ]
+        },
+        {
+          "name": "Color",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Negra"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_material_maceta",
+          "value": "plastico"
+        },
+        {
+          "key": "_loscocos_drenaje",
+          "value": "con_agujero"
+        }
+      ],
+      "tags": [
+        "Macetas y accesorios",
+        "Plastico",
+        "Negra"
+      ],
+      "category_hint": "macetas",
+      "product_id": 40,
+      "sku": "MTAPR14NE",
+      "name": "Maceta Plástica Rocío 14 cm. Color: Negro",
+      "product_kind": "pot_or_accessory",
+      "previous": {
+        "short_description": "<p>Maceta Plástica Rocío 14 cm. Color: Negro. Producto de calidad para tu jardín. Vivero Los Cocos, Mendoza, Argentina.</p>\n",
+        "description": "<p>Maceta Plástica Rocío 14 cm es una maceta de alta calidad, perfecta para tus plantas y flores. Diseñada para ofrecer el espacio óptimo para el desarrollo de raíces.</p>\n<p>Características técnicas:<br />\n- Tamaño: varios tamaños disponibles<br />\n- Material: Plástico de alta calidad<br />\n- Color: Negro<br />\n- Uso: interior y exterior</p>\n<p>Ideal para:<br />\n- Plantas ornamentales<br />\n- Flores de estación<br />\n- Hierbas aromáticas<br />\n- Suculentas y cactus</p>\n<p>Calidad garantizada:<br />\nEn Vivero Los Cocos seleccionamos cuidadosamente cada maceta para asegurar durabilidad y funcionalidad. Plástico de alta calidad de primera calidad que resiste las condiciones climáticas de Mendoza.</p>\n<p>Combiná esta maceta con nuestras plantas para crear composiciones espectaculares. Tenemos el conocimiento para ayudarte a elegir la combinación perfecta planta-maceta según tus necesidades.</p>\n<p>Stock disponible para entrega inmediata. Comprá online y recibí en tu domicilio o retirá por nuestro vivero.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "paño",
+            "slug": "paño",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "14 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "color",
+            "slug": "color",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Negra"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 15,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ],
+        "tags": [
+          {
+            "id": 92,
+            "name": "Color",
+            "slug": "color"
+          },
+          {
+            "id": 83,
+            "name": "Maceta",
+            "slug": "maceta"
+          },
+          {
+            "id": 95,
+            "name": "Negra",
+            "slug": "negra"
+          },
+          {
+            "id": 85,
+            "name": "Paño",
+            "slug": "pano"
+          },
+          {
+            "id": 71,
+            "name": "Uncategorized",
+            "slug": "uncategorized"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    }
+  ]
+}

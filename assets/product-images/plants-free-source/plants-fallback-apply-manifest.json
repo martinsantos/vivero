@@ -1,0 +1,30 @@
+[
+  {
+    "product_id": 433,
+    "file": "dracaena-fragrans-houseplant.webp",
+    "alt": "Planta Warnem 12 Litros - imagen representativa de dracena en Vivero Los Cocos",
+    "source_type": "wikimedia_commons_free_license_fallback",
+    "species": "Dracaena fragrans"
+  },
+  {
+    "product_id": 438,
+    "file": "dracaena-fragrans-houseplant.webp",
+    "alt": "Planta Warnem 14 Litros - imagen representativa de dracena en Vivero Los Cocos",
+    "source_type": "wikimedia_commons_free_license_fallback",
+    "species": "Dracaena fragrans"
+  },
+  {
+    "product_id": 468,
+    "file": "yucca-gigantea-houseplant.webp",
+    "alt": "Planta Ara 3 Litros - imagen representativa de planta ornamental en Vivero Los Cocos",
+    "source_type": "wikimedia_commons_free_license_fallback",
+    "species": "ornamental plant fallback"
+  },
+  {
+    "product_id": 528,
+    "file": "schinus-molle-tree.webp",
+    "alt": "Árbol Arabia 15 Litros - imagen representativa de árbol ornamental en Vivero Los Cocos",
+    "source_type": "wikimedia_commons_free_license_fallback",
+    "species": "ornamental tree fallback"
+  }
+]

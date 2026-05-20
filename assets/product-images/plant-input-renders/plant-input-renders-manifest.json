@@ -1,0 +1,135 @@
+[
+  {
+    "product_id": 381,
+    "file": "381-tprep25.webp",
+    "alt": "Planta Tprep 25 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "tierra"
+  },
+  {
+    "product_id": 382,
+    "file": "382-tprep10.webp",
+    "alt": "Planta Tprep 10 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "tierra"
+  },
+  {
+    "product_id": 383,
+    "file": "383-tprep6.webp",
+    "alt": "Planta Tprep 6 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "tierra"
+  },
+  {
+    "product_id": 384,
+    "file": "384-turba25.webp",
+    "alt": "Planta Turba 25 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "turba"
+  },
+  {
+    "product_id": 385,
+    "file": "385-guano25.webp",
+    "alt": "Planta Guano 25 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "guano"
+  },
+  {
+    "product_id": 386,
+    "file": "386-sustint10.webp",
+    "alt": "Planta Sustint 10 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "sustrato"
+  },
+  {
+    "product_id": 387,
+    "file": "387-sustgsol10.webp",
+    "alt": "Planta Sustgsol 10 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "sustrato"
+  },
+  {
+    "product_id": 388,
+    "file": "388-sustcacysuc3.webp",
+    "alt": "Planta Sustcacysuc 3 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "sustrato"
+  },
+  {
+    "product_id": 389,
+    "file": "389-hum2.webp",
+    "alt": "Planta Hum 2 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "humus"
+  },
+  {
+    "product_id": 390,
+    "file": "390-hum40.webp",
+    "alt": "Planta Hum 40 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "humus"
+  },
+  {
+    "product_id": 391,
+    "file": "391-chip2.webp",
+    "alt": "Planta Chip 2 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "chip"
+  },
+  {
+    "product_id": 392,
+    "file": "392-chip25.webp",
+    "alt": "Planta Chip 25 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "chip"
+  },
+  {
+    "product_id": 393,
+    "file": "393-chip70.webp",
+    "alt": "Planta Chip 70 cm - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "chip"
+  },
+  {
+    "product_id": 394,
+    "file": "394-turbar2.webp",
+    "alt": "Planta Turbar 2 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "turba"
+  },
+  {
+    "product_id": 395,
+    "file": "395-perlitaexp1.webp",
+    "alt": "Planta Perlitaexp 1 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "perlita"
+  },
+  {
+    "product_id": 396,
+    "file": "396-perlitaexp2.webp",
+    "alt": "Planta Perlitaexp 2 Litros - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "perlita"
+  },
+  {
+    "product_id": 397,
+    "file": "397-hierro500.webp",
+    "alt": "Planta Hierro 500 cm - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "hierro"
+  },
+  {
+    "product_id": 398,
+    "file": "398-nfoska500.webp",
+    "alt": "Planta Nfoska 500 cm - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "fertilizante"
+  },
+  {
+    "product_id": 399,
+    "file": "399-triple500.webp",
+    "alt": "Planta Triple 500 cm - Producto de Vivero - imagen referencial de insumo para cultivo en Vivero Los Cocos",
+    "source_type": "owned_neutral_package_render",
+    "kind": "fertilizante"
+  }
+]

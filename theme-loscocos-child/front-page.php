@@ -1,417 +1,352 @@
 <?php
 /**
- * The template for displaying the front page
+ * Commerce-first front page.
  *
  * @package Los_Cocos_Child
  */
 
-get_header(); ?>
+get_header();
 
-<main id="primary" class="site-main">
+$shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/tienda/');
+$whatsapp_url = 'https://wa.me/5402614399025';
+$hero_image_url = 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1600&q=88';
+$hero_product = function_exists('wc_get_product') ? wc_get_product(467) : null;
+if ($hero_product instanceof WC_Product && $hero_product->get_image_id()) {
+    $hero_image = wp_get_attachment_image_url($hero_product->get_image_id(), 'large');
+    if ($hero_image) {
+        $hero_image_url = $hero_image;
+    }
+}
 
-    <!-- Hero Section -->
-    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                alt="Lush Greenhouse"
-                class="w-full h-full object-cover object-center transform scale-105 animate-slow-zoom">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
-        </div>
+$primary_categories = get_terms(array(
+    'taxonomy' => 'product_cat',
+    'hide_empty' => true,
+    'parent' => 0,
+    'number' => 6,
+    'orderby' => 'count',
+    'order' => 'DESC',
+    'exclude' => array((int) get_option('default_product_cat')),
+));
 
-        <!-- Content -->
-        <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto" data-aos="fade-up">
-            <span
-                class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-sm font-medium tracking-wider mb-6 border border-white/30">
-                EST. 2024 • MENDOZA
-            </span>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight">
-                Vida Verde <br /><span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-secondary-light to-white">Para Tu
-                    Hogar</span>
-            </h1>
-            <p class="text-lg md:text-2xl mb-10 max-w-2xl mx-auto font-light text-white/90 leading-relaxed">
-                Transformamos espacios con plantas seleccionadas y macetas de diseño. Calidad premium para tu jardín
-                interior.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>"
-                    class="group relative px-8 py-4 bg-primary hover:bg-primary-dark text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-primary/50 overflow-hidden">
-                    <span class="relative z-10 flex items-center gap-2">
-                        Ver Colección
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </span>
-                </a>
-                <a href="#featured"
-                    class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-medium rounded-full transition-all duration-300 border border-white/30 hover:border-white/50">
-                    Explorar Tendencias
-                </a>
-            </div>
-        </div>
+if (!function_exists('loscocos_front_category_image')) {
+    /**
+     * Return an image element that visually represents a product category.
+     */
+    function loscocos_front_category_image($category) {
+        if (!$category || is_wp_error($category) || !function_exists('wc_get_products')) {
+            return '';
+        }
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
-                </path>
-            </svg>
-        </div>
-    </section>
+        $representative_products = array(
+            'macetas' => 338,
+            'plantas' => 467,
+            'insecticidas' => 61122,
+            'fertilizantes' => 61097,
+            'herbicidas' => 61103,
+            'funguicidas' => 61099,
+        );
 
-    <!-- 🔥 OFERTAS DESTACADAS - Productos con Precio y Compra Directa -->
-    <section class="py-16 relative" style="background: linear-gradient(135deg, #fef3c7 0%, #fff7ed 50%, #fef3c7 100%);">
-        <!-- Badge de Oferta -->
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <span style="background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%); color: white; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);">
-                🔥 Ofertas de la Semana
-            </span>
-        </div>
-        
-        <div class="container mx-auto px-4 pt-8">
-            <div class="text-center mb-10">
-                <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; font-family: 'Merriweather', serif; margin-bottom: 0.5rem;">
-                    Productos en Oferta
-                </h2>
-                <p style="color: #6b7280; font-size: 1.125rem;">Precios especiales por tiempo limitado</p>
-            </div>
-
-            <!-- Grid de Productos en Oferta -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                <?php
-                // Obtener productos en oferta
-                $sale_products = wc_get_products(array(
-                    'status' => 'publish',
-                    'limit' => 4,
-                    'on_sale' => true,
-                    'orderby' => 'date',
-                    'order' => 'DESC'
+        if (isset($representative_products[$category->slug])) {
+            $representative = wc_get_product($representative_products[$category->slug]);
+            if ($representative instanceof WC_Product && $representative->get_image_id()) {
+                return wp_get_attachment_image($representative->get_image_id(), 'large', false, array(
+                    'class' => 'lc-home-category-card__image',
+                    'loading' => 'lazy',
+                    'alt' => sprintf(__('%1$s en Vivero Los Cocos', 'loscocos-child'), $category->name),
                 ));
-                
-                // Si no hay productos en oferta, mostrar los más recientes
-                if (empty($sale_products)) {
-                    $sale_products = wc_get_products(array(
-                        'status' => 'publish',
-                        'limit' => 4,
-                        'orderby' => 'date',
-                        'order' => 'DESC'
-                    ));
-                }
-                
-                foreach ($sale_products as $product) :
-                    $product_id = $product->get_id();
-                    $product_name = $product->get_name();
-                    $product_url = get_permalink($product_id);
-                    $product_image = wp_get_attachment_image_src($product->get_image_id(), 'medium');
-                    $product_image_url = $product_image ? $product_image[0] : wc_placeholder_img_src('medium');
-                    $regular_price = $product->get_regular_price();
-                    $sale_price = $product->get_sale_price();
-                    $current_price = $product->get_price();
-                    $is_on_sale = $product->is_on_sale();
-                ?>
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;">
-                    <!-- Imagen del Producto -->
-                    <a href="<?php echo esc_url($product_url); ?>" style="display: block; position: relative;">
-                        <?php if ($is_on_sale) : ?>
-                        <span style="position: absolute; top: 0.75rem; left: 0.75rem; background: #dc2626; color: white; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; z-index: 10;">
-                            OFERTA
-                        </span>
-                        <?php endif; ?>
-                        <img src="<?php echo esc_url($product_image_url); ?>" 
-                             alt="<?php echo esc_attr($product_name); ?>"
-                             style="width: 100%; height: 200px; object-fit: cover;">
-                    </a>
-                    
-                    <!-- Info del Producto -->
-                    <div style="padding: 1rem;">
-                        <a href="<?php echo esc_url($product_url); ?>" style="text-decoration: none;">
-                            <h3 style="font-size: 1rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8rem;">
-                                <?php echo esc_html($product_name); ?>
-                            </h3>
-                        </a>
-                        
-                        <!-- Precio -->
-                        <div style="margin-bottom: 1rem;">
-                            <?php if ($is_on_sale && $regular_price) : ?>
-                                <span style="text-decoration: line-through; color: #9ca3af; font-size: 0.875rem; margin-right: 0.5rem;">
-                                    $<?php echo number_format($regular_price, 0, ',', '.'); ?>
-                                </span>
-                                <span style="font-size: 1.5rem; font-weight: 700; color: #dc2626;">
-                                    $<?php echo number_format($current_price, 0, ',', '.'); ?>
-                                </span>
-                            <?php else : ?>
-                                <span style="font-size: 1.5rem; font-weight: 700; color: #059669;">
-                                    $<?php echo number_format($current_price, 0, ',', '.'); ?>
-                                </span>
-                            <?php endif; ?>
-                        </div>
-                        
-                        <!-- Botón Agregar al Carrito -->
-                        <a href="<?php echo esc_url($product->add_to_cart_url()); ?>" 
-                           data-quantity="1" 
-                           data-product_id="<?php echo esc_attr($product_id); ?>"
-                           class="ajax_add_to_cart add_to_cart_button"
-                           style="display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; padding: 0.75rem 1rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.3s ease;">
-                            🛒 Agregar al Carrito
-                        </a>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div>
+            }
+        }
 
-            <!-- Botón Ver Todas las Ofertas -->
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>?on_sale=1" 
-                   style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1f2937; color: white; padding: 1rem 2rem; border-radius: 9999px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
-                    Ver Todas las Ofertas
-                    <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
+        $thumbnail_id = (int) get_term_meta($category->term_id, 'thumbnail_id', true);
+        if ($thumbnail_id > 0) {
+            return wp_get_attachment_image($thumbnail_id, 'large', false, array(
+                'class' => 'lc-home-category-card__image',
+                'loading' => 'lazy',
+                'alt' => sprintf(__('Categoría %s', 'loscocos-child'), $category->name),
+            ));
+        }
 
-    <!-- Features / USP Section -->
-    <section class="py-16 bg-cream border-b border-neutral-200">
-        <div class="container mx-auto px-4">
-            <div
-                class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-neutral-300">
-                <div class="p-4 group">
-                    <div
-                        class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-serif font-bold text-primary-dark mb-2">Calidad Garantizada</h3>
-                    <p class="text-neutral-medium">Plantas sanas y fuertes, seleccionadas una por una.</p>
-                </div>
-                <div class="p-4 group">
-                    <div
-                        class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-serif font-bold text-primary-dark mb-2">Envío Rápido</h3>
-                    <p class="text-neutral-medium">Entregas en Mendoza en 24/48hs hábiles.</p>
-                </div>
-                <div class="p-4 group">
-                    <div
-                        class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-serif font-bold text-primary-dark mb-2">Asesoramiento</h3>
-                    <p class="text-neutral-medium">Te ayudamos a elegir la planta ideal para tu espacio.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        $products = wc_get_products(array(
+            'status' => 'publish',
+            'limit' => 12,
+            'category' => array($category->slug),
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ));
 
-    <!-- Featured Categories -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-accent font-medium tracking-wider uppercase text-sm">Nuestras Colecciones</span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary-dark mt-3 mb-6">Explora por Categoría
-                </h2>
-                <div class="w-24 h-1 bg-accent mx-auto rounded-full"></div>
-            </div>
+        foreach ($products as $product) {
+            if (!$product instanceof WC_Product || !$product->get_image_id()) {
+                continue;
+            }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Category 1 -->
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>"
-                    class="group relative h-[500px] rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80"
-                        alt="Plantas de Interior"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <h3 class="text-3xl font-serif font-bold text-white mb-2">Interior</h3>
-                        <p
-                            class="text-white/80 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                            Dale vida a tus ambientes con nuestra selección premium.</p>
-                        <span
-                            class="inline-flex items-center text-white font-medium border-b border-white pb-1 group-hover:text-accent group-hover:border-accent transition-colors">
-                            Ver Productos <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </span>
-                    </div>
-                </a>
+            return wp_get_attachment_image($product->get_image_id(), 'large', false, array(
+                'class' => 'lc-home-category-card__image',
+                'loading' => 'lazy',
+                'alt' => sprintf(__('%1$s en Vivero Los Cocos', 'loscocos-child'), $category->name),
+            ));
+        }
 
-                <!-- Category 2 -->
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>"
-                    class="group relative h-[500px] rounded-2xl overflow-hidden shadow-lg lg:mt-12">
-                    <img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                        alt="Macetas y Accesorios"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <h3 class="text-3xl font-serif font-bold text-white mb-2">Macetas</h3>
-                        <p
-                            class="text-white/80 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                            Diseños únicos para realzar la belleza de tus plantas.</p>
-                        <span
-                            class="inline-flex items-center text-white font-medium border-b border-white pb-1 group-hover:text-accent group-hover:border-accent transition-colors">
-                            Ver Productos <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </span>
-                    </div>
-                </a>
+        return '<img src="' . esc_url(LOSCOCOS_CHILD_URI . '/assets/images/placeholder.svg') . '" class="lc-home-category-card__image" loading="lazy" alt="' . esc_attr($category->name) . '">';
+    }
+}
 
-                <!-- Category 3 -->
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>"
-                    class="group relative h-[500px] rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1973&q=80"
-                        alt="Cuidados y Sustratos"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <h3 class="text-3xl font-serif font-bold text-white mb-2">Cuidados</h3>
-                        <p
-                            class="text-white/80 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                            Todo lo necesario para mantener tus plantas felices.</p>
-                        <span
-                            class="inline-flex items-center text-white font-medium border-b border-white pb-1 group-hover:text-accent group-hover:border-accent transition-colors">
-                            Ver Productos <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+$featured_products = function_exists('wc_get_products') ? wc_get_products(array(
+    'status' => 'publish',
+    'limit' => 8,
+    'featured' => true,
+    'orderby' => 'date',
+    'order' => 'DESC',
+)) : array();
 
-    <!-- Featured Products Section -->
-    <section id="featured" class="py-24 bg-cream-light relative overflow-hidden">
-        <!-- Decorative Elements -->
-        <div
-            class="absolute top-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
-        </div>
-        <div
-            class="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3">
-        </div>
+if (empty($featured_products) && function_exists('wc_get_products')) {
+    $featured_products = wc_get_products(array(
+        'status' => 'publish',
+        'limit' => 8,
+        'orderby' => 'date',
+        'order' => 'DESC',
+    ));
+}
 
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <span class="text-accent font-medium tracking-wider uppercase text-sm">Destacados</span>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary-dark mt-2">Favoritos de la Semana
-                    </h2>
-                </div>
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>"
-                    class="hidden md:inline-flex items-center text-primary font-medium hover:text-accent transition-colors group">
-                    Ver Todo el Catálogo
-                    <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </a>
-            </div>
+$sale_products = function_exists('wc_get_products') ? wc_get_products(array(
+    'status' => 'publish',
+    'limit' => 4,
+    'on_sale' => true,
+    'orderby' => 'date',
+    'order' => 'DESC',
+)) : array();
 
-            <!-- WooCommerce Shortcode for Featured Products -->
-            <div class="woocommerce-featured-grid">
-                <?php echo do_shortcode('[products limit="4" columns="4" visibility="featured"]'); ?>
-            </div>
+if (empty($sale_products)) {
+    $sale_products = array_slice($featured_products, 0, 4);
+}
+?>
 
-            <div class="mt-12 text-center md:hidden">
-                <a href="<?php echo wc_get_page_permalink('shop'); ?>"
-                    class="inline-block px-8 py-3 border-2 border-primary text-primary font-medium rounded-full hover:bg-primary hover:text-white transition-colors">
-                    Ver Todo el Catálogo
-                </a>
-            </div>
-        </div>
-    </section>
+<main id="primary" class="site-main bg-cream-light text-neutral-dark">
 
-    <!-- About / Story Section -->
-    <section class="py-24 bg-primary-dark text-white relative overflow-hidden">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                alt="Background" class="w-full h-full object-cover opacity-20">
-            <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/90 to-transparent"></div>
-        </div>
-
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-2xl">
-                <span class="text-accent-light font-medium tracking-wider uppercase text-sm mb-4 block">Sobre
-                    Nosotros</span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight">Cultivando Pasión <br />Desde
-                    Mendoza</h2>
-                <p class="text-lg text-white/80 mb-8 leading-relaxed">
-                    En Vivero Los Cocos, no solo vendemos plantas; compartimos vida. Cada ejemplar es cuidado con
-                    dedicación para asegurar que llegue a tu hogar listo para prosperar. Creemos en el poder de la
-                    naturaleza para transformar espacios y mejorar el bienestar.
+    <section class="lc-hero relative overflow-hidden bg-primary-dark text-white">
+        <div class="absolute inset-0 bg-primary-dark"></div>
+        <div class="container relative z-10 mx-auto grid min-h-[720px] grid-cols-1 items-center gap-10 px-4 pb-16 pt-32 md:pb-20 md:pt-36 lg:grid-cols-2">
+            <div class="max-w-3xl">
+                <h1 class="max-w-4xl text-5xl font-serif font-bold leading-[1.02] tracking-normal text-white md:text-7xl">
+                    Plantas, macetas e insumos para comprar hoy
+                </h1>
+                <p class="lc-hero__lede mt-6 max-w-2xl text-lg leading-relaxed md:text-2xl">
+                    Catálogo online de Vivero Los Cocos con precios visibles, stock real, asesoramiento directo y entrega coordinada en Mendoza.
                 </p>
-                <div class="grid grid-cols-2 gap-8 mb-10">
-                    <div>
-                        <span class="block text-4xl font-bold text-accent mb-2">500+</span>
-                        <span class="text-sm text-white/60 uppercase tracking-wider">Clientes Felices</span>
+
+                <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+                    <a href="<?php echo esc_url($shop_url); ?>"
+                       class="inline-flex min-h-[54px] items-center justify-center rounded-full bg-accent px-8 py-4 text-base font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-accent-hover">
+                        Comprar ahora
+                    </a>
+                    <a href="#categorias"
+                       class="lc-hero__secondary-cta inline-flex min-h-[54px] items-center justify-center rounded-full px-8 py-4 text-base font-bold transition-colors">
+                        Ver categorías
+                    </a>
+                </div>
+
+                <div class="mt-12 grid max-w-3xl grid-cols-1 gap-4 md:grid-cols-3">
+                    <div class="border-t border-white/25 pt-4">
+                        <strong class="block text-base text-white">Stock visible</strong>
+                        <span class="lc-hero__feature-text mt-1 block text-sm leading-relaxed">Productos publicados desde WooCommerce.</span>
                     </div>
-                    <div>
-                        <span class="block text-4xl font-bold text-accent mb-2">100%</span>
-                        <span class="text-sm text-white/60 uppercase tracking-wider">Garantía de Calidad</span>
+                    <div class="border-t border-white/25 pt-4">
+                        <strong class="block text-base text-white">Entrega local</strong>
+                        <span class="lc-hero__feature-text mt-1 block text-sm leading-relaxed">Retiro y coordinación en Mendoza.</span>
+                    </div>
+                    <div class="border-t border-white/25 pt-4">
+                        <strong class="block text-base text-white">Compra asistida</strong>
+                        <span class="lc-hero__feature-text mt-1 block text-sm leading-relaxed">WhatsApp antes y después de comprar.</span>
                     </div>
                 </div>
-                <a href="/about"
-                    class="inline-block px-8 py-4 bg-white text-primary-dark font-bold rounded-full hover:bg-accent hover:text-white transition-all shadow-lg">
-                    Conoce Nuestra Historia
-                </a>
+            </div>
+
+            <div class="relative hidden min-h-[560px] lg:block">
+                <div class="lc-hero__image-frame absolute inset-0 rounded-lg"></div>
+                <img
+                    src="<?php echo esc_url($hero_image_url); ?>"
+                    alt="Planta de interior seleccionada en Vivero Los Cocos"
+                    class="absolute inset-6 h-[calc(100%-3rem)] w-[calc(100%-3rem)] rounded-lg object-cover shadow-2xl shadow-black/30"
+                    fetchpriority="high">
+                <div class="lc-hero__image-caption absolute bottom-10 left-10 right-10 rounded-lg p-5">
+                    <strong class="block text-lg">Vivero Los Cocos</strong>
+                    <span class="mt-1 block text-sm leading-relaxed">Una tienda online simple para elegir, comprar y coordinar tu pedido.</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="py-24 bg-cream">
+    <section class="border-b border-neutral-200 bg-white">
+        <div class="container mx-auto grid grid-cols-1 gap-px px-4 py-0 md:grid-cols-4">
+            <div class="border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:pr-6">
+                <strong class="block text-primary-dark">Plantas seleccionadas</strong>
+                <span class="mt-1 block text-sm text-neutral-medium">Ejemplares cuidados en vivero.</span>
+            </div>
+            <div class="border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:px-6">
+                <strong class="block text-primary-dark">Precios visibles</strong>
+                <span class="mt-1 block text-sm text-neutral-medium">Sin pasos ocultos para comprar.</span>
+            </div>
+            <div class="border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:px-6">
+                <strong class="block text-primary-dark">WhatsApp activo</strong>
+                <span class="mt-1 block text-sm text-neutral-medium">Consultas rápidas con el equipo.</span>
+            </div>
+            <div class="py-6 md:pl-6">
+                <strong class="block text-primary-dark">Local en Godoy Cruz</strong>
+                <span class="mt-1 block text-sm text-neutral-medium">Retiro o entrega coordinada.</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="categorias" class="bg-cream-light py-16 md:py-24">
         <div class="container mx-auto px-4">
-            <div
-                class="bg-white rounded-3xl p-8 md:p-16 shadow-xl relative overflow-hidden max-w-5xl mx-auto text-center">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -mr-20 -mt-20"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
+            <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold leading-tight text-primary-dark md:text-5xl">Comprar por categoría</h2>
+                    <p class="mt-3 max-w-2xl text-neutral-medium">Entrá directo al tipo de producto que necesitás. Cada categoría usa datos reales del catálogo.</p>
+                </div>
+                <a href="<?php echo esc_url($shop_url); ?>" class="inline-flex items-center font-bold text-primary hover:text-accent">
+                    Ver tienda completa
+                </a>
+            </div>
 
-                <div class="relative z-10">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-dark mb-4">Únete a Nuestra
-                        Comunidad Verde</h2>
-                    <p class="text-neutral-medium mb-8 max-w-2xl mx-auto">Recibe consejos de cuidado, ofertas exclusivas
-                        y novedades directamente en tu bandeja de entrada.</p>
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+                <?php if ($primary_categories && !is_wp_error($primary_categories)) : ?>
+                    <?php foreach ($primary_categories as $category) : ?>
+                        <a href="<?php echo esc_url(get_term_link($category)); ?>" class="lc-home-category-card group">
+                            <div class="lc-home-category-card__media">
+                                <?php echo wp_kses_post(loscocos_front_category_image($category)); ?>
+                                <span class="lc-home-category-card__count">
+                                    <?php echo esc_html(number_format_i18n($category->count)); ?>
+                                </span>
+                            </div>
+                            <div class="lc-home-category-card__body">
+                                <div class="min-w-0">
+                                    <span class="lc-home-category-card__label">Categoría</span>
+                                    <h3 class="lc-home-category-card__title"><?php echo esc_html($category->name); ?></h3>
+                                    <p class="lc-home-category-card__text">
+                                        <?php echo esc_html($category->count); ?> productos disponibles
+                                    </p>
+                                </div>
+                                <span class="lc-home-category-card__arrow" aria-hidden="true">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
 
-                    <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                        <input type="email" placeholder="Tu correo electrónico"
-                            class="flex-1 px-6 py-4 rounded-full bg-neutral-light border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
-                        <button type="button"
-                            class="px-8 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-full shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
-                            Suscribirse
-                        </button>
-                    </form>
-                    <p class="text-xs text-neutral-medium mt-4">Respetamos tu privacidad. Date de baja en cualquier
-                        momento.</p>
+    <?php if (!empty($sale_products)) : ?>
+        <section class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                    <div>
+                        <h2 class="text-4xl font-serif font-bold text-primary-dark md:text-5xl">Destacados para comprar hoy</h2>
+                        <p class="mt-3 max-w-2xl text-neutral-medium">Productos con precio, stock y acceso directo al carrito.</p>
+                    </div>
+                    <a href="<?php echo esc_url($shop_url); ?>" class="inline-flex items-center font-bold text-primary hover:text-accent">
+                        Ver más productos
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-4">
+                    <?php foreach ($sale_products as $product) : ?>
+                        <?php
+                        if (!$product instanceof WC_Product) {
+                            continue;
+                        }
+                        $product_id = $product->get_id();
+                        $product_url = get_permalink($product_id);
+                        $image_attrs = array(
+                            'class' => 'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
+                            'loading' => 'lazy',
+                        );
+                        $image = $product->get_image_id()
+                            ? wp_get_attachment_image($product->get_image_id(), 'woocommerce_thumbnail', false, $image_attrs)
+                            : '<img src="' . esc_url(wc_placeholder_img_src('woocommerce_thumbnail')) . '" alt="' . esc_attr($product->get_name()) . '" class="' . esc_attr($image_attrs['class']) . '" loading="lazy">';
+                        $quick_add = $product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock();
+                        ?>
+                        <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+                            <a href="<?php echo esc_url($product_url); ?>" class="relative block aspect-square overflow-hidden bg-neutral-100">
+                                <?php echo wp_kses_post($image); ?>
+                                <?php if ($product->is_on_sale()) : ?>
+                                    <span class="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Oferta</span>
+                                <?php endif; ?>
+                            </a>
+                            <div class="flex flex-1 flex-col p-5">
+                                <h3 class="mb-3 min-h-[3.25rem] text-lg font-bold leading-snug text-primary-dark">
+                                    <a href="<?php echo esc_url($product_url); ?>" class="hover:text-accent">
+                                        <?php echo esc_html($product->get_name()); ?>
+                                    </a>
+                                </h3>
+                                <div class="mb-4 flex items-end justify-between gap-3">
+                                    <div class="text-xl font-extrabold text-neutral-dark">
+                                        <?php echo wp_kses_post($product->get_price_html()); ?>
+                                    </div>
+                                    <?php if ($product->is_in_stock()) : ?>
+                                        <span class="rounded-full bg-secondary-light px-3 py-1 text-xs font-semibold text-primary-dark">En stock</span>
+                                    <?php else : ?>
+                                        <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-medium">Sin stock</span>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="mt-auto grid gap-2">
+                                    <?php if ($quick_add) : ?>
+                                        <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
+                                           data-quantity="1"
+                                           data-product_id="<?php echo esc_attr($product_id); ?>"
+                                           data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
+                                           class="button product_type_simple add_to_cart_button ajax_add_to_cart inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-dark">
+                                            Agregar al carrito
+                                        </a>
+                                    <?php else : ?>
+                                        <a href="<?php echo esc_url($product_url); ?>" class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-dark">
+                                            Ver producto
+                                        </a>
+                                    <?php endif; ?>
+                                    <a href="<?php echo esc_url($product_url); ?>" class="inline-flex min-h-[40px] items-center justify-center rounded-full border border-neutral-200 px-5 py-2 text-sm font-semibold text-neutral-dark transition-colors hover:border-primary hover:text-primary">
+                                        Detalles
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <section id="featured" class="bg-primary-dark py-16 text-white md:py-24">
+        <div class="container mx-auto grid grid-cols-1 gap-10 px-4 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+            <div>
+                <h2 class="text-4xl font-serif font-bold leading-tight text-white md:text-5xl">Una compra de vivero con criterio profesional.</h2>
+                <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/78">
+                    Elegimos productos que funcionan en hogares, patios y jardines de Mendoza. Si necesitás ayuda, podés consultar antes de comprar y coordinar la mejor forma de entrega.
+                </p>
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <a href="<?php echo esc_url($shop_url); ?>" class="inline-flex min-h-[50px] items-center justify-center rounded-full bg-white px-7 py-3 font-bold text-primary-dark transition-colors hover:bg-accent hover:text-white">
+                        Explorar catálogo
+                    </a>
+                    <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" rel="noopener" class="inline-flex min-h-[50px] items-center justify-center rounded-full border border-white/30 px-7 py-3 font-bold text-white transition-colors hover:bg-white hover:text-primary-dark">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-lg border border-white/15 bg-white/10 p-5">
+                    <strong class="block text-2xl font-bold text-accent">Catálogo activo</strong>
+                    <span class="mt-2 block text-sm text-white/70">Productos publicados desde WooCommerce.</span>
+                </div>
+                <div class="rounded-lg border border-white/15 bg-white/10 p-5">
+                    <strong class="block text-2xl font-bold text-accent">Precios visibles</strong>
+                    <span class="mt-2 block text-sm text-white/70">Compra directa desde cada ficha.</span>
+                </div>
+                <div class="col-span-2 rounded-lg border border-white/15 bg-white/10 p-5">
+                    <strong class="block text-xl text-white">Perito Moreno 1295, Godoy Cruz</strong>
+                    <span class="mt-2 block text-sm text-white/70">Atención local, retiro y entregas coordinadas.</span>
                 </div>
             </div>
         </div>
@@ -419,4 +354,5 @@ get_header(); ?>
 
 </main>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

@@ -36,7 +36,7 @@ $allowed_html = array(
         <?php
         /* translators: 1: Orders URL 2: Address URL 3: Account URL. */
         $dashboard_desc = __(
-            'From your account dashboard you can view your <a href="%1$s" class="text-green-600 hover:text-green-800">recent orders</a>, manage your <a href="%2$s" class="text-green-600 hover:text-green-800">billing address</a>, and <a href="%3$s" class="text-green-600 hover:text-green-800">edit your password and account details</a>.",
+            'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">billing address</a>, and <a href="%3$s">edit your password and account details</a>.',
             'woocommerce'
         );
         printf(

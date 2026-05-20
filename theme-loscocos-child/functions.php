@@ -44,6 +44,7 @@ add_action('after_setup_theme', function() {
     if (class_exists('LosCocos_WC_Customizations')) {
         LosCocos_WC_Customizations::init();
     }
+
 }, 5);
 
 /**

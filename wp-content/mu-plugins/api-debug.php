@@ -10,7 +10,9 @@ add_action('rest_api_init', function() {
     register_rest_route('api-debug/v1', '/test', [
         'methods' => 'GET',
         'callback' => 'api_debug_test',
-        'permission_callback' => '__return_true',
+        'permission_callback' => function () {
+            return current_user_can('manage_options');
+        },
     ]);
 });
 
@@ -51,8 +53,6 @@ function api_debug_test() {
         ],
         'auth' => [
             'http_auth' => !empty($_SERVER['PHP_AUTH_USER']),
-            'http_auth_user' => $_SERVER['PHP_AUTH_USER'] ?? null,
-            'http_authorization' => $_SERVER['HTTP_AUTHORIZATION'] ?? null,
         ],
     ];
 

@@ -478,6 +478,21 @@ def get_products_by_target(wcapi, target: str = "missing", per_page: int = 100, 
     return products
 
 
+def parse_product_ids(raw: Optional[str]) -> Set[int]:
+    """Parse a comma/space/newline separated product id allowlist."""
+    if not raw:
+        return set()
+    ids: Set[int] = set()
+    for part in re.split(r"[\s,]+", str(raw).strip()):
+        if not part:
+            continue
+        try:
+            ids.add(int(part))
+        except ValueError:
+            raise argparse.ArgumentTypeError(f"Invalid product id: {part}")
+    return ids
+
+
 # -------------------------
 # Image Provider Clients
 # -------------------------
@@ -1480,6 +1495,7 @@ def batch_processor(
     local_include_subdirs: bool = False,
     map_by: str = "sku",
     product_api: str = "wc",
+    product_ids: Optional[Set[int]] = None,
 ) -> Dict[str, Any]:
     wcapi = None
     if product_api == "wc":
@@ -1491,6 +1507,8 @@ def batch_processor(
         products = get_products_by_target(wcapi, target=target)
     else:
         products = wp_get_products_by_target(cfg, target=target)
+    if product_ids:
+        products = [p for p in products if int(p.get("id") or 0) in product_ids]
     pending = [p for p in products if p.get("id") not in processed_ids]
 
     stats = {"total": len(pending), "success": 0, "skipped": 0, "failed": 0}
@@ -1499,8 +1517,9 @@ def batch_processor(
     run_used_sha1s: Set[str] = set()
 
     log.info(
-        "Products selected (target=%s): %s (pending after resume: %s)",
+        "Products selected (target=%s product_ids=%s): %s (pending after resume: %s)",
         target,
+        ",".join(str(pid) for pid in sorted(product_ids or [])) if product_ids else "all",
         len(products),
         len(pending),
     )
@@ -1696,6 +1715,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--local-include-subdirs", action="store_true", help="Search local curated images recursively in subdirectories")
     parser.add_argument("--map-by", type=str, default="sku", choices=["sku", "slug"], help="Primary key to match local images (default: sku)")
     parser.add_argument("--product-api", type=str, default="wc", choices=["wc", "wp"], help="API to use for products/assignment: 'wc' (WooCommerce) or 'wp' (WordPress REST)")
+    parser.add_argument("--product-ids", type=str, default="", help="Comma/space separated product ID allowlist for safe batch processing")
     # Global dedupe & title fix modes
     parser.add_argument("--scan-and-dedupe", action="store_true", help="Scan all products, detect duplicate featured images by SHA1 and reassign unique images (local first, then providers)")
     parser.add_argument("--registry-file", type=str, default=GLOBAL_SHA1_FILE, help="Path for persistent global SHA1 registry JSON")
@@ -1967,6 +1987,7 @@ def main(argv: Optional[List[str]] = None) -> None:
             local_include_subdirs=bool(args.local_include_subdirs),
             map_by=(args.map_by or "sku"),
             product_api=(args.product_api or "wc"),
+            product_ids=parse_product_ids(args.product_ids),
         )
     except Exception as e:
         log.exception("Fatal error: %s", e)

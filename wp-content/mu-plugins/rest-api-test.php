@@ -10,7 +10,9 @@ add_action('rest_api_init', function() {
     register_rest_route('test/v1', '/status', [
         'methods' => 'GET',
         'callback' => 'test_rest_api_status',
-        'permission_callback' => '__return_true',
+        'permission_callback' => function () {
+            return current_user_can('manage_options');
+        },
     ]);
 });
 

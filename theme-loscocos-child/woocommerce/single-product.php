@@ -111,12 +111,16 @@ do_action('woocommerce_before_main_content');
                                 <!-- Add to Cart -->
                                 <div class="pt-4">
                                     <?php if ($product->is_purchasable() && $product->is_in_stock()): ?>
+                                        <?php
+                                        $max_purchase_quantity = $product->get_max_purchase_quantity();
+                                        $max_quantity_attr = $max_purchase_quantity > 0 ? $max_purchase_quantity : '';
+                                        ?>
                                         <form class="cart flex items-center gap-4" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>" method="post" enctype='multipart/form-data'>
                                             <div class="quantity-wrapper flex items-center border border-neutral-300 rounded-lg overflow-hidden">
                                                 <button type="button" class="qty-btn minus w-12 h-12 flex items-center justify-center text-xl font-bold text-neutral-600 hover:bg-neutral-100 transition-colors">−</button>
                                                 <input type="number" id="quantity_<?php echo $product->get_id(); ?>" 
                                                        class="input-text qty text w-16 h-12 text-center border-x border-neutral-300 font-medium" 
-                                                       name="quantity" value="1" min="1" max="<?php echo $product->get_max_purchase_quantity(); ?>" step="1">
+                                                       name="quantity" value="1" min="1" max="<?php echo esc_attr($max_quantity_attr); ?>" step="1">
                                                 <button type="button" class="qty-btn plus w-12 h-12 flex items-center justify-center text-xl font-bold text-neutral-600 hover:bg-neutral-100 transition-colors">+</button>
                                             </div>
                                             <button type="submit" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>" 
@@ -124,6 +128,20 @@ do_action('woocommerce_before_main_content');
                                                 Agregar al Carrito
                                             </button>
                                         </form>
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 text-sm text-neutral-600">
+                                            <div class="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3">
+                                                <strong class="block text-primary-dark">Stock verificado</strong>
+                                                Actualizado desde WooCommerce.
+                                            </div>
+                                            <div class="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3">
+                                                <strong class="block text-primary-dark">Entrega coordinada</strong>
+                                                Para Mendoza y alrededores.
+                                            </div>
+                                            <div class="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3">
+                                                <strong class="block text-primary-dark">Asesoramiento</strong>
+                                                Te ayudamos antes y después de comprar.
+                                            </div>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
 
@@ -218,7 +236,7 @@ do_action('woocommerce_before_main_content');
                                 <p class="text-neutral-medium">Otros productos que te pueden interesar</p>
                             </div>
                             
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+                            <div class="related-products-grid">
                                 <?php foreach ($related_products as $related_id):
                                     $related = wc_get_product($related_id);
                                     if (!$related) continue;
@@ -228,69 +246,63 @@ do_action('woocommerce_before_main_content');
                                     $rel_trimmed_desc = $rel_short_desc ? wp_trim_words($rel_short_desc, 12, '...') : '';
                                     $rel_image = $related->get_image_id() ? wp_get_attachment_image_url($related->get_image_id(), 'woocommerce_thumbnail') : wc_placeholder_img_src();
                                     ?>
-                                    <!-- Card with inline styles matching shop -->
-                                    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%;">
-                                        
-                                        <!-- Imagen cuadrada -->
-                                        <a href="<?php echo esc_url($related->get_permalink()); ?>" style="display: block; position: relative; width: 100%; padding-top: 100%; background: #f5f5f5; overflow: hidden;">
-                                            <img src="<?php echo esc_url($rel_image); ?>" 
-                                                 alt="<?php echo esc_attr($related->get_name()); ?>" 
-                                                 loading="lazy"
-                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="related-product-card">
+
+                                        <a href="<?php echo esc_url($related->get_permalink()); ?>" class="card-image-wrap">
+                                            <img src="<?php echo esc_url($rel_image); ?>"
+                                                 alt="<?php echo esc_attr($related->get_name()); ?>"
+                                                 loading="lazy">
                                         </a>
-                                        
-                                        <!-- Contenido -->
-                                        <div style="padding: 16px; display: flex; flex-direction: column; flex-grow: 1;">
-                                            
-                                            <!-- Título -->
-                                            <h3 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #1f2937; line-height: 1.4; height: 42px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                                <a href="<?php echo esc_url($related->get_permalink()); ?>" style="color: inherit; text-decoration: none;">
+
+                                        <div class="card-body">
+
+                                            <h3 class="card-title">
+                                                <a href="<?php echo esc_url($related->get_permalink()); ?>">
                                                     <?php echo esc_html($related->get_name()); ?>
                                                 </a>
                                             </h3>
-                                            
-                                            <!-- Categoría -->
-                                            <div style="font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; height: 14px; overflow: hidden;">
+
+                                            <div class="card-category">
                                                 <?php echo esc_html($rel_category); ?>
                                             </div>
-                                            
-                                            <!-- Descripción -->
-                                            <div style="font-size: 13px; color: #6b7280; line-height: 1.4; margin-bottom: 12px; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+
+                                            <div class="card-desc">
                                                 <?php echo $rel_trimmed_desc ? esc_html($rel_trimmed_desc) : '&nbsp;'; ?>
                                             </div>
-                                            
-                                            <!-- Footer -->
-                                            <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid #f0f0f0;">
-                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                                    <span style="font-size: 20px; font-weight: 700; color: #059669;">
+
+                                            <div class="card-footer">
+                                                <div class="card-price-row">
+                                                    <span class="card-price">
                                                         $<?php echo number_format($related->get_price(), 0, ',', '.'); ?>
                                                     </span>
                                                     <?php if ($related->is_in_stock()) : ?>
-                                                        <span style="font-size: 12px; color: #10b981;">En stock</span>
+                                                        <span class="card-stock-in">En stock</span>
                                                     <?php else : ?>
-                                                        <span style="font-size: 12px; color: #ef4444;">Agotado</span>
+                                                        <span class="card-stock-out">Agotado</span>
                                                     <?php endif; ?>
                                                 </div>
-                                                
-                                                <?php if ($related->is_in_stock()) : ?>
-                                                    <a href="<?php echo esc_url($related->add_to_cart_url()); ?>" 
-                                                       style="display: flex; width: 100%; padding: 10px 16px; background: #059669; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
-                                                        🛒 Añadir al carrito
+
+                                                <?php if ($related->is_purchasable() && $related->is_in_stock()) : ?>
+                                                    <a href="<?php echo esc_url($related->add_to_cart_url()); ?>"
+                                                       data-quantity="1"
+                                                       data-product_id="<?php echo esc_attr($related->get_id()); ?>"
+                                                       data-product_sku="<?php echo esc_attr($related->get_sku()); ?>"
+                                                       class="card-add-btn add_to_cart_button ajax_add_to_cart">
+                                                        <?php echo esc_html($related->add_to_cart_text()); ?>
                                                     </a>
                                                 <?php else : ?>
-                                                    <span style="display: block; width: 100%; padding: 10px 16px; background: #d1d5db; color: #6b7280; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;">
+                                                    <span class="card-disabled">
                                                         Agotado
                                                     </span>
                                                 <?php endif; ?>
                                             </div>
-                                            
-                                            <!-- SKU -->
+
                                             <?php if ($related->get_sku()) : ?>
-                                                <div style="margin-top: 8px; font-size: 11px; color: #9ca3af; text-align: center;">
+                                                <div class="card-sku">
                                                     SKU: <?php echo esc_html($related->get_sku()); ?>
                                                 </div>
                                             <?php endif; ?>
-                                            
+
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
@@ -307,74 +319,6 @@ do_action('woocommerce_before_main_content');
         </div>
     </div>
 </main>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Quantity buttons
-    document.querySelectorAll('.qty-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var input = this.parentNode.querySelector('input.qty');
-            var currentVal = parseInt(input.value) || 1;
-            var max = parseInt(input.getAttribute('max')) || 9999;
-            var min = parseInt(input.getAttribute('min')) || 1;
-            
-            if (this.classList.contains('plus')) {
-                if (currentVal < max) input.value = currentVal + 1;
-            } else {
-                if (currentVal > min) input.value = currentVal - 1;
-            }
-        });
-    });
-    
-    // Custom Tabs
-    document.querySelectorAll('.tab-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var tabId = this.getAttribute('data-tab');
-            
-            // Update buttons
-            document.querySelectorAll('.tab-btn').forEach(function(b) {
-                b.classList.remove('active', 'text-primary', 'border-primary');
-                b.classList.add('text-neutral-500', 'border-transparent');
-            });
-            this.classList.add('active', 'text-primary', 'border-primary');
-            this.classList.remove('text-neutral-500', 'border-transparent');
-            
-            // Update content
-            document.querySelectorAll('.tab-content').forEach(function(c) {
-                c.classList.add('hidden');
-                c.classList.remove('active');
-            });
-            document.getElementById('tab-' + tabId).classList.remove('hidden');
-            document.getElementById('tab-' + tabId).classList.add('active');
-        });
-    });
-    
-    // Initialize first tab
-    var firstTab = document.querySelector('.tab-btn');
-    if (firstTab) {
-        firstTab.classList.add('text-primary', 'border-primary');
-    }
-});
-</script>
-
-<style>
-.tab-btn.active {
-    color: #2d5a3d !important;
-    border-bottom-color: #2d5a3d !important;
-}
-.line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.product-card-shop {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product-card-shop:hover {
-    transform: translateY(-4px);
-}
-</style>
 
 <?php
 do_action('woocommerce_after_main_content');

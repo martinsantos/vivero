@@ -7,7 +7,9 @@
 if (!defined('ABSPATH')) exit;
 
 // Enqueue specialized styles with cache busting for development
-wp_enqueue_style('premium-cart-styles', get_stylesheet_directory_uri() . '/assets/css/premium-cart.css', array(), time()); 
+$cart_css = get_stylesheet_directory() . '/assets/css/premium-cart.css';
+$cart_version = file_exists($cart_css) ? filemtime($cart_css) : LOSCOCOS_CHILD_VERSION;
+wp_enqueue_style('premium-cart-styles', get_stylesheet_directory_uri() . '/assets/css/premium-cart.css', array(), $cart_version);
 
 get_header(); ?>
 
@@ -16,15 +18,14 @@ get_header(); ?>
         
         <div class="cart-left-section">
             <header class="cart-title-section">
-                <h1 class="text-primary-dark">Tu Jardín<br>en Espera.</h1>
-                <p class="text-neutral-medium mt-4 text-lg font-light">Revisa tus productos antes de darles un nuevo hogar.</p>
+                <h1 class="text-primary-dark">Tu Compra<br>en Espera.</h1>
+                <p class="text-neutral-medium mt-4 text-lg font-light">Revisá cantidades, precios y productos antes de avanzar al pago.</p>
             </header>
 
             <?php if (WC()->cart->is_empty()) : ?>
                 <div class="empty-cart-message py-20 text-center">
-                    <div class="text-8xl mb-6">🪴</div>
-                    <h2 class="text-3xl font-bold mb-6 text-primary">Tu carrito está esperando por vida.</h2>
-                    <a href="<?php echo wc_get_page_permalink('shop'); ?>" class="btn-checkout-premium inline-block w-auto px-12">Explorar Vivero</a>
+                    <h2 class="text-3xl font-bold mb-6 text-primary">Tu carrito está vacío.</h2>
+                    <a href="<?php echo wc_get_page_permalink('shop'); ?>" class="btn-checkout-premium inline-block w-auto px-12">Ver tienda</a>
                 </div>
             <?php else : ?>
                 
@@ -161,10 +162,10 @@ get_header(); ?>
                 </div>
 
                 <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn-checkout-premium">
-                    Pagar Ahora
+                    Ir al checkout
                 </a>
 
-                <p class="text-xs opacity-40 mt-8 text-center uppercase tracking-widest">Pago Seguro & Garantía Los Cocos</p>
+                <p class="text-xs opacity-40 mt-8 text-center uppercase tracking-widest">Pago seguro y garantía Los Cocos</p>
             </div>
             
             <div class="mt-8 px-8 py-6 border border-gray-100 rounded-3xl bg-white flex items-center gap-4">

@@ -96,6 +96,53 @@ make wc-images-run PREFIX='VIVERO DE PLANTAS' ASSIGN=replace-featured ENRICH=1 P
 - Mantén tus API Keys en variables de entorno. No las comprometas en repositorios públicos.
 - No se escribe en `.env` de forma automática.
 
+## Política Catalogo Visual Premium
+
+Antes de reemplazar imágenes en producción, ejecutar la auditoría read-only:
+
+```bash
+PYTHONPYCACHEPREFIX=/private/tmp/vivero-pycache \
+python3 scripts/audit/catalog-image-goal-audit.py \
+  --limit 0 \
+  --perceptual \
+  --perceptual-workers 16 \
+  --perceptual-threshold 5
+```
+
+Salidas principales:
+- `docs/reports/catalog-image-goal-audit.md`: resumen y prioridades.
+- `docs/reports/catalog-image-goal-review.html`: contact sheet visual para revisión manual.
+- `logs/catalog-image-goal-audit.json`: datos completos.
+- `logs/catalog-image-goal-priority.csv`: cola priorizada por producto.
+
+Política de selección:
+- Plantas/especies: usar imagen botánicamente correcta de la especie o variedad. Prioridad: foto propia del vivero; luego fuente verificable como Wikimedia/iNaturalist; luego stock solo si es fiel al producto.
+- Insumos comerciales: usar imagen real del envase/producto. No reemplazar herbicidas, fertilizantes o fungicidas con fotos genéricas de plantas.
+- Macetas/accesorios: usar foto del modelo, color y tamaño correctos. Compartir imagen solo si la variante es visualmente indistinguible o fue aprobada.
+- Todo reemplazo debe tener fuente trazable, imagen cuadrada/optimizada, alt text descriptivo y revisión visual en home, tienda, categoría y producto.
+
+Corrección segura de alt text, sin cambiar imágenes:
+
+```bash
+python3 scripts/images/update-product-image-alt-text.py
+python3 scripts/images/update-product-image-alt-text.py --apply
+```
+
+Reemplazos curados por lote:
+
+```bash
+PYTHONPYCACHEPREFIX=/private/tmp/vivero-pycache \
+python3 scripts/images/generate-curated-accessory-renders.py
+```
+
+Los reemplazos curados se aplican por WP-CLI con manifiestos explícitos de `product_id`, archivo y alt text. No ejecutar reemplazos masivos sobre `TARGET=all` sin revisar antes `logs/catalog-image-goal-priority.csv` y `docs/reports/catalog-image-goal-review.html`.
+
+El registro de variantes/falsos positivos visuales auditados vive en:
+
+```bash
+data/catalog-image-duplicate-approvals.json
+```
+
 ## Ejecución directa (sin Make)
 ```bash
 python3 wc_image_automation.py \

@@ -1,0 +1,3837 @@
+{
+  "generated_at": "2026-05-17T00:34:13.336636+00:00",
+  "mode": "manifest_only",
+  "count": 33,
+  "product_ids": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    411,
+    412,
+    413,
+    414,
+    415,
+    61091,
+    61093,
+    61095,
+    61097,
+    61099,
+    61101,
+    61103,
+    61105,
+    61107,
+    61109,
+    61111,
+    61112,
+    61114,
+    61116,
+    61118,
+    61120,
+    61122
+  ],
+  "updates": [
+    {
+      "short_description": "Glacoh250Gr - Producto de Vivero: herbicida en presentación 250 gr, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacoh250Gr - Producto de Vivero es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 250 gr facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Herbicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "250 gr"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "herbicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Herbicida",
+        "250 gr"
+      ],
+      "category_hint": "herbicida",
+      "product_id": 400,
+      "sku": "GLACOH250GR",
+      "name": "Glacoh250Gr - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacoh250Gr &#8211; Producto de Vivero: herbicida en presentación 250 gr, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacoh250Gr - Producto de Vivero es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 250 gr facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Herbicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "250 gr"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 145,
+            "name": "HERBICIDAS",
+            "slug": "herbicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 186,
+            "name": "250 gr",
+            "slug": "250-gr"
+          },
+          {
+            "id": 185,
+            "name": "Herbicida",
+            "slug": "herbicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacoe60Cc - Producto de Vivero: insecticida en presentación 60 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacoe60Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 60 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "60 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "60 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 401,
+      "sku": "GLACOE60CC",
+      "name": "Glacoe60Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacoe60Cc &#8211; Producto de Vivero: insecticida en presentación 60 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacoe60Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 60 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "60 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 188,
+            "name": "60 cc",
+            "slug": "60-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacod30Cc - Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacod30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 402,
+      "sku": "GLACOD30CC",
+      "name": "Glacod30Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacod30Cc &#8211; Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacod30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacohsel100Cc - Producto de Vivero: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacohsel100Cc - Producto de Vivero es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Herbicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "100 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "herbicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Herbicida",
+        "100 cc"
+      ],
+      "category_hint": "herbicida",
+      "product_id": 403,
+      "sku": "GLACOHSEL100CC",
+      "name": "Glacohsel100Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacohsel100Cc &#8211; Producto de Vivero: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacohsel100Cc - Producto de Vivero es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Herbicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "100 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 145,
+            "name": "HERBICIDAS",
+            "slug": "herbicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 190,
+            "name": "100 cc",
+            "slug": "100-cc"
+          },
+          {
+            "id": 185,
+            "name": "Herbicida",
+            "slug": "herbicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacohtot100Cc - Producto de Vivero: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacohtot100Cc - Producto de Vivero es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Herbicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "100 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "herbicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Herbicida",
+        "100 cc"
+      ],
+      "category_hint": "herbicida",
+      "product_id": 404,
+      "sku": "GLACOHTOT100CC",
+      "name": "Glacohtot100Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacohtot100Cc &#8211; Producto de Vivero: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacohtot100Cc - Producto de Vivero es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Herbicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "100 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 145,
+            "name": "HERBICIDAS",
+            "slug": "herbicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 190,
+            "name": "100 cc",
+            "slug": "100-cc"
+          },
+          {
+            "id": 185,
+            "name": "Herbicida",
+            "slug": "herbicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacoim30Cc - Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacoim30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 405,
+      "sku": "GLACOIM30CC",
+      "name": "Glacoim30Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacoim30Cc &#8211; Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacoim30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacoavam30Cc - Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacoavam30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 406,
+      "sku": "GLACOAVAM30CC",
+      "name": "Glacoavam30Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacoavam30Cc &#8211; Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacoavam30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacocip30Cc - Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacocip30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 407,
+      "sku": "GLACOCIP30CC",
+      "name": "Glacocip30Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacocip30Cc &#8211; Producto de Vivero: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacocip30Cc - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacofung30Cc - Producto de Vivero: fungicida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacofung30Cc - Producto de Vivero es un fungicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fungicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fungicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fungicida",
+        "30 cc"
+      ],
+      "category_hint": "fungicida",
+      "product_id": 408,
+      "sku": "GLACOFUNG30CC",
+      "name": "Glacofung30Cc - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacofung30Cc &#8211; Producto de Vivero: fungicida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacofung30Cc - Producto de Vivero es un fungicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fungicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 144,
+            "name": "FUNGUICIDAS",
+            "slug": "funguicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 191,
+            "name": "Fungicida",
+            "slug": "fungicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacoppell200Gr - Producto de Vivero: molusquicida en presentación 200 gr, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacoppell200Gr - Producto de Vivero es un molusquicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 gr facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Molusquicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 gr"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "molusquicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Molusquicida",
+        "200 gr"
+      ],
+      "category_hint": "molusquicida",
+      "product_id": 409,
+      "sku": "GLACOPPELL200GR",
+      "name": "Glacoppell200Gr - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacoppell200Gr &#8211; Producto de Vivero: molusquicida en presentación 200 gr, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacoppell200Gr - Producto de Vivero es un molusquicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 gr facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Molusquicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 gr"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 147,
+            "name": "MOLUSQUICIDAS",
+            "slug": "molusquicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 193,
+            "name": "200 gr",
+            "slug": "200-gr"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          },
+          {
+            "id": 192,
+            "name": "Molusquicida",
+            "slug": "molusquicida"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Glacopceb200Gr - Producto de Vivero: insecticida en presentación 200 gr, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Glacopceb200Gr - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 gr facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 gr"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "200 gr"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 410,
+      "sku": "GLACOPCEB200GR",
+      "name": "Glacopceb200Gr - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Glacopceb200Gr &#8211; Producto de Vivero: insecticida en presentación 200 gr, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Glacopceb200Gr - Producto de Vivero es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 gr facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 gr"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 193,
+            "name": "200 gr",
+            "slug": "200-gr"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Planta Fertiflor 200 cm - Producto de Vivero: fertilizante en presentación 200 cm, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Planta Fertiflor 200 cm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cm facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cm"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "200 cm"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 411,
+      "sku": "FERTIFLOR200",
+      "name": "Planta Fertiflor 200 cm - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Planta Fertiflor 200 cm &#8211; Producto de Vivero: fertilizante en presentación 200 cm, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Planta Fertiflor 200 cm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cm facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 195,
+            "name": "200 cm",
+            "slug": "200-cm"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Planta Fertifoll 200 cm - Producto de Vivero: fertilizante en presentación 200 cm, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Planta Fertifoll 200 cm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cm facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cm"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "200 cm"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 412,
+      "sku": "FERTIFOLL200",
+      "name": "Planta Fertifoll 200 cm - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Planta Fertifoll 200 cm &#8211; Producto de Vivero: fertilizante en presentación 200 cm, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Planta Fertifoll 200 cm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cm facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 195,
+            "name": "200 cm",
+            "slug": "200-cm"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Planta Fertipot 200 cm - Producto de Vivero: fertilizante en presentación 200 cm, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Planta Fertipot 200 cm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cm facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cm"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "200 cm"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 413,
+      "sku": "FERTIPOT200",
+      "name": "Planta Fertipot 200 cm - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Planta Fertipot 200 cm &#8211; Producto de Vivero: fertilizante en presentación 200 cm, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Planta Fertipot 200 cm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cm facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cm"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 195,
+            "name": "200 cm",
+            "slug": "200-cm"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Fertulveg - Producto de Vivero: fertilizante en presentación presentacion indicada, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Fertulveg - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación presentacion indicada facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "presentacion indicada"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "presentacion indicada"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 414,
+      "sku": "FERTULVEG",
+      "name": "Fertulveg - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Fertulveg &#8211; Producto de Vivero: fertilizante en presentación presentacion indicada, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Fertulveg - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación presentacion indicada facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "presentacion indicada"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          },
+          {
+            "id": 196,
+            "name": "presentacion indicada",
+            "slug": "presentacion-indicada"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Fertihorm - Producto de Vivero: fertilizante en presentación presentacion indicada, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Fertihorm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación presentacion indicada facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "presentacion indicada"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "presentacion indicada"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 415,
+      "sku": "FERTIHORM",
+      "name": "Fertihorm - Producto de Vivero",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Fertihorm &#8211; Producto de Vivero: fertilizante en presentación presentacion indicada, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Fertihorm - Producto de Vivero es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación presentacion indicada facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "presentacion indicada"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          },
+          {
+            "id": 196,
+            "name": "presentacion indicada",
+            "slug": "presentacion-indicada"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Fertifox Floración 200 cc: fertilizante en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Fertifox Floración 200 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "200 cc"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 61091,
+      "sku": "",
+      "name": "Fertifox Floración 200 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Fertifox Floración 200 cc: fertilizante en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Fertifox Floración 200 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 197,
+            "name": "200 cc",
+            "slug": "200-cc"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Fertifox Potenciado 200 cc: fertilizante en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Fertifox Potenciado 200 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "200 cc"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 61093,
+      "sku": "",
+      "name": "Fertifox Potenciado 200 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Fertifox Potenciado 200 cc: fertilizante en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Fertifox Potenciado 200 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 197,
+            "name": "200 cc",
+            "slug": "200-cc"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Fertifox Follaje 200 cc: fertilizante en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Fertifox Follaje 200 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "200 cc"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 61095,
+      "sku": "",
+      "name": "Fertifox Follaje 200 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Fertifox Follaje 200 cc: fertilizante en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Fertifox Follaje 200 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 197,
+            "name": "200 cc",
+            "slug": "200-cc"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "Fertifox Lustre 360 cc: fertilizante en presentación 360 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>Fertifox Lustre 360 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 360 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fertilizante"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "360 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fertilizante"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fertilizante",
+        "360 cc"
+      ],
+      "category_hint": "fertilizante",
+      "product_id": 61097,
+      "sku": "",
+      "name": "Fertifox Lustre 360 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>Fertifox Lustre 360 cc: fertilizante en presentación 360 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>Fertifox Lustre 360 cc es un fertilizante para tareas de cuidado y mantenimiento de espacios verdes. La presentación 360 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fertilizante"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "360 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 143,
+            "name": "FERTILIZANTES",
+            "slug": "fertilizantes"
+          }
+        ],
+        "tags": [
+          {
+            "id": 198,
+            "name": "360 cc",
+            "slug": "360-cc"
+          },
+          {
+            "id": 194,
+            "name": "Fertilizante",
+            "slug": "fertilizante"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "FungoXAN 30 cc: fungicida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>FungoXAN 30 cc es un fungicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Fungicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "fungicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Fungicida",
+        "30 cc"
+      ],
+      "category_hint": "fungicida",
+      "product_id": 61099,
+      "sku": "",
+      "name": "FungoXAN 30 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>FungoXAN 30 cc: fungicida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>FungoXAN 30 cc es un fungicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Fungicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 144,
+            "name": "FUNGUICIDAS",
+            "slug": "funguicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 191,
+            "name": "Fungicida",
+            "slug": "fungicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN TOTAL 100 cc: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN TOTAL 100 cc es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Herbicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "100 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "herbicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Herbicida",
+        "100 cc"
+      ],
+      "category_hint": "herbicida",
+      "product_id": 61101,
+      "sku": "",
+      "name": "GlacoXAN TOTAL 100 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN TOTAL 100 cc: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN TOTAL 100 cc es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Herbicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "100 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 145,
+            "name": "HERBICIDAS",
+            "slug": "herbicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 190,
+            "name": "100 cc",
+            "slug": "100-cc"
+          },
+          {
+            "id": 185,
+            "name": "Herbicida",
+            "slug": "herbicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN MCPA 100 cc: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN MCPA 100 cc es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Herbicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "100 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "herbicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Herbicida",
+        "100 cc"
+      ],
+      "category_hint": "herbicida",
+      "product_id": 61103,
+      "sku": "",
+      "name": "GlacoXAN MCPA 100 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN MCPA 100 cc: herbicida en presentación 100 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN MCPA 100 cc es un herbicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 100 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Herbicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "100 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 145,
+            "name": "HERBICIDAS",
+            "slug": "herbicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 190,
+            "name": "100 cc",
+            "slug": "100-cc"
+          },
+          {
+            "id": 185,
+            "name": "Herbicida",
+            "slug": "herbicida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN E 60 cc: insecticida en presentación 60 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN E 60 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 60 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "60 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "60 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61105,
+      "sku": "",
+      "name": "GlacoXAN E 60 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN E 60 cc: insecticida en presentación 60 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN E 60 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 60 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "60 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 188,
+            "name": "60 cc",
+            "slug": "60-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN H 250 grs: insecticida en presentación 250 grs, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN H 250 grs es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 250 grs facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "250 grs"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "250 grs"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61107,
+      "sku": "",
+      "name": "GlacoXAN H 250 grs",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN H 250 grs: insecticida en presentación 250 grs, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN H 250 grs es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 250 grs facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "250 grs"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 199,
+            "name": "250 grs",
+            "slug": "250-grs"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN CIPER 30 cc: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN CIPER 30 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61109,
+      "sku": "",
+      "name": "GlacoXAN CIPER 30 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN CIPER 30 cc: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN CIPER 30 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN D-SIST 30 cc: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN D-SIST 30 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61111,
+      "sku": "",
+      "name": "GlacoXAN D-SIST 30 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN D-SIST 30 cc: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN D-SIST 30 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN D-SIST 60 cc: insecticida en presentación 60 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN D-SIST 60 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 60 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "60 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "60 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61112,
+      "sku": "",
+      "name": "GlacoXAN D-SIST 60 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN D-SIST 60 cc: insecticida en presentación 60 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN D-SIST 60 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 60 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "60 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 188,
+            "name": "60 cc",
+            "slug": "60-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN AVAM 20 cc: insecticida en presentación 20 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN AVAM 20 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 20 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "20 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "20 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61114,
+      "sku": "",
+      "name": "GlacoXAN AVAM 20 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN AVAM 20 cc: insecticida en presentación 20 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN AVAM 20 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 20 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "20 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 200,
+            "name": "20 cc",
+            "slug": "20-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN IMIDA 30 cc: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN IMIDA 30 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "30 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "30 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61116,
+      "sku": "",
+      "name": "GlacoXAN IMIDA 30 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN IMIDA 30 cc: insecticida en presentación 30 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN IMIDA 30 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 30 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "30 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 189,
+            "name": "30 cc",
+            "slug": "30-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN OIL 200 cc: insecticida en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN OIL 200 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 cc"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "200 cc"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61118,
+      "sku": "",
+      "name": "GlacoXAN OIL 200 cc",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN OIL 200 cc: insecticida en presentación 200 cc, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN OIL 200 cc es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 cc facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 cc"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 197,
+            "name": "200 cc",
+            "slug": "200-cc"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN P (Pellet) 200 grs: molusquicida en presentación 200 grs, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN P (Pellet) 200 grs es un molusquicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 grs facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Molusquicida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 grs"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "molusquicida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Molusquicida",
+        "200 grs"
+      ],
+      "category_hint": "molusquicida",
+      "product_id": 61120,
+      "sku": "",
+      "name": "GlacoXAN P (Pellet) 200 grs",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN P (Pellet) 200 grs: molusquicida en presentación 200 grs, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN P (Pellet) 200 grs es un molusquicida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 grs facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Molusquicida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 grs"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 147,
+            "name": "MOLUSQUICIDAS",
+            "slug": "molusquicidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 201,
+            "name": "200 grs",
+            "slug": "200-grs"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          },
+          {
+            "id": 192,
+            "name": "Molusquicida",
+            "slug": "molusquicida"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    },
+    {
+      "short_description": "GlacoXAN P (Polvo) 200 grs: insecticida en presentación 200 grs, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.",
+      "description": "<p>GlacoXAN P (Polvo) 200 grs es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 grs facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leer la etiqueta del fabricante y respetar dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul><li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li><li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li><li>Mantener fuera del alcance de niños, mascotas y alimentos.</li></ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>",
+      "attributes": [
+        {
+          "name": "Tipo",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Insecticida"
+          ]
+        },
+        {
+          "name": "Presentación",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "200 grs"
+          ]
+        },
+        {
+          "name": "Uso",
+          "visible": true,
+          "variation": false,
+          "options": [
+            "Segun etiqueta del fabricante"
+          ]
+        }
+      ],
+      "meta_data": [
+        {
+          "key": "_loscocos_tipo_accion",
+          "value": "insecticida"
+        },
+        {
+          "key": "_loscocos_modo_uso",
+          "value": "pulverizacion"
+        }
+      ],
+      "tags": [
+        "Insumos de jardin",
+        "Insecticida",
+        "200 grs"
+      ],
+      "category_hint": "insecticida",
+      "product_id": 61122,
+      "sku": "",
+      "name": "GlacoXAN P (Polvo) 200 grs",
+      "product_kind": "packaged_input",
+      "previous": {
+        "short_description": "<p>GlacoXAN P (Polvo) 200 grs: insecticida en presentación 200 grs, para uso responsable en jardín, huerta o vivero según indicaciones de etiqueta.</p>\n",
+        "description": "<p>GlacoXAN P (Polvo) 200 grs es un insecticida para tareas de cuidado y mantenimiento de espacios verdes. La presentación 200 grs facilita su uso en trabajos puntuales de jardín, vivero o huerta familiar.</p>\n<p>Antes de aplicar, leé siempre la etiqueta del fabricante y respetá dosis, compatibilidades, elementos de protección y tiempos de seguridad indicados para el producto.</p>\n<h3>Uso recomendado</h3>\n<ul>\n<li>Aplicar únicamente sobre el objetivo indicado por el fabricante.</li>\n<li>Evitar derivas, excesos de producto y aplicaciones en horarios de alta temperatura.</li>\n<li>Mantener fuera del alcance de niños, mascotas y alimentos.</li>\n</ul>\n<p>En Vivero Los Cocos podemos orientarte para elegir el producto adecuado según el problema a resolver, sin reemplazar las instrucciones oficiales del envase.</p>\n",
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Tipo",
+            "slug": "Tipo",
+            "position": 0,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Insecticida"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Presentación",
+            "slug": "Presentacion",
+            "position": 1,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "200 grs"
+            ]
+          },
+          {
+            "id": 0,
+            "name": "Uso",
+            "slug": "Uso",
+            "position": 2,
+            "visible": true,
+            "variation": false,
+            "options": [
+              "Segun etiqueta del fabricante"
+            ]
+          }
+        ],
+        "categories": [
+          {
+            "id": 146,
+            "name": "INSECTICIDAS",
+            "slug": "insecticidas"
+          }
+        ],
+        "tags": [
+          {
+            "id": 201,
+            "name": "200 grs",
+            "slug": "200-grs"
+          },
+          {
+            "id": 187,
+            "name": "Insecticida",
+            "slug": "insecticida"
+          },
+          {
+            "id": 184,
+            "name": "Insumos de jardin",
+            "slug": "insumos-de-jardin"
+          }
+        ]
+      },
+      "review_status": "Generated Review",
+      "source_policy": "Curado por reglas de catalogo; sin datos tecnicos sensibles inventados."
+    }
+  ]
+}

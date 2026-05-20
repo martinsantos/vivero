@@ -560,12 +560,15 @@ body, * {
     
     <div id="products-container" class="products-grid">
       <?php
-      // Obtener productos destacados
+      // Obtener productos (paginados)
+      $paged = get_query_var('paged') ? get_query_var('paged') : 1;
       $args = array(
           'post_type' => 'product',
-          'posts_per_page' => -1, // Mostrar TODOS los productos
+          'posts_per_page' => 12,
+          'paged' => $paged,
           'post_status' => 'publish',
-          'orderby' => 'rand'
+          'orderby' => 'menu_order title',
+          'order' => 'ASC'
       );
       
       $products_query = new WP_Query($args);

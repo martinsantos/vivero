@@ -596,7 +596,8 @@ body {
       // Consulta directa de productos - SIEMPRE FUNCIONA
       $args = array(
           'post_type' => 'product',
-          'posts_per_page' => -1, // Mostrar TODOS los productos
+          'posts_per_page' => 12,
+          'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
           'post_status' => 'publish',
           'orderby' => 'menu_order title',
           'order' => 'ASC'

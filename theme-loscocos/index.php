@@ -109,28 +109,19 @@
             if (class_exists('WooCommerce')) {
                 $args = array(
                     'post_type'      => 'product',
-                    'posts_per_page' => -1, // Mostrar TODOS los productos
+                    'posts_per_page' => 8,
                     'post_status'    => 'publish',
-                    'meta_query'     => array(
-                        array(
-                            'key'   => '_featured',
-                            'value' => 'yes'
-                        )
-                    )
+                    'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
                 );
-
-                // 🔄 AJUSTE: mostrar SOLO 8 productos ordenados y sin filtro de destacados
-                $args['posts_per_page'] = 8;
-                unset($args['meta_query']);
-                $args['orderby'] = array( 'menu_order' => 'ASC', 'title' => 'ASC' );
                 
                 $featured_products = get_posts($args);
                 if (empty($featured_products)) {
                     $args = array(
                         'post_type' => 'product',
-                        'posts_per_page' => -1, // Mostrar TODOS los productos
+                        'posts_per_page' => 8,
                         'post_status' => 'publish',
-                        'orderby' => 'rand'
+                        'orderby' => 'date',
+                        'order' => 'DESC'
                     );
                     $featured_products = get_posts($args);
                 }
@@ -204,7 +195,6 @@
                             
                             wp_reset_postdata();
                         }
-                    }
                     }
                 } else {
                     // Productos de ejemplo si no hay productos reales
@@ -1240,4 +1230,4 @@ function updateCartCount() {
 
 <?php endif; ?>
 
-<?php get_footer(); ?> 
+<?php get_footer(); ?>

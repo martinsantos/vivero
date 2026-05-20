@@ -1,25 +1,61 @@
 /**
  * Los Cocos Child Theme Main JavaScript
+ * Vanilla JS (no jQuery dependency)
  */
-
-(function ($) {
+(function () {
     'use strict';
 
-    // Force product gallery to be visible
-    $(document).ready(function () {
-        // Remove inline opacity style from WooCommerce gallery
-        $('.woocommerce-product-gallery').removeAttr('style').css('opacity', '1');
+    // Header scroll detection
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.getElementById('masthead');
+        if (!header) return;
 
-        // Also ensure it's visible after a short delay (in case WooCommerce JS runs after)
-        setTimeout(function () {
-            $('.woocommerce-product-gallery').css('opacity', '1');
-        }, 100);
+        var isFrontPage = document.body.classList.contains('home');
+
+        if (isFrontPage) {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.remove('bg-transparent', 'text-white');
+                    header.classList.add('bg-white', 'text-primary-dark', 'shadow-sm');
+                } else {
+                    header.classList.add('bg-transparent', 'text-white');
+                    header.classList.remove('bg-white', 'text-primary-dark', 'shadow-sm');
+                }
+            });
+        }
     });
 
-    // Cart functionality
-    $(document.body).on('added_to_cart removed_from_cart', function () {
-        // Update cart count in header
-        $(document.body).trigger('wc_fragment_refresh');
+    // Product gallery fix
+    document.addEventListener('DOMContentLoaded', function () {
+        var gallery = document.querySelector('.woocommerce-product-gallery');
+        if (gallery) {
+            gallery.style.opacity = '1';
+        }
     });
 
-})(jQuery);
+    // Search toggle
+    document.addEventListener('DOMContentLoaded', function () {
+        var searchToggle = document.getElementById('search-toggle');
+        var searchBar = document.getElementById('search-bar');
+        if (searchToggle && searchBar) {
+            searchToggle.addEventListener('click', function () {
+                searchBar.classList.toggle('hidden');
+                if (!searchBar.classList.contains('hidden')) {
+                    searchBar.querySelector('input[type="search"]').focus();
+                }
+            });
+        }
+    });
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function () {
+        var menuToggle = document.getElementById('mobile-menu-toggle');
+        var mobileNav = document.getElementById('mobile-navigation');
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', function () {
+                mobileNav.classList.toggle('hidden');
+            });
+        }
+    });
+
+})();

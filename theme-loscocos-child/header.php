@@ -64,7 +64,7 @@
 
                     <!-- Icons -->
                     <div class="header-icons flex items-center space-x-6">
-                        <button class="hover:text-accent transition-colors" aria-label="Search">
+                        <button id="search-toggle" class="hover:text-accent transition-colors" aria-label="Search">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -88,7 +88,7 @@
                         </a>
 
                         <!-- Mobile Menu Button -->
-                        <button class="md:hidden hover:text-accent transition-colors" aria-label="Menu">
+                        <button id="mobile-menu-toggle" class="md:hidden hover:text-accent transition-colors" aria-label="Menu">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -98,24 +98,46 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Search Bar (hidden by default) -->
+            <div id="search-bar" class="hidden bg-white border-t border-gray-200 py-4">
+                <div class="container mx-auto px-4">
+                    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex gap-2">
+                        <input type="search" name="s" placeholder="Buscar productos..."
+                            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                            value="<?php echo get_search_query(); ?>">
+                        <button type="submit"
+                            class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation (hidden by default) -->
+            <nav id="mobile-navigation" class="hidden md:hidden bg-white border-t border-gray-200">
+                <div class="container mx-auto px-4 py-4">
+                    <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'menu-1',
+                        'menu_id' => 'mobile-menu',
+                        'container' => false,
+                        'menu_class' => 'flex flex-col space-y-3 font-medium text-primary-dark',
+                        'fallback_cb' => false,
+                    ));
+
+                    if (!has_nav_menu('menu-1')): ?>
+                        <ul class="flex flex-col space-y-3 font-medium text-primary-dark">
+                            <li><a href="<?php echo function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/shop'); ?>"
+                                    class="block py-2 hover:text-accent transition-colors">Tienda</a></li>
+                            <li><a href="<?php echo function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/shop'); ?>"
+                                    class="block py-2 hover:text-accent transition-colors">Plantas</a></li>
+                            <li><a href="<?php echo function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/shop'); ?>"
+                                    class="block py-2 hover:text-accent transition-colors">Macetas</a></li>
+                            <li><a href="https://wa.me/5402614399025" target="_blank"
+                                    class="block py-2 hover:text-accent transition-colors">Contacto</a></li>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </nav>
         </header>
-
-        <!-- Scroll detection script for header -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const header = document.getElementById('masthead');
-                const isFrontPage = <?php echo is_front_page() ? 'true' : 'false'; ?>;
-
-                if (isFrontPage) {
-                    window.addEventListener('scroll', function () {
-                        if (window.scrollY > 50) {
-                            header.classList.remove('bg-transparent', 'text-white');
-                            header.classList.add('bg-white', 'text-primary-dark', 'shadow-sm');
-                        } else {
-                            header.classList.add('bg-transparent', 'text-white');
-                            header.classList.remove('bg-white', 'text-primary-dark', 'shadow-sm');
-                        }
-                    });
-                }
-            });
-        </script>

@@ -13,13 +13,13 @@ if (!defined('WP_CLI') && !is_admin()) {
 
 require_once(dirname(__FILE__) . '/wp-load.php');
 
-echo \"📦 ================================================\n\";
-echo \"📦 LOS COCOS - IMPORTADOR DE PRODUCTOS v2.0\n\";
-echo \"📦 ================================================\n\n\";
+echo "📦 ================================================\n";
+echo "📦 LOS COCOS - IMPORTADOR DE PRODUCTOS v2.0\n";
+echo "📦 ================================================\n\n";
 
 // Verificar que WooCommerce esté activo
 if (!function_exists('wc_get_product')) {
-    die(\"❌ Error: WooCommerce no está activo.\n\");
+    die("❌ Error: WooCommerce no está activo.\n");
 }
 
 /**
@@ -27,7 +27,7 @@ if (!function_exists('wc_get_product')) {
  */
 function normalize_text($text) {
     $text = trim($text);
-    $text = str_replace(['\"', \"'\"], '', $text);
+    $text = str_replace(['"', "'"], '', $text);
     return $text;
 }
 
@@ -50,18 +50,18 @@ function ensure_category($category_name, $parent_id = 0) {
     ));
     
     if (is_wp_error($result)) {
-        echo \"⚠️  No se pudo crear categoría: $category_name\n\";
+        echo "⚠️  No se pudo crear categoría: $category_name\n";
         return 0;
     }
     
-    echo \"✅ Categoría creada: $category_name\n\";
+    echo "✅ Categoría creada: $category_name\n";
     return $result['term_id'];
 }
 
 /**
  * Configurar categorías principales
  */
-echo \"📂 Configurando categorías principales...\n\";
+echo "📂 Configurando categorías principales...\n";
 
 $main_categories = [
     'Plantas de Interior' => [
@@ -118,12 +118,12 @@ foreach ($main_categories as $main_cat => $subcats) {
     }
 }
 
-echo \"\n📊 Categorías configuradas: \" . count($category_map) . \"\n\n\";
+echo "\n📊 Categorías configuradas: " . count($category_map) . "\n\n";
 
 /**
  * Productos de muestra para generar un catálogo inicial
  */
-echo \"🌱 Creando productos de muestra...\n\";
+echo "🌱 Creando productos de muestra...\n";
 
 $sample_products = [
     // Plantas de Interior
@@ -274,7 +274,7 @@ foreach ($sample_products as $product_data) {
     ]);
     
     if (!empty($existing)) {
-        echo \"⏭️  Producto ya existe: {$product_data['name']}\n\";
+        echo "⏭️  Producto ya existe: {$product_data['name']}\n";
         continue;
     }
     
@@ -300,41 +300,41 @@ foreach ($sample_products as $product_data) {
         $product_id = $product->save();
         
         if ($product_id) {
-            echo \"✅ Producto creado: {$product_data['name']} (ID: $product_id)\n\";
+            echo "✅ Producto creado: {$product_data['name']} (ID: $product_id)\n";
             $created_products++;
             
             // Generar imagen SVG para el producto
             if (function_exists('loscocos_get_product_image')) {
                 loscocos_get_product_image($product_id);
-                echo \"   🖼️  Imagen SVG generada\n\";
+                echo "   🖼️  Imagen SVG generada\n";
             }
         } else {
-            echo \"❌ Error al crear producto: {$product_data['name']}\n\";
+            echo "❌ Error al crear producto: {$product_data['name']}\n";
             $errors++;
         }
         
     } catch (Exception $e) {
-        echo \"❌ Error al crear producto {$product_data['name']}: \" . $e->getMessage() . \"\n\";
+        echo "❌ Error al crear producto {$product_data['name']}: " . $e->getMessage() . "\n";
         $errors++;
     }
 }
 
-echo \"\n📊 ================================================\n\";
-echo \"📊 RESUMEN DE IMPORTACIÓN\n\";
-echo \"📊 ================================================\n\";
-echo \"✅ Productos creados: $created_products\n\";
-echo \"❌ Errores: $errors\n\";
-echo \"📂 Categorías disponibles: \" . count($category_map) . \"\n\";
+echo "\n📊 ================================================\n";
+echo "📊 RESUMEN DE IMPORTACIÓN\n";
+echo "📊 ================================================\n";
+echo "✅ Productos creados: $created_products\n";
+echo "❌ Errores: $errors\n";
+echo "📂 Categorías disponibles: " . count($category_map) . "\n";
 
 // Mostrar algunas estadísticas
 $total_products = wp_count_posts('product');
-echo \"📦 Total de productos en la tienda: \" . $total_products->publish . \"\n\";
+echo "📦 Total de productos en la tienda: " . $total_products->publish . "\n";
 
-echo \"\n🎉 ¡Importación completada!\n\";
-echo \"\n🌐 Próximos pasos:\n\";
-echo \"   1. Visita la tienda: http://localhost:8080/shop/\n\";
-echo \"   2. Verifica que los productos se muestren correctamente\n\";
-echo \"   3. Comprueba que las imágenes SVG se generen automáticamente\n\";
-echo \"   4. Prueba el proceso de compra completo\n\";
+echo "\n🎉 ¡Importación completada!\n";
+echo "\n🌐 Próximos pasos:\n";
+echo "   1. Visita la tienda: http://localhost:8080/shop/\n";
+echo "   2. Verifica que los productos se muestren correctamente\n";
+echo "   3. Comprueba que las imágenes SVG se generen automáticamente\n";
+echo "   4. Prueba el proceso de compra completo\n";
 
 ?>
