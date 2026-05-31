@@ -24,13 +24,35 @@ $image = $product->get_image_id()
     ? wp_get_attachment_image($product->get_image_id(), 'woocommerce_thumbnail', false, $image_attrs)
     : '<img src="' . esc_url(wc_placeholder_img_src('woocommerce_thumbnail')) . '" alt="' . esc_attr($product->get_name()) . '" class="' . esc_attr($image_attrs['class']) . '" loading="lazy">';
 $categories = wp_get_post_terms($product_id, 'product_cat');
-$category_name = ($categories && !is_wp_error($categories)) ? $categories[0]->name : '';
-$short_description = wp_trim_words(wp_strip_all_tags($product->get_short_description()), 14, '...');
+$default_category_id = (int) get_option('default_product_cat');
+$category_name = '';
+
+if ($categories && !is_wp_error($categories)) {
+    foreach ($categories as $category) {
+        if ((int) $category->term_id !== $default_category_id && 'sin-categorizar' !== $category->slug) {
+            $category_name = $category->name;
+            break;
+        }
+    }
+}
+
+if (!$category_name) {
+    $category_name = 'Vivero Los Cocos';
+}
+
+$short_description = wp_trim_words(wp_strip_all_tags($product->get_short_description()), 18, '...');
+
+if (!$short_description) {
+    $short_description = sprintf(
+        '%s seleccionado para compra directa o consulta personalizada.',
+        $category_name
+    );
+}
 $is_quick_add = $product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock();
 ?>
 
-<li <?php wc_product_class('group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg', $product); ?>>
-    <a href="<?php echo esc_url($product_url); ?>" class="relative block aspect-square overflow-hidden bg-neutral-100">
+<li <?php wc_product_class('lc-product-card group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg', $product); ?>>
+    <a href="<?php echo esc_url($product_url); ?>" class="lc-product-card__media relative block aspect-square overflow-hidden bg-neutral-100">
         <?php echo wp_kses_post($image); ?>
 
         <div class="absolute left-3 top-3 flex flex-col gap-2">
@@ -46,26 +68,26 @@ $is_quick_add = $product->is_type('simple') && $product->is_purchasable() && $pr
         <?php endif; ?>
     </a>
 
-    <div class="flex flex-1 flex-col p-5">
+    <div class="lc-product-card__body flex flex-1 flex-col p-5">
         <?php if ($category_name) : ?>
-            <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-primary-light">
+            <p class="lc-product-card__category mb-2 text-xs font-semibold uppercase tracking-widest text-primary-light">
                 <?php echo esc_html($category_name); ?>
             </p>
         <?php endif; ?>
 
-        <h2 class="mb-3 min-h-[3.5rem] text-lg font-bold leading-snug text-primary-dark">
+        <h2 class="lc-product-card__title mb-3 min-h-[3.5rem] text-lg font-bold leading-snug text-primary-dark">
             <a href="<?php echo esc_url($product_url); ?>" class="hover:text-accent">
                 <?php echo esc_html($product->get_name()); ?>
             </a>
         </h2>
 
-        <p class="mb-5 min-h-[2.75rem] text-sm leading-relaxed text-neutral-medium">
-            <?php echo $short_description ? esc_html($short_description) : 'Producto seleccionado por Vivero Los Cocos.'; ?>
+        <p class="lc-product-card__description mb-5 min-h-[2.75rem] text-sm leading-relaxed text-neutral-medium">
+            <?php echo esc_html($short_description); ?>
         </p>
 
         <div class="mt-auto">
-            <div class="mb-4 flex items-end justify-between gap-3">
-                <div class="text-xl font-extrabold text-neutral-dark">
+            <div class="lc-product-card__meta mb-4 flex items-end justify-between gap-3">
+                <div class="lc-product-card__price text-xl font-extrabold text-neutral-dark">
                     <?php echo wp_kses_post($product->get_price_html()); ?>
                 </div>
                 <?php if ($product->is_in_stock()) : ?>
@@ -75,7 +97,7 @@ $is_quick_add = $product->is_type('simple') && $product->is_purchasable() && $pr
                 <?php endif; ?>
             </div>
 
-            <div class="grid grid-cols-1 gap-2">
+            <div class="lc-product-card__actions grid grid-cols-1 gap-2">
                 <?php if ($is_quick_add) : ?>
                     <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
                        data-quantity="1"
