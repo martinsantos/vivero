@@ -81,6 +81,21 @@ $get_featured_shop_products = static function () {
 };
 
 $featured_products = $get_featured_shop_products();
+
+$get_product_display_category = static function ($product_id) {
+    $product_categories = wp_get_post_terms($product_id, 'product_cat');
+    $default_category_id = (int) get_option('default_product_cat');
+
+    if ($product_categories && !is_wp_error($product_categories)) {
+        foreach ($product_categories as $product_category) {
+            if ((int) $product_category->term_id !== $default_category_id && 'sin-categorizar' !== $product_category->slug) {
+                return $product_category->name;
+            }
+        }
+    }
+
+    return 'Vivero Los Cocos';
+};
 ?>
 
 <main id="primary" class="site-main bg-cream-light min-h-screen">
@@ -247,8 +262,7 @@ $featured_products = $get_featured_shop_products();
                                 'class' => 'lc-featured-product-card__image',
                                 'loading' => 'lazy',
                             ));
-                            $featured_categories = wp_get_post_terms($featured_id, 'product_cat');
-                            $featured_category = ($featured_categories && !is_wp_error($featured_categories)) ? $featured_categories[0]->name : 'Vivero Los Cocos';
+                            $featured_category = $get_product_display_category($featured_id);
                             ?>
                             <article class="lc-featured-product-card">
                                 <a href="<?php echo esc_url($featured_url); ?>" class="lc-featured-product-card__media">

@@ -26,6 +26,21 @@ try {
       isMobile: viewport.isMobile,
       deviceScaleFactor: 1,
     });
+    const browserIssues = [];
+    page.on('console', (message) => {
+      if (['error', 'warning'].includes(message.type())) {
+        browserIssues.push({
+          type: message.type(),
+          text: message.text(),
+        });
+      }
+    });
+    page.on('pageerror', (error) => {
+      browserIssues.push({
+        type: 'pageerror',
+        text: error.message,
+      });
+    });
 
     try {
       await page.goto(shopUrl, { waitUntil: 'networkidle', timeout: 45000 });
@@ -89,6 +104,10 @@ try {
           overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         };
       });
+
+      if (browserIssues.length > 0) {
+        recordFailure('La tienda no debe emitir errores o warnings relevantes en consola.', { viewport, browserIssues });
+      }
 
       if (!snapshot.hasClassicPage || !snapshot.hasThemeHeader || !snapshot.hasThemeFooter) {
         recordFailure('La tienda no esta usando el shell clasico del theme activo.', { viewport, snapshot });
