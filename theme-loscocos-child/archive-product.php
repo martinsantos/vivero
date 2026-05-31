@@ -20,6 +20,67 @@ $categories = get_terms(array(
     'parent' => 0,
     'exclude' => array((int) get_option('default_product_cat')),
 ));
+
+$active_categories = ($categories && !is_wp_error($categories)) ? count($categories) : 0;
+
+$get_featured_shop_products = static function () {
+    $query_sets = array(
+        array(
+            'status' => 'publish',
+            'limit' => 3,
+            'featured' => true,
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
+            'return' => 'objects',
+        ),
+        array(
+            'status' => 'publish',
+            'limit' => 3,
+            'on_sale' => true,
+            'stock_status' => 'instock',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'return' => 'objects',
+        ),
+        array(
+            'status' => 'publish',
+            'limit' => 3,
+            'stock_status' => 'instock',
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
+            'return' => 'objects',
+        ),
+    );
+
+    $selected = array();
+    $seen_ids = array();
+
+    foreach ($query_sets as $query_args) {
+        $products = wc_get_products($query_args);
+
+        foreach ($products as $candidate) {
+            if (!$candidate instanceof WC_Product || !$candidate->is_visible()) {
+                continue;
+            }
+
+            $candidate_id = $candidate->get_id();
+            if (isset($seen_ids[$candidate_id])) {
+                continue;
+            }
+
+            $selected[] = $candidate;
+            $seen_ids[$candidate_id] = true;
+
+            if (count($selected) >= 3) {
+                break 2;
+            }
+        }
+    }
+
+    return $selected;
+};
+
+$featured_products = $get_featured_shop_products();
 ?>
 
 <main id="primary" class="site-main bg-cream-light min-h-screen">
