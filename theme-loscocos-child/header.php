@@ -12,7 +12,7 @@
     <?php wp_body_open(); ?>
 
     <div id="page" class="site min-h-screen flex flex-col">
-        <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'loscocos'); ?></a>
+        <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Saltar al contenido', 'loscocos-child'); ?></a>
 
         <!-- Header -->
         <header id="masthead"
@@ -64,7 +64,7 @@
 
                     <!-- Icons -->
                     <div class="header-icons flex items-center space-x-6">
-                        <button id="search-toggle" class="hover:text-accent transition-colors" aria-label="Search">
+                        <button id="search-toggle" type="button" class="hover:text-accent transition-colors" aria-label="Buscar" aria-controls="search-bar" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -73,7 +73,7 @@
                         </button>
 
                         <a href="<?php echo function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/cart'); ?>"
-                            class="relative hover:text-accent transition-colors" aria-label="Cart">
+                            class="relative hover:text-accent transition-colors" aria-label="Carrito">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -88,7 +88,7 @@
                         </a>
 
                         <!-- Mobile Menu Button -->
-                        <button id="mobile-menu-toggle" class="md:hidden hover:text-accent transition-colors" aria-label="Menu">
+                        <button id="mobile-menu-toggle" type="button" class="md:hidden hover:text-accent transition-colors" aria-label="Menú" aria-controls="mobile-navigation" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -100,11 +100,11 @@
             </div>
 
             <!-- Search Bar (hidden by default) -->
-            <div id="search-bar" class="hidden bg-white border-t border-gray-200 py-4">
+            <div id="search-bar" class="hidden bg-white text-neutral-dark border-t border-gray-200 py-4 shadow-sm">
                 <div class="container mx-auto px-4">
                     <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex gap-2">
                         <input type="search" name="s" placeholder="Buscar productos..."
-                            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-neutral-dark focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                             value="<?php echo get_search_query(); ?>">
                         <button type="submit"
                             class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors font-medium">
@@ -115,7 +115,7 @@
             </div>
 
             <!-- Mobile Navigation (hidden by default) -->
-            <nav id="mobile-navigation" class="hidden md:hidden bg-white border-t border-gray-200">
+            <nav id="mobile-navigation" class="hidden md:hidden bg-white text-primary-dark border-t border-gray-200 shadow-sm">
                 <div class="container mx-auto px-4 py-4">
                     <?php
                     wp_nav_menu(array(

@@ -9,14 +9,7 @@ get_header();
 
 $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/tienda/');
 $whatsapp_url = 'https://wa.me/5402614399025';
-$hero_image_url = 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1600&q=88';
-$hero_product = function_exists('wc_get_product') ? wc_get_product(467) : null;
-if ($hero_product instanceof WC_Product && $hero_product->get_image_id()) {
-    $hero_image = wp_get_attachment_image_url($hero_product->get_image_id(), 'large');
-    if ($hero_image) {
-        $hero_image_url = $hero_image;
-    }
-}
+$hero_image_url = 'https://viveroloscocos.com.ar/wp-content/uploads/2025/09/monstera-deliciosa-potted-plant-1-1024x1024.webp';
 
 $primary_categories = get_terms(array(
     'taxonomy' => 'product_cat',

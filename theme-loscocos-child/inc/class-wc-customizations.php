@@ -22,6 +22,9 @@ class LosCocos_WC_Customizations {
         
         // Product tabs customization
         add_filter('woocommerce_product_tabs', [self::class, 'customize_product_tabs'], 98);
+
+        // The catalog design is a classic WooCommerce template in this theme.
+        add_filter('woocommerce_has_block_template', [self::class, 'prefer_classic_catalog_templates'], 20, 2);
     }
     
     /**
@@ -53,5 +56,23 @@ class LosCocos_WC_Customizations {
         }
         
         return $tabs;
+    }
+
+    /**
+     * Keep shop and taxonomy archives on the theme templates used in production.
+     */
+    public static function prefer_classic_catalog_templates($has_template, $template_name) {
+        $classic_catalog_templates = [
+            'archive-product',
+            'taxonomy-product_cat',
+            'taxonomy-product_tag',
+            'taxonomy-product_attribute',
+        ];
+
+        if (in_array($template_name, $classic_catalog_templates, true)) {
+            return false;
+        }
+
+        return $has_template;
     }
 }

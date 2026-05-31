@@ -36,8 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 c.classList.add('hidden');
                 c.classList.remove('active');
             });
-            document.getElementById('tab-' + tabId).classList.remove('hidden');
-            document.getElementById('tab-' + tabId).classList.add('active');
+            var selectedPanel = document.getElementById('tab-' + tabId);
+            if (selectedPanel) {
+                selectedPanel.classList.remove('hidden');
+                selectedPanel.classList.add('active');
+            }
         });
     });
 
