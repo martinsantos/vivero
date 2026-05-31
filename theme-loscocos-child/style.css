@@ -1885,11 +1885,14 @@ video {
 .text-right {
   text-align: right;
 }
+.font-display {
+  font-family: Fraunces, Georgia, serif;
+}
 .font-sans {
   font-family: Inter, Outfit, ui-sans-serif, system-ui, sans-serif;
 }
 .font-serif {
-  font-family: Merriweather, serif;
+  font-family: Merriweather, Georgia, serif;
 }
 .text-2xl {
   font-size: 1.5rem;

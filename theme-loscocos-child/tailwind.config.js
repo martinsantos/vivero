@@ -6,6 +6,9 @@ module.exports = {
     './woocommerce/**/*.php',
     './assets/js/**/*.js',
   ],
+  safelist: [
+    'font-display',
+  ],
   theme: {
     extend: {
       colors: {
@@ -36,7 +39,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        serif: ['Merriweather', 'Georgia', 'serif'],
       },
     },
   },
