@@ -105,6 +105,7 @@ try {
           heroEyebrowStyle: styleFor('.lc-shop-hero__eyebrow'),
           heroMetricStyle: styleFor('.lc-shop-hero-metric'),
           featuredHeadingStyle: styleFor('.lc-featured-products h2'),
+          featuredSectionStyle: styleFor('.lc-featured-products'),
           featuredCardStyle: styleFor('.lc-featured-product-card'),
           featuredCategories: Array.from(document.querySelectorAll('.lc-featured-product-card__category'), (node) => node.textContent.trim()),
           productTitleStyle: styleFor('.lc-product-card__title'),
@@ -119,6 +120,9 @@ try {
           productGridStyle: styleFor('ul.products'),
           controlsStyle: styleFor('.lc-shop-controls'),
           controlsRect: rectFor('.lc-shop-controls'),
+          catalogToolbarRect: rectFor('.lc-shop-toolbar'),
+          featuredSectionRect: rectFor('.lc-featured-products'),
+          productGridRect: rectFor('ul.products'),
           firstRowTops,
           overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         };
@@ -176,6 +180,28 @@ try {
 
       if (!usesInterFirst(snapshot.productTitleStyle) || !usesInterFirst(snapshot.productPriceStyle)) {
         recordFailure('Las cards deben usar Inter como tipografia comercial vigente de produccion para nombre y precio.', { viewport, snapshot });
+      }
+
+      if (viewport.name === 'desktop') {
+        if (snapshot.firstCardRect?.top > 930) {
+          recordFailure('La primera fila de productos debe aparecer mucho antes; los destacados no pueden demorar el catalogo.', { viewport, snapshot });
+        }
+
+        const imageRatio = snapshot.firstImageRect && snapshot.firstCardRect
+          ? snapshot.firstImageRect.width / snapshot.firstCardRect.width
+          : 0;
+
+        if (imageRatio < 0.96) {
+          recordFailure('La imagen de producto debe recuperar escala cercana a produccion dentro de la card.', { viewport, snapshot, imageRatio });
+        }
+
+        if (snapshot.catalogToolbarRect?.height > 70) {
+          recordFailure('La toolbar de catalogo debe ser mas compacta y liviana que la regresion actual.', { viewport, snapshot });
+        }
+
+        if (snapshot.featuredSectionRect?.height > 190) {
+          recordFailure('Los destacados deben ser una franja comercial compacta, no una seccion dominante.', { viewport, snapshot });
+        }
       }
 
       if (snapshot.featuredCategories.some((category) => /sin categor/i.test(category))) {
