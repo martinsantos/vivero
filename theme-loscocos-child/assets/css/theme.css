@@ -280,8 +280,8 @@
   --lc-shop-clay: #c96a4a;
   --lc-shop-ink: #1f342b;
   --lc-shop-muted: #68766d;
-  --lc-shop-font-sans: Outfit, Inter, ui-sans-serif, system-ui, sans-serif;
-  --lc-shop-font-display: Fraunces, Georgia, serif;
+  --lc-shop-font-sans: Inter, Outfit, ui-sans-serif, system-ui, sans-serif;
+  --lc-shop-font-display: Merriweather, serif;
   background:
     linear-gradient(180deg, #fffdf8 0%, #fbfaf5 42%, #fff 100%);
   color: var(--lc-shop-ink);
@@ -312,24 +312,24 @@
 .lc-shop-toolbar__eyebrow,
 .lc-featured-products__eyebrow,
 .lc-shop-page .lc-product-card__category {
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
 }
 
 .lc-shop-hero__eyebrow {
   color: rgba(232, 239, 226, 0.82) !important;
   font-family: var(--lc-shop-font-sans);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .lc-shop-hero__title {
   max-width: 12ch;
   color: #fff;
   font-family: var(--lc-shop-font-display);
-  font-size: 3.15rem;
-  font-weight: 750;
+  font-size: 3rem;
+  font-weight: 700;
   letter-spacing: 0;
-  line-height: 0.95;
+  line-height: 1;
 }
 
 .lc-shop-hero__lede {
@@ -341,7 +341,7 @@
 
 @media (min-width: 768px) {
   .lc-shop-hero__title {
-    font-size: 5.35rem;
+    font-size: 3.75rem;
   }
 
   .lc-shop-hero__lede {
@@ -366,7 +366,7 @@
 .lc-shop-hero-metric strong {
   font-family: var(--lc-shop-font-sans);
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .lc-shop-hero-metric span {
@@ -443,7 +443,7 @@
   margin: 0 0 0.28rem;
   color: var(--lc-shop-muted);
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -451,7 +451,7 @@
   margin: 0;
   color: var(--lc-shop-ink);
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .lc-shop-toolbar__ordering .woocommerce-ordering {
@@ -467,7 +467,7 @@
   color: var(--lc-shop-ink);
   font-family: var(--lc-shop-font-sans);
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 600;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.86),
     0 1px 2px rgba(18, 34, 27, 0.04);
@@ -494,7 +494,7 @@
   margin: 0 0 0.28rem;
   color: var(--lc-shop-clay);
   font-size: 0.72rem;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -503,7 +503,7 @@
   color: var(--lc-shop-canopy);
   font-family: var(--lc-shop-font-display);
   font-size: 1.55rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.04;
 }
@@ -517,7 +517,7 @@
 .lc-featured-products__link {
   color: var(--lc-shop-leaf);
   font-size: 0.9rem;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -594,7 +594,7 @@
   margin: 0 0 0.36rem;
   color: var(--lc-shop-leaf-soft);
   font-size: 0.67rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.055em;
   text-transform: uppercase;
 }
@@ -604,7 +604,7 @@
   color: var(--lc-shop-canopy);
   font-family: var(--lc-shop-font-sans);
   font-size: 1.02rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.22;
   overflow-wrap: anywhere;
 }
@@ -621,7 +621,7 @@
   gap: 0.75rem;
   margin-top: auto;
   color: var(--lc-shop-ink);
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .lc-featured-product-card__meta small {
@@ -631,7 +631,7 @@
   padding: 0.2rem 0.56rem;
   color: var(--lc-shop-leaf);
   font-size: 0.67rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .lc-shop-page .lc-product-card {
@@ -696,15 +696,15 @@
 .lc-shop-page .lc-product-card__category {
   color: var(--lc-shop-leaf-soft);
   font-size: 0.69rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.055em;
 }
 
 .lc-shop-page .lc-product-card__title {
   color: var(--lc-shop-canopy);
   font-family: var(--lc-shop-font-sans);
-  font-size: 1.08rem;
-  font-weight: 800;
+  font-size: 1.125rem;
+  font-weight: 700;
 }
 
 .lc-shop-page .lc-product-card__description {
@@ -718,8 +718,8 @@
 .lc-shop-page .lc-product-card__price {
   color: var(--lc-shop-ink);
   font-family: var(--lc-shop-font-sans);
-  font-size: 1.28rem;
-  font-weight: 900;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .lc-shop-page .lc-product-card__stock {

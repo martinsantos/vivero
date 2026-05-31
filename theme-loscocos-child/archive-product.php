@@ -105,7 +105,7 @@ $get_product_display_category = static function ($product_id) {
                 <p class="lc-shop-hero__eyebrow text-sm font-semibold uppercase text-secondary-light mb-4">
                     Tienda online de Vivero Los Cocos
                 </p>
-                <h1 class="lc-shop-hero__title text-4xl md:text-6xl font-display font-bold leading-tight mb-5">
+                <h1 class="lc-shop-hero__title text-4xl md:text-6xl font-serif font-bold leading-tight mb-5">
                     <?php echo esc_html($archive_title ?: 'Tienda'); ?>
                 </h1>
                 <p class="lc-shop-hero__lede text-lg md:text-xl text-white/85 max-w-3xl leading-relaxed">

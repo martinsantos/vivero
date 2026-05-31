@@ -166,15 +166,16 @@ try {
         recordFailure('La tienda debe exponer la clase premium lc-shop-page para aplicar el sistema visual comercial.', { viewport, snapshot });
       }
 
-      const usesFraunces = (style) => style?.fontFamily?.toLowerCase().includes('fraunces');
-      const usesOutfit = (style) => style?.fontFamily?.toLowerCase().includes('outfit');
+      const normalizedFontFamily = (style) => style?.fontFamily?.toLowerCase() || '';
+      const usesMerriweather = (style) => normalizedFontFamily(style).includes('merriweather');
+      const usesInterFirst = (style) => normalizedFontFamily(style).startsWith('inter');
 
-      if (!usesFraunces(snapshot.heroTitleStyle) || !usesFraunces(snapshot.featuredHeadingStyle)) {
-        recordFailure('La tienda debe usar Fraunces como tipografia display comercial en hero y destacados.', { viewport, snapshot });
+      if (!usesMerriweather(snapshot.heroTitleStyle) || !usesMerriweather(snapshot.featuredHeadingStyle)) {
+        recordFailure('La tienda debe usar Merriweather/serif como tipografia display vigente de produccion en hero y destacados.', { viewport, snapshot });
       }
 
-      if (!usesOutfit(snapshot.productTitleStyle) || !usesOutfit(snapshot.productPriceStyle)) {
-        recordFailure('Las cards deben usar Outfit para nombre y precio de producto.', { viewport, snapshot });
+      if (!usesInterFirst(snapshot.productTitleStyle) || !usesInterFirst(snapshot.productPriceStyle)) {
+        recordFailure('Las cards deben usar Inter como tipografia comercial vigente de produccion para nombre y precio.', { viewport, snapshot });
       }
 
       if (snapshot.featuredCategories.some((category) => /sin categor/i.test(category))) {
