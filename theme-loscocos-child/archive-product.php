@@ -98,17 +98,17 @@ $get_product_display_category = static function ($product_id) {
 };
 ?>
 
-<main id="primary" class="site-main bg-cream-light min-h-screen">
-    <section class="bg-primary text-white pt-28 pb-12 md:pt-32 md:pb-16">
+<main id="primary" class="lc-shop-page site-main bg-cream-light min-h-screen">
+    <section class="lc-shop-hero bg-primary text-white pt-28 pb-12 md:pt-32 md:pb-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl">
-                <p class="text-sm font-semibold uppercase tracking-widest text-secondary-light mb-4">
+                <p class="lc-shop-hero__eyebrow text-sm font-semibold uppercase text-secondary-light mb-4">
                     Tienda online de Vivero Los Cocos
                 </p>
-                <h1 class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-5">
+                <h1 class="lc-shop-hero__title text-4xl md:text-6xl font-display font-bold leading-tight mb-5">
                     <?php echo esc_html($archive_title ?: 'Tienda'); ?>
                 </h1>
-                <p class="text-lg md:text-xl text-white/85 max-w-3xl leading-relaxed">
+                <p class="lc-shop-hero__lede text-lg md:text-xl text-white/85 max-w-3xl leading-relaxed">
                     <?php if ($archive_description) : ?>
                         <?php echo wp_kses_post(wp_strip_all_tags($archive_description)); ?>
                     <?php else : ?>
@@ -159,7 +159,7 @@ $get_product_display_category = static function ($product_id) {
         </div>
     </section>
 
-    <section class="container mx-auto px-4 py-10 md:py-14">
+    <section class="lc-shop-catalog container mx-auto px-4 py-10 md:py-14">
         <?php do_action('woocommerce_before_main_content'); ?>
         <?php woocommerce_output_all_notices(); ?>
 

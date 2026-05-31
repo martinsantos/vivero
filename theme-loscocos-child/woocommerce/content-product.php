@@ -91,9 +91,9 @@ $is_quick_add = $product->is_type('simple') && $product->is_purchasable() && $pr
                     <?php echo wp_kses_post($product->get_price_html()); ?>
                 </div>
                 <?php if ($product->is_in_stock()) : ?>
-                    <span class="rounded-full bg-secondary-light px-3 py-1 text-xs font-semibold text-primary-dark">En stock</span>
+                    <span class="lc-product-card__stock rounded-full bg-secondary-light px-3 py-1 text-xs font-semibold text-primary-dark">En stock</span>
                 <?php else : ?>
-                    <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-medium">Sin stock</span>
+                    <span class="lc-product-card__stock lc-product-card__stock--out rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-medium">Sin stock</span>
                 <?php endif; ?>
             </div>
 
