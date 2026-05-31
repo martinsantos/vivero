@@ -244,6 +244,18 @@ $get_product_display_category = static function ($product_id) {
                 </div>
             </div>
 
+            <ul id="catalogo" class="products columns-<?php echo esc_attr(wc_get_loop_prop('columns')); ?> grid grid-cols-1 gap-6 lg:grid-cols-3 xl:grid-cols-4">
+
+            <?php if (wc_get_loop_prop('total')) : ?>
+                <?php while (have_posts()) : ?>
+                    <?php the_post(); ?>
+                    <?php wc_get_template_part('content', 'product'); ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+
+            </ul>
+            <?php do_action('woocommerce_after_shop_loop'); ?>
+
             <?php if (!empty($featured_products)) : ?>
                 <section class="lc-featured-products" aria-labelledby="lc-featured-products-title">
                     <div class="lc-featured-products__header">
@@ -251,7 +263,7 @@ $get_product_display_category = static function ($product_id) {
                             <p class="lc-featured-products__eyebrow">Selección del vivero</p>
                             <h2 id="lc-featured-products-title">Destacados del vivero</h2>
                         </div>
-                        <a href="#catalogo" class="lc-featured-products__link">Ver catálogo completo</a>
+                        <a href="#catalogo" class="lc-featured-products__link">Volver al catálogo</a>
                     </div>
                     <div class="lc-featured-products__grid">
                         <?php foreach ($featured_products as $featured_product) : ?>
@@ -287,18 +299,6 @@ $get_product_display_category = static function ($product_id) {
                     </div>
                 </section>
             <?php endif; ?>
-
-            <ul id="catalogo" class="products columns-<?php echo esc_attr(wc_get_loop_prop('columns')); ?> grid grid-cols-1 gap-6 lg:grid-cols-3 xl:grid-cols-4">
-
-            <?php if (wc_get_loop_prop('total')) : ?>
-                <?php while (have_posts()) : ?>
-                    <?php the_post(); ?>
-                    <?php wc_get_template_part('content', 'product'); ?>
-                <?php endwhile; ?>
-            <?php endif; ?>
-
-            </ul>
-            <?php do_action('woocommerce_after_shop_loop'); ?>
         <?php else : ?>
             <div class="rounded-lg border border-neutral-200 bg-white px-6 py-16 text-center">
                 <h2 class="text-2xl font-serif font-bold text-primary-dark mb-3">No encontramos productos para esta búsqueda.</h2>
