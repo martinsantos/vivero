@@ -70,11 +70,19 @@ try {
           return {
             display: styles.display,
             gridTemplateColumns: styles.gridTemplateColumns,
+            borderColor: styles.borderColor,
             borderRadius: styles.borderRadius,
             boxShadow: styles.boxShadow,
             overflow: styles.overflow,
             position: styles.position,
             backgroundColor: styles.backgroundColor,
+            backgroundImage: styles.backgroundImage,
+            color: styles.color,
+            fontFamily: styles.fontFamily,
+            fontSize: styles.fontSize,
+            fontWeight: styles.fontWeight,
+            letterSpacing: styles.letterSpacing,
+            lineHeight: styles.lineHeight,
           };
         };
 
@@ -92,6 +100,17 @@ try {
           hasFeaturedSection: Boolean(document.querySelector('.lc-featured-products')),
           featuredCardCount: document.querySelectorAll('.lc-featured-product-card').length,
           hasCatalogToolbar: Boolean(document.querySelector('.lc-shop-toolbar')),
+          hasPremiumShopPage: Boolean(document.querySelector('.lc-shop-page')),
+          heroTitleStyle: styleFor('.lc-shop-hero__title'),
+          heroEyebrowStyle: styleFor('.lc-shop-hero__eyebrow'),
+          heroMetricStyle: styleFor('.lc-shop-hero-metric'),
+          featuredHeadingStyle: styleFor('.lc-featured-products h2'),
+          featuredCardStyle: styleFor('.lc-featured-product-card'),
+          featuredCategories: Array.from(document.querySelectorAll('.lc-featured-product-card__category'), (node) => node.textContent.trim()),
+          productTitleStyle: styleFor('.lc-product-card__title'),
+          productPriceStyle: styleFor('.lc-product-card__price'),
+          productPrimaryActionStyle: styleFor('.lc-product-card__actions .button'),
+          catalogSectionStyle: styleFor('.lc-shop-catalog'),
           blockProductCount: document.querySelectorAll('.wc-block-product').length,
           classicProductCount: productCards.length,
           firstCardRect: rectFor('ul.products > li.product'),
@@ -141,6 +160,36 @@ try {
 
       if (!snapshot.hasFeaturedSection || snapshot.featuredCardCount < 1 || snapshot.featuredCardCount > 3) {
         recordFailure('La tienda debe renderizar entre 1 y 3 destacados cuando hay productos elegibles.', { viewport, snapshot });
+      }
+
+      if (!snapshot.hasPremiumShopPage) {
+        recordFailure('La tienda debe exponer la clase premium lc-shop-page para aplicar el sistema visual comercial.', { viewport, snapshot });
+      }
+
+      const usesFraunces = (style) => style?.fontFamily?.toLowerCase().includes('fraunces');
+      const usesOutfit = (style) => style?.fontFamily?.toLowerCase().includes('outfit');
+
+      if (!usesFraunces(snapshot.heroTitleStyle) || !usesFraunces(snapshot.featuredHeadingStyle)) {
+        recordFailure('La tienda debe usar Fraunces como tipografia display comercial en hero y destacados.', { viewport, snapshot });
+      }
+
+      if (!usesOutfit(snapshot.productTitleStyle) || !usesOutfit(snapshot.productPriceStyle)) {
+        recordFailure('Las cards deben usar Outfit para nombre y precio de producto.', { viewport, snapshot });
+      }
+
+      if (snapshot.featuredCategories.some((category) => /sin categor/i.test(category))) {
+        recordFailure('Los destacados no deben mostrar Sin categorizar como categoria comercial.', { viewport, snapshot });
+      }
+
+      const ctaBackgroundColor = snapshot.productPrimaryActionStyle?.backgroundColor?.trim().toLowerCase();
+      const ctaBackgroundImage = snapshot.productPrimaryActionStyle?.backgroundImage?.trim().toLowerCase();
+      const ctaHasVisibleBackground =
+        Boolean(snapshot.productPrimaryActionStyle) &&
+        ((ctaBackgroundColor && ctaBackgroundColor !== 'rgba(0, 0, 0, 0)' && ctaBackgroundColor !== 'transparent') ||
+          (ctaBackgroundImage && ctaBackgroundImage !== 'none'));
+
+      if (!ctaHasVisibleBackground) {
+        recordFailure('El CTA principal de producto debe conservar un fondo comercial visible.', { viewport, snapshot });
       }
 
       if (hasClassicGrid) {
