@@ -1,6 +1,6 @@
 /**
  * Theme Name: Los Cocos Child
- * Template: loscocos
+ * Template: theme-loscocos
  * Description: Child theme for Los Cocos with Tailwind CSS
  * Version: 2.0.0
  */
@@ -60,18 +60,159 @@
 }
 
 .lc-hero__image-caption {
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(12, 32, 25, 0.88);
-  color: #fff;
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.94);
+  color: #143a2f;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
 }
 
 .lc-hero__image-caption strong {
-  color: #fff;
+  color: #143a2f;
 }
 
 .lc-hero__image-caption span {
-  color: rgba(255, 255, 255, 0.84);
+  color: #6b7280;
+}
+
+/* Home category cards */
+.lc-home-category-card {
+  position: relative;
+  display: grid;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid #dce4d8;
+  border-radius: 8px;
+  background: #fff;
+  color: #20362b;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(23, 35, 29, 0.06);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.lc-home-category-card:hover,
+.lc-home-category-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: #2d5a3d;
+  box-shadow: 0 18px 38px rgba(23, 35, 29, 0.14);
+  outline: none;
+}
+
+.lc-home-category-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f4f7ef;
+}
+
+.lc-home-category-card__media::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 46%;
+  content: "";
+  background: linear-gradient(180deg, rgba(23, 35, 29, 0), rgba(23, 35, 29, 0.42));
+  pointer-events: none;
+}
+
+.lc-home-category-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 0;
+  transform: scale(1.14);
+  transition: transform 420ms ease;
+}
+
+.lc-home-category-card:hover .lc-home-category-card__image,
+.lc-home-category-card:focus-visible .lc-home-category-card__image {
+  transform: scale(1.2);
+}
+
+.lc-home-category-card__count {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1;
+  min-width: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #20362b;
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0.55rem 0.72rem;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(23, 35, 29, 0.14);
+}
+
+.lc-home-category-card__body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 1.45rem 1.45rem;
+}
+
+.lc-home-category-card__label {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: #6d7a70;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lc-home-category-card__title {
+  margin: 0;
+  color: #20362b;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2vw, 1.72rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.lc-home-category-card__text {
+  margin: 0.55rem 0 0;
+  color: #697386;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.lc-home-category-card__arrow {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #edf4ea;
+  color: #20362b;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.lc-home-category-card:hover .lc-home-category-card__arrow,
+.lc-home-category-card:focus-visible .lc-home-category-card__arrow {
+  background: #2d5a3d;
+  color: #fff;
+  transform: translateX(2px);
+}
+
+@media (max-width: 767px) {
+  .lc-home-category-card__media {
+    aspect-ratio: 5 / 3;
+  }
+
+  .lc-home-category-card__body {
+    padding: 1.15rem;
+  }
 }
 
 /* Commerce image safety net */
