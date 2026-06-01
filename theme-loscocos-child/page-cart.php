@@ -18,7 +18,7 @@ get_header(); ?>
         
         <div class="cart-left-section">
             <header class="cart-title-section">
-                <h1 class="text-primary-dark">Tu Compra<br>en Espera.</h1>
+                <h1 class="text-primary-dark">Tu compra en espera</h1>
                 <p class="text-neutral-medium mt-4 text-lg font-light">Revisá cantidades, precios y productos antes de avanzar al pago.</p>
             </header>
 
