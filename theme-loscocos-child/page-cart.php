@@ -13,7 +13,7 @@ wp_enqueue_style('premium-cart-styles', get_stylesheet_directory_uri() . '/asset
 
 get_header(); ?>
 
-<div class="premium-cart-wrapper">
+<div class="lc-commerce-page premium-cart-wrapper">
     <div class="premium-cart-container">
         
         <div class="cart-left-section">

@@ -14,7 +14,7 @@ get_header('shop');
 do_action('woocommerce_before_main_content');
 ?>
 
-<main class="bg-cream-light min-h-screen">
+<main class="lc-commerce-page lc-product-page bg-cream-light min-h-screen">
     <div class="container mx-auto px-4 py-8 md:py-12">
         <div class="max-w-7xl mx-auto">
             
@@ -31,7 +31,7 @@ do_action('woocommerce_before_main_content');
                 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
                     
                     <!-- Main Product Section -->
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 mb-8">
+                    <div class="lc-product-page__summary bg-white rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 mb-8">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                             
                             <!-- LEFT: Product Gallery -->
@@ -73,11 +73,11 @@ do_action('woocommerce_before_main_content');
                             <!-- RIGHT: Product Info -->
                             <div class="product-info space-y-6">
                                 
-                                <h1 class="text-3xl md:text-4xl font-serif font-bold text-primary-dark leading-tight">
+                                <h1 class="lc-product-page__title text-3xl md:text-4xl font-serif font-bold text-primary-dark leading-tight">
                                     <?php the_title(); ?>
                                 </h1>
                                 
-                                <div class="text-3xl font-bold text-accent">
+                                <div class="lc-product-page__price text-3xl font-bold text-accent">
                                     <?php echo $product->get_price_html(); ?>
                                 </div>
                                 
@@ -161,7 +161,7 @@ do_action('woocommerce_before_main_content');
                     </div>
 
                     <!-- Product Tabs - Real tabs with JavaScript -->
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 mb-8">
+                    <div class="lc-product-page__tabs bg-white rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 mb-8">
                         <div class="product-tabs-custom">
                             <!-- Tab Headers -->
                             <div class="tab-headers flex border-b border-neutral-200 mb-6">
@@ -230,7 +230,7 @@ do_action('woocommerce_before_main_content');
                     <?php
                     $related_products = wc_get_related_products($product->get_id(), 4);
                     if (!empty($related_products)): ?>
-                        <section class="related-products-section bg-white rounded-2xl shadow-lg p-6 md:p-10">
+                        <section class="lc-product-page__related related-products-section bg-white rounded-2xl shadow-lg p-6 md:p-10">
                             <div class="text-center mb-8">
                                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-dark mb-2">Productos Relacionados</h2>
                                 <p class="text-neutral-medium">Otros productos que te pueden interesar</p>

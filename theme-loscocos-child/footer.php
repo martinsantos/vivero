@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-neutral-dark text-white pt-20 pb-10">
+<footer class="lc-site-footer bg-neutral-dark text-white pt-20 pb-10">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <!-- Brand -->

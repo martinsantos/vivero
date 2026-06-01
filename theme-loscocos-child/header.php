@@ -8,7 +8,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('font-sans text-neutral-dark antialiased bg-neutral-light'); ?>>
+<body <?php body_class('lc-site font-sans text-neutral-dark antialiased bg-neutral-light'); ?>>
     <?php wp_body_open(); ?>
 
     <div id="page" class="site min-h-screen flex flex-col">

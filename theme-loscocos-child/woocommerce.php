@@ -28,27 +28,30 @@ if (is_shop() || is_product_category() || is_product_tag()) {
 get_header(); 
 ?>
 
-<main class="woocommerce-main bg-gray-50 min-h-screen">
-    <div class="container mx-auto px-4 py-8">
+<main class="lc-commerce-page woocommerce-main bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-10 md:py-14">
 
         <?php if (is_cart()): ?>
             <!-- CARRITO -->
-            <div class="bg-white rounded-xl shadow-sm p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">🛒 Carrito de Compras</h1>
+            <div class="lc-commerce-panel bg-white rounded-xl shadow-sm p-8">
+                <p class="lc-page__eyebrow">Compra online</p>
+                <h1 class="lc-page__title text-3xl font-bold text-gray-800 mb-8">Carrito de compras</h1>
                 <?php woocommerce_content(); ?>
             </div>
 
         <?php elseif (is_checkout()): ?>
             <!-- CHECKOUT -->
-            <div class="bg-white rounded-xl shadow-sm p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">✓ Finalizar Compra</h1>
+            <div class="lc-commerce-panel bg-white rounded-xl shadow-sm p-8">
+                <p class="lc-page__eyebrow">Compra segura</p>
+                <h1 class="lc-page__title text-3xl font-bold text-gray-800 mb-8">Finalizar compra</h1>
                 <?php woocommerce_content(); ?>
             </div>
 
         <?php elseif (is_account_page()): ?>
             <!-- MI CUENTA -->
-            <div class="bg-white rounded-xl shadow-sm p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">👤 Mi Cuenta</h1>
+            <div class="lc-commerce-panel bg-white rounded-xl shadow-sm p-8">
+                <p class="lc-page__eyebrow">Vivero Los Cocos</p>
+                <h1 class="lc-page__title text-3xl font-bold text-gray-800 mb-8">Mi cuenta</h1>
                 <?php woocommerce_content(); ?>
             </div>
 
