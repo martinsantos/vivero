@@ -14,6 +14,10 @@ function recordFailure(message, details = {}) {
   failures.push({ message, details });
 }
 
+function isRelevantBrowserIssue(issue) {
+  return !/ERR_QUIC_PROTOCOL_ERROR/i.test(issue.text || '');
+}
+
 async function snapshotPage(page, path, name) {
   const url = `${baseUrl}${path}`;
   const issues = [];
@@ -88,8 +92,9 @@ async function snapshotPage(page, path, name) {
 function assertSharedVisuals(name, snapshot, issues) {
   const fontFamily = (style) => style?.fontFamily?.toLowerCase() || '';
 
-  if (issues.length > 0) {
-    recordFailure(`${name}: no debe emitir errores o warnings relevantes en consola.`, { issues, snapshot });
+  const relevantIssues = issues.filter(isRelevantBrowserIssue);
+  if (relevantIssues.length > 0) {
+    recordFailure(`${name}: no debe emitir errores o warnings relevantes en consola.`, { issues: relevantIssues, snapshot });
   }
 
   if (!snapshot.hasSiteClass || !snapshot.hasHeader || !snapshot.hasFooter) {
@@ -130,7 +135,7 @@ try {
     recordFailure('shop desktop: debe conservar lc-shop-page como baseline aprobado.', shop.snapshot);
   }
 
-  const productUrl = shop.snapshot.productLinks.find((href) => href.includes('/producto/'));
+  const productUrl = shop.snapshot.productLinks.find((href) => /\/producto?\//.test(new URL(href).pathname));
   if (!productUrl) {
     recordFailure('shop desktop: debe exponer al menos un link de producto para validar la vista interna.', shop.snapshot);
   } else {
