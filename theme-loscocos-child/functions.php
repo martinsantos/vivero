@@ -22,6 +22,7 @@ define('LOSCOCOS_CHILD_URI', get_stylesheet_directory_uri());
 $inc_files = [
     '/inc/class-theme-setup.php',
     '/inc/class-wc-customizations.php',
+    '/inc/class-seo-geo.php',
     '/inc/template-functions.php',
     '/inc/product-infographic-fields.php',
 ];
@@ -43,6 +44,10 @@ add_action('after_setup_theme', function() {
     
     if (class_exists('LosCocos_WC_Customizations')) {
         LosCocos_WC_Customizations::init();
+    }
+
+    if (class_exists('LosCocos_SEO_GEO')) {
+        LosCocos_SEO_GEO::init();
     }
 
 }, 5);

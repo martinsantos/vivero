@@ -226,6 +226,12 @@ do_action('woocommerce_before_main_content');
                         </div>
                     </div>
 
+                    <?php
+                    if (class_exists('LosCocos_SEO_GEO')) {
+                        LosCocos_SEO_GEO::render_product_geo_block($product);
+                    }
+                    ?>
+
                     <!-- Related Products - Matching Shop Card Style -->
                     <?php
                     $related_products = wc_get_related_products($product->get_id(), 4);
