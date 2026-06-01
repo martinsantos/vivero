@@ -2,7 +2,7 @@
 /**
  * Theme Setup Class - Los Cocos Child Theme
  * Handles all theme initialization and configuration
- * 
+ *
  * @package LosCocos_Child
  * @version 1.0.0
  */
@@ -12,21 +12,14 @@ if (!defined('ABSPATH')) {
 }
 
 class LosCocos_Theme_Setup {
-    
+
     /**
      * Initialize the theme setup
      */
     public static function init() {
-        // Enqueue styles and scripts
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_assets']);
-
-        // Theme supports
         add_action('after_setup_theme', [self::class, 'theme_supports']);
-
-        // Lazy loading for all images
         add_filter('wp_get_attachment_image_attributes', [self::class, 'add_lazy_loading'], 10, 3);
-
-        // Keep retired feature routes focused on the commerce journey.
         add_action('template_redirect', [self::class, 'redirect_retired_routes']);
     }
 
@@ -48,17 +41,26 @@ class LosCocos_Theme_Setup {
         }
 
         if ('/carrito' === $path && function_exists('wc_get_cart_url')) {
-            wp_safe_redirect(wc_get_cart_url(), 301);
-            exit;
+            self::redirect_if_target_differs(wc_get_cart_url(), $path);
         }
 
         if ('/finalizar-compra' === $path && function_exists('wc_get_checkout_url')) {
-            wp_safe_redirect(wc_get_checkout_url(), 301);
-            exit;
+            self::redirect_if_target_differs(wc_get_checkout_url(), $path);
         }
 
         if ('/mi-cuenta' === $path && function_exists('wc_get_page_permalink')) {
-            wp_safe_redirect(wc_get_page_permalink('myaccount'), 301);
+            self::redirect_if_target_differs(wc_get_page_permalink('myaccount'), $path);
+        }
+    }
+
+    /**
+     * Avoid self-redirect loops when WooCommerce already owns the requested slug.
+     */
+    private static function redirect_if_target_differs($target_url, $current_path) {
+        $target_path = untrailingslashit(wp_parse_url($target_url, PHP_URL_PATH) ?: '');
+
+        if ($target_path && $target_path !== $current_path) {
+            wp_safe_redirect($target_url, 301);
             exit;
         }
     }
@@ -67,20 +69,20 @@ class LosCocos_Theme_Setup {
      * Add lazy loading and dimensions to all WordPress images
      */
     public static function add_lazy_loading($attr, $attachment, $size) {
-        // Skip if already set or if it's the admin
         if (is_admin() || isset($attr['loading'])) {
             return $attr;
         }
+
         $attr['loading'] = 'lazy';
         $attr['decoding'] = 'async';
+
         return $attr;
     }
-    
+
     /**
      * Enqueue theme assets
      */
     public static function enqueue_assets() {
-        // Resource hints for Google Fonts
         add_action('wp_head', function() {
             echo '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>' . "\n";
             echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
@@ -88,18 +90,15 @@ class LosCocos_Theme_Setup {
             echo '<link rel="dns-prefetch" href="https://fonts.gstatic.com">' . "\n";
         }, 1);
 
-        // Google Fonts
         wp_enqueue_style(
             'loscocos-google-fonts',
-            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap',
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:wght@400;700;900&display=swap',
             [],
             null
         );
 
-        // Parent theme styles
         wp_enqueue_style('loscocos-style', get_template_directory_uri() . '/style.css');
 
-        // Child theme styles
         $child_css = get_stylesheet_directory() . '/style.css';
         $version = file_exists($child_css) ? filemtime($child_css) : LOSCOCOS_CHILD_VERSION;
         wp_enqueue_style(
@@ -109,7 +108,6 @@ class LosCocos_Theme_Setup {
             $version
         );
 
-        // Category navigation styles
         $cat_nav_file = get_stylesheet_directory() . '/assets/css/category-navigation.css';
         if (file_exists($cat_nav_file)) {
             wp_enqueue_style(
@@ -120,7 +118,6 @@ class LosCocos_Theme_Setup {
             );
         }
 
-        // Product infographic styles
         $infographic_file = get_stylesheet_directory() . '/assets/css/product-infographic.css';
         if (file_exists($infographic_file)) {
             wp_enqueue_style(
@@ -131,7 +128,6 @@ class LosCocos_Theme_Setup {
             );
         }
 
-        // Custom JavaScript (no jQuery dependency needed)
         $main_js = get_stylesheet_directory() . '/assets/js/main.js';
         if (file_exists($main_js)) {
             wp_enqueue_script(
@@ -143,7 +139,6 @@ class LosCocos_Theme_Setup {
             );
         }
 
-        // Single product JavaScript (product pages only)
         if (is_product()) {
             $single_product_js = get_stylesheet_directory() . '/assets/js/single-product.js';
             if (file_exists($single_product_js)) {
@@ -157,30 +152,25 @@ class LosCocos_Theme_Setup {
             }
         }
     }
-    
+
     /**
      * Add theme supports
      */
     public static function theme_supports() {
-        // WooCommerce support
         add_theme_support('woocommerce');
         add_theme_support('wc-product-gallery-zoom');
         add_theme_support('wc-product-gallery-lightbox');
         add_theme_support('wc-product-gallery-slider');
-        
-        // HTML5 support
+
         add_theme_support('html5', [
             'search-form',
             'comment-form',
             'comment-list',
             'gallery',
-            'caption'
+            'caption',
         ]);
-        
-        // Title tag
+
         add_theme_support('title-tag');
-        
-        // Post thumbnails
         add_theme_support('post-thumbnails');
     }
 }

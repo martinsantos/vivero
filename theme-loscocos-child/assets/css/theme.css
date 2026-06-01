@@ -251,6 +251,43 @@ body.lc-site {
   font-weight: 700;
 }
 
+.lc-commerce-page .woocommerce-form-login,
+.lc-commerce-page .woocommerce-form-register,
+.lc-commerce-page .woocommerce-ResetPassword,
+.lc-commerce-page .woocommerce-address-fields,
+.lc-commerce-page .woocommerce-EditAccountForm {
+  border: 1px solid var(--lc-soft-border) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 1px 2px rgba(18, 34, 27, 0.035), 0 10px 24px rgba(18, 34, 27, 0.045);
+}
+
+.lc-commerce-page .woocommerce-form-login {
+  padding: clamp(1.25rem, 3vw, 2rem) !important;
+}
+
+.lc-commerce-page .woocommerce-form-login .woocommerce-button,
+.lc-commerce-page .woocommerce-form-register .woocommerce-button,
+.lc-commerce-page .woocommerce-ResetPassword .woocommerce-button,
+.lc-commerce-page .woocommerce-EditAccountForm button[type="submit"],
+.lc-commerce-page .woocommerce-address-fields button[type="submit"] {
+  background: var(--lc-clay) !important;
+  color: #fff !important;
+  box-shadow:
+    0 1px 1px rgba(89, 30, 16, 0.12),
+    0 14px 28px rgba(224, 122, 95, 0.2);
+}
+
+.lc-commerce-page .woocommerce-LostPassword a {
+  color: var(--lc-muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lc-commerce-page .woocommerce-LostPassword a:hover {
+  color: var(--lc-leaf);
+}
+
 .checkout-container {
   color: var(--lc-ink);
   font-family: var(--lc-font-sans);

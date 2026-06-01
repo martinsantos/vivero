@@ -84,6 +84,7 @@ async function snapshotPage(page, path, name) {
       h1Rect: rectFor('h1'),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       productLinks: Array.from(document.querySelectorAll('ul.products > li.product a[href]'), (link) => link.href).filter(Boolean),
+      addToCartLinks: Array.from(document.querySelectorAll('a[href*="add-to-cart"]'), (link) => link.href).filter(Boolean),
     };
   });
 
@@ -189,6 +190,24 @@ try {
   assertSharedVisuals('cart desktop', cart.snapshot, cart.issues);
   if (!cart.snapshot.hasCommerce) {
     recordFailure('cart desktop: debe usar la capa lc-commerce-page.', cart.snapshot);
+  }
+
+  const addToCartUrl = shop.snapshot.addToCartLinks?.[0];
+  if (addToCartUrl) {
+    await page.goto(addToCartUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    await page.waitForTimeout(1200);
+  }
+
+  const checkout = await snapshotPage(page, '/finalizar-compra/', 'checkout-desktop');
+  assertSharedVisuals('checkout desktop', checkout.snapshot, checkout.issues);
+  if (!checkout.snapshot.hasCommerce) {
+    recordFailure('checkout desktop: debe usar la capa lc-commerce-page.', checkout.snapshot);
+  }
+
+  const account = await snapshotPage(page, '/mi-cuenta/', 'account-desktop');
+  assertSharedVisuals('account desktop', account.snapshot, account.issues);
+  if (!account.snapshot.hasCommerce) {
+    recordFailure('account desktop: debe usar la capa lc-commerce-page.', account.snapshot);
   }
 
   await page.setViewportSize(mobile);
