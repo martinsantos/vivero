@@ -27,26 +27,26 @@ define('NONCE_SALT',       'loscocos-nonce-salt-tienda-online');
 // ** Prefijo de tablas ** //
 $table_prefix = 'lc_';
 
+// Detectar requests locales para no forzar URLs de producción en Docker.
+$loscocos_http_host = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : '';
+$loscocos_is_local_request = (bool) preg_match('/^(localhost|127\.0\.0\.1)(:\d+)?$/', $loscocos_http_host);
+$loscocos_site_url = $loscocos_is_local_request
+    ? 'http://' . $loscocos_http_host
+    : 'https://viveroloscocos.com.ar';
+
 // ** Tipo de entorno ** //
-// Habilita contraseñas de aplicación en entornos de desarrollo sin exigir HTTPS.
-// Valores válidos: 'local', 'development', 'staging', 'production'
 if (!defined('WP_ENVIRONMENT_TYPE')) {
-    define('WP_ENVIRONMENT_TYPE', 'local');
+    define('WP_ENVIRONMENT_TYPE', $loscocos_is_local_request ? 'local' : 'production');
 }
 
 // ** Configuración específica para Los Cocos ** //
-// Habilitar debug general - Cambiar a false en producción
-define('WP_DEBUG', true);
-// Habilitar registro de errores en wp-content/debug.log
-define('WP_DEBUG_LOG', true);
-// Ocultar errores en frontend - Los admins verán notificaciones
+// Modo producción: debug deshabilitado
+define('WP_DEBUG', false);
+define('WP_DEBUG_LOG', false);
 define('WP_DEBUG_DISPLAY', false);
-// Forzar modo de desarrollo JavaScript
-define('SCRIPT_DEBUG', true);
-// Guardar queries SQL de debug
-define('SAVEQUERIES', WP_DEBUG);
-// Desactivar JavaScript concatenado
-define('CONCATENATE_SCRIPTS', false);
+define('SCRIPT_DEBUG', false);
+define('SAVEQUERIES', false);
+define('CONCATENATE_SCRIPTS', true);
 
 // Configuración de memoria y rendimiento
 define('WP_MEMORY_LIMIT', '512M');
@@ -60,7 +60,7 @@ define('POST_MAX_SIZE', '64M');
 
 // Configuración de seguridad
 define('DISALLOW_FILE_EDIT', true);
-define('FORCE_SSL_ADMIN', false); // Cambiar a true en producción con SSL
+define('FORCE_SSL_ADMIN', !$loscocos_is_local_request);
 define('AUTOMATIC_UPDATER_DISABLED', false);
 define('WP_AUTO_UPDATE_CORE', 'minor');
 
@@ -69,12 +69,13 @@ define('WC_LOG_HANDLER', 'WC_Log_Handler_File');
 define('WOOCOMMERCE_CHECKOUT_DEBUG_MODE', false);
 
 // Configuración de caché
-define('WP_CACHE', true);
-define('ENABLE_CACHE', true);
+// WP_CACHE se activa cuando se instala un plugin de caché (ej: WP Super Cache)
+define('WP_CACHE', false);
+define('ENABLE_CACHE', false);
 
-// Configuración de URLs para producción
-define('WP_HOME', 'https://viveroloscocos.com.ar');
-define('WP_SITEURL', 'https://viveroloscocos.com.ar');
+// Configuración de URLs para producción y Docker local
+define('WP_HOME', $loscocos_site_url);
+define('WP_SITEURL', $loscocos_site_url);
 
 // Configuración de idioma
 define('WPLANG', 'es_ES');
