@@ -113,11 +113,11 @@ if (empty($sale_products)) {
 }
 ?>
 
-<main id="primary" class="site-main bg-cream-light text-neutral-dark">
+<main id="primary" class="lc-home-page site-main bg-cream-light text-neutral-dark">
 
     <section class="lc-hero relative overflow-hidden bg-primary-dark text-white">
         <div class="absolute inset-0 bg-primary-dark"></div>
-        <div class="container relative z-10 mx-auto grid min-h-[720px] grid-cols-1 items-center gap-10 px-4 pb-16 pt-32 md:pb-20 md:pt-36 lg:grid-cols-2">
+        <div class="container relative z-10 mx-auto grid min-h-[620px] grid-cols-1 items-center gap-10 px-4 pb-12 pt-28 md:pb-14 md:pt-30 lg:grid-cols-2">
             <div class="max-w-3xl">
                 <h1 class="max-w-4xl text-5xl font-serif font-bold leading-[1.02] tracking-normal text-white md:text-7xl">
                     Plantas, macetas e insumos para comprar hoy
@@ -128,7 +128,7 @@ if (empty($sale_products)) {
 
                 <div class="mt-10 flex flex-col gap-3 sm:flex-row">
                     <a href="<?php echo esc_url($shop_url); ?>"
-                       class="inline-flex min-h-[54px] items-center justify-center rounded-full bg-accent px-8 py-4 text-base font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-accent-hover">
+                       class="lc-hero__primary-cta inline-flex min-h-[54px] items-center justify-center rounded-full bg-accent px-8 py-4 text-base font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-accent-hover">
                         Comprar ahora
                     </a>
                     <a href="#categorias"
@@ -153,14 +153,14 @@ if (empty($sale_products)) {
                 </div>
             </div>
 
-            <div class="relative hidden min-h-[560px] lg:block">
+            <div class="relative hidden min-h-[500px] lg:block">
                 <div class="lc-hero__image-frame absolute inset-0 rounded-lg"></div>
                 <img
                     src="<?php echo esc_url($hero_image_url); ?>"
                     alt="Planta de interior seleccionada en Vivero Los Cocos"
-                    class="absolute inset-6 h-[calc(100%-3rem)] w-[calc(100%-3rem)] rounded-lg object-cover shadow-2xl shadow-black/30"
+                    class="absolute inset-5 h-[calc(100%-2.5rem)] w-[calc(100%-2.5rem)] rounded-lg object-cover shadow-2xl shadow-black/30"
                     fetchpriority="high">
-                <div class="lc-hero__image-caption absolute bottom-10 left-10 right-10 rounded-lg p-5">
+                <div class="lc-hero__image-caption absolute bottom-8 left-8 right-8 rounded-lg p-5">
                     <strong class="block text-lg">Vivero Los Cocos</strong>
                     <span class="mt-1 block text-sm leading-relaxed">Una tienda online simple para elegir, comprar y coordinar tu pedido.</span>
                 </div>
@@ -168,30 +168,30 @@ if (empty($sale_products)) {
         </div>
     </section>
 
-    <section class="border-b border-neutral-200 bg-white">
+    <section class="lc-home-proof-strip border-b border-neutral-200 bg-white">
         <div class="container mx-auto grid grid-cols-1 gap-px px-4 py-0 md:grid-cols-4">
-            <div class="border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:pr-6">
+            <div class="lc-home-proof-item border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:pr-6">
                 <strong class="block text-primary-dark">Plantas seleccionadas</strong>
                 <span class="mt-1 block text-sm text-neutral-medium">Ejemplares cuidados en vivero.</span>
             </div>
-            <div class="border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:px-6">
+            <div class="lc-home-proof-item border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:px-6">
                 <strong class="block text-primary-dark">Precios visibles</strong>
                 <span class="mt-1 block text-sm text-neutral-medium">Sin pasos ocultos para comprar.</span>
             </div>
-            <div class="border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:px-6">
+            <div class="lc-home-proof-item border-b border-neutral-200 py-6 md:border-b-0 md:border-r md:px-6">
                 <strong class="block text-primary-dark">WhatsApp activo</strong>
                 <span class="mt-1 block text-sm text-neutral-medium">Consultas rápidas con el equipo.</span>
             </div>
-            <div class="py-6 md:pl-6">
+            <div class="lc-home-proof-item py-6 md:pl-6">
                 <strong class="block text-primary-dark">Local en Godoy Cruz</strong>
                 <span class="mt-1 block text-sm text-neutral-medium">Retiro o entrega coordinada.</span>
             </div>
         </div>
     </section>
 
-    <section id="categorias" class="bg-cream-light py-16 md:py-24">
+    <section id="categorias" class="lc-home-categories bg-cream-light py-14 md:py-18">
         <div class="container mx-auto px-4">
-            <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="lc-home-section-header mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                     <h2 class="text-4xl font-serif font-bold leading-tight text-primary-dark md:text-5xl">Comprar por categoría</h2>
                     <p class="mt-3 max-w-2xl text-neutral-medium">Entrá directo al tipo de producto que necesitás. Cada categoría usa datos reales del catálogo.</p>
@@ -233,9 +233,9 @@ if (empty($sale_products)) {
     </section>
 
     <?php if (!empty($sale_products)) : ?>
-        <section class="bg-white py-16 md:py-24">
+        <section class="lc-home-featured bg-white py-16 md:py-22">
             <div class="container mx-auto px-4">
-                <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div class="lc-home-section-header mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div>
                         <h2 class="text-4xl font-serif font-bold text-primary-dark md:text-5xl">Destacados para comprar hoy</h2>
                         <p class="mt-3 max-w-2xl text-neutral-medium">Productos con precio, stock y acceso directo al carrito.</p>
@@ -262,30 +262,30 @@ if (empty($sale_products)) {
                             : '<img src="' . esc_url(wc_placeholder_img_src('woocommerce_thumbnail')) . '" alt="' . esc_attr($product->get_name()) . '" class="' . esc_attr($image_attrs['class']) . '" loading="lazy">';
                         $quick_add = $product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock();
                         ?>
-                        <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-                            <a href="<?php echo esc_url($product_url); ?>" class="relative block aspect-square overflow-hidden bg-neutral-100">
+                        <article class="lc-home-product-card group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+                            <a href="<?php echo esc_url($product_url); ?>" class="lc-home-product-card__media relative block aspect-square overflow-hidden bg-neutral-100">
                                 <?php echo wp_kses_post($image); ?>
                                 <?php if ($product->is_on_sale()) : ?>
                                     <span class="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Oferta</span>
                                 <?php endif; ?>
                             </a>
-                            <div class="flex flex-1 flex-col p-5">
-                                <h3 class="mb-3 min-h-[3.25rem] text-lg font-bold leading-snug text-primary-dark">
+                            <div class="lc-home-product-card__body flex flex-1 flex-col p-5">
+                                <h3 class="lc-home-product-card__title mb-3 min-h-[3.25rem] text-lg font-bold leading-snug text-primary-dark">
                                     <a href="<?php echo esc_url($product_url); ?>" class="hover:text-accent">
                                         <?php echo esc_html($product->get_name()); ?>
                                     </a>
                                 </h3>
-                                <div class="mb-4 flex items-end justify-between gap-3">
-                                    <div class="text-xl font-extrabold text-neutral-dark">
+                                <div class="lc-home-product-card__meta mb-4 flex items-end justify-between gap-3">
+                                    <div class="lc-home-product-card__price text-xl font-extrabold text-neutral-dark">
                                         <?php echo wp_kses_post($product->get_price_html()); ?>
                                     </div>
                                     <?php if ($product->is_in_stock()) : ?>
-                                        <span class="rounded-full bg-secondary-light px-3 py-1 text-xs font-semibold text-primary-dark">En stock</span>
+                                        <span class="lc-home-product-card__stock rounded-full bg-secondary-light px-3 py-1 text-xs font-semibold text-primary-dark">En stock</span>
                                     <?php else : ?>
-                                        <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-medium">Sin stock</span>
+                                        <span class="lc-home-product-card__stock lc-home-product-card__stock--out rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-medium">Sin stock</span>
                                     <?php endif; ?>
                                 </div>
-                                <div class="mt-auto grid gap-2">
+                                <div class="lc-home-product-card__actions mt-auto grid gap-2">
                                     <?php if ($quick_add) : ?>
                                         <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
                                            data-quantity="1"
@@ -311,7 +311,7 @@ if (empty($sale_products)) {
         </section>
     <?php endif; ?>
 
-    <section id="featured" class="bg-primary-dark py-16 text-white md:py-24">
+    <section id="featured" class="lc-home-trust bg-primary-dark py-16 text-white md:py-24">
         <div class="container mx-auto grid grid-cols-1 gap-10 px-4 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
                 <h2 class="text-4xl font-serif font-bold leading-tight text-white md:text-5xl">Una compra de vivero con criterio profesional.</h2>
