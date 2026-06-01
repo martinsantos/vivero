@@ -30,7 +30,8 @@ async function snapshotPage(page, path, name) {
     issues.push({ type: 'pageerror', text: error.message });
   });
 
-  await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.waitForTimeout(1200);
   await page.screenshot({
     path: `/private/tmp/vivero-site-visual-${name}.png`,
     fullPage: false,
@@ -139,7 +140,8 @@ try {
   if (!productUrl) {
     recordFailure('shop desktop: debe exponer al menos un link de producto para validar la vista interna.', shop.snapshot);
   } else {
-    await page.goto(productUrl, { waitUntil: 'networkidle', timeout: 45000 });
+    await page.goto(productUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    await page.waitForTimeout(1200);
     await page.screenshot({
       path: '/private/tmp/vivero-site-visual-product-desktop.png',
       fullPage: false,
